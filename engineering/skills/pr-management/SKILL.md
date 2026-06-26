@@ -14,6 +14,17 @@ This skill covers both:
 - **system design**: how a team should run PR review, routing, CI, and merge policy
 - **operational execution**: how to triage active PRs, resolve straightforward conflicts, and decide when human judgment is required
 
+## External Skill Chains
+
+Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
+
+- `deslop`: Remove AI-generated code slop from the current diff without changing behavior. Install: `python scripts/install-external-skills.py --skill deslop --agent codex`.
+- `thermo-nuclear-code-quality-review`: Run an unusually strict maintainability and abstraction-quality review. Install: `python scripts/install-external-skills.py --skill thermo-nuclear-code-quality-review --agent codex`.
+- `no-mistakes`: Gate explicit ship, push, PR, or validate flows through the no-mistakes pipeline. Install: `python scripts/install-external-skills.py --skill no-mistakes --agent codex`.
+- `improve`: Run a read-only senior codebase audit and write execution-ready plans for other agents. Install: `python scripts/install-external-skills.py --skill improve --agent codex`.
+
+Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+
 ## Use this skill for
 
 - defining PR workflow and merge policy
@@ -173,10 +184,9 @@ Choose the validation lane deliberately.
 
 If the PR is directionally correct but still messy:
 
-- remove unnecessary local complexity
-- tighten names or ownership signals
-- reduce special cases that are not essential
-- keep changes minimal and readable
+- chain to `deslop` for AI-code residue, unnecessary comments, casts, or abnormal defensive checks
+- chain to `thermo-nuclear-code-quality-review` when the mess is structural: special-case branching, shallow abstractions, file bloat, or wrong-layer logic
+- keep any resulting edits minimal and readable
 
 If the PR needs a fundamental reframe, escalate instead of polishing around the edges.
 
@@ -286,7 +296,7 @@ For deep pre-merge review, apply these five lenses from `references/review-speci
 
 | Lens | Apply when |
 |------|-----------|
-| Code Quality | always — any diff |
+| Code Quality | always — any diff; use `deslop` or `thermo-nuclear-code-quality-review` for the actual methodology |
 | Silent Failure Detection | diff touches error handling, catch blocks, fallback logic |
 | Test Coverage | new or modified functionality |
 | Comment Accuracy | new or modified comments or docs |

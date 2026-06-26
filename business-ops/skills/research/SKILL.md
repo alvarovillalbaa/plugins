@@ -23,6 +23,21 @@ not produce a search dump.
 Default to one primary lane. Add overlays only when they materially improve the
 answer.
 
+## Specialized Research Skills
+
+Keep this skill as the shared evidence methodology. When a specialized lane is
+the narrowest owner, load the child skill and its assets:
+
+- [`market-competitor-research`](../market-competitor-research/SKILL.md) for
+  market maps, competitor intelligence, category research, positioning
+  evidence, public-web discovery, and source-backed opportunity analysis
+- [`diligence-vendor-research`](../diligence-vendor-research/SKILL.md) for
+  vendor diligence, product comparisons, buyer risk, filings, practitioner
+  research, and decision-ready diligence memos
+- [`customer-qual-research`](../customer-qual-research/SKILL.md) for customer
+  qualitative research, interviews, ICP learning, account research, prospect
+  enrichment, pain synthesis, and evidence-backed product or GTM insight
+
 ## Output Contract (Read Before Synthesizing)
 
 Every citation in the final artifact must be an inline markdown link `[name](url)`.
@@ -94,28 +109,29 @@ confidence and say exactly what is missing.
 
 ## Route The Job
 
-Pick one primary lane before sourcing:
+Pick one primary lane before sourcing. Use this parent for shared methodology
+and chain to the specialization when lane-specific assets are needed:
 
 - `competitor intelligence`
   - compare vendors, products, positioning, pricing, proof points, launches,
     or weaknesses
-  - read `references/competitor-intelligence.md`
+  - load [`market-competitor-research`](../market-competitor-research/SKILL.md)
 
 - `diligence`
   - support a buy, partner, invest, renew, or vendor-risk decision
-  - read `references/diligence.md`
+  - load [`diligence-vendor-research`](../diligence-vendor-research/SKILL.md)
 
 - `ICP research`
   - define segments, titles, triggers, exclusions, and account filters
-  - read `references/icp-research.md`
+  - load [`customer-qual-research`](../customer-qual-research/SKILL.md)
 
 - `account research`
   - prepare for outreach, meetings, prioritization, or account planning
-  - read `references/account-research.md`
+  - load [`customer-qual-research`](../customer-qual-research/SKILL.md)
 
 - `customer research`
   - answer a customer or account question with evidence and caveats
-  - read `references/customer-research.md`
+  - load [`customer-qual-research`](../customer-qual-research/SKILL.md)
 
 Load these overlays in addition to the primary lane when needed:
 
@@ -123,7 +139,7 @@ Load these overlays in addition to the primary lane when needed:
   - interviews, surveys, support tickets, usability notes, CRM notes, call
     transcripts, open-ended feedback, behavioral data, or study planning
 
-- `references/prospect-enrichment-and-qualification.md`
+- [`customer-qual-research`](../customer-qual-research/SKILL.md)
   - email or domain enrichment, company-first lead research, inbound triage,
     follow-up ranking, or pain-point matching to a product context
 
@@ -137,7 +153,7 @@ Load these overlays in addition to the primary lane when needed:
     financial filings, research papers, independent practitioner writing, or
     structured lead generation at scale
 
-- `references/social-signal-pass.md`
+- [`market-competitor-research`](../market-competitor-research/SKILL.md)
   - when current community reaction, operator sentiment, or market discourse
     is a material input — covering Reddit, X, Hacker News, YouTube, and
     GitHub as primary signal sources
@@ -296,10 +312,11 @@ lightest collection mode that can answer the question:
    capture
 
 If current operator or market reaction matters, load
-`references/social-signal-pass.md` and run a targeted discourse pass after
-the direct-source pass. The reference file defines platform routing (Reddit,
-X, HN, YouTube, GitHub), query decomposition into 3-5 targeted sub-queries,
-synthesis-by-theme rules, and the specific failure modes to avoid.
+[`market-competitor-research`](../market-competitor-research/SKILL.md) and run
+a targeted discourse pass after the direct-source pass. Its social-signal
+reference defines platform routing (Reddit, X, HN, YouTube, GitHub), query
+decomposition into 3-5 targeted sub-queries, synthesis-by-theme rules, and the
+specific failure modes to avoid.
 
 Treat discourse as signal, not ground truth.
 

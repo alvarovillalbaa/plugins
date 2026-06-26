@@ -19,6 +19,20 @@ This skill owns the documentation contract, not only doc generation. Use it to:
 - move, merge, or remove misplaced docs so the repo has one clear source of truth
 - autonomously research a project and generate a complete documentation website
 
+## External Skill Chains
+
+Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
+
+- `unslop`: Remove AI tells from prose while preserving meaning and voice. Install: `python scripts/install-external-skills.py --skill unslop --agent codex`.
+- `stop-slop`: Apply stricter prose cleanup for predictable AI writing patterns. Install: `python scripts/install-external-skills.py --skill stop-slop --agent codex`.
+- `writing-great-skills`: Use external skill-authoring quality rules when creating or revising skills. Install: `python scripts/install-external-skills.py --skill writing-great-skills --agent codex`.
+- `teach`: Create mission-grounded learning material, resources, records, and lessons. Install: `python scripts/install-external-skills.py --skill teach --agent codex`.
+- `grilling`: Interview one decision at a time until a plan or design is sharp. Install: `python scripts/install-external-skills.py --skill grilling --agent codex`.
+- `grill-me`: Shortcut into a grilling session for plan or design stress testing. Install: `python scripts/install-external-skills.py --skill grill-me --agent codex`.
+- `grill-with-docs`: Stress-test a plan or design while maintaining docs, ADRs, and glossary context. Install: `python scripts/install-external-skills.py --skill grill-with-docs --agent codex`.
+
+Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+
 ## Core model
 
 Documentation in this repo falls into seven surfaces:

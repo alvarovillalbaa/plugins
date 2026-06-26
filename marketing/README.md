@@ -4,7 +4,7 @@ Marketing workflows for content, SEO/GEO, social engagement, slide decks, visual
 
 ## What lives here
 
-- Skills: `content-writing`, `seo-and-geo`, `social-media-management`, `video-generation`, `code-as-images`, `code-slides`, `html-visualization`
+- Skills: `content-writing`, `seo-and-geo`, `social-media-management`, `video-generation`, `code-as-images`, `code-slides`, `html-visual`
 - Commands: `blog-draft`, `content-brief`, `social-pack`, `linkedin-engage`, `x-engage`, `slides`, `video`
 - Agents: `growth-lead`
 
@@ -39,4 +39,4 @@ https://github.com/alvarovillalbaa/plugins/tree/main/marketing
 - [`video-generation`](./skills/video-generation/README.md): Remotion-based video production workflows
 - [`code-as-images`](./skills/code-as-images/README.md): human-written stub for a still-incomplete skill
 - [`code-slides`](./skills/code-slides/README.md): code-based slide decks and presentation systems
-- [`html-visualization`](./skills/html-visualization/README.md): self-contained visual explainers and dashboards
+- [`html-visual`](./skills/html-visual/README.md): self-contained visual explainers and dashboards

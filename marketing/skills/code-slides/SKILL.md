@@ -9,12 +9,20 @@ Build production-ready, code-first slide decks with deterministic structure, dis
 
 Think in magazine-quality slides, not generic app screens repeated 12 times.
 
+## External Skill Chains
+
+Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
+
+- `hallmark`: Audit, redesign, study, or build UI with anti-AI-slop design constraints. Install: `python scripts/install-external-skills.py --skill hallmark --agent codex`.
+
+Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+
 ## Workflow
 
 1. Detect the job type: new code deck, existing deck enhancement, AI-image deck generation, or PPT/PPTX conversion.
 2. Confirm audience, delivery context, slide count, output artifact, and whether the user wants direct preset selection or visual style previews.
 3. Read `references/mode-selection.md` before choosing implementation mode.
-4. Lock a visual direction before building slides. Read `references/style-presets.md` whenever the aesthetic is not already defined.
+4. Lock the deck structure locally, then use `hallmark` for visual direction when the aesthetic is not already defined. `references/style-presets.md` only maps slide needs to Hallmark requests.
 5. If the job is an AI-image deck, use `references/image-deck-generator.md` and `references/image-deck-styles.md`, then run `scripts/generate_image_deck.py`.
 6. If the job is a code deck, apply viewport-fit rules from `references/viewport-fit.md` before writing slides.
 7. Scaffold a starting point with `scripts/scaffold_deck.py`, template assets, and `templates/` prompts when useful.
@@ -51,25 +59,14 @@ Load details from `references/mode-selection.md` when selecting the mode.
 
 When the user does not have a clear aesthetic direction:
 
-1. Offer preset-led exploration instead of abstract design questions.
-2. For code decks, let the user pick a named preset from `references/style-presets.md` or generate three lightweight preview files that show distinct directions.
+1. Use `hallmark` to establish visual direction instead of asking abstract design questions.
+2. For code decks, use `references/style-presets.md` only to describe the presentation need before invoking Hallmark.
 3. For AI-image decks, pick a style from `references/image-deck-styles.md` or map a custom visual direction onto one of those prompt baselines.
-4. Keep previews intentionally different in typography, color, and motion.
-5. Avoid generic "AI slop" patterns such as purple-on-white defaults, system-font stacks, and interchangeable hero layouts.
-6. Preserve the established product or brand language when the repository already has one.
+4. Preserve the established product or brand language when the repository already has one.
 
 ## Anti-Slop Rules
 
-Do not ship a deck with any of these defaults unless the user explicitly asked for them:
-
-1. Inter, Roboto, Arial, Helvetica, or system-ui as the only primary type choice.
-2. Violet or indigo accents by reflex.
-3. Gradient text headings.
-4. Generic dark background plus glowing cards plus blue accent.
-5. Repeating the same centered hero layout across multiple consecutive slides.
-6. Motion that exists only to add "energy" without clarifying hierarchy or state.
-
-Run a simple swap test before handoff: if the deck would look interchangeable with a default SaaS landing page after changing the logo, redesign it.
+Use `hallmark` for deck visual anti-slop review. Keep this skill focused on slide mechanics, responsiveness, navigation, export format, and image-pipeline correctness.
 
 ## Composition Variety
 

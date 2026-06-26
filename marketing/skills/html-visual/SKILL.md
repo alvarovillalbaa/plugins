@@ -1,5 +1,5 @@
 ---
-name: html-visualization
+name: html-visual
 description: Generate polished, self-contained visual explainers, reviews, diagrams, dashboards, comparison pages, and slide-mode HTML from technical or business inputs. Use when the user asks for a diagram, architecture overview, diff or plan review, project recap, comparison matrix, audit page, timeline, dashboard, or any explanation that would be clearer as a visual artifact than as plain terminal text. Also use proactively when the output would otherwise become a dense table or long text wall.
 ---
 
@@ -10,6 +10,14 @@ Turn complex material into visual artifacts that are faster to scan, easier to t
 The default output is a self-contained HTML artifact. When the environment supports it, preview or open the generated file after writing it. If opening is not available, still produce the artifact and report the path.
 
 Never fall back to ASCII art when this skill is active.
+
+## External Skill Chains
+
+Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
+
+- `hallmark`: Audit, redesign, study, or build UI with anti-AI-slop design constraints. Install: `python scripts/install-external-skills.py --skill hallmark --agent codex`.
+
+Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
 
 ## Core Promise
 
@@ -29,24 +37,24 @@ Visual is the default, not the exception. Even text-heavy explainers should beco
 
 ## Think First
 
-Before writing HTML, commit to a direction instead of drifting into a generic "dark page with blue cards" default.
+Before writing HTML, commit to an information structure and invoke `hallmark` for the visual direction when the artifact needs taste, polish, or anti-slop judgment.
 
-Make **two independent decisions** up front — layout and style are separate axes:
+Make **two independent decisions** up front:
 
-**Axis 1 — Layout** (the information structure):
+**Axis 1 — Layout** (owned locally):
 Choose from the layout library below. This determines how information flows and relates. Pick the one that matches the content shape, not the one you used last time.
 
-**Axis 2 — Style** (the visual aesthetic):
-Choose from `references/visual-directions.md`. This is independent of layout. The same bento grid can be Blueprint or Craft Handmade.
+**Axis 2 — Visual direction** (owned by `hallmark`):
+Ask Hallmark for the page/audit/design direction when visual judgment matters. `references/visual-directions.md` only maps this skill's output modes to Hallmark requests.
 
 Then answer:
 
 1. Who is reading: engineer, PM, exec, founder, client, or mixed audience.
 2. Which layout fits the content's natural shape — flow, comparison, hierarchy, cycle, or mosaic?
-3. Which style will make the page feel intentional instead of auto-generated?
+3. Whether Hallmark should audit, redesign, study, or provide a fresh build direction.
 4. Does the source material need to be reproduced verbatim, or is synthesis appropriate?
 
-**Before generating**, state your chosen Layout × Style combination in one line and confirm it fits. Do not draft HTML before this decision is locked.
+**Before generating**, state your chosen layout plus Hallmark route in one line and confirm it fits. Do not draft HTML before this decision is locked.
 
 Read `references/rendering-strategy.md` and `references/visual-directions.md` before building complex artifacts. Re-read them when the output mode changes instead of relying on memory.
 
@@ -223,26 +231,7 @@ General rules:
 
 ## Visual Direction
 
-Pick a strong direction and commit to it. Read `references/visual-directions.md`.
-
-Preferred directions:
-
-- Blueprint
-- Editorial
-- Paper Ink
-- Monochrome Terminal
-- Product Brief
-- Data Desk
-
-Avoid generic defaults:
-
-- Purple-on-white startup gradients
-- Neon cyberpunk dashboards
-- Inter plus indigo plus glassmorphism by reflex
-- Decorative motion without information value
-- Gradient text headlines
-- Generic "AI cards on a dark canvas" layouts with no real hierarchy
-- Three consecutive sections or slides with the same centered composition
+Use `hallmark` for visual direction and anti-slop review. This skill's local concern is whether the artifact should be an explainer, review, comparison, dashboard, timeline, or slide-mode page.
 
 ## Artifact Requirements
 
@@ -250,11 +239,10 @@ Every output should:
 
 - Be self-contained HTML unless the user explicitly asks for another format.
 - Have a clear title, framing sentence, and visible section structure.
-- Use typography and spacing that improve scan speed.
+- Use the visual direction supplied by Hallmark when visual taste matters.
 - Make the recommendation or takeaway obvious.
 - Handle mobile and desktop reasonably.
 - Avoid internal scroll traps where possible.
-- Use typography, palette, and spacing that feel chosen, not defaulted.
 - Vary visual weight across sections so the key takeaway dominates the first viewport.
 
 **Data fidelity:** Reproduce source material faithfully. Do not summarize, rephrase, or omit data unless the user explicitly asks for synthesis. Design aesthetics are secondary to accuracy. When in doubt, preserve the original wording and numbers.
@@ -297,13 +285,13 @@ For comparisons and audits:
 
 1. Analyze the source material — identify its natural shape (flow, comparison, hierarchy, cycle, mosaic).
 2. Choose audience and information density.
-3. **Propose Layout × Style** — state the chosen layout from the Layout Library and the chosen visual direction from `references/visual-directions.md` in one line before generating. Confirm this fits before proceeding.
+3. **Propose layout plus Hallmark route** — state the chosen layout from the Layout Library and whether Hallmark is supplying the visual direction. Confirm this fits before proceeding.
 4. Choose the rendering strategy from `references/rendering-strategy.md`.
 5. Decide the image source plan when the artifact needs imagery.
 6. Draft the information architecture before styling.
 7. Start from the closest template and then customize aggressively.
 8. Generate the self-contained HTML artifact.
-9. Verify that the page is readable, scannable, and accurate — run the Slop Test.
+9. Verify that the page is readable, scannable, and accurate. Use `hallmark audit` for visual anti-slop verification when available.
 10. Write the file to a predictable location and report the path.
 
 ## Reusable Resources
@@ -315,7 +303,7 @@ For comparisons and audits:
 ### references/
 
 - `rendering-strategy.md`: Map content types to the right rendering approach.
-- `visual-directions.md`: Visual systems, typography and palette guidance, and anti-patterns.
+- `visual-directions.md`: Mapping from HTML-visual output modes to Hallmark design requests.
 - `image-sourcing.md`: when to reuse, host, generate, or code imagery.
 - `output-checklist.md`: Final QA checklist before delivery.
 

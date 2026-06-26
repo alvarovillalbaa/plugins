@@ -27,6 +27,12 @@ Respect the user’s product context only. Do not invent features. If a capabili
 - Conflicting data: show variants with dates; choose most recent/authoritative and state why in one line.
 - Inferences: mark `(inferred)` and give one-line rationale.
 
+## Skills chaining
+
+- Use `../../../business-ops/skills/research/SKILL.md` for shared source policy, confidence rules, and general research methodology.
+- Stay in `prospect-research` for account/persona GTM briefs, ICP/ICA scoring, next-best motion, and outreach-ready evidence.
+- Chain to `message-outreach/follow-up-messaging` only after the research brief is evidence-backed and the next message is a follow-up.
+
 ## Output format (strict)
 
 Markdown with **headings and information-rich bullet points**. Bold labels for list items; bullets concrete (numbers, names, dates, quotes). Include only web info that is quantified or material to the sections below.

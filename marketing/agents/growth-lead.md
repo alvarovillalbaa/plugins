@@ -16,7 +16,7 @@ Use this agent when the user wants coordinated growth work that spans messaging,
 - `social-media-management`
 - `video-generation`
 - `code-slides`
-- `html-visualization`
+- `html-visual`
 
 ## Commands
 

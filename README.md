@@ -46,6 +46,48 @@ The active agents are:
 | Symlink / shell copy | Selective local installs | Individual folders |
 | Sparse checkout | Pull only specific folders from Git | Individual folders |
 
+### Portable skills and runtime hooks
+
+Skills in this repo are portable across supported harnesses. Hook activation is not assumed to be portable.
+
+Each runtime must explicitly wire its own wrapper:
+
+- Claude: `engineering/skills/agent-harness-improvement/hooks/runtimes/claude-stop.sh`
+- Cursor: `engineering/skills/agent-harness-improvement/hooks/runtimes/cursor-stop.sh`
+- Codex: `engineering/skills/agent-harness-improvement/hooks/runtimes/codex-stop.sh`, only if the local Codex runtime supports stop hooks
+
+The shared stop hook defaults to one completion gate. Multi-iteration loops are explicit and start through `/dev-loop` or `/harness-loop`, which write loop state under `.agentic/`.
+
+### External skill chains
+
+Some internal skills intentionally chain to external owner skills instead of
+duplicating their full methodology. The live registry is
+[`references/external-skills.yaml`](references/external-skills.yaml).
+These external installs track the configured upstream branch, usually `main`,
+not pinned commits.
+
+Check local availability without mutating anything:
+
+```bash
+python scripts/check-external-skills.py --offline --all --agent codex
+```
+
+Install or refresh all external skills for Codex:
+
+```bash
+python scripts/install-external-skills.py --all --agent codex --force
+```
+
+Preview an install first:
+
+```bash
+bash scripts/install-external-skills.sh --dry-run --all --agent codex
+```
+
+The optional hook wrapper is `hooks/external-skills/check.sh`. It reports
+missing external skills by default. It installs missing skills only when
+`AGENT_COMPANY_AUTO_INSTALL_EXTERNAL_SKILLS=1` is set by the runtime or project.
+
 ### 1. Claude Code plugin
 
 Use this when you want the full repo: root marketplace, department plugins, teams, references, commands, hooks, agents, and skills.
@@ -323,6 +365,7 @@ Depending on the runtime, these also work:
 ### 12. Cursor
 
 Cursor should target a department directory because each department contains its own [`.cursor-plugin/plugin.json`](/Users/alvipe/Desktop/plugins/engineering/.cursor-plugin/plugin.json).
+The Cursor plugin manifest is metadata; it does not implicitly activate hooks. Wire Cursor hooks through the runtime wrapper when a project opts into the completion gate.
 
 Examples:
 

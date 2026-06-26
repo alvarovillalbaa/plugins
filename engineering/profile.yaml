@@ -7,13 +7,54 @@ platforms:
   - cursor
 skills:
   - agentic-development
+  - architecture-system-design
+  - multi-agent-execution
+  - release-landing
+  - agent-harness-improvement
+  - tech-debt-management
   - ai-engineering
+  - agent-system-architecture
+  - prompt-tool-design
+  - context-memory-rag
+  - ai-evals-observability
+  - ai-governance-safety
+  - data-ml-pipelines
+  - computer-vision-systems
   - backend
+  - api-service-design
+  - database-persistence
   - frontend
+  - design-systems-components
+  - frontend-performance-accessibility
+  - onboarding-flows
+  - ui-polish-review
+  - frontend-implementation
+  - visual-taste-calibration
+  - design-critique
+  - design-direction
   - cloud-management
+  - cloud-resources-optimization
+  - cloud-deployment-cicd
+  - cloud-ops-cost-incidents
+  - aws-platform-ops
+  - azure-platform-ops
+  - gcp-platform-ops
+  - cloud-architecture-design
   - pentest
+  - web-vuln-validation
+  - api-pentest
+  - cloud-container-pentest
+  - business-logic-race-testing
+  - pentest-reporting-disclosure
   - pr-management
   - quality-assurance
+  - test-strategy-coverage
+  - frontend-e2e-browser-qa
+  - backend-test-engineering
+  - ci-flake-debugging
+  - performance-testing
+  - passive-security-review
+  - ai-evals-testing
   - code-documentation
 commands:
   - repo-review

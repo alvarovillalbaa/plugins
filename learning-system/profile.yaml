@@ -7,8 +7,14 @@ platforms:
   - cursor
 skills:
   - auto-improve
+  - skill-eval-loop
+  - memory-improve
+  - knowledge-base-improve
+  - writing-style-learning
+  - agent-doc-drift-review
   - memory-management
   - second-brain
+  - raw-ingestion
 commands:
   - learning-sync
 agents: []

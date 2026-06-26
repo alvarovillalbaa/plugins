@@ -7,9 +7,24 @@ platforms:
   - cursor
 skills:
   - finances
+  - expense-bill-ops
+  - reconciliation
+  - financial-planning
+  - taxes
+  - fundraising
+  - month-end-close
+  - quantitative-analysis
+  - fundamentals-analysis
+  - macro-analysis
   - reporting
   - research
+  - market-competitor-research
+  - diligence-vendor-research
+  - customer-qual-research
   - review
+  - code-diff-review
+  - design-ux-review
+  - grill
 commands:
   - inbox-triage
   - reconcile-books

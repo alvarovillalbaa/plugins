@@ -4,6 +4,11 @@ Last updated: 2026-04-25
 
 Standards for tone, voice, structure, and quality across all code documentation.
 
+External owner boundary:
+
+- Use `unslop` and `stop-slop` for general prose cleanup, filler, AI-writing tells, rhythm, passive voice, and punctuation tells.
+- This file owns documentation placement, audience, doc-type tone, structure, and code-documentation conventions.
+
 ---
 
 ## Core Principle: Audience First
@@ -43,7 +48,7 @@ If it is living, add `Last updated: YYYY-MM-DD` near the top.
 
 ### Voice
 
-- **Active voice** whenever possible: "the function validates the input" not "the input is validated by the function"
+- Prefer direct voice for instructions and technical explanations. For prose cleanup mechanics, use `unslop` or `stop-slop`.
 - **Imperative** for instructions and migration steps: "Run the migration", "Add the environment variable"
 - **Indicative** for descriptions: "The service handles WebSocket connections"
 
@@ -248,8 +253,7 @@ Before submitting any documentation, verify:
 
 ### Tone and Voice
 - [ ] Correct tense for the doc type
-- [ ] Active voice where possible
-- [ ] No filler phrases
+- [ ] Prose cleanup handled by `unslop` or `stop-slop` when the doc needs publication quality
 - [ ] Appropriate formality for the audience
 
 ### Placement

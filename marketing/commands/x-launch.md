@@ -118,4 +118,4 @@ Output everything in one clean document:
 If the launch needs a video or visual:
 - Route to `video-generation` for motion graphics
 - Route to `code-as-images` for product-focused stills
-- Route to `html-visualization` for visual landing pages
+- Route to `html-visual` for visual landing pages

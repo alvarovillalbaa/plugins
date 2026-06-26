@@ -11,6 +11,14 @@ description: >-
 
 Use this skill when the image should be designed as a code artifact instead of treated like a screenshot or handed entirely to an image model.
 
+## External Skill Chains
+
+Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
+
+- `hallmark`: Audit, redesign, study, or build UI with anti-AI-slop design constraints. Install: `python scripts/install-external-skills.py --skill hallmark --agent codex`.
+
+Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+
 ## When To Use
 
 Use this skill for:
@@ -101,5 +109,5 @@ Every code-as-image output should:
 ## Related Skills
 
 - Use `code-slides` when these visuals belong inside a presentation system.
-- Use `html-visualization` when the output is a broader HTML explainer page rather than a single key image.
+- Use `html-visual` when the output is a broader HTML explainer page rather than a single key image.
 - Use `video-generation` when the coded visual should become part of a Remotion composition or animation system.

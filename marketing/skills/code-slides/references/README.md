@@ -8,7 +8,7 @@ Clone the repository or copy `skills/code-slides` into your local skill registry
 
 ## Repo-specific integration
 
-Environment-specific install examples live in [docs/agent-suite-integration.md](../../docs/agent-suite-integration.md).
+Environment-specific install examples live in [references/docs/agent-suite-integration.md](../../../../references/docs/agent-suite-integration.md).
 
 ## Repository layout
 
