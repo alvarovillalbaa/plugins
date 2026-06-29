@@ -1,18 +1,17 @@
 {
   "name": "product",
-  "description": "Product strategy, product management, and product marketing support plugin for the agent company.",
-  "version": "2.1.0",
+  "description": "Product development, product marketing, and product design workflows for the agent company.",
+  "version": "3.0.0",
   "author": {
     "name": "Agent Company"
   },
-  "homepage": "https://github.com/alvarovillalbaa/agent-suite",
-  "repository": "https://github.com/alvarovillalbaa/agent-suite",
+  "homepage": "https://github.com/alvarovillalbaa/plugins",
+  "repository": "https://github.com/alvarovillalbaa/plugins",
   "license": "MIT",
   "keywords": [
     "product",
-    "roadmap",
-    "discovery",
-    "development",
+    "design",
+    "strategy",
     "marketing"
   ]
 }

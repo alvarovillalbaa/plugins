@@ -1,0 +1,17 @@
+{
+  "name": "finances",
+  "displayName": "Finances",
+  "version": "3.0.0",
+  "description": "Finance operations, planning, reconciliation, taxes, fundraising, close, and analysis workflows",
+  "author": {
+    "name": "Agent Company",
+    "email": "alvarovillalbaa@icloud.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "finance",
+    "planning",
+    "reconciliation",
+    "fundraising"
+  ]
+}

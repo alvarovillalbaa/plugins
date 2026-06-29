@@ -267,4 +267,4 @@ When an agent calls the wrong tool:
 3. **Check "Do NOT use for" clauses** — add explicit disambiguation
 4. **Check tool name** — rename if the name implies the wrong action
 5. **Add a few-shot example** in the system prompt showing correct tool selection for this intent
-6. **Add an eval case** for this failure pattern (see [evals-system.md](./evals-system.md))
+6. **Add an eval case** for this failure pattern (see [evals-system.md](../../ai-evals-observability/references/evals-system.md))

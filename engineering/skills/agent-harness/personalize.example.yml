@@ -1,0 +1,6 @@
+company:
+  name: "{{COMPANY_NAME}}"
+user:
+  role: "{{USER_ROLE}}"
+harness:
+  default_runtime: "{{AGENT_RUNTIME}}"

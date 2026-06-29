@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import re
+import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -217,6 +218,18 @@ def main() -> int:
     if failures:
         print(f"\nValidation failed for {failures} skill file(s).", file=sys.stderr)
         return 1
+
+    skillctl = root / "scripts" / "skillctl.py"
+    if skillctl.exists():
+        checks = [
+            [sys.executable, str(skillctl), "meta", "check", "--root", str(root), "--require-all"],
+            [sys.executable, str(skillctl), "structure", "check", "--root", str(root)],
+            [sys.executable, str(skillctl), "conflicts", "check", "--root", str(root)],
+        ]
+        for check in checks:
+            result = subprocess.run(check, text=True)
+            if result.returncode != 0:
+                return result.returncode
 
     print(f"Validated {len(skill_files)} skill file(s).")
     return 0

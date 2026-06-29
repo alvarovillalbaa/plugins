@@ -128,13 +128,12 @@ Acceptance Criteria:
 
 ---
 
-### 6. Technical Specifications
+### 6. Implementation Notes / Constraints
 
-- Architecture overview and technology stack
-- Integration points and data flow
-- API design (endpoints, auth, rate limiting)
-- Database design and migration strategy
-- Security considerations (PII handling, encryption)
+- Small technical hints that prevent obvious implementation mistakes
+- Known owner seams, external systems, or constraints that product depends on
+- Security, privacy, compliance, or data-handling requirements stated as product constraints
+- Explicit non-goals such as no backfill, no compatibility shims, or no legacy payload transformations
 
 ---
 

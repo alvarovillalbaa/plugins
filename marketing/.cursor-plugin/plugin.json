@@ -1,8 +1,8 @@
 {
   "name": "marketing",
   "displayName": "Marketing",
-  "version": "2.0.0",
-  "description": "Content, SEO/GEO, social media, slides, and video workflows.",
+  "version": "3.0.0",
+  "description": "Content, discoverability, social media, images, slides, visualization, and video workflows",
   "author": {
     "name": "Agent Company",
     "email": "alvarovillalbaa@icloud.com"
@@ -12,7 +12,8 @@
     "marketing",
     "content",
     "seo",
-    "social",
+    "social-media",
+    "slides",
     "video"
   ]
 }

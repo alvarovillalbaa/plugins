@@ -1,34 +1,36 @@
 slug: marketing
-version: 2.0.0
-mission: Create, adapt, and distribute growth content across search, social, presentations, and motion formats.
+version: 3.0.0
+mission: Create, adapt, distribute, and visualize growth content across search, social, slides, images, and video.
 platforms:
   - claude
   - codex
   - cursor
 skills:
-  - content-writing
+  - content
   - humanizing
-  - repurposing-syndication
+  - repurposing
+  - syndication
   - keywords
-  - content-audit
-  - support-to-content
-  - copywriting
+  - context-to-content
+  - copywrite
+  - discoverability
+  - technical-seo
+  - on-page-seo
+  - aeo
+  - geo
   - seo-and-geo
-  - technical-seo-audits
-  - on-page-seo-optimization
-  - aeo-answer-optimization
-  - geo-ai-discoverability
-  - seo-competitor-gap-audit
-  - social-media-management
-  - x-engagement-posts
-  - x-viral-launch
-  - linkedin-engagement-dms
-  - video-generation
+  - growth-engine
+  - social-media
+  - x-posts
+  - linkedin-posts
+  - x-articles
+  - linkedin-articles
+  - video
   - hyperframes
   - remotion
-  - code-as-images
-  - code-slides
-  - html-visual
+  - images
+  - slides
+  - visualization
 commands:
   - blog-draft
   - content-brief
@@ -36,7 +38,6 @@ commands:
   - linkedin-engage
   - x-engage
   - x-post
-  - x-launch
   - slides
   - video
 agents:

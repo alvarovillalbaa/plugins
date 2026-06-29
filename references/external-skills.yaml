@@ -1,6 +1,135 @@
 # Live external skill registry. Entries intentionally track the configured ref,
-# usually main, instead of pinned commits.
+# usually main, instead of pinned commits. Reference-only sources live in
+# references/external-sources.yaml.
 skills:
+  use-afs:
+    owner: alvarovillalbaa
+    repo: https://github.com/alvarovillalbaa/afs.git
+    ref: main
+    path: skills/use-afs
+    install_name: use-afs
+    homepage: https://github.com/alvarovillalbaa/afs/tree/main/skills/use-afs
+    domain: filesystem-standard
+  clous-a2a-integration:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-development/skills/a2a-integration
+    install_name: clous-a2a-integration
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-development/skills/a2a-integration
+    domain: clous-integration
+  clous-api-integration:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-development/skills/api-integration
+    install_name: clous-api-integration
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-development/skills/api-integration
+    domain: clous-integration
+  clous-cli-integration:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-development/skills/cli-integration
+    install_name: clous-cli-integration
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-development/skills/cli-integration
+    domain: clous-integration
+  clous-oauth-integration:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-development/skills/oauth-integration
+    install_name: clous-oauth-integration
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-development/skills/oauth-integration
+    domain: clous-integration
+  clous-remote-mcp-integration:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-development/skills/remote-mcp-integration
+    install_name: clous-remote-mcp-integration
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-development/skills/remote-mcp-integration
+    domain: clous-integration
+  clous-sdk-release:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-development/skills/sdk-release
+    install_name: clous-sdk-release
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-development/skills/sdk-release
+    domain: clous-integration
+  clous-webhook-integration:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-development/skills/webhook-integration
+    install_name: clous-webhook-integration
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-development/skills/webhook-integration
+    domain: clous-integration
+  clous-agent-runs:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-use/skills/agent-runs
+    install_name: clous-agent-runs
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-use/skills/agent-runs
+    domain: clous-use
+  clous-api-use:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-use/skills/api-use
+    install_name: clous-api-use
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-use/skills/api-use
+    domain: clous-use
+  clous-cli-use:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-use/skills/cli-use
+    install_name: clous-cli-use
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-use/skills/cli-use
+    domain: clous-use
+  clous-knowledge-retrieval:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-use/skills/knowledge-retrieval
+    install_name: clous-knowledge-retrieval
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-use/skills/knowledge-retrieval
+    domain: clous-use
+  clous-mcp-use:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-use/skills/mcp-use
+    install_name: clous-mcp-use
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-use/skills/mcp-use
+    domain: clous-use
+  clous-object-management:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-use/skills/object-management
+    install_name: clous-object-management
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-use/skills/object-management
+    domain: clous-use
+  clous-platform-operation:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-use/skills/platform-operation
+    install_name: clous-platform-operation
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-use/skills/platform-operation
+    domain: clous-use
+  clous-webhook-operations:
+    owner: clous-ai
+    repo: https://github.com/clous-ai/plugins.git
+    ref: main
+    path: clous-use/skills/webhook-operations
+    install_name: clous-webhook-operations
+    homepage: https://github.com/clous-ai/plugins/tree/main/clous-use/skills/webhook-operations
+    domain: clous-use
   codex-loop:
     owner: aronprins
     repo: https://github.com/aronprins/codex-loop.git
@@ -17,6 +146,22 @@ skills:
     install_name: claude-loop
     homepage: https://github.com/aronprins/claude-loop
     domain: agentic-execution
+  ralph:
+    owner: snarktank
+    repo: https://github.com/snarktank/ralph.git
+    ref: main
+    path: skills/ralph
+    install_name: ralph
+    homepage: https://github.com/snarktank/ralph/tree/main/skills/ralph
+    domain: agentic-execution
+  ralph-prd:
+    owner: snarktank
+    repo: https://github.com/snarktank/ralph.git
+    ref: main
+    path: skills/prd
+    install_name: ralph-prd
+    homepage: https://github.com/snarktank/ralph/tree/main/skills/prd
+    domain: product-specification
   unslop:
     owner: cursor
     repo: https://github.com/cursor/plugins.git
@@ -28,10 +173,10 @@ skills:
   deslop:
     owner: cursor
     repo: https://github.com/cursor/plugins.git
-    ref: main
+    ref: 3347cbab5b54136f6fba0994c3a01a56f7fb7fca
     path: cursor-team-kit/skills/deslop
     install_name: deslop
-    homepage: https://github.com/cursor/plugins/tree/main/cursor-team-kit/skills/deslop
+    homepage: https://github.com/cursor/plugins/tree/3347cbab5b54136f6fba0994c3a01a56f7fb7fca/cursor-team-kit/skills/deslop
     domain: code-quality
   stop-slop:
     owner: hardikpandya
@@ -47,7 +192,7 @@ skills:
     ref: main
     path: skills/hallmark
     install_name: hallmark
-    homepage: https://github.com/nutlope/hallmark
+    homepage: https://github.com/nutlope/hallmark/tree/main/skills/hallmark
     domain: ui-design
   no-mistakes:
     owner: kunchenguid
@@ -55,15 +200,15 @@ skills:
     ref: main
     path: skills/no-mistakes
     install_name: no-mistakes
-    homepage: https://github.com/kunchenguid/no-mistakes
+    homepage: https://github.com/kunchenguid/no-mistakes/tree/main/skills/no-mistakes
     domain: quality-gate
   thermo-nuclear-code-quality-review:
     owner: cursor
     repo: https://github.com/cursor/plugins.git
-    ref: main
+    ref: 3347cbab5b54136f6fba0994c3a01a56f7fb7fca
     path: cursor-team-kit/skills/thermo-nuclear-code-quality-review
     install_name: thermo-nuclear-code-quality-review
-    homepage: https://github.com/cursor/plugins/tree/main/cursor-team-kit/skills/thermo-nuclear-code-quality-review
+    homepage: https://github.com/cursor/plugins/tree/3347cbab5b54136f6fba0994c3a01a56f7fb7fca/cursor-team-kit/skills/thermo-nuclear-code-quality-review
     domain: code-quality
   improve:
     owner: shadcn
@@ -71,7 +216,7 @@ skills:
     ref: main
     path: skills/improve
     install_name: improve
-    homepage: https://github.com/shadcn/improve
+    homepage: https://github.com/shadcn/improve/tree/main/skills/improve
     domain: codebase-advisor
   writing-great-skills:
     owner: mattpocock
@@ -137,3 +282,331 @@ skills:
     install_name: codebase-design
     homepage: https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design
     domain: architecture
+  office-hours:
+    owner: garrytan
+    repo: https://github.com/garrytan/gstack.git
+    ref: main
+    path: office-hours
+    install_name: office-hours
+    homepage: https://github.com/garrytan/gstack/tree/main/office-hours
+    domain: startup-coaching
+  frontend-slides:
+    owner: zarazhangrui
+    repo: https://github.com/zarazhangrui/frontend-slides.git
+    ref: main
+    path: plugins/frontend-slides/skills/frontend-slides
+    install_name: frontend-slides
+    homepage: https://github.com/zarazhangrui/frontend-slides/tree/main/plugins/frontend-slides/skills/frontend-slides
+    domain: slides
+  animate-text:
+    owner: pixel-point
+    repo: https://github.com/pixel-point/animate-text.git
+    ref: main
+    path: skills/animate-text
+    install_name: animate-text
+    homepage: https://github.com/pixel-point/animate-text/tree/main/skills/animate-text
+    domain: motion
+  transitions-dev:
+    owner: Jakubantalik
+    repo: https://github.com/Jakubantalik/transitions.dev.git
+    ref: main
+    path: skills/transitions-dev
+    install_name: transitions-dev
+    homepage: https://github.com/Jakubantalik/transitions.dev/tree/main/skills/transitions-dev
+    domain: motion
+  browserbase-agent-experience:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/agent-experience
+    install_name: browserbase-agent-experience
+    homepage: https://github.com/browserbase/skills/tree/main/skills/agent-experience
+    domain: browser-automation
+  browserbase-autobrowse:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/autobrowse
+    install_name: browserbase-autobrowse
+    homepage: https://github.com/browserbase/skills/tree/main/skills/autobrowse
+    domain: browser-automation
+  browserbase-browser-to-api:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/browser-to-api
+    install_name: browserbase-browser-to-api
+    homepage: https://github.com/browserbase/skills/tree/main/skills/browser-to-api
+    domain: browser-automation
+  browserbase-browser-trace:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/browser-trace
+    install_name: browserbase-browser-trace
+    homepage: https://github.com/browserbase/skills/tree/main/skills/browser-trace
+    domain: browser-testing
+  browserbase-browser-use-to-stagehand:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/browser-use-to-stagehand
+    install_name: browserbase-browser-use-to-stagehand
+    homepage: https://github.com/browserbase/skills/tree/main/skills/browser-use-to-stagehand
+    domain: browser-automation
+  browserbase-browser:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/browser
+    install_name: browserbase-browser
+    homepage: https://github.com/browserbase/skills/tree/main/skills/browser
+    domain: browser-automation
+  browserbase-cli:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/browserbase-cli
+    install_name: browserbase-cli
+    homepage: https://github.com/browserbase/skills/tree/main/skills/browserbase-cli
+    domain: browser-tools
+  browserbase-company-research:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/company-research
+    install_name: browserbase-company-research
+    homepage: https://github.com/browserbase/skills/tree/main/skills/company-research
+    domain: research-automation
+  browserbase-competitor-analysis:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/competitor-analysis
+    install_name: browserbase-competitor-analysis
+    homepage: https://github.com/browserbase/skills/tree/main/skills/competitor-analysis
+    domain: research-automation
+  browserbase-cookie-sync:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/cookie-sync
+    install_name: browserbase-cookie-sync
+    homepage: https://github.com/browserbase/skills/tree/main/skills/cookie-sync
+    domain: browser-automation
+  browserbase-event-prospecting:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/event-prospecting
+    install_name: browserbase-event-prospecting
+    homepage: https://github.com/browserbase/skills/tree/main/skills/event-prospecting
+    domain: research-automation
+  browserbase-fetch:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/fetch
+    install_name: browserbase-fetch
+    homepage: https://github.com/browserbase/skills/tree/main/skills/fetch
+    domain: browser-tools
+  browserbase-functions:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/functions
+    install_name: browserbase-functions
+    homepage: https://github.com/browserbase/skills/tree/main/skills/functions
+    domain: browser-tools
+  browserbase-safe-browser:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/safe-browser
+    install_name: browserbase-safe-browser
+    homepage: https://github.com/browserbase/skills/tree/main/skills/safe-browser
+    domain: browser-automation
+  browserbase-search:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/search
+    install_name: browserbase-search
+    homepage: https://github.com/browserbase/skills/tree/main/skills/search
+    domain: browser-tools
+  browserbase-ui-test:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/ui-test
+    install_name: browserbase-ui-test
+    homepage: https://github.com/browserbase/skills/tree/main/skills/ui-test
+    domain: browser-testing
+  browserbase-webmcp-gen:
+    owner: browserbase
+    repo: https://github.com/browserbase/skills.git
+    ref: main
+    path: skills/webmcp-gen
+    install_name: browserbase-webmcp-gen
+    homepage: https://github.com/browserbase/skills/tree/main/skills/webmcp-gen
+    domain: browser-tools
+  emil-design-eng:
+    owner: emilkowalski
+    repo: https://github.com/emilkowalski/skills.git
+    ref: main
+    path: skills/emil-design-eng
+    install_name: emil-design-eng
+    homepage: https://github.com/emilkowalski/skills/tree/main/skills/emil-design-eng
+    domain: ui-design
+  review-animations:
+    owner: emilkowalski
+    repo: https://github.com/emilkowalski/skills.git
+    ref: main
+    path: skills/review-animations
+    install_name: review-animations
+    homepage: https://github.com/emilkowalski/skills/tree/main/skills/review-animations
+    domain: motion
+  userinterface-wiki:
+    owner: raphaelsalaja
+    repo: https://github.com/raphaelsalaja/userinterface-wiki.git
+    ref: main
+    path: skills
+    install_name: userinterface-wiki
+    homepage: https://github.com/raphaelsalaja/userinterface-wiki/tree/main/skills
+    domain: ui-design
+  brandkit:
+    owner: Leonxlnx
+    repo: https://github.com/Leonxlnx/taste-skill.git
+    ref: main
+    path: skills/brandkit
+    install_name: brandkit
+    homepage: https://github.com/Leonxlnx/taste-skill/tree/main/skills/brandkit
+    domain: brand-design
+  brutalist-skill:
+    owner: Leonxlnx
+    repo: https://github.com/Leonxlnx/taste-skill.git
+    ref: main
+    path: skills/brutalist-skill
+    install_name: brutalist-skill
+    homepage: https://github.com/Leonxlnx/taste-skill/tree/main/skills/brutalist-skill
+    domain: ui-design
+  gpt-tasteskill:
+    owner: Leonxlnx
+    repo: https://github.com/Leonxlnx/taste-skill.git
+    ref: main
+    path: skills/gpt-tasteskill
+    install_name: gpt-tasteskill
+    homepage: https://github.com/Leonxlnx/taste-skill/tree/main/skills/gpt-tasteskill
+    domain: ui-design
+  image-to-code-skill:
+    owner: Leonxlnx
+    repo: https://github.com/Leonxlnx/taste-skill.git
+    ref: main
+    path: skills/image-to-code-skill
+    install_name: image-to-code-skill
+    homepage: https://github.com/Leonxlnx/taste-skill/tree/main/skills/image-to-code-skill
+    domain: image-to-code
+  imagegen-frontend-mobile:
+    owner: Leonxlnx
+    repo: https://github.com/Leonxlnx/taste-skill.git
+    ref: main
+    path: skills/imagegen-frontend-mobile
+    install_name: imagegen-frontend-mobile
+    homepage: https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-mobile
+    domain: ui-design
+  imagegen-frontend-web:
+    owner: Leonxlnx
+    repo: https://github.com/Leonxlnx/taste-skill.git
+    ref: main
+    path: skills/imagegen-frontend-web
+    install_name: imagegen-frontend-web
+    homepage: https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web
+    domain: ui-design
+  minimalist-skill:
+    owner: Leonxlnx
+    repo: https://github.com/Leonxlnx/taste-skill.git
+    ref: main
+    path: skills/minimalist-skill
+    install_name: minimalist-skill
+    homepage: https://github.com/Leonxlnx/taste-skill/tree/main/skills/minimalist-skill
+    domain: ui-design
+  output-skill:
+    owner: Leonxlnx
+    repo: https://github.com/Leonxlnx/taste-skill.git
+    ref: main
+    path: skills/output-skill
+    install_name: output-skill
+    homepage: https://github.com/Leonxlnx/taste-skill/tree/main/skills/output-skill
+    domain: ui-design
+  redesign-skill:
+    owner: Leonxlnx
+    repo: https://github.com/Leonxlnx/taste-skill.git
+    ref: main
+    path: skills/redesign-skill
+    install_name: redesign-skill
+    homepage: https://github.com/Leonxlnx/taste-skill/tree/main/skills/redesign-skill
+    domain: ui-design
+  soft-skill:
+    owner: Leonxlnx
+    repo: https://github.com/Leonxlnx/taste-skill.git
+    ref: main
+    path: skills/soft-skill
+    install_name: soft-skill
+    homepage: https://github.com/Leonxlnx/taste-skill/tree/main/skills/soft-skill
+    domain: ui-design
+  stitch-skill:
+    owner: Leonxlnx
+    repo: https://github.com/Leonxlnx/taste-skill.git
+    ref: main
+    path: skills/stitch-skill
+    install_name: stitch-skill
+    homepage: https://github.com/Leonxlnx/taste-skill/tree/main/skills/stitch-skill
+    domain: image-to-code
+  taste-skill-v1:
+    owner: Leonxlnx
+    repo: https://github.com/Leonxlnx/taste-skill.git
+    ref: main
+    path: skills/taste-skill-v1
+    install_name: taste-skill-v1
+    homepage: https://github.com/Leonxlnx/taste-skill/tree/main/skills/taste-skill-v1
+    domain: ui-design
+  taste-skill:
+    owner: Leonxlnx
+    repo: https://github.com/Leonxlnx/taste-skill.git
+    ref: main
+    path: skills/taste-skill
+    install_name: taste-skill
+    homepage: https://github.com/Leonxlnx/taste-skill/tree/main/skills/taste-skill
+    domain: ui-design
+  impeccable:
+    owner: pbakaus
+    repo: https://github.com/pbakaus/impeccable.git
+    ref: main
+    path: plugin/skills/impeccable
+    install_name: impeccable
+    homepage: https://github.com/pbakaus/impeccable/tree/main/plugin/skills/impeccable
+    domain: ui-design
+  last30days:
+    owner: mvanhorn
+    repo: https://github.com/mvanhorn/last30days-skill.git
+    ref: main
+    path: skills/last30days
+    install_name: last30days
+    homepage: https://github.com/mvanhorn/last30days-skill/tree/main/skills/last30days
+    domain: current-research
+  visual-explainer:
+    owner: nicobailon
+    repo: https://github.com/nicobailon/visual-explainer.git
+    ref: main
+    path: plugins/visual-explainer
+    install_name: visual-explainer
+    homepage: https://github.com/nicobailon/visual-explainer/tree/main/plugins/visual-explainer
+    domain: visual-explanation
+  manim-video:
+    owner: browser-use
+    repo: https://github.com/browser-use/video-use.git
+    ref: main
+    path: skills/manim-video
+    install_name: manim-video
+    homepage: https://github.com/browser-use/video-use/tree/main/skills/manim-video
+    domain: video-explainer

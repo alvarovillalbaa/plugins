@@ -26,7 +26,7 @@ This child skill owns authorized business-logic abuse validation, race condition
 
 ## Chain Rules
 
-- Chain to `quality-assurance/passive-security-review`, `cloud-management`, `backend` when the task crosses this child's boundary.
+- Chain to `quality-assurance/security`, `cloud`, `backend` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 

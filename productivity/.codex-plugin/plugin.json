@@ -1,0 +1,6 @@
+{
+  "name": "productivity",
+  "version": "3.0.0",
+  "description": "Reporting, research, review, documentation drift, and operating cadence workflows for Codex.",
+  "skills": "./skills/"
+}

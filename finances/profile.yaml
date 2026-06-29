@@ -1,0 +1,33 @@
+slug: finances
+version: 3.0.0
+mission: Run finance operations, reconciliation, planning, taxes, fundraising, fiscal close, and analysis.
+platforms:
+  - claude
+  - codex
+  - cursor
+skills:
+  - finances
+  - expenses
+  - reconciliation
+  - planning
+  - taxes
+  - fundraising
+  - fiscal-close
+  - quantitative
+  - fundamentals
+  - macro
+commands:
+  - reconcile-books
+  - model-scenarios
+  - investor-messaging
+  - materials-audit
+  - pipeline-diagnostics
+agents:
+  - financial-analyst
+  - cfo
+  - accountant
+team:
+  - CEO
+  - CFO
+  - Financial Analyst
+  - Accountant

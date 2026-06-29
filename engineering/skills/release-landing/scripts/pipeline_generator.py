@@ -12,7 +12,7 @@ Output:
 
 Note: This script generates CI pipeline YAML (lint/test/build stages) from
 stack signals. For cloud-specific deployment plans (rolling, blue-green, canary),
-use the cloud-management skill's deployment_manager.py instead.
+use the cloud skill's deployment_manager.py instead.
 """
 
 import argparse

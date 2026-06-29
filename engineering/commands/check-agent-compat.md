@@ -2,6 +2,7 @@
 name: check-agent-compat
 description: "Run a full repo compatibility pass — scanner score, docs reliability, startup path, and validation efficiency — and produce a P0/P1/P2 finding list before extending agent autonomy."
 argument-hint: "[REPO ROOT]"
+allowed-tools: [Agent, Read, Bash]
 hide-from-slash-command-tool: "true"
 ---
 
@@ -31,7 +32,7 @@ If `repo-root` is omitted, defaults to `.`.
 ## Steps
 
 1. Read `$ARGUMENTS` for the repo root, defaulting to `.`.
-2. Invoke the compatibility-scanner agent workflow (see `skills/agentic-development/references/agents/compatibility-scanner.yaml`).
+2. Invoke the compatibility-scanner agent workflow (see `skills/agent-harness/references/agents/compatibility-scanner.yaml`).
 3. Emit the unified compatibility report to stdout.
 4. If any P0 items were found, stop here — do not start a dev-loop or harness-loop until P0s are resolved.
 5. If P1s remain, recommend `/harness-loop` to resolve them before long autonomous passes.
@@ -42,5 +43,5 @@ Structured compatibility report with SCORE SUMMARY and prioritized finding list.
 
 ## Reference
 
-- Full audit dimensions and improvement patterns: `skills/agentic-development/references/harness-engineering.md`
+- Full audit dimensions and improvement patterns: `skills/agent-harness/references/harness-engineering.md`
 - Prioritization order: harness-engineering.md § Prioritization

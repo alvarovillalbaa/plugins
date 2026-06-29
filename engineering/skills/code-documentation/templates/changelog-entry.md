@@ -57,7 +57,7 @@ Two separate changelogs serve different audiences. Use this template for both, b
 
 ## Internal Engineering Changelog / Release Notes
 
-**Location:** Part of release PR description, or `audits/YYYY/YYYY-MM-DD/release-notes.md`
+**Location:** Part of release PR description, or `audits/YYYY/MM-DD/release-notes.md`
 
 **For engineers — can include technical details, migration steps, breaking changes.**
 

@@ -1,8 +1,8 @@
 {
   "name": "sales",
   "displayName": "Sales",
-  "version": "2.0.0",
-  "description": "Prospecting, outreach, GTM, and revenue-support workflows.",
+  "version": "3.0.0",
+  "description": "GTM, sales pipeline, outreach, launches, virality, and growth workflows",
   "author": {
     "name": "Agent Company",
     "email": "alvarovillalbaa@icloud.com"
@@ -11,7 +11,8 @@
   "keywords": [
     "sales",
     "gtm",
-    "prospecting",
-    "outreach"
+    "outreach",
+    "pipeline",
+    "growth"
   ]
 }

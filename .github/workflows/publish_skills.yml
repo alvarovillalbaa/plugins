@@ -4,12 +4,13 @@ on:
   push:
     branches: [main]
     paths:
-      - "learning-system/skills/**"
+      - "system/skills/**"
       - "marketing/skills/**"
       - "sales/skills/**"
       - "engineering/skills/**"
       - "product/skills/**"
-      - "business-ops/skills/**"
+      - "finances/skills/**"
+      - "productivity/skills/**"
       - "public/**"
       - "publish_targets.yml"
       - ".github/workflows/publish_skills.yml"
@@ -32,7 +33,11 @@ jobs:
           sudo chmod +x /usr/local/bin/yq
 
       - name: Validate skill metadata
-        run: python3 scripts/validate_skills.py
+        run: |
+          python3 scripts/skillctl.py structure check --root .
+          python3 scripts/skillctl.py meta check --root . --require-all
+          python3 scripts/skillctl.py conflicts check --root .
+          python3 scripts/validate_skills.py .
 
       - name: Publish skills that differ from targets
         env:
@@ -44,7 +49,7 @@ jobs:
           # guard: never run without token
           [ -n "${TOKEN:-}" ] || (echo "Missing SKILL_PUBLISH_TOKEN" && exit 1)
 
-          SKILLS=$(yq -r '.skills | keys[]' "${ROOT}/publish_targets.yml")
+          SKILLS=$(yq -r '.skills // {} | keys[]' "${ROOT}/publish_targets.yml")
 
           if [ -z "${SKILLS:-}" ]; then
             echo "No skills configured in publish_targets.yml"
@@ -93,6 +98,6 @@ jobs:
               continue
             fi
 
-            git -C /tmp/mirror commit -m "Publish ${SKILL} from agent-suite"
+            git -C /tmp/mirror commit -m "Publish ${SKILL} from plugins"
             git -C /tmp/mirror push origin HEAD:main
           done

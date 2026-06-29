@@ -1,47 +1,46 @@
 ---
 name: product-development
-description: >-
-  Router for product strategy, discovery/prioritization, PRDs, product
-  experimentation, user stories, and in-product UX copy.
+description: Router for product strategy, discovery, PRDs, experiments, and user stories.
 ---
 
 # Product Development Router
 
-This parent is a router. Select the narrowest child and load that child before using lane-specific assets.
-
 ## Children
 
-- [`product-strategy`](../product-strategy/SKILL.md) - product strategy, quarterly direction, roadmap themes, vision, OKRs, portfolio tradeoffs, and decision memos
-- [`discovery-prioritization`](../discovery-prioritization/SKILL.md) - customer discovery, JTBD, opportunity mapping, RICE/ICE/WSJF prioritization, and assumption testing
-- [`prds`](../prds/SKILL.md) - PRDs, feature briefs, requirements, scope boundaries, release criteria, and cross-functional product specs
-- [`product-experimentation`](../product-experimentation/SKILL.md) - product experiments, A/B tests, success metrics, sample sizing, decision rules, and experiment backlogs
-- [`user-stories`](../user-stories/SKILL.md) - user stories, acceptance criteria, epic breakdown, story point estimation, sprint planning, and Definition of Done
-- [`ux-copy-product`](../ux-copy-product/SKILL.md) - in-product UX copy for CTAs, errors, empty states, confirmations, loading states, onboarding, and recovery paths
+- [`strategy`](../strategy/SKILL.md) - Strategy work.
+- [`discovery`](../discovery/SKILL.md) - Discovery work.
+- [`prds`](../prds/SKILL.md) - Prds work.
+- [`experiments`](../experiments/SKILL.md) - Experiments work.
+- [`user-stories`](../user-stories/SKILL.md) - User Stories work.
 
 ## Route
 
-| User asks for | Use |
+| Request | Use |
 | --- | --- |
-| product strategy, quarterly direction, roadmap themes, vision, OKRs, portfolio tradeoffs, and decision memos | [`product-strategy`](../product-strategy/SKILL.md) |
-| customer discovery, JTBD, opportunity mapping, RICE/ICE/WSJF prioritization, and assumption testing | [`discovery-prioritization`](../discovery-prioritization/SKILL.md) |
-| PRDs, feature briefs, requirements, scope boundaries, release criteria, and cross-functional product specs | [`prds`](../prds/SKILL.md) |
-| product experiments, A/B tests, success metrics, sample sizing, decision rules, and experiment backlogs | [`product-experimentation`](../product-experimentation/SKILL.md) |
-| user stories, acceptance criteria, epic breakdown, story point estimation, sprint planning, and Definition of Done | [`user-stories`](../user-stories/SKILL.md) |
-| in-product UX copy for CTAs, errors, empty states, confirmations, loading states, onboarding, and recovery paths | [`ux-copy-product`](../ux-copy-product/SKILL.md) |
+| strategy requests | [`strategy`](../strategy/SKILL.md) |
+| discovery requests | [`discovery`](../discovery/SKILL.md) |
+| prds requests | [`prds`](../prds/SKILL.md) |
+| experiments requests | [`experiments`](../experiments/SKILL.md) |
+| user stories requests | [`user-stories`](../user-stories/SKILL.md) |
 
 ## Chain Rules
+
+Chain to these skills when the task crosses this skill's boundary:
 
 - `product-marketing`
 - `frontend/onboarding-flows`
 - `quality-assurance/test-strategy-coverage`
+- `quality-assurance`
+- `code-documentation`
 - `reporting`
 
 ## Operating Rules
 
-- Keep this `SKILL.md` small and routing-focused.
-- Do not recreate the old broad parent behavior here; put execution depth in child assets.
-- If no child matches, handle only shared methodology/default workflow or document the missing lane.
-- Every child and parent skill must keep `examples/`, `hooks/`, `references/`, `scripts/`, and `templates/`.
+- Keep this parent compact; use children for lane-specific execution depth.
+- Prefer the child skill's bundled resources when a child owns the request.
+- Preserve local skill rules, repo facts, safety gates, product/channel constraints, and explicit local exceptions over external guidance when they conflict.
+- Treat specs as product contracts driven manually or from external systems. Keep them focused on user outcomes, scope, acceptance criteria, and success metrics.
+- Include technical hints only when they prevent a known implementation mistake; send detailed architecture and test design to `agentic-development` and `quality-assurance`.
 
 ## Shared Map
 

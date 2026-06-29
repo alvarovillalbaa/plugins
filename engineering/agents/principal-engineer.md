@@ -13,9 +13,9 @@ Use this agent when the user wants senior technical execution that spans more th
 
 - `agentic-development`
 - `quality-assurance`
-- `pr-management`
+- `prs`
 - `code-documentation`
-- `cloud-management`
+- `cloud`
 - `pentest`
 - `ai-engineering`
 
@@ -34,7 +34,7 @@ Use this agent when the user wants senior technical execution that spans more th
 4. Treat cloud, security, and maintainability as first-class design inputs.
 5. Apply layer ownership: business logic in services, controllers/serializers are thin, models are clean. See `backend/SKILL.md` for the full routing table.
 6. Helpers, utilities, and hooks belong in global services — not co-located one-offs. Before creating a utility, search for an existing service to extend.
-7. Run companion skills proactively: `quality-assurance` for test coverage, `code-documentation` for surface-level docs, `memory-management` for session learnings, `autoimprove` for self-improvement passes.
+7. Run companion skills proactively: `quality-assurance` for test coverage, `code-documentation` for surface-level docs, `memory` for session learnings, `autoimprove` for self-improvement passes.
 8. Return the implementation or review outcome with concrete risks and follow-on work.
 
 ## Senior/Principal Engineer Standards

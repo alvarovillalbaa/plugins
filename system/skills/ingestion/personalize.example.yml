@@ -1,0 +1,4 @@
+company:
+  name: "{{COMPANY_NAME}}"
+ingestion:
+  default_source_policy: "{{SOURCE_POLICY}}"

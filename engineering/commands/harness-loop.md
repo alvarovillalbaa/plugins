@@ -2,7 +2,7 @@
 name: harness-loop
 description: "Run a harness engineering improvement loop — audits the repo each iteration, picks the highest-priority finding, enforces it as a CI gate or structural test, and stops when no P0 or P1 findings remain."
 argument-hint: "[REPO ROOT or scope] [--max-iterations N]"
-allowed-tools: ["Bash(${CLAUDE_PLUGIN_ROOT}/skills/agent-harness-improvement/scripts/setup-dev-loop.sh:*)", "Bash", "Read"]
+allowed-tools: ["Bash(${CLAUDE_PLUGIN_ROOT}/skills/agent-harness/scripts/setup-dev-loop.sh:*)", "Bash", "Read"]
 hide-from-slash-command-tool: "true"
 ---
 
@@ -11,10 +11,10 @@ hide-from-slash-command-tool: "true"
 Initialize a structured harness engineering loop. Determine the repo root from `$ARGUMENTS` or default to `.`, then run:
 
 ```!
-"${CLAUDE_PLUGIN_ROOT}/skills/agent-harness-improvement/scripts/setup-dev-loop.sh" \
+"${CLAUDE_PLUGIN_ROOT}/skills/agent-harness/scripts/setup-dev-loop.sh" \
   "Improve the agentic harness for this repo. Each iteration: run the harness audit, pick the highest-priority P0 or P1 finding, implement it as an enforced rule (CI gate, linter, structural test, or subsystem AGENTS.md), verify the enforcement actually catches the problem, commit the change. Stop only when a fresh harness audit shows zero P0 and P1 items." \
   --completion-promise "NO_P0_P1_FINDINGS" \
-  --verify-cmd "python ${CLAUDE_PLUGIN_ROOT}/skills/agent-harness-improvement/scripts/harness_audit.py ." \
+  --verify-cmd "python ${CLAUDE_PLUGIN_ROOT}/skills/agent-harness/scripts/harness_audit.py ." \
   $ARGUMENTS
 ```
 
@@ -33,4 +33,4 @@ Output `<promise>NO_P0_P1_FINDINGS</promise>` only when a fresh harness audit re
 
 ## Reference
 
-Read `skills/agent-harness-improvement/references/harness-engineering.md` for the full audit dimensions, improvement patterns, and prioritization framework.
+Read `skills/agent-harness/references/harness-engineering.md` for the full audit dimensions, improvement patterns, and prioritization framework.

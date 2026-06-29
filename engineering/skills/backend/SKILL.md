@@ -1,38 +1,55 @@
 ---
 name: backend
-description: >-
-  Router for backend API/service design and database/persistence work.
+description: Router for backend API and persistence work.
 ---
 
 # Backend Router
 
-This parent is a router. Select the narrowest child and load that child before using lane-specific assets.
-
 ## Children
 
-- [`api-service-design`](../api-service-design/SKILL.md) - API contracts, service boundaries, serializers, request/response shape, jobs, queues, and backend application design
-- [`database-persistence`](../database-persistence/SKILL.md) - database schemas, migrations, persistence models, indexing, transactions, normalization, and data-integrity constraints
+- [`apis`](../apis/SKILL.md) - Apis work.
+- [`databases`](../databases/SKILL.md) - Databases work.
 
 ## Route
 
-| User asks for | Use |
+| Request | Use |
 | --- | --- |
-| API contracts, service boundaries, serializers, request/response shape, jobs, queues, and backend application design | [`api-service-design`](../api-service-design/SKILL.md) |
-| database schemas, migrations, persistence models, indexing, transactions, normalization, and data-integrity constraints | [`database-persistence`](../database-persistence/SKILL.md) |
+| apis requests | [`apis`](../apis/SKILL.md) |
+| databases requests | [`databases`](../databases/SKILL.md) |
 
 ## Chain Rules
 
-- `quality-assurance/backend-test-engineering`
-- `quality-assurance/passive-security-review`
-- `cloud-management`
+Chain to these skills when the task crosses this skill's boundary:
+
+- `quality-assurance/backend-testing`
+- `quality-assurance/security`
+- `quality-assurance`
+- `code-documentation`
+- `cloud`
 - `ai-engineering`
 
 ## Operating Rules
 
-- Keep this `SKILL.md` small and routing-focused.
-- Do not recreate the old broad parent behavior here; put execution depth in child assets.
-- If no child matches, handle only shared methodology/default workflow or document the missing lane.
-- Every child and parent skill must keep `examples/`, `hooks/`, `references/`, `scripts/`, and `templates/`.
+- Keep this parent compact; use children for lane-specific execution depth.
+- Prefer the child skill's bundled resources when a child owns the request.
+- Preserve local skill rules, repo facts, safety gates, product/channel constraints, and explicit local exceptions over external guidance when they conflict.
+- API and persistence changes should include a proof path and nearby contract docs unless the work is explicitly read-only or trivial.
+- Fix canonical payload owners instead of adding backend or frontend compatibility translation layers.
+
+## External Skill Chains
+
+Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
+
+- `clous-a2a-integration`: Use Clous-owned A2A integration guidance for agent-to-agent surfaces. Install: `python scripts/install-external-skills.py --skill clous-a2a-integration --agent codex`.
+- `clous-api-integration`: Use Clous-owned API integration guidance for building or changing platform integrations. Install: `python scripts/install-external-skills.py --skill clous-api-integration --agent codex`.
+- `clous-api-use`: Use Clous-owned API usage guidance for consuming platform APIs. Install: `python scripts/install-external-skills.py --skill clous-api-use --agent codex`.
+- `clous-oauth-integration`: Use Clous-owned OAuth integration guidance for auth and consent flows. Install: `python scripts/install-external-skills.py --skill clous-oauth-integration --agent codex`.
+- `clous-webhook-integration`: Use Clous-owned webhook integration guidance for producer-side webhook work. Install: `python scripts/install-external-skills.py --skill clous-webhook-integration --agent codex`.
+- `clous-webhook-operations`: Use Clous-owned webhook operations guidance for consumer-side webhook work. Install: `python scripts/install-external-skills.py --skill clous-webhook-operations --agent codex`.
+- `browserbase-browser-to-api`: Convert browser workflows into API-backed automation when appropriate. Install: `python scripts/install-external-skills.py --skill browserbase-browser-to-api --agent codex`.
+
+Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).
 
 ## Shared Map
 

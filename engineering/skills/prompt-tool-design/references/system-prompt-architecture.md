@@ -140,7 +140,7 @@ The memory block is never written statically. It is assembled at runtime by the 
 | `run_memory` | Current session | Until session ends | Tool outputs worth re-referencing |
 | `cross_run_memory` | User or Company | Persistent | Preferences, learned patterns, corrections |
 
-**Rule**: never pollute `working_context` with raw tool traces. Apply persistence policy (see [memory-and-learning-system.md](./memory-and-learning-system.md)) before injection.
+**Rule**: never pollute `working_context` with raw tool traces. Apply persistence policy (see [memory-and-system.md](../../context-memory-rag/references/memory-and-system.md)) before injection.
 
 ---
 
@@ -187,7 +187,7 @@ forwarded_instructions = {
 Reasoning or partial conclusions produced in one agent turn are carried to the next. This is separate from memory (which is explicit) — it is the reasoning chain that persists across tool calls within a single run.
 
 **Design rules:**
-- Compress long reasoning chains before forwarding (see [context-engineering.md](./context-engineering.md))
+- Compress long reasoning chains before forwarding (see [context-engineering.md](../../context-memory-rag/references/context-engineering.md))
 - Tag forwarded context with a `[PRIOR STEP]` marker so the model distinguishes it from new input
 - Never forward intermediate tool traces verbatim — extract conclusions only
 

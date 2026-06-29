@@ -131,7 +131,7 @@ case "$cmd" in
         echo ""
 
         echo "📝 TIMESTAMPED HISTORY"
-        for dir in logs lessons items fixes audits raw plans; do
+        for dir in logs lessons facts fixes audits raw plans; do
             base="$REPO_ROOT/$dir"
             if path=$(latest_timestamped_file "$base" 2>/dev/null); then
                 echo "   $dir: $path"

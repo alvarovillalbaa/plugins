@@ -1,18 +1,18 @@
 {
   "name": "sales",
-  "description": "Prospecting, outreach, GTM support, and revenue workflow plugin for the agent company.",
-  "version": "2.0.0",
+  "description": "GTM, sales pipeline, outreach, launches, virality, and growth workflows for the agent company.",
+  "version": "3.0.0",
   "author": {
     "name": "Agent Company"
   },
-  "homepage": "https://github.com/alvarovillalbaa/agent-suite",
-  "repository": "https://github.com/alvarovillalbaa/agent-suite",
+  "homepage": "https://github.com/alvarovillalbaa/plugins",
+  "repository": "https://github.com/alvarovillalbaa/plugins",
   "license": "MIT",
   "keywords": [
     "sales",
-    "prospecting",
-    "outreach",
     "gtm",
-    "pipeline"
+    "outreach",
+    "pipeline",
+    "growth"
   ]
 }

@@ -1,6 +1,6 @@
 # Technical Report Template
 
-File location: `audits/YYYY/YYYY-MM-DD/[kebab-case-name].md`
+File location: `audits/YYYY/MM-DD/[kebab-case-name].md`
 
 Use this template for: architecture audits, performance investigations, security reviews, dependency audits, service evaluations.
 

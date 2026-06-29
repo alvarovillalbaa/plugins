@@ -26,7 +26,7 @@ This child skill owns data pipelines, ML feature pipelines, model evaluation, fi
 
 ## Chain Rules
 
-- Chain to `quality-assurance/ai-evals-testing`, `quality-assurance/passive-security-review`, `backend`, `cloud-management`, `auto-improve`, `second-brain` when the task crosses this child's boundary.
+- Chain to `quality-assurance/ai-evals`, `quality-assurance/security`, `backend`, `cloud`, `skills-management`, `brain` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 

@@ -1,0 +1,6 @@
+{
+  "name": "finances",
+  "version": "3.0.0",
+  "description": "Finance operations, planning, reconciliation, taxes, fundraising, close, and analysis workflows for Codex.",
+  "skills": "./skills/"
+}

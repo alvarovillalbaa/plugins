@@ -1,11 +1,11 @@
 ---
 name: linkedin-engage
-description: Draft LinkedIn comments, connection requests, DMs, or follow-ups using the linkedin-engagement skill.
+description: Draft LinkedIn comments, connection requests, DMs, or follow-ups using LinkedIn social and outreach skills.
 argument-hint: "[post, profile, relationship context, or goal]"
 allowed-tools: [Read, Write, AskUserQuestion, Skill]
 ---
 
-Use skill: **linkedin-engagement** — `skills/linkedin-engagement/SKILL.md`.
+Use skill: **linkedin-posts** — `skills/linkedin-posts/SKILL.md`. For direct-message sales motions, use **linkedin-dms** from the sales plugin.
 
 1. **Gather context** – Ask for the post, profile, relationship, and goal if the request is underspecified.
 2. **Choose the format** – Decide whether this is a comment, connection request, DM, or follow-up.

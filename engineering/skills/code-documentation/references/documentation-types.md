@@ -1,6 +1,6 @@
 # Documentation Types Reference
 
-Last updated: 2026-04-25
+Last updated: 2026-06-28
 
 Canonical taxonomy for documentation types, where they live, and whether they are historical or living.
 
@@ -29,8 +29,7 @@ These explain one directory or subsystem.
 ### Core
 
 - `README.md`
-- `ARCHITECTURE.md`
-- `TESTS.md`
+- `ARC.md`
 
 ### Conditional
 
@@ -49,8 +48,7 @@ These explain one directory or subsystem.
 ### What each one does
 
 - `README.md` — purpose, entry point, usage, links
-- `ARCHITECTURE.md` — internals, flows, boundaries, decisions
-- `TESTS.md` — how to run tests, patterns, fixtures, expectations
+- `ARC.md` — internals, flows, boundaries, decisions
 - `SETUP.md` — non-obvious bootstrap or local environment steps
 - `RUNBOOK.md` — folder-local operational workflow
 - `CHANGELOG.md` — user-facing or package-facing release history
@@ -85,8 +83,11 @@ These are living docs. Add `Last updated: YYYY-MM-DD` near the top.
 |---|---|---|
 | `logs/` | terse change log for meaningful code or doc changes | timestamped |
 | `lessons/` | reusable lessons learned from experience | timestamped |
-| `items/` | durable facts about user, company, project, customers, environments | timestamped |
+| `facts/` | durable facts about user, company, project, customers, environments | timestamped |
 | `fixes/` | reusable debugging solutions and error fixes | timestamped |
+| `steers/` | traces of agent work steered or corrected by a human or secondary LLM | timestamped |
+| `models/` | brief logs of decisions made, problems encountered, or goals set | timestamped |
+| `reflections/` | detailed reflections grounded in the platform and recent experience | timestamped |
 
 ### Operational
 
@@ -98,6 +99,8 @@ These are living docs. Add `Last updated: YYYY-MM-DD` near the top.
 | `specs/` | living desired-state behavior contracts | living |
 | `sources/` | monitored URL/source registries | living |
 | `lib/` | generated drafts, registries, support artifacts | living |
+| `objects/<type>/` | structured objects such as clients, employees, or companies | living |
+| `templates/` | reusable artifacts such as AI prompts, emails, or document templates | living |
 | `<domain>/<folder>/` | domain-specific surfaces only when truly needed | repo-defined |
 
 ### Source of truth
@@ -117,15 +120,18 @@ These are living docs. Add `Last updated: YYYY-MM-DD` near the top.
 Timestamped doc families use one layout only:
 
 ```text
-*/YYYY/YYYY-MM-DD/*.md
+*/YYYY/MM-DD/*.md
 ```
 
 Default timestamped families:
 
 - `logs/`
 - `lessons/`
-- `items/`
+- `facts/`
 - `fixes/`
+- `steers/`
+- `models/`
+- `reflections/`
 - `audits/`
 - `raw/`
 - `plans/`
@@ -133,13 +139,16 @@ Default timestamped families:
 Examples:
 
 ```text
-logs/2026/2026-04-25/dev.md
-lessons/2026/2026-04-25/retry-budget.md
-items/2026/2026-04-25/acme-contracting-rules.md
-fixes/2026/2026-04-25/postgres-socket-timeout.md
-audits/2026/2026-04-25/release-audit.md
-plans/2026/2026-04-25/queue-backpressure.md
-raw/2026/2026-04-25/vendor-export.md
+logs/2026/04-25/dev.md
+lessons/2026/04-25/retry-budget.md
+facts/2026/04-25/acme-contracting-rules.md
+fixes/2026/04-25/postgres-socket-timeout.md
+steers/2026/04-25/api-route-correction.md
+models/2026/04-25/auth-decision.md
+reflections/2026/04-25/sprint-retrospective.md
+audits/2026/04-25/release-audit.md
+plans/2026/04-25/queue-backpressure.md
+raw/2026/04-25/vendor-export.md
 ```
 
 ## Living-doc rule
@@ -178,7 +187,7 @@ Use this rule whenever docs overlap:
 
 Good split:
 
-- `plans/2026/2026-04-25/payment-retry.md` explains one implementation effort
+- `plans/2026/04-25/payment-retry.md` explains one implementation effort
 - `PLAN.md` explains the lasting repo-wide planning standard
 
 Bad split:
@@ -206,12 +215,17 @@ Use this routing sequence:
 
 | Scenario | Destination |
 |---|---|
-| Daily change note | `logs/YYYY/YYYY-MM-DD/*.md` |
-| Durable lesson from repeated debugging | `lessons/YYYY/YYYY-MM-DD/*.md` |
-| Fact about user/company/project | `items/YYYY/YYYY-MM-DD/*.md` |
-| Non-obvious recurring fix | `fixes/YYYY/YYYY-MM-DD/*.md` |
-| Release audit or architecture report | `audits/YYYY/YYYY-MM-DD/` |
-| New feature implementation plan | `plans/YYYY/YYYY-MM-DD/` |
+| Daily change note | `logs/YYYY/MM-DD/*.md` |
+| Durable lesson from repeated debugging | `lessons/YYYY/MM-DD/*.md` |
+| Fact about user/company/project | `facts/YYYY/MM-DD/*.md` |
+| Non-obvious recurring fix | `fixes/YYYY/MM-DD/*.md` |
+| Trace of agent correction or steering | `steers/YYYY/MM-DD/*.md` |
+| Brief decision, problem, or goal log | `models/YYYY/MM-DD/*.md` |
+| Detailed platform reflection | `reflections/YYYY/MM-DD/*.md` |
+| Release audit or architecture report | `audits/YYYY/MM-DD/` |
+| New feature implementation plan | `plans/YYYY/MM-DD/` |
+| Structured object (client, employee, company) | `objects/<type>/` |
+| Reusable template (prompt, email, document) | `templates/` |
 | Repo-wide behavior contract | `specs/` |
 | Stable API mapping | `references/` |
 | Repo-specific technical recipe | `cookbook/` |

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Second Brain"
+  short_description: "Ingest raw sources and Memory into a BRAIN.md-bounded knowledge base"
+  default_prompt: "Use $brain to ingest a URL, tweet, YouTube video, PDF, local file, raw/ queue, or repo-local Memory folder into one BRAIN.md-bounded knowledge base; compile readable evidence into canonical knowledge pages; leave unreadable sources blocked with reasons; run health, query, reconcile, or synthesis passes."

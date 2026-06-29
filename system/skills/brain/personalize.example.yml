@@ -1,0 +1,4 @@
+company:
+  name: "{{COMPANY_NAME}}"
+brain:
+  default_mode: "{{BRAIN_MODE}}"

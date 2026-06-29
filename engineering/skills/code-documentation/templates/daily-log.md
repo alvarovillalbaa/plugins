@@ -1,6 +1,6 @@
 # Daily Log Template
 
-Development logs go in `logs/YYYY/YYYY-MM-DD/*.md` — always append to the latest existing file, never create new files unless today's date directory doesn't exist yet.
+Development logs go in `logs/YYYY/MM-DD/*.md` — always append to the latest existing file, never create new files unless today's date directory doesn't exist yet.
 
 ---
 

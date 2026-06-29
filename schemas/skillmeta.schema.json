@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Company Skill Metadata",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "origin",
+    "install",
+    "personalization",
+    "upstream_contribution",
+    "quality_gates"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(\\.[a-z0-9-]+)+$" },
+    "name": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "origin": {
+      "type": "object",
+      "required": ["repo", "branch", "path"],
+      "additionalProperties": false,
+      "properties": {
+        "repo": { "type": "string" },
+        "branch": { "type": "string" },
+        "path": { "type": "string" }
+      }
+    },
+    "install": {
+      "type": "object",
+      "required": ["mode", "agents"],
+      "additionalProperties": false,
+      "properties": {
+        "mode": { "type": "string", "enum": ["symlink-preferred", "copy", "runtime-cache"] },
+        "agents": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["codex", "cursor", "openclaw", "claude-code"] }
+        }
+      }
+    },
+    "personalization": {
+      "type": "object",
+      "required": ["policy", "local_files"],
+      "additionalProperties": false,
+      "properties": {
+        "policy": { "type": "string", "enum": ["overlay-only"] },
+        "local_files": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "upstream_contribution": {
+      "type": "object",
+      "required": ["allowed_paths", "forbidden_paths"],
+      "additionalProperties": false,
+      "properties": {
+        "allowed_paths": { "type": "array", "items": { "type": "string" } },
+        "forbidden_paths": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "quality_gates": {
+      "type": "object",
+      "required": ["require_eval", "require_diff_classification", "require_human_review"],
+      "additionalProperties": false,
+      "properties": {
+        "require_eval": { "type": "boolean" },
+        "require_diff_classification": { "type": "boolean" },
+        "require_human_review": { "type": "boolean" }
+      }
+    }
+  }
+}

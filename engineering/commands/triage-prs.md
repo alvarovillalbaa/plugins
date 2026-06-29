@@ -1,15 +1,15 @@
 ---
 name: triage-prs
-description: "Intent-first PR triage. Processes a list of PRs, issues, or a whole queue. Recovers plain-language intent, judges whether the implementation solves the real problem, and routes each item to close, escalate, or continue. Follows the triage protocol from pr-management."
+description: "Intent-first PR triage. Processes a list of PRs, issues, or a whole queue. Recovers plain-language intent, judges whether the implementation solves the real problem, and routes each item to close, escalate, or continue. Follows the triage protocol from prs."
 argument-hint: "[PR# | branch | --queue] [--repo owner/repo]"
-allowed-tools: ["Bash", "Read", "Grep", "Task"]
+allowed-tools: ["Bash", "Read", "Grep", "Agent"]
 ---
 
 # PR Triage
 
 Use agent: **pr-triage** — `agents/pr-triage.md`
 
-Use skill: **pr-management** — `skills/pr-management/SKILL.md` and `skills/pr-management/references/triage-protocol.md`
+Use skill: **prs** — `skills/prs/SKILL.md` and `skills/prs/references/triage-protocol.md`
 
 ## Input resolution
 

@@ -1,6 +1,0 @@
-{
-  "name": "business-ops",
-  "version": "2.0.0",
-  "description": "Finance, reporting, research, and operating cadence workflows for Codex.",
-  "skills": "./skills/"
-}

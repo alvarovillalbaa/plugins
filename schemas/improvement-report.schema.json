@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Skill Improvement Report",
+  "type": "object",
+  "required": [
+    "title",
+    "target",
+    "summary",
+    "classification",
+    "private_data_detected",
+    "validation"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "title": { "type": "string" },
+    "target": { "type": "string" },
+    "summary": { "type": "string" },
+    "classification": {
+      "type": "string",
+      "enum": ["upstream-safe", "personalization-template", "local-private", "generated-runtime", "mixed"]
+    },
+    "private_data_detected": { "type": "boolean" },
+    "changed_files": { "type": "array", "items": { "type": "string" } },
+    "validation": { "type": "array", "items": { "type": "string" } },
+    "risk": { "type": "string", "enum": ["low", "medium", "high"] }
+  }
+}

@@ -2,8 +2,7 @@
 name: revenue-ops
 description: >-
   Use for revenue operations, CRM stages, lifecycle definitions, handoff
-  rules, pipeline hygiene, and operating metrics. Child skill of `go-to-
-  market`; route here from the parent router when this lane is the narrowest
+  rules, pipeline hygiene, and operating metrics. Child skill of `growth`; route here from the parent router when this lane is the narrowest
   owner.
 ---
 
@@ -14,7 +13,7 @@ This child skill owns revenue operations, CRM stages, lifecycle definitions, han
 ## Use When
 
 - The request is primarily about revenue operations, CRM stages, lifecycle definitions, handoff rules, pipeline hygiene, and operating metrics.
-- The parent router [`../go-to-market/SKILL.md`](../go-to-market/SKILL.md) selects this child.
+- The parent router [`../growth/SKILL.md`](../growth/SKILL.md) selects this child.
 - The work needs this lane's references, scripts, examples, hooks, or templates.
 
 ## Assets
@@ -27,7 +26,7 @@ This child skill owns revenue operations, CRM stages, lifecycle definitions, han
 
 ## Chain Rules
 
-- Chain to `product-marketing`, `product-development`, `message-outreach`, `sales-pipeline`, `prospect-research`, `research` when the task crosses this child's boundary.
+- Chain to `product-marketing`, `product-development`, `outreach`, `sales-pipeline`, `prospect`, `research` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 

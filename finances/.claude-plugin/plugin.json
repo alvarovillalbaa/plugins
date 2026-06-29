@@ -1,0 +1,17 @@
+{
+  "name": "finances",
+  "description": "Finance operations, planning, reconciliation, taxes, fundraising, close, and analysis workflows for the agent company.",
+  "version": "3.0.0",
+  "author": {
+    "name": "Agent Company"
+  },
+  "homepage": "https://github.com/alvarovillalbaa/plugins",
+  "repository": "https://github.com/alvarovillalbaa/plugins",
+  "license": "MIT",
+  "keywords": [
+    "finance",
+    "planning",
+    "reconciliation",
+    "fundraising"
+  ]
+}

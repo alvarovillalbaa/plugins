@@ -1,0 +1,27 @@
+# Non-installable external sources that internal skills may cite as live
+# methodology references. These are not copied by install-external-skills.py.
+sources:
+  how-to-ralph-wiggum:
+    owner: ghuntley
+    repo: https://github.com/ghuntley/how-to-ralph-wiggum
+    ref: main
+    homepage: https://github.com/ghuntley/how-to-ralph-wiggum
+    domain: agentic-execution-reference
+  ralph-playbook:
+    owner: ClaytonFarr
+    repo: https://github.com/ClaytonFarr/ralph-playbook
+    ref: main
+    homepage: https://github.com/ClaytonFarr/ralph-playbook
+    domain: agentic-execution-reference
+  fluid-functionalism:
+    owner: mickadesign
+    repo: https://github.com/mickadesign/fluid-functionalism
+    ref: main
+    homepage: https://github.com/mickadesign/fluid-functionalism
+    domain: ui-design-reference
+  llm-seo:
+    owner: NicoAcosta
+    repo: https://github.com/NicoAcosta/llm-seo
+    ref: main
+    homepage: https://github.com/NicoAcosta/llm-seo
+    domain: seo-geo-reference

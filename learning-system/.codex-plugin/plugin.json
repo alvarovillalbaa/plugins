@@ -1,6 +1,0 @@
-{
-  "name": "learning-system",
-  "version": "2.0.0",
-  "description": "Auto-improve, memory management, and second-brain workflows for Codex.",
-  "skills": "./skills/"
-}

@@ -86,7 +86,7 @@ Use headers to enable scanning. Engineers scan docs, they rarely read them linea
 ### Lists vs Prose
 
 Use **bullet lists** for:
-- Enumerable items without inherent order
+- Enumerable facts without inherent order
 - Feature lists
 - Properties or characteristics
 - Options or alternatives

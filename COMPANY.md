@@ -4,22 +4,23 @@ This repository is now organized as an agent company with department-level plugi
 
 ## Company Shape
 
-- `learning-system`: auto-improve, memory management, second brain, operating memory
-- `marketing`: content, social, SEO/GEO, slides, video, visual content
+- `system`: skills management, memory, knowledge base, brain ingestion, personalization, and loops
+- `marketing`: content, discoverability, social, slides, video, images, and visualization
 - `sales`: prospecting, outreach, GTM, pipeline support
 - `engineering`: architecture, implementation, QA, security, docs, cloud
-- `product`: product development and product strategy support
-- `business-ops`: finance, reporting, research, review, operational cadence
+- `product`: product development, product marketing, and design
+- `finances`: expenses, reconciliation, planning, taxes, fundraising, fiscal close, and analysis
+- `productivity`: reporting, research, review, documentation drift, and operational cadence
 
 ## Active Agents
 
 - `sales/sales-prospecting`
-- `business-ops/executive`
-- `business-ops/deep-research`
-- `business-ops/financial-analyst`
+- `productivity/executive`
+- `productivity/deep-research`
+- `finances/financial-analyst`
 - `marketing/growth-lead`
 - `engineering/principal-engineer`
-- `business-ops/vp-of-operations`
+- `productivity/vp-of-operations`
 
 ## Teams
 
@@ -51,9 +52,9 @@ company-root/
     ├── .cursor-plugin/plugin.json
     ├── TEAM.md
     ├── profile.yaml
+    ├── mcp.json
     ├── skills/
     ├── agents/
     ├── commands/
-    ├── hooks/
-    └── scripts/
+    └── rules/
 ```

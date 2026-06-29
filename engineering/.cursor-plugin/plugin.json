@@ -1,8 +1,8 @@
 {
   "name": "engineering",
   "displayName": "Engineering",
-  "version": "2.0.0",
-  "description": "Architecture, implementation, QA, security, cloud, and documentation workflows.",
+  "version": "3.0.0",
+  "description": "Architecture, implementation, QA, cloud, pentest, PR, and engineering documentation workflows",
   "author": {
     "name": "Agent Company",
     "email": "alvarovillalbaa@icloud.com"
@@ -12,7 +12,7 @@
     "engineering",
     "architecture",
     "qa",
-    "security",
-    "cloud"
+    "cloud",
+    "security"
   ]
 }

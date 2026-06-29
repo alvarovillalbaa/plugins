@@ -27,9 +27,10 @@ This child skill owns user stories, acceptance criteria, epic breakdown, story p
 
 ## Chain Rules
 
-- Chain to `product-marketing`, `frontend/onboarding-flows`, `quality-assurance/test-strategy-coverage`, `reporting` when the task crosses this child's boundary.
+- Chain to `product-marketing`, `frontend/onboarding-flows`, `quality-assurance/test-strategy-coverage`, `quality-assurance`, `code-documentation`, `reporting` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
+- Keep stories acceptance-focused. Do not encode payload transformations, compatibility shims, or implementation facades as acceptance criteria.
 
 ## External Skill Chains
 
@@ -37,8 +38,11 @@ Use live external skills when they are installed. If one is missing, report the 
 
 - `codex-loop`: Run Codex PRD/story loops with one fresh subagent per story. Install: `python scripts/install-external-skills.py --skill codex-loop --agent codex`.
 - `claude-loop`: Run Claude PRD/story loops with one fresh subagent per story. Install: `python scripts/install-external-skills.py --skill claude-loop --agent codex`.
+- `ralph-prd`: Use Ralph PRD guidance for product-spec structure before execution loops. Install: `python scripts/install-external-skills.py --skill ralph-prd --agent codex`.
+- `ralph-playbook`: Reference-only: Use as Ralph playbook context for PRD-to-execution loops. No installer target.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).
 
 ## Shared Map
 

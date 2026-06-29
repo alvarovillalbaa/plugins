@@ -3,7 +3,7 @@
 # Usage: log-metrics.sh <command>
 
 COMMAND="$1"
-LOG_DIR="${HOME}/.claude/clous-hreng/logs"
+LOG_DIR="${HOME}/.claude/agent-company/logs"
 LOG_FILE="${LOG_DIR}/metrics-analysis.log"
 
 # Create log directory if it doesn't exist

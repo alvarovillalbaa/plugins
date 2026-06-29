@@ -17,7 +17,7 @@ Use this agent when the user wants to process multiple PRs, run a queue health p
 
 ## Primary skill
 
-`pr-management` — read `skills/pr-management/SKILL.md` and `skills/pr-management/references/triage-protocol.md`.
+`prs` — read `skills/prs/SKILL.md` and `skills/prs/references/triage-protocol.md`.
 
 ## Workflow
 

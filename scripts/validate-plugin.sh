@@ -1,15 +1,32 @@
 #!/usr/bin/env bash
 # Validate plugin structure and components.
-# Requires: .claude-plugin/plugin.json, skills/*/SKILL.md with name + description.
-# Optional per skill: references.md, templates/, examples/.
+# From the source root, delegate to the canonical Python validators.
+# From a department plugin root, validate the local portable plugin surface.
 
 set -euo pipefail
 
-PLUGIN_NAME="Agent Suite Plugin"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SOURCE_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+if [ -f ".claude-plugin/marketplace.json" ] && [ -f "COMPANY.md" ] && [ -d "scripts" ]; then
+  echo "🔍 Validating Agent Company source root"
+  echo ""
+  python3 scripts/validate_skills.py .
+  exit $?
+fi
+
+PLUGIN_NAME="Department Plugin"
 if [ -f ".claude-plugin/plugin.json" ]; then
-  if command -v jq >/dev/null 2>&1; then
-    PLUGIN_NAME=$(jq -r '.name // "Agent Suite Plugin"' .claude-plugin/plugin.json 2>/dev/null)
-  fi
+  PLUGIN_NAME=$(python3 - <<'PY'
+import json
+from pathlib import Path
+
+try:
+    print(json.loads(Path(".claude-plugin/plugin.json").read_text()).get("name", "Department Plugin"))
+except Exception:
+    print("Department Plugin")
+PY
+)
 fi
 
 echo "🔍 Validating $PLUGIN_NAME"
@@ -23,6 +40,27 @@ if [ -f ".claude-plugin/plugin.json" ]; then
   echo "✅ Plugin manifest found"
 else
   echo "❌ Missing .claude-plugin/plugin.json"
+  ERRORS=$((ERRORS + 1))
+fi
+
+if [ -f ".codex-plugin/plugin.json" ]; then
+  echo "✅ Codex manifest found"
+else
+  echo "❌ Missing .codex-plugin/plugin.json"
+  ERRORS=$((ERRORS + 1))
+fi
+
+if [ -f ".cursor-plugin/plugin.json" ]; then
+  echo "✅ Cursor manifest found"
+else
+  echo "❌ Missing .cursor-plugin/plugin.json"
+  ERRORS=$((ERRORS + 1))
+fi
+
+if [ -f "profile.yaml" ]; then
+  echo "✅ Profile found"
+else
+  echo "❌ Missing profile.yaml"
   ERRORS=$((ERRORS + 1))
 fi
 
@@ -42,12 +80,24 @@ echo "✅ Found $CMD_COUNT commands"
 AGENT_COUNT=$(find agents -maxdepth 1 -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
 echo "✅ Found $AGENT_COUNT agents"
 
-# Check hooks
-if [ -f "hooks/hooks.json" ]; then
-  echo "✅ Hooks configuration found"
+# Check department plugin structure
+if [ -f "mcp.json" ]; then
+  echo "✅ MCP declaration found"
 else
-  echo "⚠️  No hooks configuration"
-  WARNINGS=$((WARNINGS + 1))
+  echo "❌ Missing mcp.json"
+  ERRORS=$((ERRORS + 1))
+fi
+
+if [ -d "rules" ]; then
+  echo "✅ Rules directory found"
+else
+  echo "❌ Missing rules/"
+  ERRORS=$((ERRORS + 1))
+fi
+
+if [ -e "hooks" ] || [ -e "scripts" ]; then
+  echo "❌ Department plugin roots must not contain hooks/ or scripts/"
+  ERRORS=$((ERRORS + 1))
 fi
 
 # Check skill structure: only SKILL.md with name + description required
@@ -80,7 +130,11 @@ done
 echo ""
 echo "═══════════════════════════════════════"
 if [ $ERRORS -eq 0 ]; then
-  echo "✅ Validation passed ($WARNINGS warnings)"
+  if [ -x "${SOURCE_ROOT}/scripts/skillctl.py" ]; then
+    echo "✅ Local shell validation passed ($WARNINGS warnings)"
+  else
+    echo "✅ Validation passed ($WARNINGS warnings)"
+  fi
   exit 0
 else
   echo "❌ Validation failed ($ERRORS errors, $WARNINGS warnings)"

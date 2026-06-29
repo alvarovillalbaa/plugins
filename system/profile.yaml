@@ -1,0 +1,46 @@
+slug: system
+version: 3.0.0
+mission: Maintain skills, memory, knowledge, learning, brain ingestion, personalization, and repeatable improvement loops.
+platforms:
+  - claude
+  - codex
+  - cursor
+skills:
+  - auto-improve
+  - skills-management
+  - skill-eval-loop
+  - memory
+  - knowledge-base
+  - learning
+  - lessons
+  - brain
+  - ingestion
+  - personalize
+  - communication-style
+  - voice
+  - calibration
+  - positioning
+  - icp
+  - loops
+commands:
+  - learning-sync
+  - update-memories
+  - ar-run
+  - ar-status
+  - ar-loop
+  - ar-setup
+  - compile-raw
+  - ingest
+  - si-extract
+  - si-promote
+  - si-remember
+  - si-review
+  - si-status
+agents:
+  - experiment-runner
+  - memory-analyst
+  - skill-extractor
+team:
+  - CEO
+  - Executive Assistant
+  - Principal Engineer

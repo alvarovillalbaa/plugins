@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Update agent-suite from upstream (origin/main).
+# Update plugins from upstream (origin/main).
 # Run from the repo root (plugin directory).
 # Optionally creates a backup of the current state before pulling.
 

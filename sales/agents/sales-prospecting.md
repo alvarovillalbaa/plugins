@@ -11,8 +11,8 @@ Use this agent when the user wants outbound prospecting work that requires both 
 
 ## Primary skills
 
-- `prospect-research`
-- `message-outreach`
+- `prospect`
+- `outreach`
 - `go-to-market`
 
 ## Commands

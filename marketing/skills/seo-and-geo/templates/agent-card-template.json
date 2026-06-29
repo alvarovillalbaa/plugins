@@ -1,0 +1,29 @@
+{
+  "name": "REPLACE: Product or Agent name",
+  "description": "REPLACE: one-sentence description of what this service/agent does.",
+  "url": "https://example.com",
+  "provider": {
+    "organization": "REPLACE: Company name",
+    "url": "https://example.com"
+  },
+  "version": "1.0.0",
+  "documentationUrl": "https://example.com/docs",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "skills": [
+    {
+      "id": "REPLACE-skill-id",
+      "name": "REPLACE: human-readable capability name",
+      "description": "REPLACE: what this capability lets an agent do.",
+      "tags": ["REPLACE", "tags"],
+      "examples": [
+        "REPLACE: an example prompt or call an agent might make"
+      ]
+    }
+  ],
+  "contact": {
+    "email": "REPLACE: support@example.com"
+  }
+}

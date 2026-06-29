@@ -2,6 +2,8 @@
 
 End-to-end fine-tuning pipeline: when to use it, dataset curation, job management, quality gates, and production integration.
 
+**Ownership note:** this file (under `agent-system-architecture`) covers agent-behavior tuning strategy — when to tune, dataset quality tiers, SFT job launch, and post-training behavioral gates. `data-ml-pipelines` owns dataset construction ops, training infrastructure, and model evaluation tooling. These concerns overlap by design; cross-link both when the work spans behavior strategy and training ops.
+
 ---
 
 ## 1. When to Fine-Tune

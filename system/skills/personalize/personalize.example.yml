@@ -1,0 +1,6 @@
+company:
+  name: "{{COMPANY_NAME}}"
+user:
+  name: "{{USER_NAME}}"
+voice:
+  tone: "{{COMPANY_TONE}}"

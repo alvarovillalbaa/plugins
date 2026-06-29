@@ -2,7 +2,7 @@
 name: keywords
 description: >-
   Use for keyword discovery, search intent mapping, opportunity scoring, topic
-  clusters, and content calendar inputs. Child skill of `content-writing`;
+  clusters, and content calendar inputs. Child skill of `content`;
   route here from the parent router when this lane is the narrowest owner.
 ---
 
@@ -13,7 +13,7 @@ This child skill owns keyword discovery, search intent mapping, opportunity scor
 ## Use When
 
 - The request is primarily about keyword discovery, search intent mapping, opportunity scoring, topic clusters, and content calendar inputs.
-- The parent router [`../content-writing/SKILL.md`](../content-writing/SKILL.md) selects this child.
+- The parent router [`../content/SKILL.md`](../content/SKILL.md) selects this child.
 - The work needs this lane's references, scripts, examples, hooks, or templates.
 
 ## Assets
@@ -26,7 +26,7 @@ This child skill owns keyword discovery, search intent mapping, opportunity scor
 
 ## Chain Rules
 
-- Chain to `seo-and-geo/geo-ai-discoverability`, `seo-and-geo/on-page-seo-optimization`, `social-media-management`, `product-marketing` when the task crosses this child's boundary.
+- Chain to `discoverability/geo`, `seo-and-geo/on-page-seo`, `social-media`, `product-marketing` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 

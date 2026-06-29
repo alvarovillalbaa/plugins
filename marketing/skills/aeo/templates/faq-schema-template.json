@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "REPLACE: the exact question a user would type or ask aloud",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "REPLACE: a self-contained 40-60 word answer. Lead with the direct answer in the first sentence, then add one supporting detail. No marketing fluff, no 'it depends'."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "REPLACE: second question, phrased the way real users search",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "REPLACE: direct answer first. Include a concrete number, limit, or example so the block is quotable by an AI engine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "REPLACE: third question targeting a long-tail / comparison query",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "REPLACE: answer the comparison plainly. If you name a competitor or alternative, state the differentiator factually."
+      }
+    }
+  ]
+}

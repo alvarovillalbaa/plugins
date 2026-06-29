@@ -1,17 +1,17 @@
 slug: engineering
-version: 2.0.0
-mission: Own architecture, delivery, quality, documentation, cloud operations, and technical risk.
+version: 3.0.0
+mission: Own architecture, delivery, quality, documentation, cloud operations, security testing, and technical risk.
 platforms:
   - claude
   - codex
   - cursor
 skills:
   - agentic-development
-  - architecture-system-design
-  - multi-agent-execution
+  - architecture
+  - multi-agent
   - release-landing
-  - agent-harness-improvement
-  - tech-debt-management
+  - agent-harness
+  - tech-debt
   - ai-engineering
   - agent-system-architecture
   - prompt-tool-design
@@ -21,46 +21,61 @@ skills:
   - data-ml-pipelines
   - computer-vision-systems
   - backend
-  - api-service-design
-  - database-persistence
+  - apis
+  - databases
   - frontend
-  - design-systems-components
-  - frontend-performance-accessibility
+  - performance
+  - accessibility
   - onboarding-flows
-  - ui-polish-review
-  - frontend-implementation
-  - visual-taste-calibration
-  - design-critique
-  - design-direction
-  - cloud-management
-  - cloud-resources-optimization
-  - cloud-deployment-cicd
-  - cloud-ops-cost-incidents
-  - aws-platform-ops
-  - azure-platform-ops
-  - gcp-platform-ops
-  - cloud-architecture-design
+  - cloud
+  - resources
+  - cicd
+  - cloud-incidents
+  - aws-ops
+  - azure-ops
+  - gcp-ops
+  - cloud-architecture
   - pentest
   - web-vuln-validation
   - api-pentest
   - cloud-container-pentest
   - business-logic-race-testing
-  - pentest-reporting-disclosure
-  - pr-management
+  - pentest-report
+  - prs
   - quality-assurance
   - test-strategy-coverage
-  - frontend-e2e-browser-qa
-  - backend-test-engineering
-  - ci-flake-debugging
-  - performance-testing
-  - passive-security-review
-  - ai-evals-testing
+  - frontend-e2e
+  - backend-testing
+  - flake
+  - security
+  - ai-evals
   - code-documentation
 commands:
   - repo-review
+  - grill-with-docs
+  - review-architecture
+  - deslop
+  - pr-merge
+  - retro
   - docs-pass
+  - browser-trace
+  - cancel-dev-loop
+  - check-agent-compat
+  - dev-loop
+  - docs-site
+  - fix-ci
+  - harness-loop
+  - orchestrate
+  - review-pr
+  - triage-prs
 agents:
   - principal-engineer
+  - cto
+  - cloud-architect
+  - software-engineer
+  - ai-engineer
+  - pr-reviewer
+  - pr-triage
 team:
   - CTO
   - Cloud Architect

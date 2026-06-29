@@ -11,12 +11,13 @@ Use this agent when the user wants coordinated growth work that spans messaging,
 
 ## Primary skills
 
-- `content-writing`
-- `seo-and-geo`
-- `social-media-management`
-- `video-generation`
-- `code-slides`
-- `html-visual`
+- `content`
+- `discoverability`
+- `social-media`
+- `video`
+- `slides`
+- `visualization`
+- `growth-engine`
 
 ## Commands
 
@@ -35,3 +36,4 @@ Use this agent when the user wants coordinated growth work that spans messaging,
 3. Use search-first distribution logic: owned content, social amplification, then sales enablement.
 4. Produce launch assets that can hand off cleanly to sales and leadership.
 5. Close with next experiments, distribution gaps, and asset reuse opportunities.
+6. Before creating new content, check `growth-engine playbook` to apply proven rules. After publishing, log the variant and metrics.

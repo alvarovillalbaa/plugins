@@ -2,8 +2,7 @@
 name: prds
 description: >-
   Use for PRDs, feature briefs, requirements, scope boundaries, release
-  criteria, and cross-functional product specs. Child skill of `product-
-  development`; route here from the parent router when this lane is the
+  criteria, and cross-functional product specs. Child skill of `product-development`; route here from the parent router when this lane is the
   narrowest owner.
 ---
 
@@ -27,9 +26,11 @@ This child skill owns PRDs, feature briefs, requirements, scope boundaries, rele
 
 ## Chain Rules
 
-- Chain to `product-marketing`, `frontend/onboarding-flows`, `quality-assurance/test-strategy-coverage`, `reporting` when the task crosses this child's boundary.
+- Chain to `product-marketing`, `frontend/onboarding-flows`, `quality-assurance/test-strategy-coverage`, `quality-assurance`, `code-documentation`, `reporting` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
+- Keep PRDs product-focused and manually or externally driven: problem, users, scope, acceptance, rollout intent, and success criteria.
+- Do not turn PRDs into technical design docs. Include only small technical constraints, hints, or known owner seams that prevent obvious execution mistakes.
 
 ## External Skill Chains
 
@@ -37,8 +38,11 @@ Use live external skills when they are installed. If one is missing, report the 
 
 - `codex-loop`: Run Codex PRD/story loops with one fresh subagent per story. Install: `python scripts/install-external-skills.py --skill codex-loop --agent codex`.
 - `claude-loop`: Run Claude PRD/story loops with one fresh subagent per story. Install: `python scripts/install-external-skills.py --skill claude-loop --agent codex`.
+- `ralph-prd`: Use Ralph PRD guidance for product-spec structure before execution loops. Install: `python scripts/install-external-skills.py --skill ralph-prd --agent codex`.
+- `ralph-playbook`: Reference-only: Use as Ralph playbook context for PRD-to-execution loops. No installer target.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).
 
 ## Shared Map
 

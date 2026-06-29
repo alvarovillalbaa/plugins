@@ -1,8 +1,8 @@
 {
   "name": "product",
   "displayName": "Product",
-  "version": "2.1.0",
-  "description": "Product strategy, product management, and product marketing support workflows.",
+  "version": "3.0.0",
+  "description": "Product development, product marketing, and product design workflows",
   "author": {
     "name": "Agent Company",
     "email": "alvarovillalbaa@icloud.com"
@@ -10,8 +10,8 @@
   "license": "MIT",
   "keywords": [
     "product",
-    "roadmap",
-    "research",
+    "design",
+    "strategy",
     "marketing"
   ]
 }

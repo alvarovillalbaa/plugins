@@ -2,8 +2,7 @@
 name: test-strategy-coverage
 description: >-
   Use for test strategy, regression coverage, suite architecture, test
-  planning, TDD, and coverage improvement. Child skill of `quality-
-  assurance`; route here from the parent router when this lane is the
+  planning, TDD, and coverage improvement. Child skill of `quality-assurance`; route here from the parent router when this lane is the
   narrowest owner.
 ---
 
@@ -17,17 +16,16 @@ This child skill owns test strategy, regression coverage, suite architecture, te
 - The parent router [`../quality-assurance/SKILL.md`](../quality-assurance/SKILL.md) selects this child.
 - The work needs this lane's references, scripts, examples, hooks, or templates.
 
-## Assets
+## References
 
-- `references/` contains lane-specific guidance moved from the original parent skill.
-- `scripts/` contains executable helpers owned by this lane.
-- `templates/` contains reusable output or implementation templates for this lane.
-- `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
+- `references/test-strategy.md` — test strategy fundamentals
+- `references/analyze-tests-methodology.md` — audit methodology: inventory, type coverage check, DB fidelity, TDD readiness, mocking discipline, gap identification
+- `references/suite-architecture.md` — test suite architecture patterns
+- `references/tdd-iron-laws.md` — TDD discipline and iron laws
 
 ## Chain Rules
 
-- Chain to `pentest`, `ai-engineering/ai-evals-observability`, `frontend`, `backend`, `pr-management`, `cloud-management` when the task crosses this child's boundary.
+- Chain to `pentest`, `ai-engineering/ai-evals-observability`, `frontend`, `backend`, `prs`, `cloud` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 
@@ -41,6 +39,7 @@ Use live external skills when they are installed. If one is missing, report the 
 - `tdd`: Use external test-first workflow for public-interface behavior changes. Install: `python scripts/install-external-skills.py --skill tdd --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).
 
 ## Shared Map
 

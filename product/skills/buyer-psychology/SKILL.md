@@ -27,7 +27,7 @@ This child skill owns buyer psychology, motivation mapping, emotional triggers, 
 
 ## Chain Rules
 
-- Chain to `content-writing`, `seo-and-geo`, `go-to-market`, `frontend`, `reporting` when the task crosses this child's boundary.
+- Chain to `content`, `discoverability`, `go-to-market`, `frontend`, `reporting` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 

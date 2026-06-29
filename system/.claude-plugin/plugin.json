@@ -1,0 +1,18 @@
+{
+  "name": "system",
+  "description": "Skills, memory, knowledge, learning, brain ingestion, personalization, and loop workflows for the agent company.",
+  "version": "3.0.0",
+  "author": {
+    "name": "Agent Company"
+  },
+  "homepage": "https://github.com/alvarovillalbaa/plugins",
+  "repository": "https://github.com/alvarovillalbaa/plugins",
+  "license": "MIT",
+  "keywords": [
+    "system",
+    "skills",
+    "memory",
+    "learning",
+    "loops"
+  ]
+}

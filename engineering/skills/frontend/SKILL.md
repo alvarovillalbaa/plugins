@@ -1,62 +1,73 @@
 ---
 name: frontend
-description: >-
-  Router for frontend implementation, design systems,
-  accessibility/performance, onboarding flows, UI polish, visual taste
-  calibration, design critique, and design direction.
+description: Router for frontend implementation, performance, accessibility, and onboarding flows.
 ---
 
 # Frontend Router
 
-This parent is a router. Select the narrowest child and load that child before using lane-specific assets.
-
 ## Children
 
-- [`design-systems-components`](../design-systems-components/SKILL.md) - design systems, shared primitives, tokens, component APIs, reusable UI patterns, and design-system drift
-- [`frontend-performance-accessibility`](../frontend-performance-accessibility/SKILL.md) - frontend performance, accessibility, responsiveness, rendering stability, bundle behavior, and Core Web Vitals
-- [`onboarding-flows`](../onboarding-flows/SKILL.md) - signup, onboarding, activation, empty states, checklists, tours, verification flows, and activation instrumentation
-- [`ui-polish-review`](../ui-polish-review/SKILL.md) - UI polish, visual defects, layout fit, spacing, states, motion, interaction finish, and screenshot-based cleanup
-- [`frontend-implementation`](../frontend-implementation/SKILL.md) - ordinary React, Next, and browser implementation for components, routes, hooks, state, forms, styling, and framework integration
-- [`visual-taste-calibration`](../visual-taste-calibration/SKILL.md) - visual taste calibration, style references, brand-sensitive quality bars, and qualitative direction for interface feel
-- [`design-critique`](../design-critique/SKILL.md) - structured design critique, UX review, visual hierarchy assessment, and improvement recommendations before implementation
-- [`design-direction`](../design-direction/SKILL.md) - visual direction, UI concept framing, design language choices, and option shaping before detailed component work
+- [`performance`](../performance/SKILL.md) - Performance work.
+- [`accessibility`](../accessibility/SKILL.md) - Accessibility work.
+- [`onboarding-flows`](../onboarding-flows/SKILL.md) - Onboarding Flows work.
 
 ## Route
 
-| User asks for | Use |
+| Request | Use |
 | --- | --- |
-| design systems, shared primitives, tokens, component APIs, reusable UI patterns, and design-system drift | [`design-systems-components`](../design-systems-components/SKILL.md) |
-| frontend performance, accessibility, responsiveness, rendering stability, bundle behavior, and Core Web Vitals | [`frontend-performance-accessibility`](../frontend-performance-accessibility/SKILL.md) |
-| signup, onboarding, activation, empty states, checklists, tours, verification flows, and activation instrumentation | [`onboarding-flows`](../onboarding-flows/SKILL.md) |
-| UI polish, visual defects, layout fit, spacing, states, motion, interaction finish, and screenshot-based cleanup | [`ui-polish-review`](../ui-polish-review/SKILL.md) |
-| ordinary React, Next, and browser implementation for components, routes, hooks, state, forms, styling, and framework integration | [`frontend-implementation`](../frontend-implementation/SKILL.md) |
-| visual taste calibration, style references, brand-sensitive quality bars, and qualitative direction for interface feel | [`visual-taste-calibration`](../visual-taste-calibration/SKILL.md) |
-| structured design critique, UX review, visual hierarchy assessment, and improvement recommendations before implementation | [`design-critique`](../design-critique/SKILL.md) |
-| visual direction, UI concept framing, design language choices, and option shaping before detailed component work | [`design-direction`](../design-direction/SKILL.md) |
+| performance requests | [`performance`](../performance/SKILL.md) |
+| accessibility requests | [`accessibility`](../accessibility/SKILL.md) |
+| onboarding flows requests | [`onboarding-flows`](../onboarding-flows/SKILL.md) |
 
 ## Chain Rules
 
+Chain to these skills when the task crosses this skill's boundary:
+
 - `product-development`
 - `product-marketing`
-- `quality-assurance/frontend-e2e-browser-qa`
-- `code-as-images`
-- `html-visual`
+- `quality-assurance/frontend-e2e`
+- `quality-assurance`
+- `code-documentation`
+- `images`
+- `visualization`
+- `design`
 
 ## Operating Rules
 
-- Keep this `SKILL.md` small and routing-focused.
-- Do not recreate the old broad parent behavior here; put execution depth in child assets.
-- If no child matches, handle only shared methodology/default workflow or document the missing lane.
-- Every child and parent skill must keep `examples/`, `hooks/`, `references/`, `scripts/`, and `templates/`.
+- Keep this parent compact; use children for lane-specific execution depth.
+- Prefer the child skill's bundled resources when a child owns the request.
+- Preserve local skill rules, repo facts, safety gates, product/channel constraints, and explicit local exceptions over external guidance when they conflict.
+- Do not hide bad backend or API payloads with frontend normalization or data-shape transformations. Fix the producer or contract owner and make invalid shapes fail visibly.
+- Defer Fluid Functionalism interaction details to the `fluid-functionalism` reference source; keep this router focused on local frontend ownership and contracts.
 
 ## External Skill Chains
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
 - `hallmark`: Audit, redesign, study, or build UI with anti-AI-slop design constraints. Install: `python scripts/install-external-skills.py --skill hallmark --agent codex`.
+- `taste-skill`: Use taste guidance for visual direction, hierarchy, and UI polish decisions. Install: `python scripts/install-external-skills.py --skill taste-skill --agent codex`.
+- `impeccable`: Use impeccable UI quality guidance for execution-level frontend finish. Install: `python scripts/install-external-skills.py --skill impeccable --agent codex`.
+- `emil-design-eng`: Use design-engineering taste rules for high-quality frontend implementation. Install: `python scripts/install-external-skills.py --skill emil-design-eng --agent codex`.
+- `userinterface-wiki`: Use interface-pattern references for layout, components, states, and product UI decisions. Install: `python scripts/install-external-skills.py --skill userinterface-wiki --agent codex`.
+- `transitions-dev`: Use transition patterns for purposeful UI and page motion. Install: `python scripts/install-external-skills.py --skill transitions-dev --agent codex`.
+- `animate-text`: Use text animation patterns for motion-heavy content and video scenes. Install: `python scripts/install-external-skills.py --skill animate-text --agent codex`.
+- `browserbase-browser`: Use Browserbase browser automation guidance for live web interactions. Install: `python scripts/install-external-skills.py --skill browserbase-browser --agent codex`.
+- `browserbase-safe-browser`: Use safe-browser guidance for bounded browser automation and verification. Install: `python scripts/install-external-skills.py --skill browserbase-safe-browser --agent codex`.
+- `fluid-functionalism`: Reference-only: Use the source-owned interaction-style guidance for motion and hover decisions. No installer target.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).
 
 ## Shared Map
 
 See [`../../../skills-chaining-map.md`](../../../skills-chaining-map.md) for the complete skills-chaining graph.
+
+## References
+
+- `references/ux-ui-design-principles.md` — comprehensive UX/UI reference: visual design, interaction, accessibility (WCAG/APCA), layout, forms, performance, copy, states, URL/state patterns
+- `references/frontend-design.md` — distinctive frontend design guide: aesthetic direction, typography, color, motion, spatial composition, anti-patterns ("AI slop")
+- `references/frontend-implementation-source/` — former frontend-implementation assets
+
+## Merged Sources
+
+This router also preserves the former frontend-implementation assets under `references/frontend-implementation-source/`.

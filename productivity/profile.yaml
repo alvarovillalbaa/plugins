@@ -1,0 +1,39 @@
+slug: productivity
+version: 3.0.0
+mission: Own reporting, research, review, documentation drift, and executive operating workflows.
+platforms:
+  - claude
+  - codex
+  - cursor
+skills:
+  - reporting
+  - content-audit
+  - research
+  - market-competitor-research
+  - diligence-vendor-research
+  - customer-qual-research
+  - seo-competitor-gap
+  - prospect
+  - review
+  - code-review
+  - design-review
+  - grill
+  - documentation-drift
+commands:
+  - office-hours
+  - inbox-triage
+  - research
+  - grill-me
+  - content-audit
+  - documentation-drift
+agents:
+  - ceo
+  - executive-assistant
+  - executive
+  - deep-research
+  - vp-of-operations
+team:
+  - CEO
+  - Executive Assistant
+  - VP of Operations
+  - Research Lead

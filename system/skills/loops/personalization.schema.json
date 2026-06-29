@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Loops Personalization",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "company": { "type": "object" },
+    "loops": { "type": "object" }
+  }
+}

@@ -12,34 +12,36 @@ This parent is a router. Select the narrowest child and load that child before u
 
 ## Children
 
-- [`agent-system-architecture`](../agent-system-architecture/SKILL.md) - agent architectures, multi-agent topology, agent lifecycles, handoff patterns, and orchestration contracts
-- [`prompt-tool-design`](../prompt-tool-design/SKILL.md) - system prompts, tool schemas, tool descriptions, constrained generation, and prompt/tool reliability
-- [`context-memory-rag`](../context-memory-rag/SKILL.md) - context assembly, memory tiers, retrieval, RAG, vector stores, compaction, and grounding contracts
-- [`ai-evals-observability`](../ai-evals-observability/SKILL.md) - AI eval architecture, traces, metrics, score monitoring, regression thresholds, and production AI observability
-- [`ai-governance-safety`](../ai-governance-safety/SKILL.md) - agent governance, safety gates, scope isolation, autonomy limits, prompt-injection posture, and side-effect controls
-- [`data-ml-pipelines`](../data-ml-pipelines/SKILL.md) - data pipelines, ML feature pipelines, model evaluation, fine-tuning datasets, and DataOps workflows
-- [`computer-vision-systems`](../computer-vision-systems/SKILL.md) - computer vision architectures, detection, segmentation, video inference, model optimization, and production deployment
+- [`agent-system-architecture`](../agent-system-architecture/SKILL.md) - Agent System Architecture work.
+- [`prompt-tool-design`](../prompt-tool-design/SKILL.md) - Prompt Tool Design work.
+- [`context-memory-rag`](../context-memory-rag/SKILL.md) - Context Memory Rag work.
+- [`ai-evals-observability`](../ai-evals-observability/SKILL.md) - Ai Evals Observability work.
+- [`ai-governance-safety`](../ai-governance-safety/SKILL.md) - Ai Governance Safety work.
+- [`data-ml-pipelines`](../data-ml-pipelines/SKILL.md) - Data Ml Pipelines work.
+- [`computer-vision-systems`](../computer-vision-systems/SKILL.md) - Computer Vision Systems work.
 
 ## Route
 
-| User asks for | Use |
+| Request | Use |
 | --- | --- |
-| agent architectures, multi-agent topology, agent lifecycles, handoff patterns, and orchestration contracts | [`agent-system-architecture`](../agent-system-architecture/SKILL.md) |
-| system prompts, tool schemas, tool descriptions, constrained generation, and prompt/tool reliability | [`prompt-tool-design`](../prompt-tool-design/SKILL.md) |
-| context assembly, memory tiers, retrieval, RAG, vector stores, compaction, and grounding contracts | [`context-memory-rag`](../context-memory-rag/SKILL.md) |
-| AI eval architecture, traces, metrics, score monitoring, regression thresholds, and production AI observability | [`ai-evals-observability`](../ai-evals-observability/SKILL.md) |
-| agent governance, safety gates, scope isolation, autonomy limits, prompt-injection posture, and side-effect controls | [`ai-governance-safety`](../ai-governance-safety/SKILL.md) |
-| data pipelines, ML feature pipelines, model evaluation, fine-tuning datasets, and DataOps workflows | [`data-ml-pipelines`](../data-ml-pipelines/SKILL.md) |
-| computer vision architectures, detection, segmentation, video inference, model optimization, and production deployment | [`computer-vision-systems`](../computer-vision-systems/SKILL.md) |
+| agent system architecture requests | [`agent-system-architecture`](../agent-system-architecture/SKILL.md) |
+| prompt tool design requests | [`prompt-tool-design`](../prompt-tool-design/SKILL.md) |
+| context memory rag requests | [`context-memory-rag`](../context-memory-rag/SKILL.md) |
+| ai evals observability requests | [`ai-evals-observability`](../ai-evals-observability/SKILL.md) |
+| ai governance safety requests | [`ai-governance-safety`](../ai-governance-safety/SKILL.md) |
+| data ml pipelines requests | [`data-ml-pipelines`](../data-ml-pipelines/SKILL.md) |
+| computer vision systems requests | [`computer-vision-systems`](../computer-vision-systems/SKILL.md) |
 
 ## Chain Rules
 
-- `quality-assurance/ai-evals-testing`
-- `quality-assurance/passive-security-review`
+Chain to these skills when the task crosses this skill's boundary:
+
+- `quality-assurance/ai-evals`
+- `quality-assurance/security`
 - `backend`
-- `cloud-management`
-- `auto-improve`
-- `second-brain`
+- `cloud`
+- `skills-management`
+- `brain`
 
 ## Operating Rules
 
@@ -47,6 +49,18 @@ This parent is a router. Select the narrowest child and load that child before u
 - Do not recreate the old broad parent behavior here; put execution depth in child assets.
 - If no child matches, handle only shared methodology/default workflow or document the missing lane.
 - Every child and parent skill must keep `examples/`, `hooks/`, `references/`, `scripts/`, and `templates/`.
+
+## External Skill Chains
+
+Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
+
+- `browserbase-agent-experience`: Use Browserbase guidance for browser-based agent experiences. Install: `python scripts/install-external-skills.py --skill browserbase-agent-experience --agent codex`.
+- `browserbase-webmcp-gen`: Generate Web MCP wrappers from browser workflows when toolization is useful. Install: `python scripts/install-external-skills.py --skill browserbase-webmcp-gen --agent codex`.
+- `browserbase-functions`: Use Browserbase function patterns for reusable browser automation tools. Install: `python scripts/install-external-skills.py --skill browserbase-functions --agent codex`.
+- `clous-agent-runs`: Use Clous-owned agent run guidance for operating and inspecting agent executions. Install: `python scripts/install-external-skills.py --skill clous-agent-runs --agent codex`.
+
+Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).
 
 ## Shared Map
 

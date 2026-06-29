@@ -27,7 +27,7 @@ This child skill owns revenue intelligence, account signals, pipeline risk, oppo
 
 ## Chain Rules
 
-- Chain to `product-marketing`, `product-development`, `message-outreach`, `sales-pipeline`, `prospect-research`, `research` when the task crosses this child's boundary.
+- Chain to `product-marketing`, `product-development`, `outreach`, `sales-pipeline`, `prospect`, `research` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 

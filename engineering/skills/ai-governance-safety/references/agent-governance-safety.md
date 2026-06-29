@@ -130,7 +130,7 @@ def check_action_permission(tool_name: str, autonomy_mode: str) -> bool:
 ### Eval gates
 - Every new tool with side effects: add eval case before shipping.
 - Every safety regression: add `hard_fail` eval case before the fix is merged.
-- Promotion of SPL candidates: eval gate required (see memory-and-learning-system.md).
+- Promotion of SPL candidates: eval gate required (see memory-and-system.md).
 
 ### Incident response
 1. Detect: alert fires on `tool_error_rate > 10%` or `eval_score drops > 5 pts`.

@@ -3,18 +3,19 @@
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/alvarovillalbaa/agent-suite.git
-cd agent-suite
+git clone https://github.com/alvarovillalbaa/plugins.git
+cd plugins
 ```
 
 ### 2. Choose the department you want
 
-- `learning-system`
+- `system`
 - `marketing`
 - `sales`
 - `engineering`
 - `product`
-- `business-ops`
+- `finances`
+- `productivity`
 
 ### 3. Install by platform
 
@@ -46,6 +47,12 @@ Or copy a single skill:
 ```bash
 mkdir -p ~/.codex/skills
 cp -R engineering/skills/agentic-development ~/.codex/skills/
+```
+
+Prefer source-tracked installs for skills that may be improved later:
+
+```bash
+python3 scripts/skillctl.py install system/skills/auto-improve --agent codex --mode symlink
 ```
 
 #### Cursor

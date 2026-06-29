@@ -1,0 +1,4 @@
+company:
+  name: "{{COMPANY_NAME}}"
+loops:
+  default_budget_minutes: "{{DEFAULT_BUDGET_MINUTES}}"

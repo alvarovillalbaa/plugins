@@ -1,3 +1,26 @@
 .agentic/*.local.md
 .agentic/agentic-dev-loop.local.md
 .claude/agentic-dev-loop.local.md
+personalize.local.yml
+*.local.yml
+.generated/
+.overlays/
+.company/
+.user/
+.skill-improvements/
+.skill-lock.yml
+.skill-lock.json
+.worktrees/
+__pycache__/
+*.pyc
+# Local docs output
+docs/*
+!docs/audits/
+docs/audits/*
+!docs/audits/skills/
+!docs/audits/skills/*.md
+!docs/changelog/
+docs/changelog/*
+!docs/changelog/skills/
+!docs/changelog/skills/*.md
+memory/

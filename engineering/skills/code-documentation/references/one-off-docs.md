@@ -20,7 +20,7 @@ Use a report for:
 ### Location
 
 ```text
-audits/YYYY/YYYY-MM-DD/report-name.md
+audits/YYYY/MM-DD/report-name.md
 ```
 
 ### Quality bar
@@ -46,7 +46,7 @@ Write an ADR when:
 Choose the repo's existing convention:
 
 - inline in a local `ARCHITECTURE.md` when the decision is local
-- `audits/YYYY/YYYY-MM-DD/adr-[slug].md` when the decision is cross-cutting or report-like
+- `audits/YYYY/MM-DD/adr-[slug].md` when the decision is cross-cutting or report-like
 
 If the lasting rule becomes operational, also promote it into the relevant living doc.
 
@@ -65,14 +65,14 @@ Use for:
 ### Location
 
 ```text
-audits/YYYY/YYYY-MM-DD/post-mortem-[incident].md
+audits/YYYY/MM-DD/post-mortem-[incident].md
 ```
 
 Post-mortems are historical and blameless. If they surface a durable workflow or rule, update `runbooks/`, `knowledge/`, `PRINCIPLES.md`, or other living docs too.
 
 ## Plans vs specs
 
-- implementation plans belong in `plans/YYYY/YYYY-MM-DD/`
+- implementation plans belong in `plans/YYYY/MM-DD/`
 - durable desired-state behavior belongs in `specs/`
 
 Do not use `specs/` as a graveyard of historical plan snapshots. Do not use `plans/` as the only home for a still-current behavior contract.

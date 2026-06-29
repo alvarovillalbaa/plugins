@@ -227,7 +227,7 @@ Use this checklist before merging any change to agent instructions, tool definit
 ### The change
 - [ ] Instruction change: Intern Test applied to any modified tool descriptions
 - [ ] SPL update: safety scanner passed, risk level documented
-- [ ] New tool: tool audit checklist completed (see [tool-call-design.md](./tool-call-design.md#10-tool-audit-checklist))
+- [ ] New tool: tool audit checklist completed (see [tool-call-design.md](../../prompt-tool-design/references/tool-call-design.md#10-tool-audit-checklist))
 - [ ] Memory change: persistence policy reviewed for affected tools
 - [ ] Model change: provider-specific parameter compatibility verified
 

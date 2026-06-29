@@ -2,6 +2,7 @@
 name: orchestrate
 description: "Decompose a large goal into parallel cloud-agent tasks using the planner/worker/verifier model. Use when the task is too large for a single /dev-loop or benefits from parallel sub-scope execution."
 argument-hint: "<goal> [--slack-token TOKEN]"
+allowed-tools: [Agent, Read, Bash, AskUserQuestion]
 hide-from-slash-command-tool: "true"
 ---
 
@@ -34,11 +35,7 @@ If any condition is unmet, stop and resolve it before spawning.
 
 ## Monitoring
 
-```bash
-bun skills/orchestrate/scripts/cli.ts tail <runId>
-```
-
-Available subcommands: `tail`, `comment`, `andon`, `respawn`, `kill`.
+Use the current orchestration reference in `skills/multi-agent/references/orchestrate-roles.md` to decide what state, handoff, and escalation artifacts to inspect. If a project provides its own cloud-agent CLI, use that project-local CLI; this plugin does not ship a standalone orchestration CLI.
 
 ## Discipline
 
@@ -49,4 +46,4 @@ Available subcommands: `tail`, `comment`, `andon`, `respawn`, `kill`.
 
 ## Reference
 
-Read `skills/agentic-development/references/orchestrate-roles.md` for the full role model, Andon protocol, plan.json schema, and when-to-use guidance.
+Read `skills/multi-agent/references/orchestrate-roles.md` for the full role model, Andon protocol, plan.json schema, and when-to-use guidance.

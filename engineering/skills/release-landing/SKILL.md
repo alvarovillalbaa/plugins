@@ -2,8 +2,7 @@
 name: release-landing
 description: >-
   Use for engineering release landing, merge hygiene, deployment gates,
-  hotfixes, tags, and rollback posture. Child skill of `agentic-
-  development`; route here from the parent router when this lane is the
+  hotfixes, tags, and rollback posture. Child skill of `agentic-development`; route here from the parent router when this lane is the
   narrowest owner.
 ---
 
@@ -27,7 +26,7 @@ This child skill owns engineering release landing, merge hygiene, deployment gat
 
 ## Chain Rules
 
-- Chain to `frontend`, `backend`, `quality-assurance`, `code-documentation`, `cloud-management`, `pr-management`, `auto-improve` when the task crosses this child's boundary.
+- Chain to `frontend`, `backend`, `quality-assurance`, `code-documentation`, `cloud`, `prs`, `skills-management` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 
@@ -37,9 +36,12 @@ Use live external skills when they are installed. If one is missing, report the 
 
 - `codex-loop`: Run Codex PRD/story loops with one fresh subagent per story. Install: `python scripts/install-external-skills.py --skill codex-loop --agent codex`.
 - `claude-loop`: Run Claude PRD/story loops with one fresh subagent per story. Install: `python scripts/install-external-skills.py --skill claude-loop --agent codex`.
+- `ralph`: Use Ralph-style autonomous execution loops for scoped implementation plans. Install: `python scripts/install-external-skills.py --skill ralph --agent codex`.
 - `no-mistakes`: Gate explicit ship, push, PR, or validate flows through the no-mistakes pipeline. Install: `python scripts/install-external-skills.py --skill no-mistakes --agent codex`.
+- `clous-sdk-release`: Use Clous-owned SDK release guidance for package and release workflows. Install: `python scripts/install-external-skills.py --skill clous-sdk-release --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).
 
 ## Shared Map
 

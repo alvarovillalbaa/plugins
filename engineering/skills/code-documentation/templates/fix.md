@@ -2,7 +2,7 @@
 
 **Date:** YYYY-MM-DD
 **Tags:** [domain, error-type]
-**Location:** `fixes/YYYY/YYYY-MM-DD/[slug].md`
+**Location:** `fixes/YYYY/MM-DD/[slug].md`
 
 ## Symptom
 

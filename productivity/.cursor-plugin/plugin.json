@@ -1,0 +1,17 @@
+{
+  "name": "productivity",
+  "displayName": "Productivity",
+  "version": "3.0.0",
+  "description": "Reporting, research, review, documentation drift, and operating cadence workflows",
+  "author": {
+    "name": "Agent Company",
+    "email": "alvarovillalbaa@icloud.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "productivity",
+    "research",
+    "review",
+    "reporting"
+  ]
+}

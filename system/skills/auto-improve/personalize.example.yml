@@ -1,0 +1,10 @@
+company:
+  name: "{{COMPANY_NAME}}"
+  website: "{{COMPANY_WEBSITE}}"
+  tone: "{{COMPANY_TONE}}"
+user:
+  name: "{{USER_NAME}}"
+  role: "{{USER_ROLE}}"
+workflow:
+  preferred_agent: "{{PREFERRED_AGENT}}"
+  default_contribution_mode: "patch"

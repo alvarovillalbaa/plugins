@@ -1,0 +1,18 @@
+{
+  "name": "system",
+  "displayName": "System",
+  "version": "3.0.0",
+  "description": "Skills, memory, knowledge, learning, brain ingestion, personalization, and loop workflows",
+  "author": {
+    "name": "Agent Company",
+    "email": "alvarovillalbaa@icloud.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "system",
+    "skills",
+    "memory",
+    "learning",
+    "loops"
+  ]
+}

@@ -6,44 +6,50 @@
   },
   "metadata": {
     "description": "Department plugins for a multi-platform agent company spanning Claude, Codex, and Cursor.",
-    "version": "2.0.0"
+    "version": "3.0.0"
   },
   "plugins": [
     {
-      "name": "learning-system",
-      "source": "./learning-system",
-      "description": "Auto-improve, memory management, second brain, and durable learning workflows.",
-      "version": "2.0.0"
+      "name": "system",
+      "source": "./system",
+      "description": "Skills, memory, knowledge, learning, brain ingestion, personalization, and loop workflows.",
+      "version": "3.0.0"
     },
     {
       "name": "marketing",
       "source": "./marketing",
-      "description": "Content creation, SEO/GEO, social media, slides, and video workflows.",
-      "version": "2.0.0"
+      "description": "Content, discoverability, social, visual, slides, and video workflows.",
+      "version": "3.0.0"
     },
     {
       "name": "sales",
       "source": "./sales",
-      "description": "Prospecting, outreach, GTM, and revenue-support workflows.",
-      "version": "2.0.0"
+      "description": "GTM, sales pipeline, outreach, launches, virality, and growth workflows.",
+      "version": "3.0.0"
     },
     {
       "name": "engineering",
       "source": "./engineering",
-      "description": "Architecture, implementation, QA, cloud, security, and engineering documentation workflows.",
-      "version": "2.0.0"
+      "description": "Architecture, implementation, QA, cloud, pentest, PR, and documentation workflows.",
+      "version": "3.0.0"
     },
     {
       "name": "product",
       "source": "./product",
-      "description": "Product strategy, product development, and roadmap support workflows.",
-      "version": "2.0.0"
+      "description": "Product development, product marketing, and product design workflows.",
+      "version": "3.0.0"
     },
     {
-      "name": "business-ops",
-      "source": "./business-ops",
-      "description": "Finance, research, reporting, review, and operating cadence workflows.",
-      "version": "2.0.0"
+      "name": "finances",
+      "source": "./finances",
+      "description": "Finance operations, planning, reconciliation, taxes, fundraising, close, and analysis workflows.",
+      "version": "3.0.0"
+    },
+    {
+      "name": "productivity",
+      "source": "./productivity",
+      "description": "Reporting, research, review, documentation drift, and operating cadence workflows.",
+      "version": "3.0.0"
     }
   ]
 }

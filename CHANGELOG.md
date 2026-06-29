@@ -2,20 +2,43 @@
 
 ## [Unreleased]
 
-### Added (comprehensive plan)
+### Added
 
-- **Canonical skill layout** – Every skill has `references.md`; fundraising has full structure (references/, templates/, examples/). See docs/spec/skills.md for the standard.
-- **SKILL.md template** – Overview, When to Use, Inputs, Outputs, Core Process, Using Supporting Resources, Example Workflow, Next Steps, Validation checklist, Legal. All skills have `version: 1.0.0` in frontmatter; names aligned to folder (e.g. video-generation, code-slides).
-- **suite-router skill** – Maps intent (content, slides, video, fundraising, finance, sales, outreach, research, competitors, social) to recommended command, agent, or skill. UserPromptSubmit hook uses this mapping for suggestions.
-- **Agents** – Scope line and skills table per agent; README agents index (Agent | Scope | Skills).
-- **Commands** – Standardised “Use skill: X — path” and argument-hint/allowed-tools; README command table with Skill(s) column.
-- **Install/update** – README install table (Claude plugin, npx skills add, OpenClaw) with Update column; scripts/update.sh to auto-detect and run the right update.
-- **Hooks** – UserPromptSubmit references suite-router mapping; README documents each hook purpose.
+- **Source/runtime skill metadata** – Every active skill now has `.skillmeta.yml` provenance for `alvarovillalbaa/plugins`, overlay-only personalization policy, upstream-safe path rules, and quality gates.
+- **Skill personalization tooling** – `scripts/skillctl.py` now supports structure checks, metadata generation/checks, first-use overlay initialization, continuous overlay updates, rendering, diff classification, installs, and patch-bundle proposals.
+- **Department structure contract** – Department plugins now include `mcp.json` and `rules/`, with hooks/scripts owned by skills or root tooling only.
 
 ### Changed
 
-- README: Architecture shows per-skill layout; Hooks section describes suite-router and each hook.
-- QUICKSTART: One line per install method; Update points to README.
+- **Validation** – `scripts/validate_skills.py` now runs full metadata,
+  structure, and conflict checks; `scripts/validate-plugin.sh` supports both
+  source-root and department-root validation; CI includes `skill-pr-check.yml`.
+- **Hook/script ownership** – External-skill checks, memory error capture, and autoresearch runner moved from plugin-level folders into owning skill folders.
+
+### Added (comprehensive plan)
+
+- **Canonical skill layout** – Active skills are self-contained folders with
+  `SKILL.md` plus `examples/`, `hooks/`, `references/`, `scripts/`, and
+  `templates/` placeholders or content.
+- **Router taxonomy** – Parent skills stay installable as compact routers, with
+  child skills and `skills-chaining-map.md` owning routing and external-chain
+  precedence.
+- **Agents** – Department agents are small orchestrators with scope, primary
+  skills, commands, workflow, and output contract.
+- **Commands** – Command files declare stable workflow entry points with
+  frontmatter names, argument hints, allowed tools, and explicit skill routing.
+- **Install/update** – README and quickstart docs describe department plugin
+  installs, source-tracked skill installs, personalization overlays, and
+  update scripts.
+- **Hooks** – Runtime hook adapters live inside owning skills; department
+  plugin roots do not own active `hooks/` or `scripts/` directories.
+
+### Changed
+
+- README and reference docs now describe the department-plugin layout,
+  source/runtime model, external skill chains, and validation commands.
+- QUICKSTART documents department installs, source-tracked installs,
+  personalization overlays, validation, and updates.
 
 ---
 
@@ -25,13 +48,13 @@
 
 - **Plugin manifest** – `.claude-plugin/plugin.json` for Claude Code discovery.
 - **README** – Features, skills/commands/agents tables, install (Claude plugin, npx skills add, OpenClaw), configuration, quick start, update instructions.
-- **Skills** – All skills use canonical layout with `SKILL.md` (frontmatter + instructions). Migrated from `v1/instruction.j2` where applicable: fundraising, competitors, industry-discovery, message-outreach, prospect-research. Filled minimal skills: accounting-reconciliation, briefings, financial-modeling, linkedin-articles, linkedin-engagement. Placeholders: email-inbox-management, x-engagement. Optional references for code-slides and video-generation.
+- **Skills** – All skills use canonical layout with `SKILL.md` (frontmatter + instructions). Migrated from `v1/instruction.j2` where applicable: fundraising, competitors, industry-discovery, outreach, prospect. Filled minimal skills: accounting-reconciliation, briefings, financial-modeling, linkedin-articles, linkedin-engagement. Placeholders: email-inbox-management, x-engagement. Optional references for slides and video.
 - **Agents** – content-manager, financial-manager, sales-manager, social-media-manager filled as multi-skill orchestrators with workflow and skill mapping.
-- **Commands** – video, slides, fundraise, content-brief, outreach, help (namespaced as `/agent-suite:*`).
-- **Hooks** – Generalized for agent-suite (no Clous/HR-specific prompts); Bash guard, JSON validation, UserPromptSubmit/PostToolUse/Stop/SubagentStop/SessionStart/SessionEnd/PreCompact.
-- **Docs** – QUICKSTART updated for agent-suite commands and agents; templates/settings-template.md; scripts/update-from-upstream.sh.
-- **Validation** – scripts/validate-plugin.sh updated for agent-suite (no hreng- prefix; references/templates/examples optional).
+- **Commands** – Department command files remain the stable workflow entry points.
+- **Hooks** – Runtime hooks are explicit skill-owned adapters; active plugin-root hooks are no longer part of the source layout.
+- **Docs** – QUICKSTART updated for department plugins, source-tracked installs, and personalization overlays.
+- **Validation** – scripts/validate-plugin.sh updated for department plugin structure; references/templates/examples remain optional.
 
 ### Changed
 
-- session-start.sh now also loads `.claude/agent-suite.local.md`.
+- session-start.sh now loads repo-local agent-company context files when present.

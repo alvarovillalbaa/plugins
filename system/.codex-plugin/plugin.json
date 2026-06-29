@@ -1,0 +1,6 @@
+{
+  "name": "system",
+  "version": "3.0.0",
+  "description": "Skills, memory, knowledge, learning, brain ingestion, personalization, and loop workflows for Codex.",
+  "skills": "./skills/"
+}

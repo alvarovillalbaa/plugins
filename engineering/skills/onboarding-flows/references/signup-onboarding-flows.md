@@ -5,8 +5,8 @@ Use this reference when implementing browser-facing signup, trial, waitlist, ver
 This file translates CRO and activation strategy into concrete frontend requirements: states, component rules, validation behavior, instrumentation, accessibility, and mobile behavior.
 
 Pair with:
-- `../../../product/skills/product-development/references/signup-flow-cro.md` for flow strategy and field decisions
-- `../../../product/skills/product-development/references/onboarding-cro.md` for activation and onboarding design
+- `../../../../product/skills/experiments/references/signup-flow-cro.md` for flow strategy and field decisions
+- `../../../../product/skills/experiments/references/onboarding-cro.md` for activation and onboarding design
 
 ---
 
@@ -197,4 +197,4 @@ Avoid monolithic "signup wizard" components that mix layout, validation, analyti
 ## Handoffs
 
 - If the open question is which fields or steps should exist, route back to the product skill references before coding.
-- If the problem is pre-click page messaging or CTA promise mismatch, route to `../../../product/skills/product-marketing/SKILL.md`.
+- If the problem is pre-click page messaging or CTA promise mismatch, route to `../../../../product/skills/product-marketing/SKILL.md`.

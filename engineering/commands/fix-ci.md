@@ -2,6 +2,7 @@
 name: fix-ci
 description: "Identify failing CI checks for the current branch, diagnose each failure, and apply targeted fixes — then re-watch CI to confirm resolution."
 argument-hint: "[--max-iterations N] [--check <check-name>]"
+allowed-tools: [Agent, Bash, Read, Grep]
 hide-from-slash-command-tool: "true"
 ---
 
@@ -43,5 +44,5 @@ All checks are PASS or INFRA (where INFRA items have been surfaced to the human)
 
 ## Reference
 
-- CI feedback loop patterns: `skills/agentic-development/references/harness-engineering.md` § 5
-- ci-watcher agent: `skills/agentic-development/references/agents/ci-watcher.yaml`
+- CI feedback loop patterns: `skills/agent-harness/references/harness-engineering.md` § 5
+- ci-watcher agent: `skills/agent-harness/references/agents/ci-watcher.yaml`

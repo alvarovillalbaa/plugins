@@ -1,48 +1,52 @@
 ---
 name: product-marketing
-description: >-
-  Router for positioning/messaging, CRO, conversion copywriting, content-led
-  marketing, lead magnets, and buyer psychology.
+description: Router for product marketing, CRO, content-led growth, lead magnets, and buyer psychology.
 ---
 
 # Product Marketing Router
 
-This parent is a router. Select the narrowest child and load that child before using lane-specific assets.
-
 ## Children
 
-- [`positioning-messaging`](../positioning-messaging/SKILL.md) - positioning, messaging, ICP/persona framing, differentiation, objection handling, and proof-point structure
-- [`cro`](../cro/SKILL.md) - conversion-rate optimization for pages and funnels, page diagnostics, CTA promises, proof placement, and test ideas
-- [`conversion-copywriting`](../conversion-copywriting/SKILL.md) - market-facing conversion copy tied to positioning, buyer psychology, landing pages, objections, and proof
-- [`content-led-marketing`](../content-led-marketing/SKILL.md) - content strategy, editorial themes, distribution logic, thought leadership systems, and demand-generation content plans
-- [`lead-magnets`](../lead-magnets/SKILL.md) - lead magnet strategy, survey/report assets, downloadable offers, gated assets, and nurture entry points
-- [`buyer-psychology`](../buyer-psychology/SKILL.md) - buyer psychology, motivation mapping, emotional triggers, objection logic, decision criteria, and persuasion risk review
+- [`cro`](../cro/SKILL.md) - Cro work.
+- [`content-led`](../content-led/SKILL.md) - Content Led work.
+- [`lead-magnets`](../lead-magnets/SKILL.md) - Lead Magnets work.
+- [`buyer-psychology`](../buyer-psychology/SKILL.md) - Buyer Psychology work.
 
 ## Route
 
-| User asks for | Use |
+| Request | Use |
 | --- | --- |
-| positioning, messaging, ICP/persona framing, differentiation, objection handling, and proof-point structure | [`positioning-messaging`](../positioning-messaging/SKILL.md) |
-| conversion-rate optimization for pages and funnels, page diagnostics, CTA promises, proof placement, and test ideas | [`cro`](../cro/SKILL.md) |
-| market-facing conversion copy tied to positioning, buyer psychology, landing pages, objections, and proof | [`conversion-copywriting`](../conversion-copywriting/SKILL.md) |
-| content strategy, editorial themes, distribution logic, thought leadership systems, and demand-generation content plans | [`content-led-marketing`](../content-led-marketing/SKILL.md) |
-| lead magnet strategy, survey/report assets, downloadable offers, gated assets, and nurture entry points | [`lead-magnets`](../lead-magnets/SKILL.md) |
-| buyer psychology, motivation mapping, emotional triggers, objection logic, decision criteria, and persuasion risk review | [`buyer-psychology`](../buyer-psychology/SKILL.md) |
+| cro requests | [`cro`](../cro/SKILL.md) |
+| content led requests | [`content-led`](../content-led/SKILL.md) |
+| lead magnets requests | [`lead-magnets`](../lead-magnets/SKILL.md) |
+| buyer psychology requests | [`buyer-psychology`](../buyer-psychology/SKILL.md) |
 
 ## Chain Rules
 
-- `content-writing`
-- `seo-and-geo`
+Chain to these skills when the task crosses this skill's boundary:
+
+- `content`
+- `discoverability`
 - `go-to-market`
 - `frontend`
 - `reporting`
 
 ## Operating Rules
 
-- Keep this `SKILL.md` small and routing-focused.
-- Do not recreate the old broad parent behavior here; put execution depth in child assets.
-- If no child matches, handle only shared methodology/default workflow or document the missing lane.
-- Every child and parent skill must keep `examples/`, `hooks/`, `references/`, `scripts/`, and `templates/`.
+- Keep this parent compact; use children for lane-specific execution depth.
+- Prefer the child skill's bundled resources when a child owns the request.
+- Preserve local skill rules, repo facts, safety gates, product/channel constraints, and explicit local exceptions over external guidance when they conflict.
+
+## External Skill Chains
+
+Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
+
+- `hallmark`: Audit, redesign, study, or build UI with anti-AI-slop design constraints. Install: `python scripts/install-external-skills.py --skill hallmark --agent codex`.
+- `browserbase-competitor-analysis`: Use browser-backed competitor analysis workflows for market and SEO comparisons. Install: `python scripts/install-external-skills.py --skill browserbase-competitor-analysis --agent codex`.
+- `office-hours`: Use startup office-hours guidance for GTM, early customer, and product-market questions. Install: `python scripts/install-external-skills.py --skill office-hours --agent codex`.
+
+Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).
 
 ## Shared Map
 

@@ -1,6 +1,6 @@
 {
   "name": "engineering",
-  "version": "2.0.0",
-  "description": "Architecture, implementation, QA, security, and documentation workflows for Codex.",
+  "version": "3.0.0",
+  "description": "Architecture, implementation, QA, cloud, pentest, PR, and engineering documentation workflows for Codex.",
   "skills": "./skills/"
 }

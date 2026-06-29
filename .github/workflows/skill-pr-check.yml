@@ -1,0 +1,41 @@
+name: Skill PR check
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/skill-pr-check.yml"
+      - "scripts/**"
+      - "schemas/**"
+      - "system/**"
+      - "marketing/**"
+      - "sales/**"
+      - "engineering/**"
+      - "product/**"
+      - "finances/**"
+      - "productivity/**"
+      - "references/docs/**"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate skill structure and metadata
+        run: |
+          python3 scripts/skillctl.py structure check --root .
+          python3 scripts/skillctl.py meta check --root . --require-all
+          python3 scripts/skillctl.py conflicts check --root .
+          python3 scripts/validate_skills.py .
+
+      - name: Classify changed files
+        run: |
+          python3 scripts/skillctl.py diff-classify \
+            --base "origin/${{ github.base_ref }}" \
+            --head HEAD \
+            --fail-on-private

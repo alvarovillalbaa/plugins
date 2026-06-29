@@ -2,14 +2,14 @@
 name: review-pr
 description: "Run a comprehensive multi-lens PR review. Covers code quality, silent failures, test coverage, and comment accuracy. Defaults to the current git diff; accepts a branch, PR number, or file list."
 argument-hint: "[branch | PR# | file-list] [--lens code|errors|tests|comments|types]"
-allowed-tools: ["Bash", "Read", "Glob", "Grep", "Task"]
+allowed-tools: ["Bash", "Read", "Glob", "Grep", "Agent"]
 ---
 
 # PR Review
 
 Use agent: **pr-reviewer** — `agents/pr-reviewer.md`
 
-Use skill: **pr-management** — `skills/pr-management/SKILL.md`
+Use skill: **prs** — `skills/prs/SKILL.md`
 
 ## Scope resolution
 
@@ -28,9 +28,9 @@ Use skill: **pr-management** — `skills/pr-management/SKILL.md`
    - `comments` — if new or modified comments or docs in diff
    - `types` — if new types or data models in diff (typed languages only)
 
-2. **Run each lens** per `skills/pr-management/references/review-specializations.md`.
+2. **Run each lens** per `skills/prs/references/review-specializations.md`.
 
-3. **For diffs ≥ 200 lines changed:** run the adversarial pass per `skills/agentic-development/references/reviews-and-comments.md`.
+3. **For diffs ≥ 200 lines changed:** run the adversarial pass per `skills/architecture/references/reviews-and-comments.md`.
 
 4. **Synthesize** into a single report:
 

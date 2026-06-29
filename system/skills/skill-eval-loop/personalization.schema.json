@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Skill Eval Loop Personalization",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "company": { "type": "object" },
+    "user": { "type": "object" },
+    "workflow": { "type": "object" }
+  }
+}

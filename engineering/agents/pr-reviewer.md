@@ -17,7 +17,7 @@ Use this agent when the user is preparing to open a PR, wants pre-merge validati
 
 ## Primary skill
 
-`pr-management` — read `skills/pr-management/SKILL.md` and `skills/pr-management/references/review-specializations.md`.
+`prs` — read `skills/prs/SKILL.md` and `skills/prs/references/review-specializations.md`.
 
 ## Workflow
 

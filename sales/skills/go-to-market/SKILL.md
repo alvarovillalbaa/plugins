@@ -1,54 +1,52 @@
 ---
 name: go-to-market
-description: >-
-  Router for first-customer GTM, launch GTM, growth experimentation, technical
-  sales, revenue intelligence, revenue ops, customer growth/retention, and
-  commercial docs.
+description: Router for GTM strategy, first customers, technical sales, and revenue intelligence.
 ---
 
 # Go To Market Router
 
-This parent is a router. Select the narrowest child and load that child before using lane-specific assets.
-
 ## Children
 
-- [`first-customer-gtm`](../first-customer-gtm/SKILL.md) - first-customer selling, early wedge selection, founder-led sales, design partners, and first proof loops
-- [`launch-gtm`](../launch-gtm/SKILL.md) - launch GTM planning, announcement motion, campaign sequencing, launch channels, and launch retrospectives
-- [`growth-experimentation`](../growth-experimentation/SKILL.md) - growth experiments, channel tests, scoring, weekly growth loops, pacing alerts, and experiment readouts
-- [`technical-sales`](../technical-sales/SKILL.md) - technical sales motions, solution fit, discovery-to-demo translation, technical objections, and proof-of-concept framing
-- [`revenue-intelligence`](../revenue-intelligence/SKILL.md) - revenue intelligence, account signals, pipeline risk, opportunity analysis, forecast inputs, and buying committee insight
-- [`revenue-ops`](../revenue-ops/SKILL.md) - revenue operations, CRM stages, lifecycle definitions, handoff rules, pipeline hygiene, and operating metrics
-- [`customer-growth-retention`](../customer-growth-retention/SKILL.md) - customer growth, retention, expansion, churn-risk review, lifecycle nudges, and customer success GTM
-- [`commercial-docs`](../commercial-docs/SKILL.md) - commercial documents, sales one-pagers, objection docs, mutual action plans, security questionnaires, and proposal support
+- [`first-customers`](../first-customers/SKILL.md) - First Customers work.
+- [`technical-sales`](../technical-sales/SKILL.md) - Technical Sales work.
+- [`revenue-intelligence`](../revenue-intelligence/SKILL.md) - Revenue Intelligence work.
 
 ## Route
 
-| User asks for | Use |
+| Request | Use |
 | --- | --- |
-| first-customer selling, early wedge selection, founder-led sales, design partners, and first proof loops | [`first-customer-gtm`](../first-customer-gtm/SKILL.md) |
-| launch GTM planning, announcement motion, campaign sequencing, launch channels, and launch retrospectives | [`launch-gtm`](../launch-gtm/SKILL.md) |
-| growth experiments, channel tests, scoring, weekly growth loops, pacing alerts, and experiment readouts | [`growth-experimentation`](../growth-experimentation/SKILL.md) |
-| technical sales motions, solution fit, discovery-to-demo translation, technical objections, and proof-of-concept framing | [`technical-sales`](../technical-sales/SKILL.md) |
-| revenue intelligence, account signals, pipeline risk, opportunity analysis, forecast inputs, and buying committee insight | [`revenue-intelligence`](../revenue-intelligence/SKILL.md) |
-| revenue operations, CRM stages, lifecycle definitions, handoff rules, pipeline hygiene, and operating metrics | [`revenue-ops`](../revenue-ops/SKILL.md) |
-| customer growth, retention, expansion, churn-risk review, lifecycle nudges, and customer success GTM | [`customer-growth-retention`](../customer-growth-retention/SKILL.md) |
-| commercial documents, sales one-pagers, objection docs, mutual action plans, security questionnaires, and proposal support | [`commercial-docs`](../commercial-docs/SKILL.md) |
+| first customers requests | [`first-customers`](../first-customers/SKILL.md) |
+| technical sales requests | [`technical-sales`](../technical-sales/SKILL.md) |
+| revenue intelligence requests | [`revenue-intelligence`](../revenue-intelligence/SKILL.md) |
 
 ## Chain Rules
 
+Chain to these skills when the task crosses this skill's boundary:
+
 - `product-marketing`
 - `product-development`
-- `message-outreach`
+- `outreach`
 - `sales-pipeline`
-- `prospect-research`
 - `research`
 
 ## Operating Rules
 
-- Keep this `SKILL.md` small and routing-focused.
-- Do not recreate the old broad parent behavior here; put execution depth in child assets.
-- If no child matches, handle only shared methodology/default workflow or document the missing lane.
-- Every child and parent skill must keep `examples/`, `hooks/`, `references/`, `scripts/`, and `templates/`.
+- Keep this parent compact; use children for lane-specific execution depth.
+- Prefer the child skill's bundled resources when a child owns the request.
+- Preserve local skill rules, repo facts, safety gates, product/channel constraints, and explicit local exceptions over external guidance when they conflict.
+
+## External Skill Chains
+
+Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
+
+- `last30days`: Use recent-30-days research guidance when freshness is part of the task. Install: `python scripts/install-external-skills.py --skill last30days --agent codex`.
+- `office-hours`: Use startup office-hours guidance for GTM, early customer, and product-market questions. Install: `python scripts/install-external-skills.py --skill office-hours --agent codex`.
+- `browserbase-company-research`: Use browser-backed company research workflows for account and market context. Install: `python scripts/install-external-skills.py --skill browserbase-company-research --agent codex`.
+- `browserbase-competitor-analysis`: Use browser-backed competitor analysis workflows for market and SEO comparisons. Install: `python scripts/install-external-skills.py --skill browserbase-competitor-analysis --agent codex`.
+- `browserbase-event-prospecting`: Use browser-backed event prospecting workflows for GTM research. Install: `python scripts/install-external-skills.py --skill browserbase-event-prospecting --agent codex`.
+
+Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).
 
 ## Shared Map
 

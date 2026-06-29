@@ -9,7 +9,7 @@ Continuous docs are maintained as part of normal work. They do not wait for a sp
 ### Location
 
 ```text
-logs/YYYY/YYYY-MM-DD/*.md
+logs/YYYY/MM-DD/*.md
 ```
 
 ### Rule
@@ -57,7 +57,7 @@ Or use `skills/code-documentation/scripts/find-docs.sh log`.
 ### Location
 
 ```text
-lessons/YYYY/YYYY-MM-DD/*.md
+lessons/YYYY/MM-DD/*.md
 ```
 
 ### Use when
@@ -73,7 +73,7 @@ Keep lessons concise, evidence-backed, and action-shaping.
 ### Location
 
 ```text
-items/YYYY/YYYY-MM-DD/*.md
+facts/YYYY/MM-DD/*.md
 ```
 
 ### Use when
@@ -82,14 +82,14 @@ items/YYYY/YYYY-MM-DD/*.md
 - future agents or engineers would make wrong assumptions without it
 - the fact is not cleanly derivable from code alone
 
-Do not use `items/` for transient requests or secrets.
+Do not use `facts/` for transient requests or secrets.
 
 ## Fixes
 
 ### Location
 
 ```text
-fixes/YYYY/YYYY-MM-DD/*.md
+fixes/YYYY/MM-DD/*.md
 ```
 
 ### Use when
@@ -105,7 +105,7 @@ Each fix should capture the symptom, root cause, exact fix, and prevention note 
 ### Location
 
 ```text
-plans/YYYY/YYYY-MM-DD/*.md
+plans/YYYY/MM-DD/*.md
 ```
 
 Plans are historical implementation artifacts. They explain how a specific change should be executed, tested, and verified at that time.
@@ -117,7 +117,7 @@ If the rule becomes durable and repo-wide, promote it into `PLAN.md`, `SPEC.md`,
 ### Location
 
 ```text
-audits/YYYY/YYYY-MM-DD/*.md
+audits/YYYY/MM-DD/*.md
 ```
 
 Use for:
@@ -136,7 +136,7 @@ These are historical by design. They should not become the only place where a la
 ### Location
 
 ```text
-raw/YYYY/YYYY-MM-DD/
+raw/YYYY/MM-DD/
 ```
 
 `raw/` is intake, not the final home.
@@ -151,7 +151,7 @@ Use it for:
 After ingest:
 
 - promote durable knowledge into `knowledge/`, `references/`, `cookbook/`, `runbooks/`, or another canonical living destination
-- clear or archive `raw/` according to the repo's second-brain rules
+- clear or archive `raw/` according to the repo's brain rules
 
 ## Living docs
 
@@ -189,7 +189,7 @@ This applies to:
 Two changelog audiences still exist:
 
 - `CHANGELOG.md` for user-facing or package-facing release history
-- `audits/YYYY/YYYY-MM-DD/release-notes.md` or PR descriptions for engineering release notes
+- `audits/YYYY/MM-DD/release-notes.md` or PR descriptions for engineering release notes
 
 If `CHANGELOG.md` is treated as a living repo doc, add `Last updated: YYYY-MM-DD` near the top.
 

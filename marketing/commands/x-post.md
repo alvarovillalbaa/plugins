@@ -5,10 +5,10 @@ argument-hint: "[topic, idea, or draft to improve]"
 allowed-tools: [Read, Write, Bash, AskUserQuestion, Skill]
 ---
 
-Use skill: **social-media-management** — `skills/social-media-management/SKILL.md`.
-Reference: `skills/social-media-management/references/x-writing-guidelines.md`
-Reference: `skills/social-media-management/references/x-post-formats.md`
-Reference: `skills/social-media-management/references/x-research-workflow.md`
+Use skill: **x-posts** — `skills/x-posts/SKILL.md`.
+Reference: `skills/x-posts/references/x-writing-guidelines.md`
+Reference: `skills/x-posts/references/x-post-formats.md`
+Reference: `skills/x-posts/references/x-research-workflow.md`
 
 1. **Clarify the brief** — If the input is thin, ask for: the core insight, desired outcome (reach / saves / replies / clicks), and audience posture. Use `templates/x-post-brief.md` as the scoping guide.
 2. **Select the format** — Match goal to format using `x-post-formats.md`. Default to single post unless the topic needs a thread.

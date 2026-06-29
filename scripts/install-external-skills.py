@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -12,6 +13,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_REGISTRY = ROOT / "references" / "external-skills.yaml"
+DEFAULT_CHAIN_MAP = ROOT / "skills-chaining-map.md"
+BACKTICK_REF_RE = re.compile(r"`([^`]+)`")
 
 
 @dataclass(frozen=True)
@@ -72,21 +75,71 @@ def load_registry(path: Path = DEFAULT_REGISTRY) -> dict[str, ExternalSkill]:
     return parsed
 
 
+def chain_skill_ids(path: Path, chain_ids: list[str]) -> list[str]:
+    """Return installable ids named by the External Chains table for internal skills."""
+    if not chain_ids:
+        return []
+    if not path.exists():
+        raise FileNotFoundError(f"chain map not found: {path}")
+
+    wanted = set(chain_ids)
+    found: set[str] = set()
+    selected: list[str] = []
+    in_external = False
+
+    for raw in path.read_text(encoding="utf-8").splitlines():
+        if raw.startswith("## External Chains"):
+            in_external = True
+            continue
+        if raw.startswith("## ") and not raw.startswith("## External Chains"):
+            if in_external:
+                break
+            continue
+        if not in_external or not raw.startswith("| `"):
+            continue
+
+        cells = [cell.strip() for cell in raw.strip().strip("|").split("|")]
+        if len(cells) < 2:
+            continue
+        internal_names = BACKTICK_REF_RE.findall(cells[0])
+        if not any(name in wanted for name in internal_names):
+            continue
+        found.update(name for name in internal_names if name in wanted)
+        selected.extend(BACKTICK_REF_RE.findall(cells[1]))
+
+    missing = sorted(wanted - found)
+    if missing:
+        raise ValueError(f"unknown internal chain(s): {', '.join(missing)}")
+    return list(dict.fromkeys(selected))
+
+
 def selected_entries(
-    registry: dict[str, ExternalSkill], all_skills: bool, skill_ids: list[str]
+    registry: dict[str, ExternalSkill],
+    all_skills: bool,
+    skill_ids: list[str],
+    chain_ids: list[str] | None = None,
+    chain_map: Path = DEFAULT_CHAIN_MAP,
 ) -> list[ExternalSkill]:
     if all_skills:
-        if skill_ids:
-            raise ValueError("use either --all or --skill, not both")
+        if skill_ids or chain_ids:
+            raise ValueError("use --all without --skill or --chain")
         return [registry[key] for key in sorted(registry)]
-    if not skill_ids:
-        raise ValueError("select at least one skill with --skill or use --all")
 
-    unknown = [skill_id for skill_id in skill_ids if skill_id not in registry]
+    selected_ids = list(skill_ids)
+    selected_ids.extend(
+        skill_id
+        for skill_id in chain_skill_ids(chain_map, chain_ids or [])
+        if skill_id in registry
+    )
+    selected_ids = list(dict.fromkeys(selected_ids))
+    if not selected_ids:
+        raise ValueError("select at least one skill with --skill, --chain, or use --all")
+
+    unknown = [skill_id for skill_id in selected_ids if skill_id not in registry]
     if unknown:
         known = ", ".join(sorted(registry))
         raise ValueError(f"unknown external skill(s): {', '.join(unknown)}\nknown: {known}")
-    return [registry[skill_id] for skill_id in skill_ids]
+    return [registry[skill_id] for skill_id in selected_ids]
 
 
 def target_root(agent: str, dest: str | None) -> Path:
@@ -166,6 +219,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--registry", default=str(DEFAULT_REGISTRY), help="Path to external-skills.yaml")
     parser.add_argument("--all", action="store_true", help="Install every registry entry")
     parser.add_argument("--skill", action="append", default=[], help="External skill id to install")
+    parser.add_argument("--chain", action="append", default=[], help="Internal skill id whose external chain should be installed")
+    parser.add_argument("--chain-map", default=str(DEFAULT_CHAIN_MAP), help="Path to skills-chaining-map.md")
     parser.add_argument(
         "--agent",
         choices=["codex", "claude", "cursor", "project"],
@@ -184,7 +239,13 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         registry = load_registry(Path(args.registry).expanduser().resolve())
-        skills = selected_entries(registry, args.all, args.skill)
+        skills = selected_entries(
+            registry,
+            args.all,
+            args.skill,
+            args.chain,
+            Path(args.chain_map).expanduser().resolve(),
+        )
         root = target_root(args.agent, args.dest)
         for skill in skills:
             print(install_skill(skill, root, dry_run=args.dry_run, force=args.force))

@@ -1,115 +1,46 @@
 ---
 name: sales-pipeline
-description: Sales pipeline skill for CRM hygiene, stage review, deal inspection, forecast calls, pipeline coverage analysis, and next-best actions. Use when the user has pipeline exports, CRM notes, or deal lists and needs a structured view of deal health, forecast confidence, stage bottlenecks, stale opportunities, and concrete actions to improve pipeline quality or conversion.
-metadata:
-  short-description: Inspect pipeline health, forecast, and deal actions
+description: Router for pipeline operations, commercial documents, collateral, and deal health work.
 ---
 
-# Sales Pipeline
+# Sales Pipeline Router
 
-Turn pipeline data into a view of what is real, what is at risk, and what should happen next.
+## Children
 
-## Use this skill for
+- [`commercial-docs`](../commercial-docs/SKILL.md) - Commercial Docs work.
+- [`collateral`](../collateral/SKILL.md) - Collateral work.
 
-- pipeline health reviews
-- weekly forecast calls
-- deal inspection and next-step planning
-- CRM cleanup and stage hygiene
-- coverage and conversion analysis
-- diagnosing why opportunities are stalling or slipping
+## Route
 
-## Core model
+| Request | Use |
+| --- | --- |
+| commercial docs requests | [`commercial-docs`](../commercial-docs/SKILL.md) |
+| collateral requests | [`collateral`](../collateral/SKILL.md) |
 
-Analyze pipeline at three levels:
+## Chain Rules
 
-- **Pipeline level**: coverage, stage mix, aging, conversion, forecast confidence
-- **Stage level**: bottlenecks, drop-off, cycle time, definition drift
-- **Deal level**: champion, pain, timeline, next step, risk, and close realism
+Chain to these skills when the task crosses this skill's boundary:
 
-## Default output structure
+- `go-to-market`
+- `outreach`
+- `growth`
 
-### 1. Pipeline snapshot
+## Operating Rules
 
-- total pipeline
-- pipeline by stage
-- pipeline by close period
-- coverage versus target if available
+- Keep this parent compact; use children for lane-specific execution depth.
+- Prefer the child skill's bundled resources when a child owns the request.
+- Preserve local skill rules, repo facts, safety gates, product/channel constraints, and explicit local exceptions over external guidance when they conflict.
 
-### 2. Forecast view
+## External Skill Chains
 
-- committed
-- best case
-- upside
-- excluded or unforecastable pipeline
+Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-For each bucket, explain why the confidence level is justified.
+- `clous-object-management`: Use Clous-owned object management guidance for platform object workflows. Install: `python scripts/install-external-skills.py --skill clous-object-management --agent codex`.
+- `clous-platform-operation`: Use Clous-owned platform operation guidance for runtime and workspace operations. Install: `python scripts/install-external-skills.py --skill clous-platform-operation --agent codex`.
 
-### 3. Stage health
+Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
+Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).
 
-- volume by stage
-- average age in stage
-- stale opportunities
-- conversion or exit pattern
-- where stage definitions appear weak or inconsistently applied
+## Shared Map
 
-### 4. Deal risks
-
-- top deals at risk
-- slip risk
-- missing next step
-- missing buying signal, champion, budget, or decision path
-
-### 5. Recommended actions
-
-- pipeline cleanup
-- deal-level action
-- manager inspection point
-- process fix
-
-## Forecast rules
-
-- Separate pipeline amount from forecast confidence.
-- Do not let CRM stage alone determine forecast category.
-- Flag any deal with no dated next step as low confidence.
-- Flag stale deals explicitly; do not leave them hidden in stage totals.
-- Name what evidence would move a deal up or down in confidence.
-
-## Default hygiene checks
-
-Run these checks even if the user does not ask for them explicitly:
-
-- missing next meeting or next action
-- close date in the past
-- opportunity aged beyond normal for its stage
-- no recent activity
-- stage does not match note history
-- no identified champion or decision maker
-- no clear reason to buy now
-
-## Stage logic
-
-If the user does not supply stage definitions, infer a simple progression such as:
-
-- discovery
-- qualification
-- evaluation
-- proposal
-- negotiation
-- closed won or lost
-
-Then state that the stage model was inferred.
-
-## Failure modes to avoid
-
-- optimistic forecast unsupported by evidence
-- summarizing stage totals without inspecting deal quality
-- confusing activity with progress
-- leaving stale deals inside headline numbers
-- recommending actions that are too generic to execute
-
-## Quality bar
-
-- Forecast buckets are evidence-based.
-- Stale or weak deals are visible.
-- Recommended actions map to specific deals, stages, or process problems.
-- The user can leave the review knowing what to clean, what to push, and what not to trust.
+See [`../../../skills-chaining-map.md`](../../../skills-chaining-map.md) for the complete skills-chaining graph.

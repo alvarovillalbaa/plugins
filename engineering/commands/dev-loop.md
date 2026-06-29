@@ -2,7 +2,7 @@
 name: dev-loop
 description: "Start an agentic development loop in the current session — re-injects your task prompt each iteration until the completion promise is output or max iterations is reached."
 argument-hint: "TASK [--max-iterations N] [--completion-promise TEXT] [--verify-cmd CMD] [--spec-file PATH]"
-allowed-tools: ["Bash(${CLAUDE_PLUGIN_ROOT}/skills/agent-harness-improvement/scripts/setup-dev-loop.sh:*)"]
+allowed-tools: ["Bash(${CLAUDE_PLUGIN_ROOT}/skills/agent-harness/scripts/setup-dev-loop.sh:*)"]
 hide-from-slash-command-tool: "true"
 ---
 
@@ -11,7 +11,7 @@ hide-from-slash-command-tool: "true"
 Execute the setup script to initialize the agentic dev loop:
 
 ```!
-"${CLAUDE_PLUGIN_ROOT}/skills/agent-harness-improvement/scripts/setup-dev-loop.sh" $ARGUMENTS
+"${CLAUDE_PLUGIN_ROOT}/skills/agent-harness/scripts/setup-dev-loop.sh" $ARGUMENTS
 ```
 
 Then begin working on the task. Each time you try to exit, the stop hook re-injects your original task prompt. File changes and git history persist across iterations, letting you converge on a correct, verified solution.

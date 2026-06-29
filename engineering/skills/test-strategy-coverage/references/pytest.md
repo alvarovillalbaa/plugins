@@ -1,6 +1,6 @@
 # pytest Reference
 
-Use this reference for Python pytest mechanics: command shapes, fixtures, parametrization, async tests, and coverage configuration. For Django/DRF-specific testing, use [django-drf-testing.md](./django-drf-testing.md).
+Use this reference for Python pytest mechanics: command shapes, fixtures, parametrization, async tests, and coverage configuration. For Django/DRF-specific testing, use [django-drf-testing.md](../../backend-testing/references/django-drf-testing.md).
 
 External owner boundary:
 

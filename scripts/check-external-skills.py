@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 INSTALLER = ROOT / "scripts" / "install-external-skills.py"
 DEFAULT_REGISTRY = ROOT / "references" / "external-skills.yaml"
+DEFAULT_CHAIN_MAP = ROOT / "skills-chaining-map.md"
 
 
 def load_installer():
@@ -29,6 +30,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--registry", default=str(DEFAULT_REGISTRY), help="Path to external-skills.yaml")
     parser.add_argument("--all", action="store_true", help="Check every registry entry")
     parser.add_argument("--skill", action="append", default=[], help="External skill id to check")
+    parser.add_argument("--chain", action="append", default=[], help="Internal skill id whose external chain should be checked")
+    parser.add_argument("--chain-map", default=str(DEFAULT_CHAIN_MAP), help="Path to skills-chaining-map.md")
     parser.add_argument(
         "--agent",
         choices=["codex", "claude", "cursor", "project"],
@@ -69,8 +72,14 @@ def main(argv: list[str] | None = None) -> int:
 
     installer = load_installer()
     registry = installer.load_registry(Path(args.registry).expanduser().resolve())
-    check_all = args.all or not args.skill
-    skills = installer.selected_entries(registry, check_all, args.skill)
+    check_all = args.all or (not args.skill and not args.chain)
+    skills = installer.selected_entries(
+        registry,
+        check_all,
+        args.skill,
+        args.chain,
+        Path(args.chain_map).expanduser().resolve(),
+    )
     root = installer.target_root(args.agent, args.dest)
 
     missing: list[str] = []

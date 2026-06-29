@@ -2,8 +2,7 @@
 name: lead-magnets
 description: >-
   Use for lead magnet strategy, survey/report assets, downloadable offers,
-  gated assets, and nurture entry points. Child skill of `product-
-  marketing`; route here from the parent router when this lane is the
+  gated assets, and nurture entry points. Child skill of `product-marketing`; route here from the parent router when this lane is the
   narrowest owner.
 ---
 
@@ -27,7 +26,7 @@ This child skill owns lead magnet strategy, survey/report assets, downloadable o
 
 ## Chain Rules
 
-- Chain to `content-writing`, `seo-and-geo`, `go-to-market`, `frontend`, `reporting` when the task crosses this child's boundary.
+- Chain to `content`, `discoverability`, `go-to-market`, `frontend`, `reporting` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 

@@ -1,28 +1,33 @@
 slug: product
-version: 2.1.0
-mission: Shape product direction, clarify user needs, and turn product and market insight into prioritized execution.
+version: 3.0.0
+mission: Shape product direction, clarify user needs, design product experiences, and turn market insight into execution.
 platforms:
   - claude
   - codex
   - cursor
 skills:
   - product-development
-  - product-strategy
-  - discovery-prioritization
+  - strategy
+  - discovery
   - prds
-  - product-experimentation
+  - experiments
   - user-stories
-  - ux-copy-product
   - product-marketing
-  - positioning-messaging
   - cro
-  - conversion-copywriting
-  - content-led-marketing
+  - content-led
   - lead-magnets
   - buyer-psychology
+  - design
+  - taste
+  - direction
+  - design-systems
+  - polish
+  - critique
 commands:
-  - grill-me
-agents: []
+  - product-review
+agents:
+  - product-manager
+  - designer
 team:
   - Product Manager
   - Designer

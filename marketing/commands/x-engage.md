@@ -5,8 +5,8 @@ argument-hint: "[post, thread, topic, or goal]"
 allowed-tools: [Read, Write, AskUserQuestion, Skill]
 ---
 
-Use skill: **social-media-management** — `skills/social-media-management/SKILL.md`.
-Reference: `skills/social-media-management/references/x-writing-guidelines.md`
+Use skill: **x-posts** — `skills/x-posts/SKILL.md`.
+Reference: `skills/x-posts/references/x-writing-guidelines.md`
 
 1. **Gather context** – Ask for the target post URL or text, conversation summary, and desired outcome if the prompt is thin.
 2. **Choose the interaction type** – Reply, quote post, DM, or short engagement sequence.

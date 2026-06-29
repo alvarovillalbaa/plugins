@@ -1,32 +1,42 @@
 slug: sales
-version: 2.0.0
-mission: Find qualified demand, turn research into outreach, and keep pipeline work tightly connected to GTM execution.
+version: 3.0.0
+mission: Run go-to-market, pipeline, outreach, launches, virality, and revenue growth workflows.
 platforms:
   - claude
   - codex
   - cursor
 skills:
   - go-to-market
-  - first-customer-gtm
-  - launch-gtm
-  - growth-experimentation
+  - first-customers
   - technical-sales
   - revenue-intelligence
-  - revenue-ops
-  - customer-growth-retention
-  - commercial-docs
   - sales-pipeline
-  - prospect-research
-  - message-outreach
-  - sender-voice-calibration
-  - follow-up-messaging
+  - commercial-docs
+  - collateral
+  - outreach
+  - initial
+  - sequence
+  - follow-up
+  - linkedin-dms
+  - x-dms
+  - launches
+  - virality
+  - growth
+  - revenue-ops
+  - customer-growth
 commands:
   - account-brief
+  - meet-with-clients
   - outreach
   - competitor-scan
-  - pipeline-diagnostics
+  - launch-virality
+  - growth-experiment
 agents:
   - sales-prospecting
+  - cso
+  - gtm-engineer
+  - sdr
+  - account-executive
 team:
   - CSO
   - GTM Engineer

@@ -2,8 +2,7 @@
 name: ai-governance-safety
 description: >-
   Use for agent governance, safety gates, scope isolation, autonomy limits,
-  prompt-injection posture, and side-effect controls. Child skill of `ai-
-  engineering`; route here from the parent router when this lane is the
+  prompt-injection posture, and side-effect controls. Child skill of `ai-engineering`; route here from the parent router when this lane is the
   narrowest owner.
 ---
 
@@ -27,7 +26,7 @@ This child skill owns agent governance, safety gates, scope isolation, autonomy 
 
 ## Chain Rules
 
-- Chain to `quality-assurance/ai-evals-testing`, `quality-assurance/passive-security-review`, `backend`, `cloud-management`, `auto-improve`, `second-brain` when the task crosses this child's boundary.
+- Chain to `quality-assurance/ai-evals`, `quality-assurance/security`, `backend`, `cloud`, `skills-management`, `brain` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 

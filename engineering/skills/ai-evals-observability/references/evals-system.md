@@ -249,7 +249,7 @@ See [templates/eval-case-template.md](../templates/eval-case-template.md) for a 
 
 ## 15. Evals → Fine-tuning Integration
 
-Eval scores drive the fine-tuning pipeline tier (see [fine-tuning.md](./fine-tuning.md)):
+Eval scores drive the fine-tuning pipeline tier (see [fine-tuning.md](../../agent-system-architecture/references/fine-tuning.md)):
 
 ```
 Eval score 0–20   → ai_annotate_human_review_improve

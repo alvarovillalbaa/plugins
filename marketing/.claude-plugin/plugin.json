@@ -1,12 +1,12 @@
 {
   "name": "marketing",
-  "description": "Content, SEO/GEO, social, slides, video, and visual content workflows for the agent company.",
-  "version": "2.0.0",
+  "description": "Content, discoverability, social media, images, slides, visualization, and video workflows for the agent company.",
+  "version": "3.0.0",
   "author": {
     "name": "Agent Company"
   },
-  "homepage": "https://github.com/alvarovillalbaa/agent-suite",
-  "repository": "https://github.com/alvarovillalbaa/agent-suite",
+  "homepage": "https://github.com/alvarovillalbaa/plugins",
+  "repository": "https://github.com/alvarovillalbaa/plugins",
   "license": "MIT",
   "keywords": [
     "marketing",
