@@ -58,7 +58,8 @@ print_legacy_conflicts() {
         "$REPO_ROOT/docs/cookbook" \
         "$REPO_ROOT/docs/plans" \
         "$REPO_ROOT/docs/specs" \
-        "$REPO_ROOT/docs/audits"
+        "$REPO_ROOT/docs/audits" \
+        "$REPO_ROOT/context"
     do
         if [[ -e "$legacy" ]]; then
             if [[ $found -eq 0 ]]; then
@@ -79,15 +80,19 @@ cmd="${1:-all}"
 case "$cmd" in
     log)
         LOG_DIR="$REPO_ROOT/logs"
-        if path=$(latest_timestamped_file "$LOG_DIR"); then
-            echo "Latest log: $path"
+        CHANGES_FILE="$LOG_DIR/$YEAR/$DATE_DIR/changes.md"
+        if [[ -f "$CHANGES_FILE" ]]; then
+            echo "Latest log: $CHANGES_FILE"
             echo ""
             echo "Append with:"
-            echo "  echo '- Your log entry here' >> $path"
+            echo "  echo '- Your log entry here' >> $CHANGES_FILE"
+        elif [[ -d "$LOG_DIR" ]]; then
+            echo "No changes.md for today. Create it with:"
+            echo "  mkdir -p $LOG_DIR/$YEAR/$DATE_DIR"
+            echo "  touch $CHANGES_FILE"
         else
-            echo "No logs/ directory with dated markdown files found in repo root: $REPO_ROOT"
-            echo "Create it with: mkdir -p $REPO_ROOT/logs/$YEAR/$DATE_DIR"
-            echo "Then create:    touch $REPO_ROOT/logs/$YEAR/$DATE_DIR/dev.md"
+            echo "No logs/ directory found in repo root: $REPO_ROOT"
+            echo "Create it with: mkdir -p $LOG_DIR/$YEAR/$DATE_DIR && touch $CHANGES_FILE"
         fi
         ;;
 
@@ -131,7 +136,7 @@ case "$cmd" in
         echo ""
 
         echo "📝 TIMESTAMPED HISTORY"
-        for dir in logs lessons facts fixes audits raw plans; do
+        for dir in logs lessons fixes audits raw plans results; do
             base="$REPO_ROOT/$dir"
             if path=$(latest_timestamped_file "$base" 2>/dev/null); then
                 echo "   $dir: $path"
@@ -142,7 +147,7 @@ case "$cmd" in
         echo ""
 
         echo "📚 LIVING DOCS"
-        for dir in specs sources lib references cookbook knowledge runbooks research official-documentation context; do
+        for dir in "facts/items" "facts/episodes" "facts/triples" specs sources lib references cookbooks knowledge runbooks research official-documentation; do
             base="$REPO_ROOT/$dir"
             if [[ -d "$base" ]]; then
                 echo "   ✓ $base"

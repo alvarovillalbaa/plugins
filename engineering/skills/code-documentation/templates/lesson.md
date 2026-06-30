@@ -2,7 +2,7 @@
 
 **Date:** YYYY-MM-DD
 **Tags:** [domain, component]
-**Location:** `lessons/YYYY/MM-DD/[slug].md`
+**Location:** `lessons/<domain>/YYYY/MM-DD/[slug].md`
 
 ## Problem
 

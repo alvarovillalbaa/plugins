@@ -82,8 +82,8 @@ These are living docs. Add `Last updated: YYYY-MM-DD` near the top.
 | Path | Purpose | Default mode |
 |---|---|---|
 | `logs/` | terse change log for meaningful code or doc changes | timestamped |
-| `lessons/` | reusable lessons learned from experience | timestamped |
-| `facts/` | durable facts about user, company, project, customers, environments | timestamped |
+| `lessons/` | reusable lessons learned from experience, organized by domain | timestamped |
+| `facts/` | durable facts: `facts/items/<domain>/`, `facts/episodes/<domain>/`, `facts/triples/<domain>/` | living |
 | `fixes/` | reusable debugging solutions and error fixes | timestamped |
 | `steers/` | traces of agent work steered or corrected by a human or secondary LLM | timestamped |
 | `models/` | brief logs of decisions made, problems encountered, or goals set | timestamped |
@@ -96,6 +96,7 @@ These are living docs. Add `Last updated: YYYY-MM-DD` near the top.
 | `audits/` | reports, audits, ADRs, post-mortems, investigations | timestamped |
 | `raw/` | raw source material waiting to be ingested | timestamped |
 | `plans/` | implementation plans and plan-driven-development artifacts | timestamped |
+| `results/` | stored work outputs and computed results | timestamped |
 | `specs/` | living desired-state behavior contracts | living |
 | `sources/` | monitored URL/source registries | living |
 | `lib/` | generated drafts, registries, support artifacts | living |
@@ -108,12 +109,11 @@ These are living docs. Add `Last updated: YYYY-MM-DD` near the top.
 | Path | Purpose | Default mode |
 |---|---|---|
 | `references/` | factual code, API, schema, or URL references | living |
-| `cookbook/` | "how we actually do this here" recipes | living |
+| `cookbooks/` | "how we actually do this here" recipes | living |
 | `knowledge/` | timeless maintained knowledge | living |
 | `runbooks/` | operational procedures | living |
 | `research/` | ongoing research work | living |
 | `official-documentation/` | copied external official docs | living, but not iterated heavily |
-| `context/` | contextual docs such as values, goals, roadmap, budget, preferences | living |
 
 ## Timestamp rule
 
@@ -127,7 +127,6 @@ Default timestamped families:
 
 - `logs/`
 - `lessons/`
-- `facts/`
 - `fixes/`
 - `steers/`
 - `models/`
@@ -135,13 +134,19 @@ Default timestamped families:
 - `audits/`
 - `raw/`
 - `plans/`
+- `results/`
+
+Default living families with type-first structure:
+
+- `facts/items/<domain>/`
+- `facts/episodes/<domain>/`
+- `facts/triples/<domain>/`
 
 Examples:
 
 ```text
-logs/2026/04-25/dev.md
-lessons/2026/04-25/retry-budget.md
-facts/2026/04-25/acme-contracting-rules.md
+logs/2026/04-25/changes.md
+lessons/engineering/2026/04-25/retry-budget.md
 fixes/2026/04-25/postgres-socket-timeout.md
 steers/2026/04-25/api-route-correction.md
 models/2026/04-25/auth-decision.md
@@ -149,6 +154,10 @@ reflections/2026/04-25/sprint-retrospective.md
 audits/2026/04-25/release-audit.md
 plans/2026/04-25/queue-backpressure.md
 raw/2026/04-25/vendor-export.md
+results/2026/04-25/report.md
+facts/items/general/team-size.md
+facts/episodes/onboarding/2026-04-25-first-week.md
+facts/triples/product/pricing-model.md
 ```
 
 ## Living-doc rule
@@ -167,16 +176,16 @@ Applies to:
 
 - root instruction docs
 - in-folder docs
+- `facts/`
 - `specs/`
 - `sources/`
 - `lib/`
 - `references/`
-- `cookbook/`
+- `cookbooks/`
 - `knowledge/`
 - `runbooks/`
 - `research/`
 - `official-documentation/`
-- `context/`
 
 ## Time-based vs live conflicts
 
@@ -215,9 +224,11 @@ Use this routing sequence:
 
 | Scenario | Destination |
 |---|---|
-| Daily change note | `logs/YYYY/MM-DD/*.md` |
-| Durable lesson from repeated debugging | `lessons/YYYY/MM-DD/*.md` |
-| Fact about user/company/project | `facts/YYYY/MM-DD/*.md` |
+| Daily change note | `logs/YYYY/MM-DD/changes.md` |
+| Durable lesson from repeated debugging | `lessons/<domain>/YYYY/MM-DD/` |
+| Item fact about user/company/project | `facts/items/<domain>/` |
+| Episode fact (session-scoped) | `facts/episodes/<domain>/` |
+| Triple fact (atomic claim) | `facts/triples/<domain>/` |
 | Non-obvious recurring fix | `fixes/YYYY/MM-DD/*.md` |
 | Trace of agent correction or steering | `steers/YYYY/MM-DD/*.md` |
 | Brief decision, problem, or goal log | `models/YYYY/MM-DD/*.md` |
@@ -227,8 +238,8 @@ Use this routing sequence:
 | Structured object (client, employee, company) | `objects/<type>/` |
 | Reusable template (prompt, email, document) | `templates/` |
 | Repo-wide behavior contract | `specs/` |
+| Work output or computed result | `results/YYYY/MM-DD/` |
 | Stable API mapping | `references/` |
-| Repo-specific technical recipe | `cookbook/` |
+| Repo-specific technical recipe | `cookbooks/` |
 | Timeless engineering knowledge | `knowledge/` |
 | Exact operational workflow | `runbooks/` |
-| Context such as roadmap, budget, goals, preferences | `context/` |

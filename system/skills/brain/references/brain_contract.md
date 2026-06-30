@@ -36,9 +36,10 @@ The adaptation modes below are summaries. When `use-afs` is installed, it is aut
 
 Use when no meaningful local standard exists. Create or follow the final Agentic File System:
 
-- Memory: `logs/`, `lessons/`, `facts/`, `fixes/`, `steers/`, `models/`, `reflections/`
-- Operational: `audits/`, `raw/`, domain folders, `plans/`, `specs/`, `sources/`, `lib/`, `objects/`, `templates/`
-- Source of truth: `references/`, `cookbook/`, `knowledge/`, `runbooks/`, `research/`
+- Memory: `logs/`, `lessons/`, `fixes/`, `steers/`, `models/`, `reflections/`
+- Facts (living, type-first): `facts/items/<domain>/`, `facts/episodes/<domain>/`, `facts/triples/<domain>/`
+- Operational: `audits/`, `raw/`, domain folders, `plans/`, `results/`, `specs/`, `sources/`, `lib/`, `objects/`, `templates/`
+- Source of truth: `references/`, `cookbooks/`, `knowledge/`, `runbooks/`, `research/`
 
 Timestamped Memory and operational-history content uses the local date convention from `BRAIN.md`; if unspecified, use `YYYY/MM-DD/`.
 
@@ -68,7 +69,7 @@ knowledge/<domain>/<subject>/<topic>/<case>/
 
 Omit empty levels. Use the smallest path that stays navigable. Do not create deep empty trees. If a topic is a single page in a folder, use the local naming convention (`README.md`, `index.md`, or `<topic>.md`) from nearby files or `BRAIN.md`.
 
-No-timestamped source-of-truth directories such as `knowledge/`, `references/`, `cookbook/`, `runbooks/`, `research/`, and `specs/` are living surfaces. Rewrite them into current truth. Timestamped Memory folders preserve history and evidence.
+Non-timestamped source-of-truth directories such as `knowledge/`, `references/`, `cookbooks/`, `runbooks/`, `research/`, `facts/`, and `specs/` are living surfaces. Rewrite them into current truth. Timestamped Memory folders preserve history and evidence.
 
 ## Inputs That May Compile Into Knowledge
 

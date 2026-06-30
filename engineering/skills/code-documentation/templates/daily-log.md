@@ -1,6 +1,6 @@
 # Daily Log Template
 
-Development logs go in `logs/YYYY/MM-DD/*.md` — always append to the latest existing file, never create new files unless today's date directory doesn't exist yet.
+Development logs go in `logs/YYYY/MM-DD/changes.md` — always append to `changes.md` in the latest date directory. Create the directory and file only when today's date directory doesn't exist yet.
 
 ---
 
@@ -72,8 +72,7 @@ These are not useful to anyone — they contain no searchable information.
 ```bash
 YEAR=$(ls logs/ | sort | tail -1)
 DATE_DIR=$(ls logs/$YEAR/ | sort | tail -1)
-FILE=$(ls logs/$YEAR/$DATE_DIR/ | sort | tail -1)
-echo "- Your log entry here" >> logs/$YEAR/$DATE_DIR/$FILE
+echo "- Your log entry here" >> logs/$YEAR/$DATE_DIR/changes.md
 ```
 
 Or use: `skills/code-documentation/scripts/find-docs.sh log`

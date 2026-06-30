@@ -9,12 +9,12 @@ Continuous docs are maintained as part of normal work. They do not wait for a sp
 ### Location
 
 ```text
-logs/YYYY/MM-DD/*.md
+logs/YYYY/MM-DD/changes.md
 ```
 
 ### Rule
 
-Always append to the latest existing file for the latest relevant date directory. Only create a new dated directory when needed.
+Always append to `changes.md` in the latest date directory. Only create a new dated directory when today's date directory doesn't exist yet.
 
 ### Format
 
@@ -46,8 +46,7 @@ One bullet per logical change. Two lines maximum.
 ```bash
 YEAR=$(ls logs/ | sort | tail -1)
 DATE_DIR=$(ls logs/"$YEAR" | sort | tail -1)
-FILE=$(ls logs/"$YEAR"/"$DATE_DIR" | sort | tail -1)
-echo "- Your log entry here" >> logs/"$YEAR"/"$DATE_DIR"/"$FILE"
+echo "- Your log entry here" >> logs/"$YEAR"/"$DATE_DIR"/changes.md
 ```
 
 Or use `skills/code-documentation/scripts/find-docs.sh log`.
@@ -57,7 +56,7 @@ Or use `skills/code-documentation/scripts/find-docs.sh log`.
 ### Location
 
 ```text
-lessons/YYYY/MM-DD/*.md
+lessons/<domain>/YYYY/MM-DD/
 ```
 
 ### Use when
@@ -68,13 +67,21 @@ lessons/YYYY/MM-DD/*.md
 
 Keep lessons concise, evidence-backed, and action-shaping.
 
-## Items
+## Facts
 
 ### Location
 
 ```text
-facts/YYYY/MM-DD/*.md
+facts/items/<domain>/
+facts/episodes/<domain>/
+facts/triples/<domain>/
 ```
+
+Facts are **living docs**, not timestamped. Choose the type that fits:
+
+- `facts/items/<domain>/` — durable named facts about the user, team, company, customer, environment, or project context
+- `facts/episodes/<domain>/` — session-scoped fact records tied to a specific event or interaction
+- `facts/triples/<domain>/` — atomic subject–predicate–object claims for grep-based retrieval
 
 ### Use when
 
@@ -110,7 +117,7 @@ plans/YYYY/MM-DD/*.md
 
 Plans are historical implementation artifacts. They explain how a specific change should be executed, tested, and verified at that time.
 
-If the rule becomes durable and repo-wide, promote it into `PLAN.md`, `SPEC.md`, `runbooks/`, `cookbook/`, or `knowledge/`.
+If the rule becomes durable and repo-wide, promote it into `PLAN.md`, `SPEC.md`, `runbooks/`, `cookbooks/`, or `knowledge/`.
 
 ## Audits
 
@@ -150,7 +157,7 @@ Use it for:
 
 After ingest:
 
-- promote durable knowledge into `knowledge/`, `references/`, `cookbook/`, `runbooks/`, or another canonical living destination
+- promote durable knowledge into `knowledge/`, `references/`, `cookbooks/`, `runbooks/`, or another canonical living destination
 - clear or archive `raw/` according to the repo's brain rules
 
 ## Living docs
@@ -165,22 +172,22 @@ This applies to:
 
 - root instruction docs
 - in-folder docs
+- `facts/`
 - `specs/`
 - `sources/`
 - `lib/`
 - `references/`
-- `cookbook/`
+- `cookbooks/`
 - `knowledge/`
 - `runbooks/`
 - `research/`
 - `official-documentation/`
-- `context/`
 
 ### Examples of living destinations
 
 - `SPEC.md` or `specs/` for desired behavior contracts
 - `references/` for stable mappings or API facts
-- `cookbook/` for repo-specific how-to guides
+- `cookbooks/` for repo-specific how-to guides
 - `knowledge/` for timeless engineering or system knowledge
 - `runbooks/` for exact repeatable procedures
 

@@ -311,7 +311,7 @@ Read [autoimprove.md](./autoimprove.md) for the full procedure: checklist design
 | Autoimprove | Optimized reference file copy | "run autoresearch on X" or 3+ recurring failures | High — batch, unattended |
 | Skill extraction | New `SKILL.md` files in skill library | "save this as a skill", `/claudeception`, non-obvious debugging | Medium — guided, one skill at a time |
 | Continual learning | Plain bullets in `CLAUDE.md` / `AGENTS.md` | Cadence gate: ≥10 turns + ≥120 min + transcript advanced | High — unattended, incremental |
-| Repo learning system | `learning/` artifacts → promote into the correct AFS docs (`logs/`, `lessons/`, `items/`, `fixes/`, `audits/`, `plans/`, `specs/`, `knowledge/`, etc.) | "save what we learned", "mine this session", session end | Medium — agent-driven, 4-step loop |
+| Repo learning system | `learning/` artifacts → promote into the correct AFS docs (`logs/`, `lessons/`, `facts/`, `fixes/`, `audits/`, `plans/`, `results/`, `specs/`, `knowledge/`, etc.) | "save what we learned", "mine this session", session end | Medium — agent-driven, 4-step loop |
 
 - Read [skill-extraction.md](./skill-extraction.md) when knowledge is novel enough to deserve its own skill file rather than a pattern addition to an existing reference.
 - Read [continual-learning.md](./continual-learning.md) when the goal is to keep `CLAUDE.md` / `AGENTS.md` current with durable user preferences and workspace facts mined from transcript history.

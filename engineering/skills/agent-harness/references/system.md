@@ -52,11 +52,13 @@ After the learning artifacts are written, check whether the knowledge should als
 - `PRINCIPLES.md` for decision heuristics.
 - Service docs such as `README.md`, `ARCHITECTURE.md`, `TESTS.md`, `SETUP.md` when teammates benefit.
 - AFS documentation destinations for human-readable discoveries:
-  - `lessons/YYYY/YYYY-MM-DD/` — verified insights that should change future behavior
-  - `items/YYYY/YYYY-MM-DD/` — stable facts about team/company/project context
-  - `fixes/YYYY/YYYY-MM-DD/` — solutions to non-obvious errors
-  - `logs/YYYY/YYYY-MM-DD/` — terse historical change notes
-  - `audits/`, `plans/`, `specs/`, `references/`, `cookbook/`, `knowledge/`, or `runbooks/` when that is the correct durable destination
+  - `lessons/<domain>/YYYY/MM-DD/` — verified insights that should change future behavior
+  - `facts/items/<domain>/` — stable item facts about team/company/project context (living docs)
+  - `facts/episodes/<domain>/` — session-scoped fact records (living docs)
+  - `facts/triples/<domain>/` — atomic claims for grep-based retrieval (living docs)
+  - `fixes/YYYY/MM-DD/` — solutions to non-obvious errors
+  - `logs/YYYY/MM-DD/changes.md` — terse historical change notes
+  - `audits/`, `plans/`, `results/`, `specs/`, `references/`, `cookbooks/`, `knowledge/`, or `runbooks/` when that is the correct durable destination
 
 **Documentation placement rules** are owned by the `code-documentation` skill. Read `skills/code-documentation/SKILL.md` before writing to AFS docs so the content lands in the right current-vs-historical surface.
 
@@ -68,7 +70,7 @@ Use `references/learning-promotion.md` for the promotion rules.
 
 | Artifact | Use it for | Write rule |
 |---|---|---|
-| `items/` | Raw observations during work | Append immediately |
+| `facts/items/<domain>/` | Stable item facts about team/company/project context | Update in place |
 | `episodes/` | Session summary and audit trail | Write for every meaningful session |
 | `decision-traces/` | Reflection, trade-offs, assumptions, risks | Write when reasoning quality matters |
 | `triples/` | Atomic facts for grep-based retrieval | Append stable facts only |

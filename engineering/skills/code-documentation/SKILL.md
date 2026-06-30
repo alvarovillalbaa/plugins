@@ -1,6 +1,6 @@
 ---
 name: code-documentation
-description: This skill should be used when the user asks to write, update, review, scaffold, move, remove, or continuously improve documentation for code, folders, services, repos, workflows, architectural decisions, or operational processes. Trigger for inline docs, `README.md`, `ARC.md`, `SETUP.md`, `RUNBOOK.md`, `CHANGELOG.md`, `SECURITY.md`, `OVERVIEW.md`, `FAQ.md`, `DECISIONS.md`, `DEPENDENCIES.md`, `AGENTS.md`, `PLAN.md`, `SPEC.md`, `SOUL.md`, `PRINCIPLES.md`, `DESIGN.md`, `logs/`, `lessons/`, `facts/`, `fixes/`, `steers/`, `models/`, `reflections/`, `audits/`, `raw/`, `plans/`, `specs/`, `sources/`, `lib/`, `objects/`, `templates/`, `references/`, `cookbook/`, `knowledge/`, `runbooks/`, `research/`, `official-documentation/`, `context/`, MDX docs, JSDoc/TSDoc, docstrings, ADRs, post-mortems, migration guides, documentation cleanups, and documentation-impact reviews.
+description: This skill should be used when the user asks to write, update, review, scaffold, move, remove, or continuously improve documentation for code, folders, services, repos, workflows, architectural decisions, or operational processes. Trigger for inline docs, `README.md`, `ARC.md`, `SETUP.md`, `RUNBOOK.md`, `CHANGELOG.md`, `SECURITY.md`, `OVERVIEW.md`, `FAQ.md`, `DECISIONS.md`, `DEPENDENCIES.md`, `AGENTS.md`, `PLAN.md`, `SPEC.md`, `SOUL.md`, `PRINCIPLES.md`, `DESIGN.md`, `logs/`, `lessons/`, `facts/`, `fixes/`, `steers/`, `models/`, `reflections/`, `audits/`, `raw/`, `plans/`, `results/`, `specs/`, `sources/`, `lib/`, `objects/`, `templates/`, `references/`, `cookbooks/`, `knowledge/`, `runbooks/`, `research/`, `official-documentation/`, MDX docs, JSDoc/TSDoc, docstrings, ADRs, post-mortems, migration guides, documentation cleanups, and documentation-impact reviews.
 version: 2.0.0
 ---
 
@@ -44,7 +44,7 @@ Documentation in this repo falls into seven surfaces:
 2. **In-folder docs** — `README.md`, `ARC.md`, and related files that explain one folder
 3. **Root instruction docs** — `AGENTS.md`, `PLAN.md`, `SPEC.md`, `SOUL.md`, `PRINCIPLES.md`, `DESIGN.md`
 4. **Timestamped history** — logs, lessons, facts, fixes, audits, raw material, implementation plans
-5. **Living source-of-truth docs** — specs, references, cookbook, knowledge, runbooks, research, official docs, context, source registries, generated libraries
+5. **Living source-of-truth docs** — specs, references, cookbooks, knowledge, runbooks, research, official docs, source registries, generated libraries
 6. **Domain-specific AFS paths** — `<domain>/<folder>/` only when the repo genuinely needs domain-specific surfaces such as `health/` or `investing/`
 7. **Documentation websites** — Nextra or equivalent sites for projects with external users; generated via the `/docs-site` command after a full project research phase
 
@@ -65,9 +65,12 @@ Default rule: put the doc in the narrowest place that future readers will natura
 | Record the agents' personality and collaboration stance | `SOUL.md` |
 | Record invariants, constraints, and max/min rules | `PRINCIPLES.md` |
 | Record the design system or frontend interaction language | `DESIGN.md` |
-| Append a terse change note | `logs/YYYY/MM-DD/*.md` |
-| Record a verified reusable lesson | `lessons/YYYY/MM-DD/*.md` |
-| Record a durable fact about the user, company, or project | `facts/YYYY/MM-DD/*.md` |
+| Append a terse change note | `logs/YYYY/MM-DD/changes.md` |
+| Record a verified reusable lesson | `lessons/<domain>/YYYY/MM-DD/` |
+| Record a durable item fact about the user, company, or project | `facts/items/<domain>/` |
+| Record a durable episode fact (session-scoped) | `facts/episodes/<domain>/` |
+| Record a durable triple fact (atomic claim) | `facts/triples/<domain>/` |
+| Store work outputs and computed results | `results/YYYY/MM-DD/` |
 | Record a reusable non-obvious fix | `fixes/YYYY/MM-DD/*.md` |
 | Record a trace of agent work that was steered or corrected | `steers/YYYY/MM-DD/*.md` |
 | Record a brief decision, problem, or goal log | `models/YYYY/MM-DD/*.md` |
@@ -81,12 +84,11 @@ Default rule: put the doc in the narrowest place that future readers will natura
 | Keep monitored URLs and source registries | `sources/` |
 | Keep generated drafts, registries, or reusable library artifacts | `lib/` |
 | Keep stable code, API, or URL references | `references/` |
-| Keep "how we actually do this here" technical recipes | `cookbook/` |
+| Keep "how we actually do this here" technical recipes | `cookbooks/` |
 | Keep timeless canonical knowledge | `knowledge/` |
 | Keep operational procedures | `runbooks/` |
 | Keep ongoing research | `research/` |
 | Keep copied or vendor official documentation | `official-documentation/` |
-| Keep contextual docs such as goals, roadmap, budget, or preferences | `context/` |
 
 ## Final AFS
 
@@ -96,9 +98,9 @@ The final Agentic File System is:
 
 ### Memory
 
-- `logs/` — brief logs, 2 lines max, append to the latest date file, about every meaningful code or doc change
-- `lessons/` — lessons learned from experience, related to code
-- `facts/` — facts about the user, company, customers, environments, or other durable context
+- `logs/` — brief logs, 2 lines max, append to `changes.md` in the latest date directory, about every meaningful code or doc change
+- `lessons/` — lessons learned from experience, organized by domain then date
+- `facts/` — type-first live docs for durable context: `facts/items/<domain>/`, `facts/episodes/<domain>/`, `facts/triples/<domain>/`
 - `fixes/` — reusable error solutions and debugging resolutions
 - `steers/` — traces of agent work that was steered or corrected by a human or secondary LLM; what the agent got wrong or didn't fully get right
 - `models/` — brief logs of every decision made, problem encountered, or goal set
@@ -110,6 +112,7 @@ The final Agentic File System is:
 - `raw/` — raw source material waiting to be ingested and then promoted into `knowledge/` or another canonical destination
 - `<domain>/<folder>/` — additional domain-specific paths only when the domain genuinely needs them
 - `plans/` — implementation plans and plan-driven-development artifacts
+- `results/` — stored work outputs and computed results
 - `specs/` — living specs describing how something should behave
 - `sources/` — URL-based source registries worth monitoring over time
 - `lib/` — generated drafts, registries, support artifacts, or other reusable generated content
@@ -119,12 +122,11 @@ The final Agentic File System is:
 ### Source of truth
 
 - `references/` — code, URL, API, schema, and factual references
-- `cookbook/` — technical guides for how something is actually done in this codebase
+- `cookbooks/` — technical guides for how something is actually done in this codebase
 - `knowledge/` — timeless maintained knowledge about the codebase and how to do things
 - `runbooks/` — operational procedures and exact workflows
 - `research/` — continuous research on engineering topics
 - `official-documentation/` — copied external official documentation; not continuously iterated
-- `context/` — contextual docs such as `VALUES.md`, `USER.md`, `PREFERENCES.md`, `context/goals/`, `context/budget/`, `context/roadmap/`
 
 ## Timestamped vs living docs
 
@@ -136,7 +138,6 @@ Default timestamped families:
 
 - `logs/`
 - `lessons/`
-- `facts/`
 - `fixes/`
 - `steers/`
 - `models/`
@@ -144,19 +145,20 @@ Default timestamped families:
 - `audits/`
 - `raw/`
 - `plans/`
+- `results/`
 
 Default living documentation families:
 
+- `facts/` (type-first: `facts/items/<domain>/`, `facts/episodes/<domain>/`, `facts/triples/<domain>/`)
 - `specs/`
 - `sources/`
 - `lib/`
 - `references/`
-- `cookbook/`
+- `cookbooks/`
 - `knowledge/`
 - `runbooks/`
 - `research/`
 - `official-documentation/`
-- `context/`
 - root instruction docs
 - in-folder docs
 
@@ -181,7 +183,7 @@ This applies to:
 
 - `AGENTS.md`, `PLAN.md`, `SPEC.md`, `SOUL.md`, `PRINCIPLES.md`, `DESIGN.md`
 - in-folder docs such as `README.md`, `ARC.md`, `SETUP.md`, `RUNBOOK.md`, `SECURITY.md`, `OVERVIEW.md`, `FAQ.md`, `DECISIONS.md`, `DEPENDENCIES.md`
-- living AFS docs in `specs/`, `sources/`, `lib/`, `references/`, `cookbook/`, `knowledge/`, `runbooks/`, `research/`, `official-documentation/`, and `context/`
+- living AFS docs in `facts/`, `specs/`, `sources/`, `lib/`, `references/`, `cookbooks/`, `knowledge/`, `runbooks/`, `research/`, and `official-documentation/`
 
 ## In-folder documentation contract
 
@@ -252,7 +254,7 @@ Before creating or expanding docs:
 
 Examples:
 
-- If a one-off implementation plan became the durable policy, keep the original under `plans/YYYY/MM-DD/` and promote the lasting rule into `PLAN.md`, `SPEC.md`, `runbooks/`, `cookbook/`, or `knowledge/`.
+- If a one-off implementation plan became the durable policy, keep the original under `plans/YYYY/MM-DD/` and promote the lasting rule into `PLAN.md`, `SPEC.md`, `runbooks/`, `cookbooks/`, or `knowledge/`.
 - If an old `docs/memories/` or `docs/guides/` tree conflicts with the final AFS, move or remove it instead of preserving two competing systems.
 
 ## Relationship to other skills

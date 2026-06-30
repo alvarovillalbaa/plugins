@@ -187,7 +187,7 @@ def score_context(root: Path) -> Dimension:
             dim.add(5, f"Root AGENTS.md is concise ({lines} lines).")
         elif lines <= 180:
             dim.add(3, f"Root AGENTS.md is moderately sized ({lines} lines).")
-            dim.gap("Root AGENTS.md is above the roughly 100-line map target.", "Extract detailed sections into docs/references or docs/cookbook and leave pointers.")
+            dim.gap("Root AGENTS.md is above the roughly 100-line map target.", "Extract detailed sections into docs/references or docs/cookbooks and leave pointers.")
         else:
             dim.add(1, f"Root AGENTS.md exists but is large ({lines} lines).")
             dim.gap("Root AGENTS.md is acting like a manual.", "Slim it to a map and move detailed guidance into repo-local references.")
@@ -199,9 +199,10 @@ def score_context(root: Path) -> Dimension:
 
     doc_dirs = [
         "docs/references",
-        "docs/cookbook",
+        "docs/cookbooks",
         "docs/specs",
         "docs/plans",
+        "docs/results",
         "docs/research",
         "docs/lessons",
         "docs/runbooks",

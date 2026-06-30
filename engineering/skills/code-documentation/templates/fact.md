@@ -1,8 +1,9 @@
 # [Item title — durable fact]
 
-**Date:** YYYY-MM-DD
+**Type:** items | episodes | triples
+**Domain:** [domain, e.g. general, engineering, product, customers]
 **Category:** user | company | customer | infrastructure | business | process
-**Location:** `facts/YYYY/MM-DD/[slug].md`
+**Location:** `facts/<type>/<domain>/[slug].md`
 
 ## Fact
 

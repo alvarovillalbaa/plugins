@@ -30,7 +30,9 @@ If the knowledge is useful only as session memory, stop at `learning/`.
 | `SETUP.md` | Environment, setup, bootstrap behavior | When operational steps changed |
 | `logs/` | Development log entries | After any meaningful code or doc change |
 | `lessons/` | Verified reusable insights | When a discovery should change future behavior |
-| `items/` | Stable project/team/user/company facts | When teammates would make wrong assumptions without it |
+| `facts/items/<domain>/` | Stable item facts about user/company/project context | When teammates would make wrong assumptions without it |
+| `facts/episodes/<domain>/` | Session-scoped fact records | When the context is tied to a specific event |
+| `facts/triples/<domain>/` | Atomic claims for retrieval | When the fact is a discrete subject–predicate–object claim |
 | `fixes/` | Error solutions | After solving a non-obvious or recurring problem |
 | `audits/` | Reports, ADRs, post-mortems, analytical audits | When the artifact is historical and investigative |
 | `plans/` | Historical implementation plans | When the artifact explains how one change should be executed |
@@ -38,7 +40,7 @@ If the knowledge is useful only as session memory, stop at `learning/`.
 | `sources/` | Monitored URL/source registries | When source monitoring itself is durable knowledge |
 | `lib/` | Generated drafts or support artifacts | When a reusable generated artifact should persist |
 | `references/` | Stable lookup/reference material | When teammates need a factual reference surface |
-| `cookbook/` | Repo-specific technical guidance | When a pattern needs broader documentation in this codebase |
+| `cookbooks/` | Repo-specific technical guidance | When a pattern needs broader documentation in this codebase |
 | `knowledge/` | Timeless maintained knowledge | When the content should compound and stay canonical |
 | `runbooks/` | Exact operational workflows | When the content is a repeatable procedure |
 | `research/` | Ongoing engineering research | When the work is exploratory but still source-of-truth |
@@ -104,7 +106,7 @@ Update these when the learning changes the repo-wide documentation contract:
 - `SPEC.md` — how specs should be written and what they must define
 - `DESIGN.md` — the design system and frontend interaction language for the repo
 
-Do not use these files for one feature's local content when a timestamped doc in `plans/YYYY/YYYY-MM-DD/` or a living contract in `specs/` is the narrower source of truth.
+Do not use these files for one feature's local content when a timestamped doc in `plans/YYYY/MM-DD/` or a living contract in `specs/` is the narrower source of truth.
 
 ## Other markdown docs
 
@@ -136,18 +138,19 @@ Use the `code-documentation` contract and choose the narrowest correct destinati
 
 - `logs/` for terse historical change notes
 - `lessons/` for verified reusable insights
-- `items/` for durable facts about user/company/project context
+- `facts/items/<domain>/` for durable item facts about user/company/project context
 - `fixes/` for reusable debugging resolutions
 - `audits/` for reports, ADRs, post-mortems, and analytical history
 - `plans/` for historical implementation plans
 - `specs/` for living desired-state contracts
 - `references/` for factual lookup docs
-- `cookbook/` for repo-specific technical recipes
+- `cookbooks/` for repo-specific technical recipes
 - `knowledge/` for timeless maintained knowledge
 - `runbooks/` for exact repeatable procedures
-- `research/`, `official-documentation/`, `sources/`, `context/`, or `lib/` when those surfaces are the right current home
+- `results/YYYY/MM-DD/` for stored work outputs and computed results
+- `research/`, `official-documentation/`, `sources/`, or `lib/` when those surfaces are the right current home
 
-All timestamped AFS paths follow `*/YYYY/YYYY-MM-DD/*.md`. All living docs should carry `Last updated: YYYY-MM-DD`.
+All timestamped AFS paths follow `*/YYYY/MM-DD/*.md`. All living docs should carry `Last updated: YYYY-MM-DD`.
 
 ## Conflict handling
 

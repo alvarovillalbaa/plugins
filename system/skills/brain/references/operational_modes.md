@@ -30,7 +30,7 @@ Default flow:
 2. Map the current structure.
 3. Inspect representative notes, templates, dashboards, boards, or instruction files.
 4. Choose the adaptation mode: strict AFS, partial AFS, or native company standard.
-5. Create or refresh `BRAIN.md`, `knowledge/INDEX.md`, and the current dated log file in `logs/` or their equivalents.
+5. Create or refresh `BRAIN.md`, `knowledge/INDEX.md`, and `logs/YYYY/MM-DD/changes.md` (or the brain's equivalent log path).
 6. Preserve existing naming, metadata, and folder conventions when they already work.
 7. If an operating manual already exists, diff mentally and avoid overwriting it without approval.
 
@@ -118,7 +118,7 @@ Use when the user wants continuity, a boot-up sequence, or a fast context restor
 
 Load progressively:
 
-- `L0`: `CRITICAL_FACTS.md`, `PINNED.md`, and identity/preferences
+- `L0`: `CRITICAL_FACTS.md`, `PINNED.md`, `facts/items/general/`, and identity/preferences
 - `L1`: `INDEX.md` and recent `LOG.md`
 - `L2`: current-state files, today's note, recent daily logs, active boards, active projects
 - `L3`: deep project pages or raw sources only when the current task needs them

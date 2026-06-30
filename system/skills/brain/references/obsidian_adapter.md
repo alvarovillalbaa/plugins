@@ -23,7 +23,7 @@ Reasonable folder mappings inside an Obsidian vault:
 
 - `raw/` or `Sources/` for intake material
 - `knowledge/` or domain folders for canonical topic pages
-- `references/`, `cookbook/`, `runbooks/`, `research/`, `official-documentation/`, and `sources/` for the rest of the AFS source-of-truth layer
+- `references/`, `cookbooks/`, `runbooks/`, `research/`, `official-documentation/`, and `sources/` for the rest of the AFS source-of-truth layer
 - `audits/`, `plans/`, and `specs/` for operational artifacts
 - `attachments/` or nearby asset folders for images, PDFs, and figures
 

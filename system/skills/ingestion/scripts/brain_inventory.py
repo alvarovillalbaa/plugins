@@ -16,17 +16,23 @@ from typing import Iterable
 AFS_MEMORY_DIRS = (
     "logs",
     "lessons",
-    "facts",
     "fixes",
     "steers",
     "models",
     "reflections",
 )
 
+AFS_FACTS_DIRS = (
+    "facts/items",
+    "facts/episodes",
+    "facts/triples",
+)
+
 AFS_OPERATIONAL_DIRS = (
     "audits",
     "raw",
     "plans",
+    "results",
     "specs",
     "sources",
     "lib",
@@ -36,7 +42,7 @@ AFS_OPERATIONAL_DIRS = (
 
 AFS_TRUTH_DIRS = (
     "references",
-    "cookbook",
+    "cookbooks",
     "knowledge",
     "runbooks",
     "research",
@@ -118,7 +124,7 @@ def infer_mode(root: Path, brain_files: list[Path]) -> str:
     if "strict-afs" in text or "strict afs" in text:
         return "strict-afs"
 
-    known_dirs = set(AFS_MEMORY_DIRS + AFS_OPERATIONAL_DIRS + AFS_TRUTH_DIRS)
+    known_dirs = set(AFS_MEMORY_DIRS + AFS_OPERATIONAL_DIRS + AFS_TRUTH_DIRS) | {"facts"}
     existing = {p.name for p in root.iterdir() if p.is_dir()} if root.exists() else set()
     return "partial-afs" if existing & known_dirs else "strict-afs"
 
@@ -131,7 +137,8 @@ def active_root(root: Path, brain_files: list[Path]) -> Path:
 
 def folder_map(root: Path) -> dict[str, dict[str, str | bool]]:
     mapping: dict[str, dict[str, str | bool]] = {}
-    for name in AFS_MEMORY_DIRS + AFS_OPERATIONAL_DIRS + AFS_TRUTH_DIRS:
+    all_dirs = AFS_MEMORY_DIRS + AFS_FACTS_DIRS + AFS_OPERATIONAL_DIRS + AFS_TRUTH_DIRS
+    for name in all_dirs:
         path = root / name
         mapping[name] = {
             "path": str(path),

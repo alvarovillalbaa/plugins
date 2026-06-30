@@ -465,13 +465,13 @@ When the raw/ queue is large, prioritize in this order:
 
 These structures appear in second-brain repos and require special handling outside the standard `raw/` queue.
 
-### `context/` folder and X.md files
+### `facts/` folder
 
-`context/` holds ambient workspace context files. Files follow the pattern `context/<topic>.md` or may appear as `<X>.md` at the brain root or inside `context/`.
+`facts/` holds durable ambient context using a type-first structure: `facts/items/<domain>/`, `facts/episodes/<domain>/`, `facts/triples/<domain>/`.
 
 - No extraction step is needed — these are already markdown.
-- Ensure the standard frontmatter block is present before compiling; add it if missing with `source: context`.
-- They are typically living (non-timestamped) files, so prefer updating existing canonical pages rather than creating date-scoped entries.
+- Ensure the standard frontmatter block is present before compiling; add it if missing with `source: facts`.
+- They are living (non-timestamped) files; prefer updating existing fact pages rather than creating duplicates.
 - Compile them into `knowledge/` on request or when their content is stale relative to the canonical page.
 
 ### `lib/` folder

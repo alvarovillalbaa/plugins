@@ -236,8 +236,8 @@ Agents should be able to answer "what failed, where, and after which change?" fr
 Use repo-local files, not chat history, as the system of record:
 
 - `docs/solutions/` — structured per-solution files with YAML frontmatter; preferred for any learning that should be searchable by future agents (see `references/institutional-learnings.md`)
-- `docs/research/YYYY-MM-DD-topic.md` for subsystem investigations
-- `docs/lessons/YYYY-MM-DD-topic.md` for prose notes where speed matters more than structure
+- `docs/research/YYYY/MM-DD/topic.md` for subsystem investigations
+- `docs/lessons/<domain>/YYYY/MM-DD/topic.md` for prose notes where speed matters more than structure
 - `docs/runbooks/agent-debugging.md` for common diagnostic paths
 - `docs/references/product-context.md` when product docs are external or symlinked outside the repo
 
