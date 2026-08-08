@@ -6,18 +6,18 @@ Router for AI/LLM engineering work. Routes to specialist child skills.
 
 | Child | Owns |
 |-------|------|
-| `context-memory-rag` | RAG pipelines, vector stores, context engineering |
+| `context-engineering` | RAG pipelines, vector stores, context engineering |
 | `ai-evals` | Evaluation frameworks, test datasets, scoring |
 | `ai-evals-observability` | Observability, tracing, latency, cost monitoring |
 | `ai-governance-safety` | Safety gates, HITL policies, model risk |
-| `prompt-tool-design` | Prompt engineering, tool schemas, structured output |
+| `prompt-engineering` | Prompt engineering, tool schemas, structured output |
 | `agent-system-architecture` | Multi-agent system design |
 
 ## Routing Decision Tree
 
 ```
 Is this about retrieval, vector search, or RAG pipelines?
-  → context-memory-rag
+  → context-engineering
 
 Is this about measuring/testing AI output quality?
   → ai-evals
@@ -29,7 +29,7 @@ Is this about safety, compliance, or governance?
   → ai-governance-safety
 
 Is this about writing or optimizing prompts and tool schemas?
-  → prompt-tool-design
+  → prompt-engineering
 
 Is this about wiring multiple AI agents together?
   → agent-system-architecture

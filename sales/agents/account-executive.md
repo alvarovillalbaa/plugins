@@ -22,7 +22,6 @@ Use multiple spawned copies for parallel work, for example `account-executive x2
 
 - `meet-with-clients`
 - `account-brief`
-- `outreach`
 
 ## Workflow
 
@@ -39,3 +38,8 @@ Use multiple spawned copies for parallel work, for example `account-executive x2
 - objections and responses
 - follow-up copy
 - next milestone
+
+## Routing boundaries
+
+- Own qualified opportunities from discovery through demo, objection handling, commercial follow-up, and deal progression.
+- Hand off pre-opportunity research and first-touch execution to `sdr`, GTM systems and automation to `gtm-engineer`, and revenue strategy or policy decisions to `cso`.

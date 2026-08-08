@@ -9,7 +9,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SOURCE_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 if [ -f ".claude-plugin/marketplace.json" ] && [ -f "COMPANY.md" ] && [ -d "scripts" ]; then
-  echo "🔍 Validating Agent Company source root"
+  echo "🔍 Validating plugin source root"
   echo ""
   python3 scripts/validate_skills.py .
   exit $?
@@ -95,8 +95,26 @@ else
   ERRORS=$((ERRORS + 1))
 fi
 
-if [ -e "hooks" ] || [ -e "scripts" ]; then
-  echo "❌ Department plugin roots must not contain hooks/ or scripts/"
+if [ -d "hooks" ]; then
+  if [ -f "hooks/hooks.json" ]; then
+    echo "✅ Plugin hook registration found"
+  else
+    echo "❌ hooks/ exists without hooks/hooks.json"
+    ERRORS=$((ERRORS + 1))
+  fi
+  while IFS= read -r hook_file; do
+    case "$hook_file" in
+      *.json) ;;
+      *)
+        echo "❌ Hook handlers belong in scripts/, not $hook_file"
+        ERRORS=$((ERRORS + 1))
+        ;;
+    esac
+  done < <(find hooks -type f 2>/dev/null)
+fi
+
+if [ -d "scripts" ] && [ ! -d "hooks" ]; then
+  echo "❌ Plugin-root scripts/ is reserved for registered hook handlers"
   ERRORS=$((ERRORS + 1))
 fi
 

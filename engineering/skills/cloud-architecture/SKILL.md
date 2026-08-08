@@ -1,10 +1,6 @@
 ---
 name: cloud-architecture
-description: >-
-  Use for provider selection, service selection, cloud architecture design,
-  migration target choices, and approval-aware architecture plans. Child
-  skill of `cloud`; route here from the parent router when this
-  lane is the narrowest owner.
+description: Use for provider selection, service selection, cloud architecture design, migration target choices, and approval-aware architecture plans. Child of `cloud`.
 ---
 
 # Cloud Architecture Design
@@ -15,7 +11,7 @@ This child skill owns provider selection, service selection, cloud architecture 
 
 - The request is primarily about provider selection, service selection, cloud architecture design, migration target choices, and approval-aware architecture plans.
 - The parent router [`../cloud/SKILL.md`](../cloud/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, scripts, examples, or templates.
 
 ## Assets
 
@@ -23,11 +19,10 @@ This child skill owns provider selection, service selection, cloud architecture 
 - `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 
-- Chain to `quality-assurance`, `agentic-development/release-landing`, `backend`, `ai-engineering`, `pentest/cloud-container-pentest` when the task crosses this child's boundary.
+- Chain to `quality-assurance`, `agentic-development/release-landing`, `backend`, `ai-engineering`, `pentest` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 

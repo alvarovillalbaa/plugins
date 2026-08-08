@@ -1,6 +1,6 @@
 ---
 name: prs
-description: "Pull request management skill for teams from 1 to 1000+ engineers. Use when the user needs to design or improve PR workflow, review queues, merge policy, ownership rules, branch strategy, review SLAs, CI gating, triage lanes, merge-conflict handling, or operating rituals for getting code reviewed and merged safely at scale."
+description: Pull request management for teams of any size — PR workflow, review queues, merge policy, branch strategy, review SLAs, CI gating, and merge-conflict handling.
 metadata:
   short-description: Manage PR flow, review queues, merge policy, and conflict handling
 ---
@@ -18,10 +18,10 @@ This skill covers both:
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-- `deslop`: Remove AI-generated code slop from the current diff without changing behavior. Install: `python scripts/install-external-skills.py --skill deslop --agent codex`.
-- `thermo-nuclear-code-quality-review`: Run an unusually strict maintainability and abstraction-quality review. Install: `python scripts/install-external-skills.py --skill thermo-nuclear-code-quality-review --agent codex`.
-- `no-mistakes`: Gate explicit ship, push, PR, or validate flows through the no-mistakes pipeline. Install: `python scripts/install-external-skills.py --skill no-mistakes --agent codex`.
-- `improve`: Run a read-only senior codebase audit and write execution-ready plans for other agents. Install: `python scripts/install-external-skills.py --skill improve --agent codex`.
+- `deslop`: Remove AI-generated code slop from the current diff without changing behavior. Install: `python3 scripts/install-external-skills.py --skill deslop --agent codex`.
+- `thermo-nuclear-code-quality-review`: Run an unusually strict maintainability and abstraction-quality review. Install: `python3 scripts/install-external-skills.py --skill thermo-nuclear-code-quality-review --agent codex`.
+- `no-mistakes`: Gate explicit ship, push, PR, or validate flows through the no-mistakes pipeline. Install: `python3 scripts/install-external-skills.py --skill no-mistakes --agent codex`.
+- `improve`: Run a read-only senior codebase audit and write execution-ready plans for other agents. Install: `python3 scripts/install-external-skills.py --skill improve --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
 Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).

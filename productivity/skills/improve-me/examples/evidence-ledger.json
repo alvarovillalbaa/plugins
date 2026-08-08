@@ -1,0 +1,22 @@
+{
+  "evidence": [
+    {
+      "id": "E1",
+      "claim": "The user reported three late weekly updates during the six-week review window.",
+      "kind": "fact",
+      "source": "current conversation",
+      "source_type": "current",
+      "observed_at": "2026-07-31",
+      "fresh_until": "2026-08-31"
+    },
+    {
+      "id": "I1",
+      "claim": "Decision communication may be a higher-leverage improvement than decision quality.",
+      "kind": "inference",
+      "source": "analysis of E1",
+      "source_type": "current",
+      "observed_at": "2026-08-02",
+      "basis_ids": ["E1"]
+    }
+  ]
+}

@@ -1,10 +1,6 @@
 ---
 name: azure-ops
-description: >-
-  Use for Azure-specific operations for Container Apps, App Service,
-  Functions, storage, Key Vault, Entra ID, Foundry, and diagnostics. Child
-  skill of `cloud`; route here from the parent router when this
-  lane is the narrowest owner.
+description: Use for Azure-specific operations for Container Apps, App Service, Functions, storage, Key Vault, Entra ID, Foundry, and diagnostics. Child of `cloud`.
 ---
 
 # Azure Platform Ops
@@ -15,7 +11,7 @@ This child skill owns Azure-specific operations for Container Apps, App Service,
 
 - The request is primarily about Azure-specific operations for Container Apps, App Service, Functions, storage, Key Vault, Entra ID, Foundry, and diagnostics.
 - The parent router [`../cloud/SKILL.md`](../cloud/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, scripts, examples, or templates.
 
 ## Assets
 
@@ -23,11 +19,10 @@ This child skill owns Azure-specific operations for Container Apps, App Service,
 - `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 
-- Chain to `quality-assurance`, `agentic-development/release-landing`, `backend`, `ai-engineering`, `pentest/cloud-container-pentest` when the task crosses this child's boundary.
+- Chain to `quality-assurance`, `agentic-development/release-landing`, `backend`, `ai-engineering`, `pentest` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 

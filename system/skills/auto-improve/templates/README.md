@@ -1,4 +1,5 @@
 # Templates
 
-Reusable improvement templates may live here once they are generic and safe for
-upstream.
+Reusable templates may live here only when they support project-local agent
+context, Markdown, personalization, or installed-component review artifacts.
+Do not use this folder to prepare upstream contributions.

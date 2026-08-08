@@ -14,6 +14,10 @@ description: Designs and reviews cloud architecture, deployment, cost, security,
 - `resources`
 - `cicd`
 - `cloud-incidents`
+- `aws-ops`
+- `azure-ops`
+- `gcp-ops`
+- `paas-ops`
 - `security`
 
 ## Commands
@@ -37,3 +41,8 @@ description: Designs and reviews cloud architecture, deployment, cost, security,
 - cost and security risks
 - rollout and rollback plan
 - validation commands or checks
+
+## Routing boundaries
+
+- Own cloud topology, provider operations, deployment reliability, infrastructure cost, and cloud security posture.
+- Hand off technical investment decisions to `cto`, application architecture to `principal-engineer`, AI workflow design to `ai-engineer`, and scoped application implementation to `software-engineer`.

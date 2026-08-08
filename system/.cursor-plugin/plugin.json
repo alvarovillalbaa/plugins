@@ -1,8 +1,8 @@
 {
   "name": "system",
   "displayName": "System",
-  "version": "3.0.0",
-  "description": "Skills, memory, knowledge, learning, brain ingestion, personalization, and loop workflows",
+  "version": "3.1.0",
+  "description": "Skills, memory, knowledge, learning, transparent explanations, personalization, brain ingestion, and loop workflows",
   "author": {
     "name": "Agent Company",
     "email": "alvarovillalbaa@icloud.com"
@@ -13,6 +13,7 @@
     "skills",
     "memory",
     "learning",
-    "loops"
+    "loops",
+    "transparency"
   ]
 }

@@ -1,10 +1,6 @@
 ---
 name: design-review
-description: >-
-  Use for design review, UX critique, visual hierarchy, interaction risk,
-  accessibility observations, and polish recommendations. Child skill of
-  `review`; route here from the parent router when this lane is the
-  narrowest owner.
+description: Use for design review, UX critique, visual hierarchy, interaction risk, accessibility observations, and polish recommendations. Child of `review`.
 ---
 
 # Design UX Review
@@ -15,15 +11,13 @@ This child skill owns design review, UX critique, visual hierarchy, interaction 
 
 - The request is primarily about design review, UX critique, visual hierarchy, interaction risk, accessibility observations, and polish recommendations.
 - The parent router [`../review/SKILL.md`](../review/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, examples, or templates.
 
 ## Assets
 
 - `references/` contains lane-specific guidance moved from the original parent skill.
-- `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 

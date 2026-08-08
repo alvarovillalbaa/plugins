@@ -1,6 +1,6 @@
 ---
 name: growth-engine
-description: Autonomous growth experimentation framework. Creates A/B and multivariate experiments with hypotheses, logs data points, runs statistical analysis (bootstrap CI + Mann-Whitney U), auto-promotes winners to a living playbook, and suggests next experiments. Use before creating content to apply proven playbook rules; use after publishing to log results.
+description: Autonomous growth experiment framework — runs A/B tests, logs results, analyzes statistics, and auto-promotes winners to a living playbook. Use before/after publishing content.
 ---
 
 # Growth Engine
@@ -14,7 +14,6 @@ Autonomous growth experimentation framework based on Karpathy's autoresearch pat
 - Scoring experiments to determine statistical winners
 - Checking the playbook for proven best practices **before** creating new content
 - Generating weekly scorecards across all channels
-- Monitoring campaign pacing and health
 
 Do NOT use for:
 - One-off content creation without an active experiment (use playbook output as input, but don't run the engine)
@@ -42,14 +41,16 @@ cp scripts/.env.example .env
 ```bash
 python3 scripts/experiment-engine.py create \
   --agent <agent_name> \
+  --channel <channel_name> \
   --hypothesis "What you expect to happen" \
   --variable "<variable_name>" \
   --variants '["variant_a", "variant_b"]' \
   --metric "<primary_metric>" \
-  --cycle-hours 24
+  --cycle-hours 24 \
+  --min-samples <predeclared_sample_floor>
 ```
 
-Add `--batch-mode` for 3–10 variant tests. Add `--min-samples N` to override auto-detection.
+Add `--batch-mode` for 3–10 variant tests. Choose `--min-samples` from the experiment's metric, variance, effect-size, power, and stopping plan; channel volume only affects runtime, not the evidence threshold.
 
 ### Log a data point
 ```bash
@@ -87,20 +88,15 @@ Always check the playbook before creating new content to apply proven best pract
 
 ### Suggest next experiments
 ```bash
-python3 scripts/experiment-engine.py suggest --agent <agent_name>
+python3 scripts/experiment-engine.py suggest \
+  --agent <agent_name> \
+  --categories '["<evidence_backed_variable>", "<another_variable>"]'
 ```
 
 ### Generate weekly scorecard
 ```bash
 python3 scripts/autogrowth-weekly-scorecard.py [--weeks N] [--output file.md]
 ```
-
-### Check campaign pacing
-```bash
-python3 scripts/pacing-alert.py [--json]
-```
-
-Exit code 0 = on pace, 1 = alerts present.
 
 ## Chain Rules
 
@@ -129,9 +125,8 @@ All configuration via environment variables. See `scripts/.env.example` for the 
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `GROWTH_ENGINE_DATA_DIR` | `./data/experiments` | Where experiment data is stored |
-| `GROWTH_ENGINE_AGENTS` | `content,email,linkedin,seo,blog` | Comma-separated agent names |
-| `HIGH_VOLUME_AGENTS` | `content,email` | Agents needing only 10 samples/variant |
-| `LOW_VOLUME_AGENTS` | `seo,linkedin,blog` | Agents needing 30 samples/variant |
+| `GROWTH_ENGINE_AGENTS` | auto-discovered | Optional comma-separated agent/channel names |
+| `TRENDING_MIN_SAMPLES` | `15` | Minimum observations per variant before an early watch signal |
 
 ## Shared Map
 

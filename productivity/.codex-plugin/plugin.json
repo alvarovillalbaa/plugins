@@ -1,6 +1,28 @@
 {
   "name": "productivity",
-  "version": "3.0.0",
-  "description": "Reporting, research, review, documentation drift, and operating cadence workflows for Codex.",
-  "skills": "./skills/"
+  "version": "3.1.0",
+  "description": "Reporting, research, review, personal improvement, performance, meetings, and operating cadence workflows for Codex.",
+  "skills": "./skills/",
+  "author": {
+    "name": "Agent Company"
+  },
+  "homepage": "https://github.com/alvarovillalbaa/plugins",
+  "repository": "https://github.com/alvarovillalbaa/plugins",
+  "license": "MIT",
+  "keywords": ["agent-skills", "productivity", "research", "reporting", "meetings", "performance"],
+  "interface": {
+    "displayName": "Productivity Agent Workflows",
+    "shortDescription": "Research, reporting, meetings, reviews, and operating cadence.",
+    "longDescription": "Reusable productivity skills for research, reporting, meetings, reviews, personal improvement, performance, and operating cadence.",
+    "developerName": "Agent Company",
+    "category": "Productivity",
+    "capabilities": ["Agent skills", "Research and reporting", "Operating workflows"],
+    "websiteURL": "https://github.com/alvarovillalbaa/plugins",
+    "defaultPrompt": [
+      "Research this topic and produce a concise report.",
+      "Prepare this meeting and capture follow-up actions.",
+      "Review my operating cadence and suggest improvements."
+    ],
+    "brandColor": "#4F7CAC"
+  }
 }

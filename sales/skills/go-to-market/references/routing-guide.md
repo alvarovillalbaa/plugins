@@ -8,6 +8,7 @@ Router for GTM strategy and execution. Routes to specialist sales skills.
 |-------|------|
 | `first-customers` | Founder-led sales, design partners, early traction |
 | `technical-sales` | Technical discovery, POC, technical evaluation |
+| `lead-signals` | Timely prospect evidence, Signals database capture, People/Companies relations and filtered record views |
 | `revenue-intelligence` | Pipeline analysis, deal signals, forecast |
 
 ## When to Use This Skill Directly
@@ -20,6 +21,10 @@ Router for GTM strategy and execution. Routes to specialist sales skills.
 ## GTM Motion Decision Tree
 
 ```
+Is the request about finding and recording prospect or lead signals?
+  → Use: lead-signals
+  → Chain to prospect only when a full account/persona brief is needed
+
 Is the product self-serve with a free tier?
   → Product-Led Growth (PLG) motion
   → Use: first-customers for initial early adopters, then product-led expansion

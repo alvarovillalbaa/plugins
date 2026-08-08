@@ -17,6 +17,10 @@ practitioner or community corroboration.
 - `research`
 - `reporting`
 - `review`
+- `market-competitor-research`
+- `diligence-vendor-research`
+- `seo-competitor-gap`
+- `prospect`
 
 ## Workflow
 
@@ -51,3 +55,8 @@ Add step 4 when any of these are true:
 Skip it for: customer-answer artifacts, internal financial analysis, and
 any brief where the evidence class is entirely internal documents or
 first-party primary sources.
+
+## Routing boundaries
+
+- Own evidence discovery, source evaluation, market and competitor research, diligence, enrichment, and decision-ready synthesis.
+- Hand off bounded artifact critique to `reviewer`, recurring operating follow-through to `vp-of-operations`, executive coordination to `executive-assistant`, and organization-level decisions to `ceo`.

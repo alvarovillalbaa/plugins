@@ -27,24 +27,28 @@ External skills are installed from [`references/external-skills.yaml`](reference
 | `agentic-development` | `codex-loop`, `claude-loop`, `ralph`, `no-mistakes`, `how-to-ralph-wiggum`, `ralph-playbook`, `clous-agent-runs`, `clous-platform-operation` |
 | `agent-harness` | `codex-loop`, `claude-loop`, `ralph`, `no-mistakes`, `use-afs`, `clous-agent-runs` |
 | `multi-agent` | `codex-loop`, `claude-loop`, `ralph`, `clous-agent-runs` |
+| `agentic-loops` | `codex-loop`, `claude-loop`, `ralph`, `clous-agent-runs` |
+| `agentic-graphs` | `clous-agent-runs` |
+| `agentic-goals` | `codex-loop`, `claude-loop`, `clous-agent-runs` |
 | `release-landing` | `codex-loop`, `claude-loop`, `ralph`, `no-mistakes`, `clous-sdk-release` |
 | `loops` | `codex-loop`, `claude-loop`, `ralph`, `no-mistakes` |
 | `prds` | `codex-loop`, `claude-loop`, `ralph-prd`, `ralph-playbook` |
 | `user-stories` | `codex-loop`, `claude-loop`, `ralph-prd`, `ralph-playbook` |
 | `quality-assurance` | `deslop`, `thermo-nuclear-code-quality-review`, `no-mistakes`, `improve`, `browserbase-ui-test` |
+| `ai-evals` | `open-evals` |
 | `code-review` | `deslop`, `thermo-nuclear-code-quality-review`, `no-mistakes`, `improve` |
 | `prs` | `deslop`, `thermo-nuclear-code-quality-review`, `no-mistakes`, `improve` |
 | `tech-debt` | `deslop`, `thermo-nuclear-code-quality-review`, `improve`, `codebase-design`, `improve-codebase-architecture`, `grill-with-docs`, `tdd` |
-| `backend-testing` | `deslop`, `thermo-nuclear-code-quality-review`, `no-mistakes`, `improve`, `codebase-design`, `improve-codebase-architecture`, `grill-with-docs`, `tdd` |
+| `testing` | `deslop`, `thermo-nuclear-code-quality-review`, `no-mistakes`, `improve`, `codebase-design`, `improve-codebase-architecture`, `grill-with-docs`, `tdd` |
+| `simplify` | `deslop` |
 | `flake` | `deslop`, `thermo-nuclear-code-quality-review`, `no-mistakes`, `improve` |
 | `architecture` | `codebase-design`, `improve-codebase-architecture`, `grill-with-docs`, `tdd` |
-| `test-strategy-coverage` | `codebase-design`, `improve-codebase-architecture`, `grill-with-docs`, `tdd` |
 | `backend` | `clous-a2a-integration`, `clous-api-integration`, `clous-api-use`, `clous-oauth-integration`, `clous-webhook-integration`, `clous-webhook-operations`, `browserbase-browser-to-api` |
 | `apis` | `clous-a2a-integration`, `clous-api-integration`, `clous-api-use`, `clous-oauth-integration`, `clous-webhook-integration`, `clous-webhook-operations`, `browserbase-browser-to-api` |
 | `cloud` | `clous-remote-mcp-integration`, `clous-platform-operation`, `clous-mcp-use`, `browserbase-cli` |
 | `cicd` | `clous-cli-integration`, `clous-cli-use`, `clous-sdk-release`, `browserbase-cli` |
-| `prompt-tool-design` | `browserbase-webmcp-gen`, `browserbase-functions`, `clous-mcp-use` |
-| `context-memory-rag` | `clous-knowledge-retrieval`, `use-afs` |
+| `prompt-engineering` | `browserbase-webmcp-gen`, `browserbase-functions`, `clous-mcp-use` |
+| `context-engineering` | `clous-knowledge-retrieval`, `use-afs` |
 | `ai-engineering` | `browserbase-agent-experience`, `browserbase-webmcp-gen`, `browserbase-functions`, `clous-agent-runs` |
 | `frontend` | `hallmark`, `taste-skill`, `impeccable`, `emil-design-eng`, `userinterface-wiki`, `transitions-dev`, `animate-text`, `browserbase-browser`, `browserbase-safe-browser`, `fluid-functionalism` |
 | `frontend-e2e` | `browserbase-ui-test`, `browserbase-browser`, `browserbase-browser-trace`, `browserbase-autobrowse`, `browserbase-safe-browser`, `browserbase-browser-to-api`, `browserbase-cookie-sync`, `browserbase-browser-use-to-stagehand` |
@@ -60,10 +64,9 @@ External skills are installed from [`references/external-skills.yaml`](reference
 | `visualization` | `hallmark`, `visual-explainer`, `frontend-slides`, `userinterface-wiki` |
 | `images` | `hallmark`, `visual-explainer`, `image-to-code-skill`, `imagegen-frontend-web`, `imagegen-frontend-mobile`, `stitch-skill` |
 | `slides` | `hallmark`, `frontend-slides`, `visual-explainer` |
-| `video` | `manim-video`, `animate-text`, `transitions-dev`, `review-animations` |
-| `remotion` | `manim-video`, `animate-text`, `transitions-dev`, `review-animations` |
-| `hyperframes` | `animate-text`, `transitions-dev`, `review-animations` |
+| `video` | `hyperframes`, `remotion`, `manim-video`, `animate-text`, `transitions-dev`, `review-animations` |
 | `content` | `unslop`, `stop-slop` |
+| `coursify` | `teach`, `frontend-slides`, `visual-explainer`, `manim-video`, `animate-text` |
 | `humanizing` | `unslop`, `stop-slop` |
 | `copywrite` | `unslop`, `stop-slop` |
 | `geo` | `unslop`, `stop-slop` |
@@ -75,8 +78,8 @@ External skills are installed from [`references/external-skills.yaml`](reference
 | `linkedin-articles` | `unslop`, `stop-slop` |
 | `communication-style` | `unslop`, `stop-slop` |
 | `code-documentation` | `unslop`, `stop-slop`, `writing-great-skills`, `teach`, `grilling`, `grill-me`, `grill-with-docs`, `visual-explainer` |
-| `auto-improve` | `writing-great-skills`, `teach`, `grilling`, `grill-me`, `grill-with-docs`, `codebase-design`, `improve-codebase-architecture`, `tdd`, `use-afs`, `codex-loop`, `no-mistakes` |
-| `skills-management` | `writing-great-skills`, `teach`, `grilling`, `grill-me`, `grill-with-docs`, `use-afs` |
+| `auto-improve` | `writing-great-skills`, `teach`, `use-afs` |
+| `plugins-management` | `writing-great-skills`, `teach`, `grilling`, `grill-me`, `grill-with-docs`, `use-afs` |
 | `skill-eval-loop` | `writing-great-skills`, `teach`, `grilling`, `grill-me`, `grill-with-docs`, `use-afs` |
 | `documentation-drift` | `writing-great-skills`, `teach`, `grilling`, `grill-me`, `grill-with-docs`, `use-afs` |
 | `knowledge-base` | `writing-great-skills`, `teach`, `grilling`, `grill-me`, `grill-with-docs`, `use-afs`, `clous-knowledge-retrieval` |
@@ -85,9 +88,12 @@ External skills are installed from [`references/external-skills.yaml`](reference
 | `memory` | `use-afs`, `writing-great-skills`, `teach` |
 | `learning` | `teach`, `writing-great-skills` |
 | `lessons` | `teach`, `writing-great-skills` |
+| `improve-me` | `office-hours`, `grilling` |
+| `roast-me` | `grill-me`, `grilling` |
+| `my-performance` | `office-hours` |
 | `research` | `last30days`, `browserbase-search`, `browserbase-fetch`, `browserbase-company-research`, `browserbase-competitor-analysis` |
 | `market-competitor-research` | `last30days`, `browserbase-competitor-analysis`, `browserbase-search`, `browserbase-fetch` |
-| `customer-qual-research` | `last30days`, `browserbase-company-research`, `browserbase-search`, `browserbase-fetch` |
+| `discovery` | `last30days`, `browserbase-company-research`, `browserbase-search`, `browserbase-fetch` |
 | `prospect` | `last30days`, `browserbase-company-research`, `browserbase-event-prospecting`, `browserbase-search`, `browserbase-fetch` |
 | `seo-competitor-gap` | `browserbase-search`, `browserbase-fetch`, `browserbase-competitor-analysis` |
 | `diligence-vendor-research` | `last30days`, `browserbase-company-research`, `browserbase-search`, `browserbase-fetch` |
@@ -101,6 +107,7 @@ External skills are installed from [`references/external-skills.yaml`](reference
 | `discoverability` | `browserbase-search`, `browserbase-fetch`, `browserbase-competitor-analysis` |
 | `technical-seo` | `browserbase-search`, `browserbase-fetch` |
 | `aeo` | `browserbase-search`, `browserbase-fetch`, `unslop`, `stop-slop` |
+| `seo` | `browserbase-search`, `browserbase-fetch`, `browserbase-competitor-analysis`, `unslop`, `stop-slop` |
 | `social-media` | `unslop`, `stop-slop`, `animate-text`, `visual-explainer` |
 
 ## Chains
@@ -109,52 +116,57 @@ External skills are installed from [`references/external-skills.yaml`](reference
 
 | Parent | Children | Chains To |
 | --- | --- | --- |
-| `auto-improve` | — | `skills-management/skill-eval-loop`, `memory`, `brain/ingestion`, `personalize`, `loops`, `agentic-development/agent-harness`, `code-documentation`, `quality-assurance` |
-| `skills-management` | `skill-eval-loop` | `memory`, `knowledge-base`, `learning`, `loops`, `code-documentation` |
+| `auto-improve` | — | `plugins-management`, `plugins-management/skill-eval-loop`, `memory`, `brain/ingestion`, `personalize`, `loops`, `code-documentation`, `quality-assurance` |
+| `plugins-management` | `skill-eval-loop` | `memory`, `knowledge-base`, `learning`, `loops`, `code-documentation` |
+| `memory` | — | `brain`, `knowledge-base`, `learning`, `lessons`, `code-documentation` |
 | `learning` | `lessons` | `knowledge-base`, `memory`, `brain`, `code-documentation` |
 | `brain` | `ingestion` | `knowledge-base`, `memory`, `research`, `reporting` |
 | `personalize` | `communication-style`, `voice`, `calibration`, `positioning`, `icp` | `outreach`, `content`, `product-marketing`, `research` |
+| `explain-yourself` | — | `memory`, `code-documentation`, `reporting` |
 
 ### Marketing
 
 | Parent | Children | Chains To |
 | --- | --- | --- |
-| `content` | `humanizing`, `repurposing`, `syndication`, `keywords`, `context-to-content`, `copywrite` | `discoverability`, `social-media`, `product-marketing` |
-| `discoverability` | `seo-and-geo`, `aeo`, `geo` | `content`, `product-marketing/cro`, `frontend/performance`, `reporting` |
-| `seo-and-geo` | `on-page-seo`, `technical-seo` | `geo`, `content`, `product-marketing/cro`, `frontend/performance`, `reporting` |
+| `content` | `humanizing`, `repurposing`, `syndication`, `keywords`, `context-to-content`, `coursify`, `copywrite` | `discoverability`, `social-media`, `product-marketing` |
+| `coursify` | — | `content`, `slides`, `images`, `video`, `visualization`, `frontend`, `code-documentation`, `quality-assurance` |
+| `discoverability` | `seo`, `aeo`, `geo` | `content`, `product-marketing/cro`, `frontend/performance`, `reporting` |
+| `seo` | `technical-seo` | `geo`, `content`, `product-marketing/cro`, `frontend/performance`, `reporting` |
 | `social-media` | `x-posts`, `linkedin-posts`, `x-articles`, `linkedin-articles` | `content/repurposing`, `personalize/positioning`, `launches/virality`, `images`, `video` |
-| `video` | `hyperframes`, `remotion` | `content`, `social-media`, `images`, `slides` |
+| `video` | — | `content`, `social-media`, `images`, `slides` |
 | `growth-engine` | — | `content`, `social-media`, `keywords`, `reporting` |
 
 ### Sales
 
 | Parent | Children | Chains To |
 | --- | --- | --- |
-| `go-to-market` | `first-customers`, `technical-sales`, `revenue-intelligence` | `product-marketing`, `product-development`, `outreach`, `sales-pipeline`, `research` |
+| `go-to-market` | `first-customers`, `technical-sales`, `lead-signals`, `revenue-intelligence` | `product-marketing`, `product-development`, `outreach`, `sales-pipeline`, `research` |
 | `sales-pipeline` | `commercial-docs`, `collateral` | `go-to-market`, `outreach`, `growth` |
 | `outreach` | `initial`, `sequence`, `follow-up`, `linkedin-dms`, `x-dms` | `prospect`, `go-to-market/first-customers`, `sales-pipeline`, `personalize` |
 | `launches` | `virality` | `content`, `social-media`, `video`, `images`, `go-to-market` |
-| `growth` | `revenue-ops`, `customer-growth` | `go-to-market`, `sales-pipeline`, `reporting` |
+| `growth` | `revenue-ops` | `go-to-market`, `sales-pipeline`, `reporting`, `product-marketing`, `product-development`, `outreach`, `prospect`, `research` |
 
 ### Engineering
 
 | Parent | Children | Chains To |
 | --- | --- | --- |
-| `agentic-development` | `architecture`, `multi-agent`, `release-landing`, `agent-harness`, `tech-debt` | `frontend`, `backend`, `quality-assurance`, `code-documentation`, `cloud`, `prs`, `skills-management` |
-| `ai-engineering` | `agent-system-architecture`, `prompt-tool-design`, `context-memory-rag`, `ai-evals-observability`, `ai-governance-safety`, `data-ml-pipelines`, `computer-vision-systems` | `quality-assurance/ai-evals`, `quality-assurance/security`, `backend`, `cloud`, `skills-management`, `brain` |
-| `backend` | `apis`, `databases` | `quality-assurance/backend-testing`, `quality-assurance/security`, `quality-assurance`, `code-documentation`, `cloud`, `ai-engineering` |
-| `frontend` | `performance`, `accessibility`, `onboarding-flows` | `product-development`, `product-marketing`, `quality-assurance/frontend-e2e`, `quality-assurance`, `code-documentation`, `images`, `visualization`, `design` |
-| `cloud` | `resources`, `cicd`, `cloud-incidents`, `aws-ops`, `azure-ops`, `gcp-ops`, `cloud-architecture` | `quality-assurance`, `agentic-development/release-landing`, `backend`, `ai-engineering`, `pentest/cloud-container-pentest` |
-| `pentest` | `web-vuln-validation`, `api-pentest`, `cloud-container-pentest`, `business-logic-race-testing`, `pentest-report` | `quality-assurance/security`, `cloud`, `backend` |
-| `quality-assurance` | `test-strategy-coverage`, `frontend-e2e`, `backend-testing`, `flake`, `security`, `ai-evals` | `pentest`, `ai-engineering/ai-evals-observability`, `frontend/performance`, `frontend`, `backend`, `prs`, `cloud` |
+| `agentic-development` | `architecture`, `multi-agent`, `release-landing`, `agent-harness`, `tech-debt` | `frontend`, `backend`, `quality-assurance`, `code-documentation`, `cloud`, `prs`, `plugins-management` |
+| `multi-agent` | `council`, `agentic-loops`, `agentic-graphs`, `agentic-goals` | `quality-assurance`, `code-documentation`, `agent-harness` |
+| `ai-engineering` | `agent-system-architecture`, `prompt-engineering`, `context-engineering`, `ai-evals-observability`, `ai-governance-safety`, `data-ml-pipelines`, `computer-vision` | `quality-assurance/ai-evals`, `quality-assurance/security`, `backend`, `cloud`, `plugins-management`, `brain` |
+| `backend` | `apis`, `databases` | `quality-assurance/testing`, `quality-assurance/security`, `quality-assurance`, `code-documentation`, `cloud`, `ai-engineering` |
+| `frontend` | `performance`, `accessibility`, `onboarding-flows` | `product-development`, `product-marketing`, `testing/frontend-e2e`, `quality-assurance`, `code-documentation`, `images`, `visualization`, `design` |
+| `cloud` | `resources`, `cicd`, `cloud-incidents`, `aws-ops`, `azure-ops`, `gcp-ops`, `paas-ops`, `cloud-architecture` | `quality-assurance`, `agentic-development/release-landing`, `backend`, `ai-engineering`, `pentest` |
+| `pentest` | `web-vuln-validation`, `api-pentest` | `quality-assurance/security`, `cloud`, `backend`, `quality-assurance/testing`, `reporting` |
+| `quality-assurance` | `testing`, `simplify`, `security`, `ai-evals` | `pentest`, `ai-engineering/ai-evals-observability`, `frontend/performance`, `frontend`, `backend`, `prs`, `cloud` |
+| `testing` | `frontend-e2e`, `flake` | `pentest`, `ai-engineering/ai-evals-observability`, `frontend`, `backend`, `prs`, `cloud` |
 
 ### Product
 
 | Parent | Children | Chains To |
 | --- | --- | --- |
-| `product-development` | `strategy`, `discovery`, `prds`, `experiments`, `user-stories` | `product-marketing`, `frontend/onboarding-flows`, `quality-assurance/test-strategy-coverage`, `quality-assurance`, `code-documentation`, `reporting` |
+| `product-development` | `strategy`, `discovery`, `prds`, `experiments`, `user-stories` | `product-marketing`, `frontend/onboarding-flows`, `quality-assurance/testing`, `quality-assurance`, `code-documentation`, `reporting` |
 | `product-marketing` | `cro`, `content-led`, `lead-magnets`, `buyer-psychology` | `content`, `discoverability`, `go-to-market`, `frontend`, `reporting` |
-| `design` | `taste`, `direction`, `design-systems`, `polish`, `critique` | `frontend`, `product-development`, `product-marketing`, `quality-assurance/frontend-e2e`, `code-documentation`, `visualization` |
+| `design` | `taste`, `direction`, `design-systems`, `polish`, `critique` | `frontend`, `product-development`, `product-marketing`, `testing/frontend-e2e`, `code-documentation`, `visualization` |
 
 ### Finances
 
@@ -166,6 +178,8 @@ External skills are installed from [`references/external-skills.yaml`](reference
 
 | Parent | Children | Chains To |
 | --- | --- | --- |
-| `reporting` | `content-audit` | `research`, `finances`, `product-development` |
-| `research` | `market-competitor-research`, `diligence-vendor-research`, `customer-qual-research`, `seo-competitor-gap`, `prospect` | `reporting`, `go-to-market`, `product-development`, `outreach` |
+| `reporting` | `content-audit` | `research`, `finances`, `product-development`, `pentest` |
+| `research` | `market-competitor-research`, `diligence-vendor-research`, `seo-competitor-gap`, `prospect` | `reporting`, `go-to-market`, `product-development`, `outreach` |
 | `review` | `code-review`, `design-review`, `grill`, `documentation-drift` | `quality-assurance`, `frontend`, `product-development`, `prs` |
+| `improve-me` | `roast-me`, `my-performance` | `memory`, `personalize/calibration`, `reporting` |
+| `meetings` | — | `memory`, `reporting`, `research` |

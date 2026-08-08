@@ -1,0 +1,141 @@
+{
+  "$schema": "../schemas/runtime-contract.schema.json",
+  "schema_version": 1,
+  "personalization": {
+    "enabled_by_default": true,
+    "applies_to": ["skill", "command", "rule", "agent"],
+    "first_use": "prompt-for-relevant-missing-values",
+    "project_store": ".agents/personalization.local.json",
+    "example_store": ".agents/personalization.example.json",
+    "default_variables": [
+      "project.name",
+      "organization.name",
+      "user.name",
+      "user.role",
+      "output.language"
+    ]
+  },
+  "variables": {
+    "resolution_order": ["invocation", "session", "project", "default"],
+    "placeholder_syntax": ["{{variable.name}}", "$ARGUMENTS"],
+    "definitions": {
+      "project.name": {
+        "scope": "project",
+        "type": "string",
+        "prompt": "What should agents call this project?",
+        "required": false,
+        "sensitive": false
+      },
+      "organization.name": {
+        "scope": "project",
+        "type": "string",
+        "prompt": "Which organization or team is this work for?",
+        "required": false,
+        "sensitive": false
+      },
+      "organization.website": {
+        "scope": "project",
+        "type": "string",
+        "prompt": "What is the organization's canonical website?",
+        "required": false,
+        "sensitive": false
+      },
+      "user.name": {
+        "scope": "project",
+        "type": "string",
+        "prompt": "How should agents address the primary user?",
+        "required": false,
+        "sensitive": false
+      },
+      "user.role": {
+        "scope": "project",
+        "type": "string",
+        "prompt": "What is the primary user's role in this project?",
+        "required": false,
+        "sensitive": false
+      },
+      "output.language": {
+        "scope": "project",
+        "type": "string",
+        "prompt": "Which language should durable deliverables use by default?",
+        "required": false,
+        "sensitive": false,
+        "default": "match-the-user"
+      },
+      "request.goal": {
+        "scope": "invocation",
+        "type": "string",
+        "prompt": "What concrete outcome should this workflow produce?",
+        "required": true,
+        "sensitive": false
+      },
+      "content.topic": {
+        "scope": "invocation",
+        "type": "string",
+        "prompt": "What topic should this content workflow cover?",
+        "required": true,
+        "sensitive": false
+      },
+      "audience.primary": {
+        "scope": "invocation",
+        "type": "string",
+        "prompt": "Who is the primary audience for this run?",
+        "required": false,
+        "sensitive": false
+      },
+      "site.url": {
+        "scope": "invocation",
+        "type": "string",
+        "prompt": "Which site or repository URL should be evaluated?",
+        "required": true,
+        "sensitive": false
+      }
+    }
+  },
+  "chaining": {
+    "identity_format": "<type>:<plugin>/<name>; plugin nodes omit /<name>",
+    "depth": "unbounded",
+    "parallelism": "breadth-levels",
+    "visit_policy": "once-per-resolution",
+    "cycles": "allowed-reported-no-reentry",
+    "external_dependencies": "resolve-if-installed"
+  },
+  "components": {
+    "skill:marketing/content": {
+      "personalization": "enabled",
+      "variables": ["content.topic", "audience.primary", "output.language"]
+    },
+    "skill:marketing/seo": {
+      "personalization": "enabled",
+      "variables": ["site.url", "organization.name", "organization.website"]
+    },
+    "skill:marketing/aeo": {
+      "personalization": "enabled",
+      "variables": ["site.url", "audience.primary"]
+    },
+    "skill:marketing/geo": {
+      "personalization": "enabled",
+      "variables": ["site.url", "organization.name", "audience.primary"]
+    },
+    "skill:sales/outreach": {
+      "personalization": "enabled",
+      "variables": ["request.goal", "audience.primary", "organization.name"]
+    },
+    "skill:product/product-development": {
+      "personalization": "enabled",
+      "variables": ["request.goal", "project.name", "user.role"]
+    },
+    "skill:productivity/research": {
+      "personalization": "enabled",
+      "variables": ["request.goal", "audience.primary", "output.language"]
+    },
+    "command:marketing/blog-draft": {
+      "personalization": "enabled",
+      "variables": ["content.topic", "audience.primary", "output.language"]
+    },
+    "command:marketing/content-brief": {
+      "personalization": "enabled",
+      "variables": ["content.topic", "audience.primary", "organization.name"]
+    }
+  }
+}

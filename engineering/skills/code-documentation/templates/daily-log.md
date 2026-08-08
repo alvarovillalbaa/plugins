@@ -1,6 +1,6 @@
 # Daily Log Template
 
-Development logs go in `logs/YYYY/MM-DD/changes.md` — always append to `changes.md` in the latest date directory. Create the directory and file only when today's date directory doesn't exist yet.
+Development logs go in the AFS log surface — ask `use-afs` for the path. Always append to the change log in the latest date directory; create the directory and file only when today's does not exist yet.
 
 ---
 
@@ -47,7 +47,7 @@ One bullet per logical change. One or two lines maximum. Past tense. Active voic
 ### Documentation
 ```
 - Added ARCHITECTURE.md for services/mcp — documents connection lifecycle and tool filtering
-- Updated PLAN.md and SPEC.md — separated historical plans from living desired-state contracts
+- Split historical implementation plans from the living desired-state contract — removed duplicate truth
 ```
 
 ---

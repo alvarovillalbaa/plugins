@@ -1,10 +1,6 @@
 ---
 name: seo-competitor-gap
-description: >-
-  Use for SEO competitor gap audits, SERP comparison, content gap analysis,
-  authority benchmarking, and opportunity prioritization. Child skill of
-  `research`; route here from the parent router when this lane is the
-  narrowest owner.
+description: Use for SEO competitor gap audits, SERP comparison, content gap analysis, authority benchmarking, and opportunity prioritization. Child of `research`.
 ---
 
 # SEO Competitor Gap Audit
@@ -15,7 +11,7 @@ This child skill owns SEO competitor gap audits, SERP comparison, content gap an
 
 - The request is primarily about SEO competitor gap audits, SERP comparison, content gap analysis, authority benchmarking, and opportunity prioritization.
 - The parent router [`../research/SKILL.md`](../research/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, scripts, examples, or templates.
 
 ## Assets
 
@@ -23,7 +19,6 @@ This child skill owns SEO competitor gap audits, SERP comparison, content gap an
 - `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 
@@ -35,9 +30,9 @@ This child skill owns SEO competitor gap audits, SERP comparison, content gap an
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-- `browserbase-search`: Use Browserbase search guidance for web discovery tasks. Install: `python scripts/install-external-skills.py --skill browserbase-search --agent codex`.
-- `browserbase-fetch`: Use Browserbase fetch guidance for web retrieval tasks. Install: `python scripts/install-external-skills.py --skill browserbase-fetch --agent codex`.
-- `browserbase-competitor-analysis`: Use browser-backed competitor analysis workflows for market and SEO comparisons. Install: `python scripts/install-external-skills.py --skill browserbase-competitor-analysis --agent codex`.
+- `browserbase-search`: Use Browserbase search guidance for web discovery tasks. Install: `python3 scripts/install-external-skills.py --skill browserbase-search --agent codex`.
+- `browserbase-fetch`: Use Browserbase fetch guidance for web retrieval tasks. Install: `python3 scripts/install-external-skills.py --skill browserbase-fetch --agent codex`.
+- `browserbase-competitor-analysis`: Use browser-backed competitor analysis workflows for market and SEO comparisons. Install: `python3 scripts/install-external-skills.py --skill browserbase-competitor-analysis --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
 Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).

@@ -75,6 +75,95 @@ def parse_scalar(value: str, line_no: int) -> str:
     return value.strip()
 
 
+def first_content_index(lines: list[str], start: int) -> int:
+    index = start
+    while index < len(lines):
+        stripped = lines[index].strip()
+        if stripped and not stripped.startswith("#"):
+            break
+        index += 1
+    return index
+
+
+def parse_node(lines: list[str], start: int, indent: int) -> tuple[object, int]:
+    index = first_content_index(lines, start)
+    if index >= len(lines):
+        return {}, index
+
+    raw = lines[index]
+    current_indent = len(raw) - len(raw.lstrip(" "))
+    if current_indent < indent:
+        return {}, index
+    if current_indent > indent:
+        raise ParseError("unexpected indentation", index + 1, indent + 1)
+    if raw[indent:].startswith("- ") or raw[indent:] == "-":
+        return parse_sequence(lines, index, indent)
+    return parse_mapping(lines, index, indent)
+
+
+def parse_sequence(lines: list[str], start: int, indent: int) -> tuple[list[object], int]:
+    items: list[object] = []
+    index = start
+
+    while index < len(lines):
+        raw = lines[index]
+        stripped = raw.strip()
+        if not stripped or stripped.startswith("#"):
+            index += 1
+            continue
+
+        current_indent = len(raw) - len(raw.lstrip(" "))
+        if current_indent < indent:
+            break
+        if current_indent > indent:
+            raise ParseError("unexpected indentation", index + 1, indent + 1)
+
+        line = raw[indent:]
+        if line == "-":
+            item_text = ""
+        elif line.startswith("- "):
+            item_text = line[2:]
+        else:
+            break
+
+        if not item_text:
+            child, next_index = parse_node(lines, index + 1, indent + 2)
+            items.append(child)
+            index = next_index
+            continue
+
+        if ":" not in item_text:
+            items.append(parse_scalar(item_text, index + 1))
+            index += 1
+            continue
+
+        key, remainder = item_text.split(":", 1)
+        if not key.strip() or key != key.strip():
+            raise ParseError("invalid sequence mapping key", index + 1, indent + 3)
+        if remainder and not remainder.startswith(" "):
+            raise ParseError("invalid mapping syntax", index + 1, indent + len(key) + 4)
+
+        item: dict[str, object] = {}
+        value = remainder.lstrip(" ")
+        if value:
+            item[key] = parse_scalar(value, index + 1)
+            next_index = index + 1
+        else:
+            child, next_index = parse_node(lines, index + 1, indent + 4)
+            item[key] = child
+
+        continuation, next_index = parse_mapping(lines, next_index, indent + 2)
+        overlap = set(item).intersection(continuation)
+        if overlap:
+            duplicate = sorted(overlap)[0]
+            raise ParseError(f"duplicate key: {duplicate}", index + 1, indent + 3)
+        item.update(continuation)
+        items.append(item)
+        index = next_index
+
+    return items, index
+
+
 def parse_mapping(lines: list[str], start: int, indent: int) -> tuple[dict[str, object], int]:
     data: dict[str, object] = {}
     i = start
@@ -133,7 +222,7 @@ def parse_mapping(lines: list[str], start: int, indent: int) -> tuple[dict[str, 
             continue
 
         if value == "":
-            child, j = parse_mapping(lines, i + 1, indent + 2)
+            child, j = parse_node(lines, i + 1, indent + 2)
             data[key] = child
             i = j
             continue
@@ -146,7 +235,9 @@ def parse_mapping(lines: list[str], start: int, indent: int) -> tuple[dict[str, 
 
 def parse_frontmatter(path: Path) -> dict[str, object]:
     lines = extract_frontmatter_lines(path)
-    data, index = parse_mapping(lines, 0, 0)
+    data, index = parse_node(lines, 0, 0)
+    if not isinstance(data, dict):
+        raise ParseError("frontmatter must be a mapping", 1, 1)
     if index != len(lines):
         raise ParseError("failed to parse complete frontmatter", index + 1, 1)
     return data
@@ -230,6 +321,32 @@ def main() -> int:
             result = subprocess.run(check, text=True)
             if result.returncode != 0:
                 return result.returncode
+
+    hook_script_audit = root / "scripts" / "audit_hooks_scripts.py"
+    if hook_script_audit.exists():
+        result = subprocess.run(
+            [sys.executable, str(hook_script_audit), str(root)], text=True
+        )
+        if result.returncode != 0:
+            return result.returncode
+
+    rule_audit = root / "scripts" / "audit_rules.py"
+    if rule_audit.exists():
+        result = subprocess.run([sys.executable, str(rule_audit), str(root)], text=True)
+        if result.returncode != 0:
+            return result.returncode
+
+    command_audit = root / "scripts" / "audit_commands.py"
+    if command_audit.exists():
+        result = subprocess.run([sys.executable, str(command_audit), str(root)], text=True)
+        if result.returncode != 0:
+            return result.returncode
+
+    agent_audit = root / "scripts" / "audit_agents.py"
+    if agent_audit.exists():
+        result = subprocess.run([sys.executable, str(agent_audit), str(root)], text=True)
+        if result.returncode != 0:
+            return result.returncode
 
     print(f"Validated {len(skill_files)} skill file(s).")
     return 0

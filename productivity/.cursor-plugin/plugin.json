@@ -1,8 +1,8 @@
 {
   "name": "productivity",
   "displayName": "Productivity",
-  "version": "3.0.0",
-  "description": "Reporting, research, review, documentation drift, and operating cadence workflows",
+  "version": "3.1.0",
+  "description": "Reporting, research, review, personal improvement, performance, meetings, and operating cadence workflows",
   "author": {
     "name": "Agent Company",
     "email": "alvarovillalbaa@icloud.com"
@@ -12,6 +12,8 @@
     "productivity",
     "research",
     "review",
-    "reporting"
+    "reporting",
+    "meetings",
+    "coaching"
   ]
 }

@@ -1,6 +1,28 @@
 {
   "name": "engineering",
-  "version": "3.0.0",
-  "description": "Architecture, implementation, QA, cloud, pentest, PR, and engineering documentation workflows for Codex.",
-  "skills": "./skills/"
+  "version": "3.1.0",
+  "description": "Architecture, multi-agent execution, AI evals, implementation, QA, cloud, pentest, PR, and documentation workflows for Codex.",
+  "skills": "./skills/",
+  "author": {
+    "name": "Agent Company"
+  },
+  "homepage": "https://github.com/alvarovillalbaa/plugins",
+  "repository": "https://github.com/alvarovillalbaa/plugins",
+  "license": "MIT",
+  "keywords": ["agent-skills", "engineering", "architecture", "AI-evals", "QA", "security"],
+  "interface": {
+    "displayName": "Engineering Agent Workflows",
+    "shortDescription": "Architecture, implementation, QA, security, and AI evals.",
+    "longDescription": "Reusable engineering skills for architecture, multi-agent execution, implementation, quality assurance, cloud, security, pull requests, and documentation.",
+    "developerName": "Agent Company",
+    "category": "Developer Tools",
+    "capabilities": ["Agent skills", "Software delivery", "Evaluation and verification"],
+    "websiteURL": "https://github.com/alvarovillalbaa/plugins",
+    "defaultPrompt": [
+      "Review this repository and implement the required fix.",
+      "Design and verify a multi-agent execution plan.",
+      "Audit this change for quality and security."
+    ],
+    "brandColor": "#3178C6"
+  }
 }

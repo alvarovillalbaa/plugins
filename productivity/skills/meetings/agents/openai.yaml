@@ -1,0 +1,4 @@
+interface:
+  display_name: "Meetings"
+  short_description: "Prepare, capture, and follow through on meetings"
+  default_prompt: "Use $meetings to prepare, capture, and coordinate follow-through for one or several meetings."

@@ -1,0 +1,105 @@
+{
+  "$schema": "../schemas/component-graph.schema.json",
+  "schema_version": "1.0",
+  "sources": {
+    "profiles": "*/profile.yaml",
+    "chain_map": "skills-chaining-map.md",
+    "external_skills": "references/external-skills.yaml",
+    "external_sources": "references/external-sources.yaml",
+    "command_catalog": "references/command-capabilities.json"
+  },
+  "resolution": {
+    "strategy": "breadth-first",
+    "breadth_execution": "parallel",
+    "cycle_policy": "visit-once-report-edges",
+    "traverse_relations": [
+      "contains",
+      "owns",
+      "chains-to",
+      "routes-to",
+      "references",
+      "invokes",
+      "spawns",
+      "uses"
+    ]
+  },
+  "references": [
+    {
+      "from": "plugin:sales",
+      "to": "plugin:marketing",
+      "relation": "uses",
+      "execution": "parallel",
+      "note": "Sales workflows use marketing content, discoverability, and launch capabilities."
+    },
+    {
+      "from": "plugin:marketing",
+      "to": "plugin:product",
+      "relation": "uses",
+      "execution": "parallel",
+      "note": "Marketing workflows use product positioning, research, and conversion capabilities."
+    },
+    {
+      "from": "plugin:product",
+      "to": "plugin:engineering",
+      "relation": "uses",
+      "execution": "sequential",
+      "note": "Product contracts route implementation and technical verification to engineering."
+    },
+    {
+      "from": "plugin:engineering",
+      "to": "plugin:system",
+      "relation": "uses",
+      "execution": "parallel",
+      "note": "Engineering uses system memory, learning, plugin management, and improvement loops."
+    },
+    {
+      "from": "plugin:finances",
+      "to": "plugin:productivity",
+      "relation": "uses",
+      "execution": "parallel",
+      "note": "Finance workflows use shared research and reporting capabilities."
+    },
+    {
+      "from": "agent:system/system-steward",
+      "to": "skill:system/plugins-management",
+      "relation": "uses",
+      "execution": "sequential"
+    },
+    {
+      "from": "agent:engineering/principal-engineer",
+      "to": "command:engineering/repo-review",
+      "relation": "invokes",
+      "execution": "sequential"
+    },
+    {
+      "from": "agent:marketing/growth-lead",
+      "to": "command:marketing/content-brief",
+      "relation": "invokes",
+      "execution": "sequential"
+    },
+    {
+      "from": "agent:sales/gtm-engineer",
+      "to": "command:sales/competitor-scan",
+      "relation": "invokes",
+      "execution": "parallel"
+    },
+    {
+      "from": "agent:product/product-manager",
+      "to": "command:product/product-review",
+      "relation": "invokes",
+      "execution": "sequential"
+    },
+    {
+      "from": "rule:system/defaults",
+      "to": "skill:system/personalize",
+      "relation": "references",
+      "execution": "parallel"
+    },
+    {
+      "from": "rule:marketing/defaults",
+      "to": "skill:marketing/discoverability",
+      "relation": "references",
+      "execution": "parallel"
+    }
+  ]
+}

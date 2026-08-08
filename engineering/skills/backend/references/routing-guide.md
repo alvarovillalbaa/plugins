@@ -8,7 +8,7 @@ Router for backend engineering work. Routes to specialist child skills.
 |-------|------|
 | `apis` | API design, REST patterns, OpenAPI specs |
 | `databases` | Schema design, migrations, query optimization |
-| `backend-testing` | Unit, integration, and contract testing |
+| `testing` | Unit, integration, contract, and backend testing |
 | `cicd` | Deployment pipelines, release automation |
 | `performance` | Backend profiling, bottleneck analysis |
 
@@ -22,7 +22,7 @@ Is this about database schema, migrations, or queries?
   → databases
 
 Is this about writing or improving tests?
-  → backend-testing
+  → testing
 
 Is this about CI/CD, deployment, or release?
   → cicd

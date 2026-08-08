@@ -1,35 +1,32 @@
 ---
 name: ai-evals-observability
-description: >-
-  Use for AI eval architecture, traces, metrics, score monitoring, regression
-  thresholds, and production AI observability. Child skill of `ai-engineering`; route here from the parent router when this lane is the
-  narrowest owner.
+description: Design and operate production evidence collection for AI systems — traces, telemetry, cost, drift signals, dashboards, and alerts. Feeds evidence to `ai-evals`, not the gate itself.
 ---
 
 # AI Evals Observability
 
-This child skill owns AI eval architecture, traces, metrics, score monitoring, regression thresholds, and production AI observability. It carries the detailed assets for this lane after the corrected fragmentation split.
+Own production evidence and operational signals. Do not reconstruct or override authoritative eval decisions.
 
-## Use When
+## Observe deployed behavior
 
-- The request is primarily about AI eval architecture, traces, metrics, score monitoring, regression thresholds, and production AI observability.
-- The parent router [`../ai-engineering/SKILL.md`](../ai-engineering/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+1. Define the operational question, target, environment, sampling policy, retention, privacy boundary, and response owner.
+2. Instrument provider-neutral traces for model calls, retrieval, tools, handoffs, errors, retries, latency, usage, and cost. Preserve target, prompt, tool, and configuration versions.
+3. Normalize evidence without erasing source provenance. Correlate traces and score observations with stable request, session, scenario, and eval row IDs where available.
+4. Build monitors and dashboards for operational health, drift, score distributions, failure clusters, cost, and latency. Distinguish missing coverage from measured zero.
+5. Alert on declared thresholds and route incidents to the owning engineering lane. Keep diagnostic signals separate from release-authoritative gates.
+6. Export selected, redacted evidence to `ai-evals` for dataset curation, failure attribution, calibration, and regression evaluation.
 
-## Assets
+## Preserve the boundary
 
-- `references/` contains lane-specific guidance moved from the original parent skill.
-- `scripts/` contains executable helpers owned by this lane.
-- `templates/` contains reusable output or implementation templates for this lane.
-- `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
+| Need | Owner |
+| --- | --- |
+| Production traces, telemetry pipelines, score monitoring, drift dashboards, alerts, debugging | `ai-evals-observability` |
+| Eval objectives, scenario datasets, graders, calibration, statistics, candidate comparison, official gates, release decisions | [`ai-evals`](../ai-evals/SKILL.md) |
 
-## Chain Rules
+Let persisted official gates flow into monitoring as immutable decisions. Never recompute an unofficial average downstream. Route any proposed grader, dataset, or threshold change through `ai-evals` and its calibration policy.
 
-- Chain to `quality-assurance/ai-evals`, `quality-assurance/security`, `backend`, `cloud`, `skills-management`, `brain` when the task crosses this child's boundary.
-- Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
-- Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
+Preserve privacy, data minimization, access control, and approval requirements for new production collection or externally visible monitors. Never request or store hidden model chain-of-thought; retain concise rationales and structured diagnostics only.
 
-## Shared Map
+Use bundled references, scripts, templates, and examples for implementation details. Consult [`../../../skills-chaining-map.md`](../../../skills-chaining-map.md) for cross-plugin routing.
 
-See [`../../../skills-chaining-map.md`](../../../skills-chaining-map.md) for the complete skills-chaining graph.
+Use `scripts/rag_evaluator.py` for deterministic retrieval-quality measurements. This lane owns that implementation; `architecture` may design retrieval systems but must not maintain a second evaluator.

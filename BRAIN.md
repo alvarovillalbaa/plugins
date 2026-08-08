@@ -26,11 +26,12 @@ This repo uses partial AFS mode. The repository is the active brain for plugin, 
 
 ## AFS Adaptation
 
-- Strict AFS Memory folders use `logs/`, `lessons/`, `facts/`, `fixes/`, `steers/`, `models/`, and `reflections/` when a target repo has no narrower convention.
-- Timestamped AFS folders default to `YYYY/MM-DD/`.
+- AFS is defined externally by the `use-afs` skill. This file does not restate its folder taxonomy, naming conventions, or timestamp format — read `use-afs` for those. If it is not installed, stop AFS-pathed work and report the install command.
+- Local profile and exceptions: [`references/docs/afs-profile.md`](references/docs/afs-profile.md).
+- This repo uses the application-repository profile: the documentation shell lives in `docs/`.
 - This repo preserves the established skill-audit convention: skill audit reports live directly under `docs/audits/skills/` with date-prefixed filenames.
 - Do not create a parallel root `audits/` tree for skill-audit work in this repo.
-- `facts/` is the durable-facts folder. Do not recreate retired durable-fact folder names.
+- Do not recreate retired durable-fact folder names; use the fact surfaces `use-afs` defines.
 
 ## Promotion
 

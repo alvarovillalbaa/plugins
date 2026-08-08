@@ -10,7 +10,7 @@ This local reference only covers this plugin's stop-hook based in-session loops.
 
 ## Local loop tooling
 
-This skill ships two commands built on `hooks/check-completion.sh`.
+This skill ships two commands built on `scripts/completion-gate.py`.
 
 ### `/dev-loop`
 

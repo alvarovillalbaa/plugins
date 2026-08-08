@@ -72,5 +72,5 @@ When pushing one campaign across many channels at once:
 
 - Producing the channel variants → `repurposing`.
 - Channel-native drafting → `linkedin-posts/articles`, `x-posts/articles`, `social-media`.
-- Search optimization of the canonical → `on-page-seo`, `technical-seo`.
+- Search optimization of the canonical → `seo`, `technical-seo`.
 - Paid amplification → coordinate with `sales`/paid and `finances` for budget.

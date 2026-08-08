@@ -34,7 +34,7 @@ Use a controlled vocabulary for tags (a fixed set), not free-form — inconsiste
 ## Retrieval patterns
 
 - **Keyword/full-text** — fast, exact; depends on titles/body using the searcher's language.
-- **Semantic / embedding** — matches meaning, not just words; good for natural-language queries (route deep RAG design to engineering's `context-memory-rag`).
+- **Semantic / embedding** — matches meaning, not just words; good for natural-language queries (route deep RAG design to engineering's `context-engineering`).
 - **Tag/faceted** — filter by topic, type, recency.
 - **Hybrid** — combine semantic recall with keyword/tag precision; usually best.
 - **Chunking** — for long docs, chunk at semantic boundaries so retrieval returns the relevant section, not a whole document.
@@ -82,8 +82,8 @@ KBs decay as the world changes:
 
 ## Handoffs
 
-- Deep retrieval/RAG architecture → engineering `context-memory-rag`.
+- Deep retrieval/RAG architecture → engineering `context-engineering`.
 - Stale-doc detection in code/instruction files → productivity `documentation-drift`.
 - Durable cross-session memory → `memory`.
 - Lessons promotion → `lessons`.
-- Skill content maintenance → `skills-management`.
+- Skill content maintenance → `plugins-management`.

@@ -7,9 +7,9 @@ Keep the PRD itself product-focused. Only promote technical hints into this arch
 Install fallbacks:
 
 ```sh
-python scripts/install-external-skills.py --skill codex-loop --agent codex
-python scripts/install-external-skills.py --skill claude-loop --agent codex
-python scripts/install-external-skills.py --skill tdd --agent codex
+python3 scripts/install-external-skills.py --skill codex-loop --agent codex
+python3 scripts/install-external-skills.py --skill claude-loop --agent codex
+python3 scripts/install-external-skills.py --skill tdd --agent codex
 ```
 
 ## Local owner boundary

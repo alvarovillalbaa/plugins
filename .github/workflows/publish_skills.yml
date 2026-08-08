@@ -39,6 +39,9 @@ jobs:
           python3 scripts/skillctl.py conflicts check --root .
           python3 scripts/validate_skills.py .
 
+      - name: Run bundled contract tests
+        run: python3 scripts/run_skill_tests.py .
+
       - name: Publish skills that differ from targets
         env:
           TOKEN: ${{ secrets.SKILL_PUBLISH_TOKEN }}

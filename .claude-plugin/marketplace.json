@@ -6,20 +6,20 @@
   },
   "metadata": {
     "description": "Department plugins for a multi-platform agent company spanning Claude, Codex, and Cursor.",
-    "version": "3.0.0"
+    "version": "3.1.0"
   },
   "plugins": [
     {
       "name": "system",
       "source": "./system",
-      "description": "Skills, memory, knowledge, learning, brain ingestion, personalization, and loop workflows.",
-      "version": "3.0.0"
+      "description": "Skills, memory, knowledge, learning, transparent explanations, personalization, brain ingestion, and loop workflows.",
+      "version": "3.1.0"
     },
     {
       "name": "marketing",
       "source": "./marketing",
-      "description": "Content, discoverability, social, visual, slides, and video workflows.",
-      "version": "3.0.0"
+      "description": "Content, course creation, SEO, AEO, GEO, LLM discoverability, social, visual, slides, and video workflows.",
+      "version": "3.1.0"
     },
     {
       "name": "sales",
@@ -30,8 +30,8 @@
     {
       "name": "engineering",
       "source": "./engineering",
-      "description": "Architecture, implementation, QA, cloud, pentest, PR, and documentation workflows.",
-      "version": "3.0.0"
+      "description": "Architecture, multi-agent execution, AI evals, implementation, QA, cloud, pentest, PR, and documentation workflows.",
+      "version": "3.1.0"
     },
     {
       "name": "product",
@@ -48,8 +48,8 @@
     {
       "name": "productivity",
       "source": "./productivity",
-      "description": "Reporting, research, review, documentation drift, and operating cadence workflows.",
-      "version": "3.0.0"
+      "description": "Reporting, research, review, personal improvement, performance, meetings, and operating cadence workflows.",
+      "version": "3.1.0"
     }
   ]
 }

@@ -25,6 +25,10 @@ The only thing you must define up front is the checklist — what "good" means f
 
 ## Step 1 — Choose a Target Reference
 
+Use this loop only on a project-local Markdown or agent-context target. If the
+target is an installed plugin component, it must live under the current
+project's `.agents` tree. Treat canonical plugin source checkouts as read-only.
+
 Pick the reference file that:
 - Has the most recurring failures in `memory/semantic-patterns.json`
 - Produces noticeably inconsistent output quality across sessions
@@ -179,33 +183,17 @@ Machine-readable round log for future agents to resume from:
 }
 ```
 
-Autoimprove round logs and results are generated review artifacts, not canonical memory. Keep them under `.skill-improvements/`. Promote only adopted rules, lessons, fixes, or documentation changes through `references/docs/promotion-matrix.md`.
+Autoimprove round logs and results are generated review artifacts, not canonical memory. Keep them under `.skill-improvements/`. Adopt only approved local rules, lessons, fixes, documentation changes, or installed-component changes through `references/docs/promotion-matrix.md`.
 
 ---
 
-## Source-Aware Deployment
+## Local Deployment
 
-Do **not** automatically overwrite `references/[reference-name].md` in a
-runtime install or cache. First trace the source:
-
-1. Locate nearest `.skillmeta.yml`.
-2. Confirm `origin.repo: alvarovillalbaa/plugins` and `origin.path` matches the
-   source skill directory.
-3. Classify the diff:
-
-```bash
-python3 scripts/skillctl.py diff-classify --base origin/main --head HEAD --fail-on-private
-```
-
-4. Keep local/private personalization in overlays.
-5. Generate an upstream patch bundle by default:
-
-```bash
-python3 scripts/skillctl.py propose-upstream --mode patch --title "Improve <skill> <topic>"
-```
-
-Use PR mode only when the user has authenticated GitHub tooling and wants an
-upstream pull request. Never push directly to `main`.
+Keep the canonical plugin source read-only. Write an approved result only to
+the project-local Markdown/context target or installed `.agents` component that
+the run evaluated. Keep personalization in `.agents/personalization.local.json`.
+Do not create a source diff, contribution branch, commit, patch bundle, PR, or
+push from this workflow.
 
 ---
 

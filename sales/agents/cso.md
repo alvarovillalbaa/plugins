@@ -10,6 +10,7 @@ description: Owns GTM strategy, pipeline health, revenue operating model, sales 
 ## Primary skills
 
 - `go-to-market`
+- `first-customers`
 - `sales-pipeline`
 - `revenue-intelligence`
 - `revenue-ops`
@@ -20,7 +21,6 @@ description: Owns GTM strategy, pipeline health, revenue operating model, sales 
 - `meet-with-clients`
 - `account-brief`
 - `pipeline-diagnostics`
-- `outreach`
 
 ## Workflow
 
@@ -37,3 +37,8 @@ description: Owns GTM strategy, pipeline health, revenue operating model, sales 
 - recommended motions
 - owner actions
 - measurement plan
+
+## Routing boundaries
+
+- Own revenue strategy, market-entry choices, sales process, coverage model, and commercial operating decisions.
+- Hand off pre-opportunity execution to `sdr`, qualified deal progression to `account-executive`, and GTM automation or experiments to `gtm-engineer`.

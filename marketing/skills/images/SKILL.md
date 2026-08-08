@@ -1,10 +1,9 @@
 ---
 name: images
 description: >-
-  Create polished image assets by authoring the visual itself in code. Use for
-  product-focused images, dashboards, UI mockups, terminal cards, diagrams,
-  browser frames, technical explainers, and mixed compositions where coded
-  product visuals combine with generated or photographic backgrounds.
+  Create polished image assets by authoring the visual in code — product
+  shots, dashboards, UI mockups, terminal cards, diagrams, and mixed
+  compositions.
 ---
 
 # Code As Images
@@ -15,12 +14,12 @@ Use this skill when the image should be designed as a code artifact instead of t
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-- `hallmark`: Audit, redesign, study, or build UI with anti-AI-slop design constraints. Install: `python scripts/install-external-skills.py --skill hallmark --agent codex`.
-- `visual-explainer`: Use visual explanation guidance for diagrams, concepts, and teachable visuals. Install: `python scripts/install-external-skills.py --skill visual-explainer --agent codex`.
-- `image-to-code-skill`: Use image-to-code guidance when translating screenshots or designs into UI. Install: `python scripts/install-external-skills.py --skill image-to-code-skill --agent codex`.
-- `imagegen-frontend-web`: Use web frontend image-generation guidance for UI ideation. Install: `python scripts/install-external-skills.py --skill imagegen-frontend-web --agent codex`.
-- `imagegen-frontend-mobile`: Use mobile frontend image-generation guidance for UI ideation. Install: `python scripts/install-external-skills.py --skill imagegen-frontend-mobile --agent codex`.
-- `stitch-skill`: Use stitch guidance for assembling UI from screenshots or generated assets. Install: `python scripts/install-external-skills.py --skill stitch-skill --agent codex`.
+- `hallmark`: Audit, redesign, study, or build UI with anti-AI-slop design constraints. Install: `python3 scripts/install-external-skills.py --skill hallmark --agent codex`.
+- `visual-explainer`: Use visual explanation guidance for diagrams, concepts, and teachable visuals. Install: `python3 scripts/install-external-skills.py --skill visual-explainer --agent codex`.
+- `image-to-code-skill`: Use image-to-code guidance when translating screenshots or designs into UI. Install: `python3 scripts/install-external-skills.py --skill image-to-code-skill --agent codex`.
+- `imagegen-frontend-web`: Use web frontend image-generation guidance for UI ideation. Install: `python3 scripts/install-external-skills.py --skill imagegen-frontend-web --agent codex`.
+- `imagegen-frontend-mobile`: Use mobile frontend image-generation guidance for UI ideation. Install: `python3 scripts/install-external-skills.py --skill imagegen-frontend-mobile --agent codex`.
+- `stitch-skill`: Use stitch guidance for assembling UI from screenshots or generated assets. Install: `python3 scripts/install-external-skills.py --skill stitch-skill --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
 Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).

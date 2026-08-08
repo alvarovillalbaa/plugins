@@ -1,8 +1,12 @@
 # Documentation Types Reference
 
-Last updated: 2026-06-28
+Last updated: 2026-08-07
 
-Canonical taxonomy for documentation types, where they live, and whether they are historical or living.
+How to pick a documentation surface and what each type is for.
+
+This reference does **not** define the AFS taxonomy, paths, or timestamp format. `use-afs` owns
+those; if it is not installed, stop AFS-pathed work and report the install command. Local deltas
+live in [`../../../../references/docs/afs-profile.md`](../../../../references/docs/afs-profile.md).
 
 ## Surfaces
 
@@ -11,181 +15,44 @@ Documentation falls into these surfaces:
 1. Inline docs
 2. In-folder docs
 3. Root instruction docs
-4. Timestamped historical AFS docs
-5. Living AFS docs
+4. AFS surfaces (memory, operational, and source-of-truth)
 
 Default rule: choose the narrowest authoritative surface first.
 
 ## Inline docs
 
-Use inline docs for public functions, classes, methods, hooks, components, modules, and non-obvious code behavior that should be visible without leaving the editor.
+Use inline docs for public functions, classes, methods, hooks, components, modules, and non-obvious
+code behavior that should be visible without leaving the editor.
 
 Prefer type annotations over prose when types can carry the meaning cleanly.
 
 ## In-folder docs
 
-These explain one directory or subsystem.
+These explain one directory or subsystem. The core / conditional / rare sets and each file's intent
+are defined in the [AFS profile](../../../../references/docs/afs-profile.md#in-folder-documentation-contract).
 
-### Core
-
-- `README.md`
-- `ARC.md`
-
-### Conditional
-
-- `SETUP.md`
-- `RUNBOOK.md`
-- `CHANGELOG.md`
-- `SECURITY.md`
-
-### Rare
-
-- `OVERVIEW.md`
-- `FAQ.md`
-- `DECISIONS.md`
-- `DEPENDENCIES.md`
-
-### What each one does
-
-- `README.md` — purpose, entry point, usage, links
-- `ARC.md` — internals, flows, boundaries, decisions
-- `SETUP.md` — non-obvious bootstrap or local environment steps
-- `RUNBOOK.md` — folder-local operational workflow
-- `CHANGELOG.md` — user-facing or package-facing release history
-- `SECURITY.md` — security boundaries, secrets, abuse cases, review rules
-- `OVERVIEW.md` — concept-first orientation when README would become too dense
-- `FAQ.md` — repeated questions and troubleshooting
-- `DECISIONS.md` — local decisions that do not justify a separate ADR
-- `DEPENDENCIES.md` — dependency map, contracts, upgrade notes
-
-These are living docs. Add `Last updated: YYYY-MM-DD` near the top.
+They are living docs — add `Last updated: YYYY-MM-DD` near the top. They stay beside the code they
+describe and are never relocated into `docs/`.
 
 ## Root instruction docs
 
-These are first-class documentation:
+The UPPERCASE Markdown files at the repo root are first-class documentation. `use-afs` owns the
+canonical set and each file's purpose — read it before creating, renaming, or routing content into
+one.
 
-| File | Purpose |
-|---|---|
-| `AGENTS.md` | General customization to the user's needs, codebase, and ways of working |
-| `PLAN.md` | How planning should be done and how plans should look |
-| `SPEC.md` | How specs should be written and how they should be maintained |
-| `SOUL.md` | Agent personality and collaboration stance |
-| `PRINCIPLES.md` | Constraints, heuristics, and max/min rules |
-| `DESIGN.md` | Design-system and frontend interaction guidance |
+They stay at the repo root even when the rest of the AFS shell lives in `docs/`, and they are living
+docs: add `Last updated: YYYY-MM-DD` near the top.
 
-These are living docs. Add `Last updated: YYYY-MM-DD` near the top.
+## AFS surfaces
 
-## Final AFS
+Ask `use-afs` for:
 
-### Memory
+- which surfaces exist and what each is for
+- which are timestamped and which are living
+- the exact path and date format for a destination
+- where the shell lives for this repo's installation profile (application repos use `docs/`)
 
-| Path | Purpose | Default mode |
-|---|---|---|
-| `logs/` | terse change log for meaningful code or doc changes | timestamped |
-| `lessons/` | reusable lessons learned from experience, organized by domain | timestamped |
-| `facts/` | durable facts: `facts/items/<domain>/`, `facts/episodes/<domain>/`, `facts/triples/<domain>/` | living |
-| `fixes/` | reusable debugging solutions and error fixes | timestamped |
-| `steers/` | traces of agent work steered or corrected by a human or secondary LLM | timestamped |
-| `models/` | brief logs of decisions made, problems encountered, or goals set | timestamped |
-| `reflections/` | detailed reflections grounded in the platform and recent experience | timestamped |
-
-### Operational
-
-| Path | Purpose | Default mode |
-|---|---|---|
-| `audits/` | reports, audits, ADRs, post-mortems, investigations | timestamped |
-| `raw/` | raw source material waiting to be ingested | timestamped |
-| `plans/` | implementation plans and plan-driven-development artifacts | timestamped |
-| `results/` | stored work outputs and computed results | timestamped |
-| `specs/` | living desired-state behavior contracts | living |
-| `sources/` | monitored URL/source registries | living |
-| `lib/` | generated drafts, registries, support artifacts | living |
-| `objects/<type>/` | structured objects such as clients, employees, or companies | living |
-| `templates/` | reusable artifacts such as AI prompts, emails, or document templates | living |
-| `<domain>/<folder>/` | domain-specific surfaces only when truly needed | repo-defined |
-
-### Source of truth
-
-| Path | Purpose | Default mode |
-|---|---|---|
-| `references/` | factual code, API, schema, or URL references | living |
-| `cookbooks/` | "how we actually do this here" recipes | living |
-| `knowledge/` | timeless maintained knowledge | living |
-| `runbooks/` | operational procedures | living |
-| `research/` | ongoing research work | living |
-| `official-documentation/` | copied external official docs | living, but not iterated heavily |
-
-## Timestamp rule
-
-Timestamped doc families use one layout only:
-
-```text
-*/YYYY/MM-DD/*.md
-```
-
-Default timestamped families:
-
-- `logs/`
-- `lessons/`
-- `fixes/`
-- `steers/`
-- `models/`
-- `reflections/`
-- `audits/`
-- `raw/`
-- `plans/`
-- `results/`
-
-Default living families with type-first structure:
-
-- `facts/items/<domain>/`
-- `facts/episodes/<domain>/`
-- `facts/triples/<domain>/`
-
-Examples:
-
-```text
-logs/2026/04-25/changes.md
-lessons/engineering/2026/04-25/retry-budget.md
-fixes/2026/04-25/postgres-socket-timeout.md
-steers/2026/04-25/api-route-correction.md
-models/2026/04-25/auth-decision.md
-reflections/2026/04-25/sprint-retrospective.md
-audits/2026/04-25/release-audit.md
-plans/2026/04-25/queue-backpressure.md
-raw/2026/04-25/vendor-export.md
-results/2026/04-25/report.md
-facts/items/general/team-size.md
-facts/episodes/onboarding/2026-04-25-first-week.md
-facts/triples/product/pricing-model.md
-```
-
-## Living-doc rule
-
-Living docs do not use timestamped folders as their primary organization.
-
-Every living doc should include:
-
-```markdown
-Last updated: YYYY-MM-DD
-```
-
-Put it directly under the H1 or immediately after frontmatter.
-
-Applies to:
-
-- root instruction docs
-- in-folder docs
-- `facts/`
-- `specs/`
-- `sources/`
-- `lib/`
-- `references/`
-- `cookbooks/`
-- `knowledge/`
-- `runbooks/`
-- `research/`
-- `official-documentation/`
+Do not reconstruct any of the above from memory or from folders that happen to exist in the repo.
 
 ## Time-based vs live conflicts
 
@@ -196,13 +63,13 @@ Use this rule whenever docs overlap:
 
 Good split:
 
-- `plans/2026/04-25/payment-retry.md` explains one implementation effort
-- `PLAN.md` explains the lasting repo-wide planning standard
+- a dated implementation plan explains one implementation effort
+- the root instruction doc that owns planning explains the lasting repo-wide standard
 
 Bad split:
 
-- current operational instructions duplicated in both `audits/...` and `runbooks/...`
-- current repo rules duplicated in both `lessons/...` and `AGENTS.md`
+- current operational instructions duplicated in both an audit and a runbook
+- current repo rules duplicated in both a lesson and `AGENTS.md`
 
 When conflicts exist:
 
@@ -217,29 +84,7 @@ Use this routing sequence:
 1. If the reader needs the answer inside code, use inline docs.
 2. If the doc explains one folder, use in-folder docs.
 3. If the doc changes how the repo is operated, use a root instruction doc.
-4. If the artifact is historical, investigative, or event-like, use a timestamped AFS path.
-5. If the artifact is the current durable truth, use a living AFS path.
+4. If the artifact is historical, investigative, or event-like, use a timestamped AFS surface.
+5. If the artifact is the current durable truth, use a living AFS surface.
 
-## Common placements
-
-| Scenario | Destination |
-|---|---|
-| Daily change note | `logs/YYYY/MM-DD/changes.md` |
-| Durable lesson from repeated debugging | `lessons/<domain>/YYYY/MM-DD/` |
-| Item fact about user/company/project | `facts/items/<domain>/` |
-| Episode fact (session-scoped) | `facts/episodes/<domain>/` |
-| Triple fact (atomic claim) | `facts/triples/<domain>/` |
-| Non-obvious recurring fix | `fixes/YYYY/MM-DD/*.md` |
-| Trace of agent correction or steering | `steers/YYYY/MM-DD/*.md` |
-| Brief decision, problem, or goal log | `models/YYYY/MM-DD/*.md` |
-| Detailed platform reflection | `reflections/YYYY/MM-DD/*.md` |
-| Release audit or architecture report | `audits/YYYY/MM-DD/` |
-| New feature implementation plan | `plans/YYYY/MM-DD/` |
-| Structured object (client, employee, company) | `objects/<type>/` |
-| Reusable template (prompt, email, document) | `templates/` |
-| Repo-wide behavior contract | `specs/` |
-| Work output or computed result | `results/YYYY/MM-DD/` |
-| Stable API mapping | `references/` |
-| Repo-specific technical recipe | `cookbooks/` |
-| Timeless engineering knowledge | `knowledge/` |
-| Exact operational workflow | `runbooks/` |
+For steps 4 and 5, resolve the concrete path through `use-afs`.

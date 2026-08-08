@@ -1,6 +1,6 @@
 ---
 name: visualization
-description: Generate polished, self-contained visual explainers, reviews, diagrams, dashboards, comparison pages, and slide-mode HTML from technical or business inputs. Use when the user asks for a diagram, architecture overview, diff or plan review, project recap, comparison matrix, audit page, timeline, dashboard, or any explanation that would be clearer as a visual artifact than as plain terminal text. Also use proactively when the output would otherwise become a dense table or long text wall.
+description: Generate polished, self-contained visual explainers, diagrams, dashboards, and comparison pages from technical or business inputs. Use whenever a diagram or dashboard beats a text wall.
 ---
 
 # Visualization
@@ -15,10 +15,10 @@ Never fall back to ASCII art when this skill is active.
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-- `hallmark`: Audit, redesign, study, or build UI with anti-AI-slop design constraints. Install: `python scripts/install-external-skills.py --skill hallmark --agent codex`.
-- `visual-explainer`: Use visual explanation guidance for diagrams, concepts, and teachable visuals. Install: `python scripts/install-external-skills.py --skill visual-explainer --agent codex`.
-- `frontend-slides`: Use frontend-focused slide guidance for polished technical or product decks. Install: `python scripts/install-external-skills.py --skill frontend-slides --agent codex`.
-- `userinterface-wiki`: Use interface-pattern references for layout, components, states, and product UI decisions. Install: `python scripts/install-external-skills.py --skill userinterface-wiki --agent codex`.
+- `hallmark`: Audit, redesign, study, or build UI with anti-AI-slop design constraints. Install: `python3 scripts/install-external-skills.py --skill hallmark --agent codex`.
+- `visual-explainer`: Use visual explanation guidance for diagrams, concepts, and teachable visuals. Install: `python3 scripts/install-external-skills.py --skill visual-explainer --agent codex`.
+- `frontend-slides`: Use frontend-focused slide guidance for polished technical or product decks. Install: `python3 scripts/install-external-skills.py --skill frontend-slides --agent codex`.
+- `userinterface-wiki`: Use interface-pattern references for layout, components, states, and product UI decisions. Install: `python3 scripts/install-external-skills.py --skill userinterface-wiki --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
 Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).

@@ -7,4 +7,4 @@ user:
   role: "{{USER_ROLE}}"
 workflow:
   preferred_agent: "{{PREFERRED_AGENT}}"
-  default_contribution_mode: "patch"
+  plugin_improvement_scope: "installed-copy"

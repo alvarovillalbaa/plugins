@@ -1,38 +1,45 @@
 ---
 name: si:promote
-description: Graduate a proven pattern from MEMORY.md to CLAUDE.md or .claude/rules/. Distills the entry into a one-line prescriptive instruction and removes it from MEMORY.md to free space.
-argument-hint: "[pattern description or MEMORY.md line number]"
-allowed-tools: [Read, Edit, Write, AskUserQuestion]
+description: Stage, review, and explicitly approve promotion of one proven memory into its canonical policy owner without losing provenance.
+argument-hint: "[exact scoped record handle and proposed target]"
+allowed-tools: [Read, Edit, Write, AskUserQuestion, Skill]
 ---
 
-Promote a pattern from auto-memory to the project's rule system.
+Promote one memory only through the canonical `memory` contract and
+[`../../references/docs/promotion-matrix.md`](../../references/docs/promotion-matrix.md).
 
 ## Steps
 
-1. **Identify the entry** — read the argument. If it is a line number, read that line from MEMORY.md. If it is a description, search MEMORY.md for the closest match.
+1. **Resolve exact source and scope** — require one record handle in one
+   authorized store. Do not choose the closest semantic match across a store or
+   search adjacent projects.
+2. **Verify the evidence** — preserve evidence kind, source, observation date,
+   qualifiers, conflicts, and freshness. Re-check drift-prone claims against
+   current state when safe. An inferred or disputed claim cannot be promoted as
+   an unconditional rule.
+3. **Score the candidate** — rate durability, impact, and scope from 0 to 3.
+   A score of six or more permits review; it never substitutes for evidence or
+   approval.
+4. **Select the canonical owner** — use the promotion matrix and current
+   runtime's project/user policy locations. Do not assume `CLAUDE.md`, a global
+   home path, or `.claude/rules/` exists unless discovered in the authorized
+   scope.
+5. **Draft the exact change** — show source record, target path/handle, proposed
+   text, retained scope and qualifiers, provenance note, and what would happen
+   to the source record. Do not strip uncertainty merely to sound prescriptive.
+6. **Obtain explicit approval** — confirmation must cover both the target write
+   and any source mutation. Approval to promote does not imply approval to
+   delete the original record.
+7. **Apply transactionally** — after approval, write the canonical target,
+   verify it, then either mark the source as superseded or leave it intact as
+   approved. Prefer a reversible supersession pointer over deletion.
+8. **Report** — show the target change, source-record state, approval evidence,
+   validation, and any unresolved conflict. Never claim promotion if either
+   write failed.
 
-2. **Score it** — confirm the entry scores ≥ 6 on:
-   - Durability (0–3): still true in 30+ days?
-   - Impact (0–3): prevents mistakes or breakage?
-   - Scope (0–3): applies to whole project?
-   
-   If score < 6, tell the user and stop.
+Do not promote secrets, private reasoning, unrelated personal data, temporary
+task state, or unsupported sensitive inferences.
 
-3. **Select target** — decide where the rule belongs:
-   - `./CLAUDE.md` — project-wide rules that any contributor needs to know
-   - `.claude/rules/<topic>.md` — rules that only apply to specific file types
-   - `~/.claude/CLAUDE.md` — personal preferences across all projects
+## Boundary
 
-4. **Distill** — transform the entry from descriptive to prescriptive:
-   - Remove "I noticed", "it seems", "sometimes" hedges
-   - Write one direct instruction: "Use X" or "Never Y"
-   - Include the exact command if relevant
-
-5. **Write** — append the distilled rule to the target file. For `.claude/rules/`, add or update the `paths` frontmatter to scope correctly.
-
-6. **Remove** — delete or comment out the entry from MEMORY.md. If the entry is in a topic file, remove it there.
-
-7. **Confirm** — show the user:
-   - What was added to which file
-   - What was removed from MEMORY.md
-   - New line count for both files
+This command promotes one reviewed memory candidate to a canonical policy owner. It does not create a new memory candidate or perform a broad store review.

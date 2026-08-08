@@ -1,56 +1,87 @@
 ---
 name: si:remember
-description: Explicitly save a pattern, fix, or preference to auto-memory with proper frontmatter. Use immediately after finding a debugging solution, confirming a preference, or identifying a workflow that should persist.
-argument-hint: "[what to remember — be specific and prescriptive]"
-allowed-tools: [Read, Write, Edit]
+description: Stage and explicitly confirm one provenance-rich durable memory record in an authorized store.
+argument-hint: "[exact claim to remember and intended scope]"
+allowed-tools: [Read, Write, Edit, AskUserQuestion, Skill]
 ---
 
-Save an important pattern to auto-memory immediately.
+Save one important pattern, fix, decision, or preference through the canonical
+`memory` contract. Invoking this command requests the workflow; it does not
+authorize an inferred claim, an unreviewed normalization, or an unspecified
+store.
 
 ## Steps
 
-1. **Read the argument** — this is what the user wants saved. If vague ("what we just discussed"), infer from context the concrete actionable fact.
-
-2. **Classify the entry type**:
-   - `feedback` — behavior instruction, preference, or correction ("always X", "never Y", "user prefers Z")
-   - `project` — project context, decision, or constraint ("we use pnpm", "auth is in src/auth/")
-   - `reference` — pointer to where something lives ("bugs tracked in Linear INGEST project")
-   - `user` — fact about the user's role, background, or goals
-
-3. **Check for duplicates** — read the memory index at `~/.claude/projects/<project>/memory/MEMORY.md`. If the fact is already there, update the existing entry instead of creating a new one.
-
-4. **Distill to prescriptive form**:
-   - Remove hedges: "I noticed", "it seems", "sometimes"
-   - Write one direct instruction or fact
-   - For debugging solutions: include the exact error and exact fix command
-
-5. **Write the memory file**:
+1. **Resolve one scope** — identify the current project or the exact store the
+   user named. Use the `memory` skill to discover stores available in this
+   runtime. Never wildcard across projects, runtimes, or global memory.
+2. **Draft the exact claim** — preserve qualifiers, uncertainty, dates, and the
+   user's wording. If the argument is vague, reconstruct only a candidate and
+   label it `inferred`; do not turn it into a fact or instruction.
+3. **Build the candidate record** — include:
+   - type: `feedback`, `project`, `reference`, or `user`
+   - evidence kind: `reported`, `observed`, or `inferred`
+   - source or conversation handle and observation date
+   - scope and intended consumers
+   - freshness or revalidation condition
+   - reason and how to apply it
+   - conflicts, superseded record IDs, and sensitivity notes
+4. **Preview before mutation** — show the complete candidate, exact destination,
+   and whether an existing record would be created, updated, or superseded.
+   Obtain explicit confirmation of that exact candidate. A vague instruction
+   such as “remember what we discussed” is never sufficient on its own.
+5. **Check duplicates and conflicts** — inspect the authorized store's index and
+   relevant topic records only. Preserve both claims when evidence conflicts;
+   never silently blend them or discard the older source.
+6. **Write after confirmation** — use the store's native schema when one exists.
+   For a Markdown store, use this minimum record:
 
 ```markdown
 ---
 name: [descriptive-slug]
-description: [one-line summary]
+description: [one-line summary that preserves uncertainty]
 metadata:
   type: [feedback | project | reference | user]
+  evidence_kind: [reported | observed | inferred]
+  source: [relocatable source or conversation handle]
+  observed_at: [YYYY-MM-DD]
+  scope: [project, workspace, or user scope]
+  freshness: [revalidation date or trigger]
+  supersedes: [record IDs or none]
 ---
 
-[The fact, rule, or solution — for feedback/project: lead with the rule, then **Why:** and **How to apply:** lines]
+## Claim
+
+[Exact claim with qualifiers intact.]
+
+## Why and how to apply
+
+[Reason, applicability boundary, and practical use.]
+
+## Conflicts and uncertainty
+
+[Conflicts, alternatives, or none observed.]
 ```
 
-Save to `~/.claude/projects/<project>/memory/<slug>.md`.
+7. **Update the index transactionally** — add or revise exactly one pointer and
+   verify that the record and index agree. Do not remove an older record unless
+   the confirmed operation explicitly supersedes it.
+8. **Report** — state what changed, where, the approval used, provenance,
+   freshness, and any unresolved conflict. If the write did not occur, say so.
 
-6. **Update MEMORY.md index** — add a pointer line:
-   ```
-   - [Title](./slug.md) — one-line hook
-   ```
+Read [`../skills/memory/references/memory-contract.md`](../skills/memory/references/memory-contract.md)
+before changing the schema or relaxing a gate. Never store credentials,
+private reasoning, unrelated personal data, or unsupported sensitive
+inferences.
 
-7. **Confirm** — report: what was saved, where, and the new MEMORY.md line count.
+## Examples
 
-## Examples of good entries
-
+```text
+/si:remember "Project scope: after editing openapi.yaml, run pnpm run generate:api; reported by the user on 2026-08-02"
+/si:remember "User preference: omit trailing summaries unless the task needs a handoff; user-reported, global scope"
+/si:remember "Project reference: bugs are tracked in Linear project <project-key>; revalidate if the project is renamed"
 ```
-/si:remember "always run pnpm run generate:api after editing openapi.yaml — types won't match otherwise"
-/si:remember "user prefers no trailing summaries — they find them redundant"
-/si:remember "bugs are tracked in Linear project INGEST"
-/si:remember "restart dev server after any .env change — hot reload doesn't pick up env vars"
-```
+
+## Boundary
+
+This command stages and writes one exact memory candidate after approval. It does not review a whole store or promote the candidate into policy.

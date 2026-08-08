@@ -35,8 +35,8 @@ Chain to these skills when the task crosses this skill's boundary:
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-- `clous-object-management`: Use Clous-owned object management guidance for platform object workflows. Install: `python scripts/install-external-skills.py --skill clous-object-management --agent codex`.
-- `clous-platform-operation`: Use Clous-owned platform operation guidance for runtime and workspace operations. Install: `python scripts/install-external-skills.py --skill clous-platform-operation --agent codex`.
+- `clous-object-management`: Use Clous-owned object management guidance for platform object workflows. Install: `python3 scripts/install-external-skills.py --skill clous-object-management --agent codex`.
+- `clous-platform-operation`: Use Clous-owned platform operation guidance for runtime and workspace operations. Install: `python3 scripts/install-external-skills.py --skill clous-platform-operation --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
 Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).

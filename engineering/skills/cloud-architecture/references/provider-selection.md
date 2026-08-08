@@ -3,12 +3,14 @@
 ## Contents
 
 - What to collect first
+- Research first
 - Decision framework
 - Multi-cloud rule set
 - Workload mapping
 - Service topology cues
 - Managed-service bias
 - Existing estate versus greenfield
+- Cloud migration
 - Multi-runtime backend example
 
 ## What to Collect First
@@ -19,6 +21,15 @@
 - environment expectations: dev only, staging plus prod, HA, compliance, latency, residency, or private networking
 - team reality: operator familiarity, CI system, identity model, and change cadence
 - cost posture: cost-sensitive dev default or production-grade availability
+
+## Research First
+
+Provider capabilities, pricing, and limits change often enough that built-in knowledge can be stale by the time a decision matters. Before recommending or committing to a provider, service, or migration:
+
+- Verify current pricing, plan tiers, and feature availability rather than asserting a remembered number.
+- For Vercel, prefer the `search_vercel_documentation` MCP tool when available.
+- For any other provider, use a web search against the provider's current docs or pricing page when the decision is cost-sensitive, close to a plan-tier boundary, or hinges on a specific feature or limit.
+- Treat this as mandatory, not optional, when the choice is expensive to reverse (a migration, a committed spend, or a service with lock-in) or when the user's request implies the offering may have changed since this guidance was written.
 
 ## Decision Framework
 
@@ -42,6 +53,7 @@ Prefer the provider already operating that concern unless the improvement from m
 ## Multi-Cloud Rule Set
 
 - Do not assume one provider for everything.
+- Treat multi-cloud as a real, first-class target shape, not just a DR/failover posture: different concerns (runtime, data, storage, DNS, secrets, observability) can each live on the provider best suited to them, permanently, by design — for example a Vercel-hosted frontend in front of an AWS-hosted API and database.
 - Model runtime, data, storage, DNS, secrets, and observability independently when the estate is mixed.
 - Keep stateful services close to the runtime unless the user explicitly wants split-cloud data paths.
 - Keep one system of record for DNS per environment.
@@ -49,20 +61,23 @@ Prefer the provider already operating that concern unless the improvement from m
 - Keep one explicit CI identity flow per provider and environment.
 - Reuse the provider already operating a concern when the switching cost is higher than the improvement.
 - Avoid partial migrations that leave DNS, data, or credentials stranded across providers without an explicit operating model.
+- Design for interchangeability where it's cheap (stateless runtime behind a provider-agnostic build, config sourced from one secrets system) and accept lock-in where fighting it isn't worth it (a provider's native database, edge network, or queueing primitive) — do not add abstraction layers purely to keep every provider swappable when no swap is planned.
 
 ## Default Service Mapping by Workload
 
-| Workload | AWS default | Azure default | GCP default |
-| --- | --- | --- | --- |
-| Static site or SPA | S3 + CloudFront | Static Web Apps or Storage + Front Door | Cloud Storage + Cloud CDN |
-| Containerized web API | ECS Fargate + ALB | Container Apps | Cloud Run |
-| Web plus worker plus websocket | ECS services split by role | Container Apps split by role | Cloud Run services or GKE if long-running workers need more control |
-| Event-driven jobs | Lambda or ECS tasks + EventBridge + SQS | Functions or Container Apps Jobs + Event Grid or Service Bus | Cloud Run Jobs or Functions + Pub/Sub + Cloud Scheduler |
-| Stateful relational DB | RDS PostgreSQL or MySQL | Azure Database for PostgreSQL or MySQL | Cloud SQL |
-| Cache or broker | ElastiCache | Azure Cache for Redis | Memorystore |
-| Registry | ECR | ACR | Artifact Registry |
-| Secrets | Secrets Manager or Parameter Store | Key Vault | Secret Manager |
-| K8s-heavy repo | EKS | AKS | GKE |
+| Workload | AWS default | Azure default | GCP default | PaaS default |
+| --- | --- | --- | --- | --- |
+| Static site or SPA | S3 + CloudFront | Static Web Apps or Storage + Front Door | Cloud Storage + Cloud CDN | Vercel |
+| Containerized web API | ECS Fargate + ALB | Container Apps | Cloud Run | Railway or Heroku |
+| Web plus worker plus websocket | ECS services split by role | Container Apps split by role | Cloud Run services or GKE if long-running workers need more control | Railway or Heroku, one service per role |
+| Event-driven jobs | Lambda or ECS tasks + EventBridge + SQS | Functions or Container Apps Jobs + Event Grid or Service Bus | Cloud Run Jobs or Functions + Pub/Sub + Cloud Scheduler | Vercel Functions (short-lived) or a Railway/Heroku worker + third-party queue |
+| Stateful relational DB | RDS PostgreSQL or MySQL | Azure Database for PostgreSQL or MySQL | Cloud SQL | Heroku Postgres or Railway Postgres |
+| Cache or broker | ElastiCache | Azure Cache for Redis | Memorystore | Heroku Redis or Railway Redis |
+| Registry | ECR | ACR | Artifact Registry | N/A — PaaS providers build from source or a Dockerfile directly |
+| Secrets | Secrets Manager or Parameter Store | Key Vault | Secret Manager | Provider-native env vars/config vars (Vercel/Heroku/Railway) |
+| K8s-heavy repo | EKS | AKS | GKE | Not a fit — see [`../paas-ops/references/paas-selection-guide.md`](../../paas-ops/references/paas-selection-guide.md) |
+
+See [`../paas-ops/references/paas-selection-guide.md`](../../paas-ops/references/paas-selection-guide.md) for when the PaaS default is the right call versus a hyperscaler, and per-provider operating detail in [`../paas-ops/SKILL.md`](../../paas-ops/SKILL.md).
 
 ## Service Topology Cues
 
@@ -112,6 +127,41 @@ Prefer the provider already operating that concern unless the improvement from m
 - Greenfield: choose the simplest cohesive provider-native path and keep the stack boring.
 - Existing estate: extend the current account, subscription, or project footprint unless there is a clear reason to split or migrate.
 - Migration: do not split data, secrets, DNS, or identity across providers without a deliberate steady-state design.
+
+## Cloud Migration
+
+Use this when the task is moving a workload from one provider to another, including hyperscaler-to-hyperscaler, hyperscaler-to-PaaS, and PaaS-to-hyperscaler moves.
+
+### Migration Types
+
+- **Lift-and-shift**: move the same architecture shape (e.g. containers to containers) to a new provider with minimal redesign. Fastest, least risky, usually leaves optimization on the table.
+- **Replatform**: adopt the destination provider's managed-service equivalents (e.g. self-managed Postgres on a VM to RDS/Cloud SQL, or a hand-rolled container deploy to Vercel/Railway/Heroku) while keeping the application mostly unchanged.
+- **Provider-to-provider (same shape)**: AWS ECS to Azure Container Apps or GCP Cloud Run, using the [service selection matrix](./service-selection-matrix.md) to map equivalents.
+- **PaaS to hyperscaler**: usually driven by scale, compliance, or a specific service the PaaS provider doesn't offer — see [`../paas-ops/references/paas-selection-guide.md`](../../paas-ops/references/paas-selection-guide.md) for the trigger conditions before recommending this.
+- **Hyperscaler to PaaS**: usually driven by wanting to shed operational overhead for a workload that doesn't need hyperscaler-specific features — verify the workload actually fits a PaaS provider's model first (see the same guide).
+
+### Migration Phases
+
+1. **Assess**: inventory what's moving (runtime, data, DNS, secrets, CI identity), confirm the destination's service mapping via the [service selection matrix](./service-selection-matrix.md), and confirm current provider pricing/limits for the destination (see "Research First" above).
+2. **Plan**: decide cutover strategy (big-bang vs. gradual), who owns DNS during the transition, and the rollback path if the migration needs to be reversed.
+3. **Execute**: provision the destination, wire CI identity, move non-stateful config first, then data.
+4. **Cutover**: switch DNS/traffic, verify, keep the source environment intact until the destination is confirmed healthy.
+5. **Decommission**: tear down the source only after a confirmed observation window; do not delete source infrastructure at cutover time.
+
+### Data and Database Migration Posture
+
+This skill does not own migration mechanics — chain to `backend/databases` for schema design, migration script authoring, and backfill patterns. At the cloud-orchestration layer:
+
+- Default to a **hard cut, not a backfill**, when the project has no live users or customers yet: provision the destination database empty (or with a one-time snapshot restore), point the app at it, and decommission the source. Dual-write, compatibility shims, and gradual backfill infrastructure are unnecessary complexity for a pre-launch project.
+- If the project has live production data and users, treat the migration as requiring an explicit decision from the user before assuming a hard cut is safe — the same default `databases` itself uses.
+- Always snapshot the source database immediately before cutover, regardless of user count — this is cheap insurance, not backfill work.
+- See the "Database Migrations and Backfills" section of [`approval-policy.md`](./approval-policy.md) for the approval gate this triggers.
+
+### Migration Execution Ownership
+
+- Chain to `aws-ops`, `azure-ops`, `gcp-ops`, or [`paas-ops`](../../paas-ops/SKILL.md) for the destination provider's actual deploy/provisioning commands.
+- Chain to `cicd` for wiring the new provider's CI identity and deploy pipeline.
+- Chain to `cloud-incidents` if the migration itself needs an incident-style rollback during cutover.
 
 ## Multi-Runtime Backend Example
 

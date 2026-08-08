@@ -21,10 +21,10 @@ Do not redesign the knowledge base around vault-specific affordances unless the 
 
 Reasonable folder mappings inside an Obsidian vault:
 
-- `raw/` or `Sources/` for intake material
+- a `Sources/` folder or the AFS intake surface for raw material
 - `knowledge/` or domain folders for canonical topic pages
-- `references/`, `cookbooks/`, `runbooks/`, `research/`, `official-documentation/`, and `sources/` for the rest of the AFS source-of-truth layer
-- `audits/`, `plans/`, and `specs/` for operational artifacts
+- the AFS source-of-truth surfaces for references, recipes, procedures, and research — ask `use-afs` for the set
+- the AFS operational surfaces for audits, plans, and specs
 - `attachments/` or nearby asset folders for images, PDFs, and figures
 
 If the vault already has a different layout, adapt to it. The important mapping is logical, not nominal:

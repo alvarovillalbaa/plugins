@@ -1,10 +1,6 @@
 ---
 name: content-led
-description: >-
-  Use for content strategy, editorial themes, distribution logic, thought
-  leadership systems, and demand-generation content plans. Child skill of
-  `product-marketing`; route here from the parent router when this lane is
-  the narrowest owner.
+description: Use for content strategy, editorial themes, distribution logic, thought leadership systems, and demand-generation content plans. Child of `product-marketing`.
 ---
 
 # Content Led Marketing
@@ -15,7 +11,7 @@ This child skill owns content strategy, editorial themes, distribution logic, th
 
 - The request is primarily about content strategy, editorial themes, distribution logic, thought leadership systems, and demand-generation content plans.
 - The parent router [`../product-marketing/SKILL.md`](../product-marketing/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, scripts, examples, or templates.
 
 ## Assets
 
@@ -23,7 +19,6 @@ This child skill owns content strategy, editorial themes, distribution logic, th
 - `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 

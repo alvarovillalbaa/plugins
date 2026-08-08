@@ -29,7 +29,7 @@ Chain to these skills when the task crosses this skill's boundary:
 
 - `product-marketing`
 - `frontend/onboarding-flows`
-- `quality-assurance/test-strategy-coverage`
+- `quality-assurance/testing`
 - `quality-assurance`
 - `code-documentation`
 - `reporting`

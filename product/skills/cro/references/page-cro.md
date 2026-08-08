@@ -366,9 +366,9 @@ When recommending experiments, bias toward the parts of the page with the highes
 Write tests in If / Then / Because format and estimate feasibility before recommending them as a real next step.
 
 For execution planning, sample sizing, and stopping rules, pair this reference with:
-- `../product-development/references/experiment-playbook.md`
-- `../product-development/references/statistics-reference.md`
-- `../product-development/scripts/sample_size_calculator.py`
+- `../../experiments/references/experiment-playbook.md`
+- `../../experiments/references/statistics-reference.md`
+- `../../experiments/scripts/sample_size_calculator.py`
 
 ---
 

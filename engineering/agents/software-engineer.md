@@ -17,6 +17,11 @@ Use multiple spawned copies for parallel work, for example `software-engineer x3
 - `apis`
 - `databases`
 - `quality-assurance`
+- `testing`
+- `frontend-e2e`
+- `flake`
+- `simplify`
+- `onboarding-flows`
 - `code-documentation`
 
 ## Commands
@@ -40,3 +45,8 @@ Use multiple spawned copies for parallel work, for example `software-engineer x3
 - tests or checks run
 - files changed
 - known risks or follow-up
+
+## Routing boundaries
+
+- Own scoped application or platform implementation, debugging, focused refactoring, and tests within an established architecture.
+- Hand off cross-system design and ambiguous technical direction to `principal-engineer`, technical strategy to `cto`, AI behavior to `ai-engineer`, cloud topology to `cloud-architect`, and independent PR review to `pr-reviewer`.

@@ -5,7 +5,7 @@ origin:
   branch: main
   path: finances/skills/quantitative
 install:
-  mode: symlink-preferred
+  mode: project-managed-copy
   agents:
     - codex
     - cursor

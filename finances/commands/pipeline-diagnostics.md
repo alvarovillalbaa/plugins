@@ -12,3 +12,7 @@ Use skill: **fundraising** — `skills/fundraising/SKILL.md`, but focus on Proce
 3. **Produce the speed-up plan** – Turn the diagnosis into a critical path, time savers, and accountability matrix.
 4. **Keep the scope narrow** – Do not expand into deck messaging or materials audit unless the user asks.
 5. **Deliver** – Output the diagnostics, speed-up plan, and the single highest-leverage next action.
+
+## Boundary
+
+This command owns fundraising process and funnel health. It does not audit fundraising materials or draft investor messaging.

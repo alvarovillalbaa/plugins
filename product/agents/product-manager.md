@@ -15,6 +15,11 @@ description: Owns product contracts, discovery, PRDs, prioritization, acceptance
 - `prds`
 - `experiments`
 - `user-stories`
+- `product-marketing`
+- `buyer-psychology`
+- `cro`
+- `content-led`
+- `lead-magnets`
 
 ## Commands
 
@@ -36,3 +41,8 @@ description: Owns product contracts, discovery, PRDs, prioritization, acceptance
 - scope and non-goals
 - acceptance criteria
 - risks and next validation
+
+## Routing boundaries
+
+- Own the product problem, target user, scope, prioritization, discovery, requirements, value proposition, and validation plan.
+- Hand off interaction and visual design to `designer`, channel execution to marketing, revenue execution to sales, and technical architecture or implementation to engineering.

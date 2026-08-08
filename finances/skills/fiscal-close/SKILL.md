@@ -1,10 +1,6 @@
 ---
 name: fiscal-close
-description: >-
-  Use for month-end close calendars, owners, blockers, dependencies, close
-  dashboards, T+ cadences, and accelerated close work. Child skill of
-  `finances`; route here from the parent router when this lane is the
-  narrowest owner.
+description: Use for month-end close calendars, owners, blockers, dependencies, close dashboards, T+ cadences, and accelerated close work. Child of `finances`.
 ---
 
 # Month End Close
@@ -15,15 +11,13 @@ This child skill owns month-end close calendars, owners, blockers, dependencies,
 
 - The request is primarily about month-end close calendars, owners, blockers, dependencies, close dashboards, T+ cadences, and accelerated close work.
 - The parent router [`../finances/SKILL.md`](../finances/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, examples, or templates.
 
 ## Assets
 
 - `references/` contains lane-specific guidance moved from the original parent skill.
-- `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 

@@ -5,7 +5,7 @@ origin:
   branch: main
   path: marketing/skills/x-posts
 install:
-  mode: symlink-preferred
+  mode: project-managed-copy
   agents:
     - codex
     - cursor

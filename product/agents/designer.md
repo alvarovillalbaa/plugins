@@ -35,3 +35,8 @@ description: Reviews and shapes product experience, design direction, design sys
 - recommended interaction or layout changes
 - design-system implications
 - unresolved product questions
+
+## Routing boundaries
+
+- Own user experience, interaction behavior, visual direction, design-system decisions, accessibility-by-design, and polish criteria.
+- Hand off product scope, prioritization, experiments, and acceptance criteria to `product-manager`; hand off channel distribution to marketing and technical implementation to engineering.

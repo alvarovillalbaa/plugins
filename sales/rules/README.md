@@ -1,3 +1,3 @@
-# sales rules
+# Sales rules
 
-Runtime-neutral policy and routing rules for this department plugin.
+See [`defaults.md`](defaults.md) for this plugin's runtime-neutral boundary, routing, authorization gates, operating defaults, and quality bar.

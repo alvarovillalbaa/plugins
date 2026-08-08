@@ -1,113 +1,21 @@
 ---
 name: compile-raw
-description: Process all unprocessed files in the raw/ folder and compile them into canonical knowledge base pages. Handles mixed source types — markdown, PDFs, YouTube transcripts, Twitter exports, web captures, and more.
-argument-hint: "[optional: path to specific raw/ subfolder or single file]"
+description: Compile a scoped queue of previously captured raw sources into canonical knowledge with provenance and contradiction tracking.
+argument-hint: "[brain root, raw subfolder, or raw file]"
 allowed-tools: [Read, Write, Bash, Glob, AskUserQuestion, Skill]
 ---
 
-Use skill: **brain** — `skills/brain/SKILL.md`. Route source-specific extraction through `skills/ingestion/SKILL.md`.
-Also read:
-- `skills/brain/references/brain_contract.md` — BRAIN.md boundary, adaptation mode, canonical paths, raw status, and Memory input rules
-- `skills/ingestion/references/ingest_sources.md` — per-source extraction instructions
-- `skills/ingestion/references/wiki_compiler.md` — absorb, cleanup, rebuild, and reorganize loops
-- `skills/brain/references/operational_modes.md` — ingest mode contract
+Use skills: **brain** and **ingestion**.
+Read `skills/brain/references/brain_contract.md`, `skills/brain/references/operational_modes.md`, and `skills/ingestion/references/wiki_compiler.md` before writing.
 
-## Steps
+1. **Resolve one brain** — Locate the applicable `BRAIN.md`. Stop before canonical writes when none exists unless bootstrapping was requested; ask which root to use when more than one applies.
+2. **Read the contract** — Record the raw, canonical knowledge, index, log, memory, and retention paths from that brain. Do not assume a repository layout when the contract defines another.
+3. **Inventory the queue** — List unprocessed raw items in the requested scope, group them by source type, and report blocked or already processed items separately. Ask before processing a large queue when priority or cost is material.
+4. **Extract faithfully** — Use the source-specific ingestion guidance. Keep metadata-only, inaccessible, encrypted, or unsupported sources blocked with an exact reason; never synthesize claims from missing content.
+5. **Absorb per source** — Update the nearest canonical owner, preserve evidence and dates, record contradictions or supersessions, and create a new page only for a durable topic. Mark an item processed only after its canonical write succeeds.
+6. **Checkpoint and rebuild** — Rebuild the index and inspect edited pages at bounded intervals. Apply the brain's retention rule to exact processed pointers only.
+7. **Report** — Return processed and blocked counts, pages created or updated, contradictions, unresolved decisions, source retention state, and verification evidence.
 
-### 1. Confirm Boundary
+## Boundary
 
-Count `BRAIN.md` files under the target root before writing:
-
-- 0: stop before canonical writes unless the user explicitly asked to bootstrap a brain.
-- 1: use that directory as the active brain root.
-- More than 1: stop and ask which brain to target.
-
-Read `BRAIN.md` and record:
-
-- adaptation mode: strict AFS, partial AFS, or native company standard
-- raw path
-- canonical knowledge path, defaulting to `knowledge/`
-- Memory paths, if present
-- raw retention rule: mark processed, archive, or remove exact processed pointer
-
-When available, run the read-only helper for orientation:
-
-```sh
-python system/skills/ingestion/scripts/brain_inventory.py . --include-memory
-```
-
-### 2. Discover
-
-List every file in `raw/` (or the specified path) where `status` is not `processed`. Group by source type:
-
-```sh
-grep -rL "status: processed" raw/ 2>/dev/null
-```
-
-Also inventory repo-local Memory folders when present: `logs/`, `lessons/`, `facts/`, `fixes/`, `steers/`, `models/`, and `reflections/`.
-
-Report the count and breakdown before starting (for example, "12 raw files - 3 twitter, 4 web, 2 pdf, 3 markdown; 8 Memory candidates").
-
-If the queue is large (>20 files), ask the user whether to run all at once or process in priority order per `skills/ingestion/references/ingest_sources.md`.
-
-### 3. Extract
-
-For each file:
-- `source: twitter` or `.md` tweets → already text, proceed to absorb.
-- `source: youtube` or `.srt` / `.vtt` → strip timestamps: `sed '/^[0-9]/d;/^$/d;s/<[^>]*>//g'`.
-- `source: pdf` or `.pdf` → run `pdftotext <file> -` and append the text to the raw entry.
-- `source: linkedin` or `source: web` → already markdown from defuddle, proceed to absorb.
-- `.json` → parse relevant fields and flatten to markdown.
-- `.csv` → convert rows to markdown list or table.
-- `.html` / `.htm` → extract readable body text.
-- `.png` / `.jpg` → run `tesseract` OCR if available, otherwise mark blocked.
-- archive, office, audio, or video files → extract only with a source-appropriate tool; otherwise mark blocked.
-
-For Memory entries, extract only durable learnings, procedures, facts, decisions, recurring patterns, contradictions, or open threads. Keep one-off events in Memory.
-
-If a source is metadata-only, preview-only, deleted, login-walled, encrypted, image-only without OCR, or tool-blocked, update or record it as `status: blocked` with `blocked_reason` and do not synthesize claims from it.
-
-### 4. Orient
-
-Before writing anything:
-- Read `BRAIN.md` to confirm the brain's folder structure and retention rule.
-- Read `knowledge/INDEX.md` or the equivalent index.
-- Identify which canonical pages are likely to need updates based on the source content.
-
-### 5. Absorb (per-file loop)
-
-For each extracted source:
-
-1. Extract entities, concepts, claims, decisions, procedures, open questions, and dates.
-2. Search for existing canonical pages that should absorb the new information.
-3. Update canonical pages: rewrite the current-state or compiled-truth section, append evidence to the timeline section.
-4. Create new pages only when the source introduces a durable topic with enough substance to warrant it.
-5. Record contradictions, supersessions, or strengthened consensus explicitly.
-6. Mark the raw file as `status: processed` after successful absorption.
-
-Use a checkpoint every 10 files: rebuild the index, inspect the most-edited pages as whole documents, and split any page that has become a dumping ground.
-
-### 6. Rebuild
-
-After the full pass:
-
-- Refresh `knowledge/INDEX.md`.
-- Append a summary entry to `logs/YYYY-MM-DD.md`:
-  ```
-  compile-raw: N files processed, M pages created, P pages updated
-  ```
-- Update any synthesis or hub pages that are now stale.
-
-Use the log path and date folder convention from `BRAIN.md` when it differs from this default.
-
-### 7. Report
-
-Deliver:
-- Count of files processed.
-- Count of Memory entries reviewed and promoted.
-- Files blocked, with exact blocker.
-- Canonical pages created (list with paths).
-- Canonical pages updated (list with paths).
-- Contradictions found and how they were handled.
-- Open threads that need human judgment.
-- Suggested next actions (synthesis sweeps, gap pages, health check).
+This command compiles a queued raw corpus. Use `ingest` to capture one new source, with optional immediate compilation of only that source.

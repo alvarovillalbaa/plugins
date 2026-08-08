@@ -7,7 +7,7 @@ This skill is the entry point for agentic development work. Use this guide to ro
 | Child | Owns |
 |-------|------|
 | `agent-harness` | Harness design, dev-loop configuration, session management, CLAUDE.md setup |
-| `agent-system-architecture` | Multi-agent topology, orchestrator patterns, A2A communication design |
+| `multi-agent` | Selecting and running a multi-agent architecture (council, pipeline, hierarchical, debate, agentic-graphs, agentic-loops, agentic-goals, blackboard, and other ad-hoc coordination recipes) — chosen per task, not fixed |
 | `architecture` | System architecture review, ADRs, tech decisions |
 | `cicd` | CI/CD pipeline changes triggered by agentic dev |
 
@@ -23,8 +23,9 @@ This skill is the entry point for agentic development work. Use this guide to ro
 Is this about building/configuring an agent harness or dev-loop?
   → YES → agent-harness
 
-Is this about designing multi-agent systems (orchestrators, sub-agents)?
-  → YES → agent-system-architecture
+Is this about designing or running multi-agent systems (orchestrators, sub-agents, councils, pipelines)?
+  → YES → multi-agent
+  → (pure topology/ADR theory with no execution → `ai-engineering`'s `agent-system-architecture`, a different router's child)
 
 Is this about code architecture (not agent-specific)?
   → YES → architecture

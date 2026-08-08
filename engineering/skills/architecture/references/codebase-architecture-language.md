@@ -5,7 +5,7 @@ Use external skill `codebase-design` for shared vocabulary around modules, inter
 Install fallback:
 
 ```bash
-python scripts/install-external-skills.py --skill codebase-design --agent codex
+python3 scripts/install-external-skills.py --skill codebase-design --agent codex
 ```
 
 Local contract:

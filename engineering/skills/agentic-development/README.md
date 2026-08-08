@@ -30,7 +30,6 @@ https://github.com/alvarovillalbaa/plugins/tree/main/engineering/skills/agentic-
 
 ## What is bundled
 
-- `hooks/`
 - `references/`
 - `scripts/`
 - `templates/`

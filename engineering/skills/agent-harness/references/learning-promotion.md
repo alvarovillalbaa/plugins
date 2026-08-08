@@ -9,7 +9,7 @@ Use learning artifacts to improve the right source of truth. Do not promote ever
 Promote in this order:
 
 1. `learning/` artifacts
-2. Root instruction docs: `AGENTS.md`, `PLAN.md`, `SPEC.md`, `SOUL.md`, `PRINCIPLES.md`, `DESIGN.md`
+2. Root instruction docs (the UPPERCASE set `use-afs` defines)
 3. Human-facing markdown docs that should persist for collaborators
 
 If the knowledge is useful only as session memory, stop at `learning/`.
@@ -18,26 +18,24 @@ If the knowledge is useful only as session memory, stop at `learning/`.
 
 | File | What belongs there | Update bar |
 |---|---|---|
-| `AGENTS.md` | Stable operating rules, repo facts, and general customization to the user's/codebase's ways of working | Repeated or explicitly stated, actionable, durable |
-| `PLAN.md` | Repo-wide planning protocol and how plans should look | Durable planning guidance, not one feature's transient plan |
-| `SPEC.md` | Repo-wide spec protocol and what specs must contain | Durable spec-writing rules, not one feature's transient content |
-| `SOUL.md` | Persistent style, tone, or collaboration stance | Rare, identity-level signal |
-| `PRINCIPLES.md` | Decision heuristics, constraints, and trade-off rules | Rare, heuristic clearly needed |
-| `DESIGN.md` | Design-system and frontend interaction rules | Durable design language or interface-system guidance |
+| `AGENTS.md` | Stable operating rules, repo facts, agent stance, and general customization to the user's/codebase's ways of working | Repeated or explicitly stated, actionable, durable |
+| `USER.md` | User context, roles, and interaction patterns | When a durable fact about the user changes how agents work |
+| `LOOPS.md` | Repo-wide operational processes — how planning and spec-writing are done, and other feedback cycles | Durable process guidance, not one feature's transient plan |
+| `TASTE.md` | Quality standards, decision heuristics, constraints, trade-off rules, and the design language | Rare, heuristic or standard clearly needed |
+| `VISION.md` | Strategic direction for the workspace | When durable direction changes |
+| `GAPS.md` | Unresolved gaps in human or agent understanding | When a gap is worth tracking until closed |
 | `README.md` | Human-facing overview or usage facts | When a teammate would need it |
-| `ARCHITECTURE.md` | Structural decisions, ownership, boundaries | When architecture changed or was clarified |
+| `ARC.md` | Structural decisions, ownership, boundaries | When architecture changed or was clarified |
 | `TESTS.md` / `TESTING.md` | Durable test workflows and pitfalls | When test strategy or gotchas changed |
 | `SETUP.md` | Environment, setup, bootstrap behavior | When operational steps changed |
-| `logs/` | Development log entries | After any meaningful code or doc change |
-| `lessons/` | Verified reusable insights | When a discovery should change future behavior |
-| `facts/items/<domain>/` | Stable item facts about user/company/project context | When teammates would make wrong assumptions without it |
-| `facts/episodes/<domain>/` | Session-scoped fact records | When the context is tied to a specific event |
-| `facts/triples/<domain>/` | Atomic claims for retrieval | When the fact is a discrete subject–predicate–object claim |
-| `fixes/` | Error solutions | After solving a non-obvious or recurring problem |
-| `audits/` | Reports, ADRs, post-mortems, analytical audits | When the artifact is historical and investigative |
-| `plans/` | Historical implementation plans | When the artifact explains how one change should be executed |
-| `specs/` | Living desired-state behavior contracts | When the rule should remain current, not historical |
-| `sources/` | Monitored URL/source registries | When source monitoring itself is durable knowledge |
+| AFS log surface | Development log entries | After any meaningful code or doc change |
+| AFS lesson surface | Verified reusable insights | When a discovery should change future behavior |
+| AFS fact surfaces | Durable context about user/company/project, by fact type | When teammates would make wrong assumptions without it |
+| AFS fix surface | Error solutions | After solving a non-obvious or recurring problem |
+| AFS audit surface | Reports, ADRs, post-mortems, analytical audits | When the artifact is historical and investigative |
+| AFS plan surface | Historical implementation plans | When the artifact explains how one change should be executed |
+| AFS spec surface | Living desired-state behavior contracts | When the rule should remain current, not historical |
+| AFS source registry | Monitored URL/source registries | When source monitoring itself is durable knowledge |
 | `lib/` | Generated drafts or support artifacts | When a reusable generated artifact should persist |
 | `references/` | Stable lookup/reference material | When teammates need a factual reference surface |
 | `cookbooks/` | Repo-specific technical guidance | When a pattern needs broader documentation in this codebase |
@@ -75,7 +73,7 @@ Do not store:
 - temporary branch or PR context
 - contradictory bullets without resolving them
 
-## `SOUL.md`
+## Agent stance (`AGENTS.md`)
 
 Update only for persistent tension in how the agent collaborates.
 
@@ -85,9 +83,9 @@ Examples:
 - The agent consistently over-explains and the correction is enduring.
 - The team prefers a sharper review posture across sessions.
 
-Do not change `SOUL.md` for a single hurried session.
+Do not change the agent stance for a single hurried session.
 
-## `PRINCIPLES.md`
+## Standards and heuristics (`TASTE.md`)
 
 Update when a missing or broken heuristic caused avoidable time loss or poor decisions.
 
@@ -98,15 +96,16 @@ Examples:
 
 Write concise heuristics that help future decision making.
 
-## `PLAN.md` / `SPEC.md` / `DESIGN.md`
+## Processes and design language (`LOOPS.md` / `TASTE.md`)
 
 Update these when the learning changes the repo-wide documentation contract:
 
-- `PLAN.md` — how planning should be done and how plans should be shaped
-- `SPEC.md` — how specs should be written and what they must define
-- `DESIGN.md` — the design system and frontend interaction language for the repo
+- `LOOPS.md` — how planning should be done, how plans should be shaped, and how specs should be written and what they must define
+- `TASTE.md` — the design system and frontend interaction language for the repo
 
-Do not use these files for one feature's local content when a timestamped doc in `plans/YYYY/MM-DD/` or a living contract in `specs/` is the narrower source of truth.
+Confirm the current root-doc set with `use-afs` before writing; it owns which file holds which responsibility.
+
+Do not use these files for one feature's local content when a dated plan or a living spec surface is the narrower source of truth.
 
 ## Other markdown docs
 
@@ -117,7 +116,7 @@ Promote there when the knowledge is for humans first, not just agents.
 - the change affects how to use, run, or understand the repo
 - a teammate would miss an important entry point without it
 
-### Promote to `ARCHITECTURE.md` when
+### Promote to `ARC.md` when
 
 - module ownership changed
 - a boundary or rationale was clarified
@@ -134,23 +133,9 @@ Promote there when the knowledge is for humans first, not just agents.
 
 ### Promote to AFS docs when
 
-Use the `code-documentation` contract and choose the narrowest correct destination:
+Use the `code-documentation` contract to choose the narrowest correct surface — terse change notes, verified lessons, durable facts, reusable fixes, analytical audits, historical plans, living specs, references, cookbooks, knowledge, runbooks, stored results, or research.
 
-- `logs/` for terse historical change notes
-- `lessons/` for verified reusable insights
-- `facts/items/<domain>/` for durable item facts about user/company/project context
-- `fixes/` for reusable debugging resolutions
-- `audits/` for reports, ADRs, post-mortems, and analytical history
-- `plans/` for historical implementation plans
-- `specs/` for living desired-state contracts
-- `references/` for factual lookup docs
-- `cookbooks/` for repo-specific technical recipes
-- `knowledge/` for timeless maintained knowledge
-- `runbooks/` for exact repeatable procedures
-- `results/YYYY/MM-DD/` for stored work outputs and computed results
-- `research/`, `official-documentation/`, `sources/`, or `lib/` when those surfaces are the right current home
-
-All timestamped AFS paths follow `*/YYYY/MM-DD/*.md`. All living docs should carry `Last updated: YYYY-MM-DD`.
+Resolve the concrete path and the timestamp format through `use-afs`; it is the only authority for both. If it is not installed, stop and report the install command. Living docs carry `Last updated: YYYY-MM-DD`.
 
 ## Conflict handling
 
@@ -159,7 +144,7 @@ If new knowledge conflicts with existing docs:
 1. Check whether the old doc is stale.
 2. If stale, update in place.
 3. If the signal is still uncertain, keep it in `learning/` and record the open question in the episode or decision trace.
-4. Do not publish contradictory guidance into `AGENTS.md`, `README.md`, or `ARCHITECTURE.md`.
+4. Do not publish contradictory guidance into `AGENTS.md`, `README.md`, or `ARC.md`.
 
 ## Promotion hygiene
 

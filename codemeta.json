@@ -1,0 +1,29 @@
+{
+  "@context": "https://w3id.org/codemeta/3.0",
+  "@type": "SoftwareSourceCode",
+  "name": "Agent Company Plugins",
+  "description": "Portable department plugins, skills, commands, agents, and runtime-neutral rules with a flat project installer, dynamic personalization, and recursive typed relationships.",
+  "codeRepository": "https://github.com/alvarovillalbaa/plugins",
+  "issueTracker": "https://github.com/alvarovillalbaa/plugins/issues",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "3.1.0",
+  "dateModified": "2026-08-03",
+  "programmingLanguage": ["Markdown", "Python", "Shell"],
+  "runtimePlatform": ["Claude Code", "Codex", "Cursor", "OpenClaw", "Agent Skills"],
+  "keywords": [
+    "agent skills",
+    "AI agents",
+    "plugins",
+    "Claude Code",
+    "Codex",
+    "Cursor",
+    "SEO",
+    "AEO",
+    "GEO",
+    "llms.txt"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Clous AI"
+  }
+}

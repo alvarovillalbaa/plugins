@@ -1,10 +1,6 @@
 ---
 name: planning
-description: >-
-  Use for financial planning, CFO briefings, burn/runway, scenario models,
-  budgets, forecasts, and board-ready finance narratives. Child skill of
-  `finances`; route here from the parent router when this lane is the
-  narrowest owner.
+description: Use for financial planning, CFO briefings, burn/runway, scenario models, budgets, forecasts, and board-ready finance narratives. Child of `finances`.
 ---
 
 # Financial Planning
@@ -15,15 +11,13 @@ This child skill owns financial planning, CFO briefings, burn/runway, scenario m
 
 - The request is primarily about financial planning, CFO briefings, burn/runway, scenario models, budgets, forecasts, and board-ready finance narratives.
 - The parent router [`../finances/SKILL.md`](../finances/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, examples, or templates.
 
 ## Assets
 
 - `references/` contains lane-specific guidance moved from the original parent skill.
-- `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 

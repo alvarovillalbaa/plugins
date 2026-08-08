@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lead Signals"
+  short_description: "Discover and connect prospect signals in Notion"
+  default_prompt: "Use $lead-signals to discover timely prospect signals, save deduplicated evidence to Signals, relate each item to the right People and Companies records, and add filtered linked views."

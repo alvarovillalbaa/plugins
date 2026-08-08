@@ -19,6 +19,12 @@ import sys
 
 # type -> (owning skill, keyword patterns)
 RULES: dict[str, tuple[str, list[str]]] = {
+    "course": ("coursify", [
+        r"\b(?:create|build|design|develop|make|package)\b.{0,80}\b(?:course|curriculum|training program|learning path)\b",
+        r"\b(?:turn|convert|transform)\b.{0,120}\binto (?:an? )?(?:(?:interactive|video(?:-based)?|code(?:-based)?|mixed[- ]media|text(?:-based)?|self[- ]paced|multimodal)\s+){0,3}(?:course|curriculum|training program|learning path)\b",
+        r"\b(?:course|curriculum|training program|learning path)\b.{0,40}\b(?:from|based on)\b",
+        r"\bcoursif(?:y|ication)\b",
+    ]),
     "keyword-research": ("keywords", [
         r"\bkeyword", r"\bsearch volume", r"\bsearch intent", r"\bserp",
         r"\btopic cluster", r"\brank for\b",

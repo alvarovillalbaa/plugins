@@ -2,10 +2,12 @@
 name: ar:loop
 description: Start an autonomous experiment loop. The experiment-runner agent runs iterations continuously, keeping improvements and discarding failures, until interrupted or the goal is met.
 argument-hint: "[domain/experiment-name] [--interval 10m|1h|daily]"
-allowed-tools: [Agent, Read, Bash]
+allowed-tools: [Agent, Read, Bash, Skill]
 ---
 
 Start an autonomous autoresearch loop.
+
+Use skill: **loops** — `skills/loops/SKILL.md`.
 
 ## Steps
 
@@ -42,3 +44,7 @@ Start an autonomous autoresearch loop.
 - Refuses unrelated working-tree changes
 - 5 consecutive crashes → stops automatically
 - One change per experiment
+
+## Boundary
+
+This command repeats a configured metric-driven experiment. Use `ar:run` for one iteration, `dev-loop` for general task convergence, and `harness-loop` for repository-harness hardening.

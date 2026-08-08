@@ -2,7 +2,7 @@
 name: triage-prs
 description: "Intent-first PR triage. Processes a list of PRs, issues, or a whole queue. Recovers plain-language intent, judges whether the implementation solves the real problem, and routes each item to close, escalate, or continue. Follows the triage protocol from prs."
 argument-hint: "[PR# | branch | --queue] [--repo owner/repo]"
-allowed-tools: ["Bash", "Read", "Grep", "Agent"]
+allowed-tools: ["Bash", "Read", "Grep", "Agent", "Skill"]
 ---
 
 # PR Triage
@@ -33,7 +33,7 @@ Do not start review and CI work on items that will be closed or escalated — st
 
 ## Output
 
-For each item, produce the standard decision record and post the comment template from `triage-protocol.md` back to the PR or issue.
+For each item, produce the standard decision record and draft the comment template from `triage-protocol.md`. Post, close, label, assign, or otherwise mutate the remote item only when the request explicitly authorizes that exact external action.
 
 Queue summary at the end:
 
@@ -56,6 +56,6 @@ Queue summary at the end:
 /triage-prs --queue
 # Triage the full open PR queue
 
-/triage-prs --repo myorg/myrepo --queue
+/triage-prs --repo <owner>/<repository> --queue
 # Triage queue for a specific repo
 ```

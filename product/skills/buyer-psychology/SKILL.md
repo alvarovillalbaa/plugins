@@ -1,10 +1,6 @@
 ---
 name: buyer-psychology
-description: >-
-  Use for buyer psychology, motivation mapping, emotional triggers, objection
-  logic, decision criteria, and persuasion risk review. Child skill of
-  `product-marketing`; route here from the parent router when this lane is
-  the narrowest owner.
+description: Use for buyer psychology, motivation mapping, emotional triggers, objection logic, decision criteria, and persuasion risk review. Child of `product-marketing`.
 ---
 
 # Buyer Psychology
@@ -15,7 +11,7 @@ This child skill owns buyer psychology, motivation mapping, emotional triggers, 
 
 - The request is primarily about buyer psychology, motivation mapping, emotional triggers, objection logic, decision criteria, and persuasion risk review.
 - The parent router [`../product-marketing/SKILL.md`](../product-marketing/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, scripts, examples, or templates.
 
 ## Assets
 
@@ -23,7 +19,6 @@ This child skill owns buyer psychology, motivation mapping, emotional triggers, 
 - `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 

@@ -1,10 +1,10 @@
 # Sales — Operating Defaults & Routing Rules
 
-Runtime-neutral policy for the sales department plugin. Applies to every sales skill and agent. Narrower skills add channel/stage detail; safety gates below always hold.
+Runtime-neutral policy for the Sales plugin. These rules apply to every sales skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible channel or stage detail but may not relax the authorization gates or contradict the ownership boundaries below.
 
 ## Department boundary
 
-Sales owns go-to-market, pipeline, outreach, launches, virality, and revenue growth. It does **not** own demand-gen/brand content (route to `marketing`), pricing/quota economics (route to `finances`), or product scope (route to `product`). Marketing fills the top of funnel; sales converts and expands it.
+Sales owns go-to-market execution, pipeline, one-to-one outreach, commercial documents, launch motions, viral/referral mechanics, quota/territory operations, and customer expansion. Product owns product scope, positioning, packaging, and pricing strategy; Finances owns pricing economics and financial guardrails; Marketing owns demand-generation assets, distribution, and marketing-channel experiments. Sales applies approved pricing and messaging to deals without redefining them.
 
 ## Routing constraints
 
@@ -15,17 +15,18 @@ Route to the **narrowest** owning skill. The `go-to-market` and `outreach` route
 | GTM strategy, motion design | `go-to-market` |
 | First customers, design partners, founder-led | `first-customers` |
 | Technical/solution selling | `technical-sales` |
-| Pipeline health, forecasting, signals | `sales-pipeline`, `revenue-intelligence`, `revenue-ops` |
+| Prospect/lead signal discovery, Signals capture, related record views | `lead-signals` |
+| Pipeline health, forecasting, call/deal signals | `sales-pipeline`, `revenue-intelligence`, `revenue-ops` |
 | Quotes, proposals, MSAs, buyer docs | `commercial-docs`, `collateral` |
 | First-touch cold outreach | `initial` |
 | Multi-touch cadence design | `sequence` |
 | Follow-up after a touch | `follow-up` |
 | LinkedIn 1:1 engagement/DMs | `linkedin-dms` |
 | X 1:1 DMs | `x-dms` |
-| Launches, viral loops, growth experiments | `launches`, `virality`, `growth` |
-| Expansion, retention, churn risk | `customer-growth` |
+| Launch orchestration and viral/referral mechanics | `launches`, `virality` |
+| Expansion, retention, churn risk | `growth` |
 
-Default outbound chain: `prospect`/`initial` (first touch) → `sequence` (cadence) → `follow-up`. Default expansion chain: `customer-growth` reads account health → tailored play.
+Default signal chain: `lead-signals` (timely evidence and CRM capture) → `productivity/prospect` (full brief when needed) → `initial` (first touch). Default outbound chain: `productivity/prospect`/`initial` (first touch) → `sequence` (cadence) → `follow-up`. Default expansion chain: `growth` reads account health → tailored play.
 
 ## Operating defaults
 
@@ -33,14 +34,16 @@ Default outbound chain: `prospect`/`initial` (first touch) → `sequence` (caden
 - **No fabricated proof.** Do not invent customers, metrics, case studies, or capabilities. Use only approved, sourced claims; mark placeholders.
 - **Respect the channel and the person.** Match LinkedIn/X/email norms; keep first touches short, value-first, and easy to say no to.
 - **Lead with relevance, not the ask.** Earn the reply before the pitch.
-- **Pull ICP, product, and voice facts** from repo-local personalization documents.
+- **Context is supplied, not embedded.** Pull ICP, product, account, and voice facts from user-provided or workspace-local sources; never hardcode them into reusable rules.
 - **One clear next step** per message.
 
-## Safety gates (require explicit human approval)
+## Authorization gates
 
-- **Sending and connecting**: outreach, DMs, sequences, and connection requests are drafts — a human sends or enrolls. Do not auto-send.
-- **Commercial commitments**: pricing, discounts, terms, and contract language require approval and coordination with `finances`; never commit on the company's behalf.
-- **Compliance**: respect anti-spam (CAN-SPAM/GDPR/opt-out) norms — no scraped-list blasting, no deceptive subject lines, honor unsubscribes.
+The request may authorize research, CRM preparation, and drafting. Confirm the final content, recipients, channel, timing, and commercial terms at the point of action before sending, enrolling, connecting, or committing.
+
+- **Sending and connecting**: outreach, DMs, sequences, and connection requests are drafts by default. Sending or enrollment requires explicit authorization for the exact audience and final content.
+- **Commercial commitments**: pricing, discounts, terms, and contract language must stay within approved policy and financial guardrails; otherwise draft and escalate rather than commit.
+- **Compliance**: follow applicable anti-spam, privacy, consent, and opt-out requirements for the recipient and jurisdiction. No scraped-list blasting, deceptive subject lines, or ignored unsubscribes.
 - **Mass targeting**: do not generate high-volume undifferentiated outreach; keep volume and personalization in human-reviewable bounds.
 - **Customer data**: treat CRM and prospect data as confidential; do not paste into third-party tools that publish or cache content.
 

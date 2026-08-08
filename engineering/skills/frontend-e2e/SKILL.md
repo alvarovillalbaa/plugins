@@ -1,9 +1,6 @@
 ---
 name: frontend-e2e
-description: >-
-  Use for browser QA, Playwright/Cypress flows, user-visible state validation,
-  trace capture, and frontend regressions. Child skill of `quality-assurance`; route here from the parent router when this lane is the
-  narrowest owner.
+description: Use for browser QA, Playwright/Cypress flows, user-visible state validation, trace capture, and frontend regressions. Child of `testing`.
 ---
 
 # Frontend E2E Browser Qa
@@ -13,8 +10,8 @@ This child skill owns browser QA, Playwright/Cypress flows, user-visible state v
 ## Use When
 
 - The request is primarily about browser QA, Playwright/Cypress flows, user-visible state validation, trace capture, and frontend regressions.
-- The parent router [`../quality-assurance/SKILL.md`](../quality-assurance/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The parent router [`../testing/SKILL.md`](../testing/SKILL.md) selects this child.
+- The work needs this lane's references, scripts, examples, or templates.
 
 ## Assets
 
@@ -22,7 +19,6 @@ This child skill owns browser QA, Playwright/Cypress flows, user-visible state v
 - `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 
@@ -34,14 +30,14 @@ This child skill owns browser QA, Playwright/Cypress flows, user-visible state v
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-- `browserbase-ui-test`: Use Browserbase UI testing guidance for browser-level product verification. Install: `python scripts/install-external-skills.py --skill browserbase-ui-test --agent codex`.
-- `browserbase-browser`: Use Browserbase browser automation guidance for live web interactions. Install: `python scripts/install-external-skills.py --skill browserbase-browser --agent codex`.
-- `browserbase-browser-trace`: Capture and inspect browser traces for UI behavior and failures. Install: `python scripts/install-external-skills.py --skill browserbase-browser-trace --agent codex`.
-- `browserbase-autobrowse`: Use Browserbase autobrowse workflows for exploratory browser automation. Install: `python scripts/install-external-skills.py --skill browserbase-autobrowse --agent codex`.
-- `browserbase-safe-browser`: Use safe-browser guidance for bounded browser automation and verification. Install: `python scripts/install-external-skills.py --skill browserbase-safe-browser --agent codex`.
-- `browserbase-browser-to-api`: Convert browser workflows into API-backed automation when appropriate. Install: `python scripts/install-external-skills.py --skill browserbase-browser-to-api --agent codex`.
-- `browserbase-cookie-sync`: Use Browserbase cookie sync guidance for authenticated browser sessions. Install: `python scripts/install-external-skills.py --skill browserbase-cookie-sync --agent codex`.
-- `browserbase-browser-use-to-stagehand`: Translate browser-use automation patterns into Stagehand workflows. Install: `python scripts/install-external-skills.py --skill browserbase-browser-use-to-stagehand --agent codex`.
+- `browserbase-ui-test`: Use Browserbase UI testing guidance for browser-level product verification. Install: `python3 scripts/install-external-skills.py --skill browserbase-ui-test --agent codex`.
+- `browserbase-browser`: Use Browserbase browser automation guidance for live web interactions. Install: `python3 scripts/install-external-skills.py --skill browserbase-browser --agent codex`.
+- `browserbase-browser-trace`: Capture and inspect browser traces for UI behavior and failures. Install: `python3 scripts/install-external-skills.py --skill browserbase-browser-trace --agent codex`.
+- `browserbase-autobrowse`: Use Browserbase autobrowse workflows for exploratory browser automation. Install: `python3 scripts/install-external-skills.py --skill browserbase-autobrowse --agent codex`.
+- `browserbase-safe-browser`: Use safe-browser guidance for bounded browser automation and verification. Install: `python3 scripts/install-external-skills.py --skill browserbase-safe-browser --agent codex`.
+- `browserbase-browser-to-api`: Convert browser workflows into API-backed automation when appropriate. Install: `python3 scripts/install-external-skills.py --skill browserbase-browser-to-api --agent codex`.
+- `browserbase-cookie-sync`: Use Browserbase cookie sync guidance for authenticated browser sessions. Install: `python3 scripts/install-external-skills.py --skill browserbase-cookie-sync --agent codex`.
+- `browserbase-browser-use-to-stagehand`: Translate browser-use automation patterns into Stagehand workflows. Install: `python3 scripts/install-external-skills.py --skill browserbase-browser-use-to-stagehand --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
 Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).

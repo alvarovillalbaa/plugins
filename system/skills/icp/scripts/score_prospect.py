@@ -1,98 +1,252 @@
 #!/usr/bin/env python3
-"""
-Score a prospect against a simple ICP definition.
+"""Score a JSON prospect with a company-defined, JSON-based ICP model."""
 
-Usage:
-    python score_prospect.py --company "Acme" --employees 45 --stage "Series B" --has-github --has-slack
-    python score_prospect.py --help
-"""
+from __future__ import annotations
 
 import argparse
+import json
+import sys
+from pathlib import Path
+from typing import Any
 
 
-def score(args: argparse.Namespace) -> dict:
-    points = 0
-    max_points = 0
-    signals = []
+MISSING = object()
+OPERATORS = {
+    "between",
+    "contains",
+    "eq",
+    "exists",
+    "falsy",
+    "gt",
+    "gte",
+    "in",
+    "lt",
+    "lte",
+    "ne",
+    "not_in",
+    "truthy",
+}
 
-    def add(condition: bool, weight: int, label: str) -> None:
-        nonlocal points, max_points
-        max_points += weight
-        if condition:
-            points += weight
-            signals.append(f"  ✓ (+{weight}) {label}")
-        else:
-            signals.append(f"  ✗ (  0) {label}")
 
-    # Firmographic
-    add(10 <= args.employees <= 200, 3, f"Employees {args.employees} in 10–200 range")
-    add(args.stage in ["Series A", "Series B", "Series C"], 3, f"Stage: {args.stage}")
-    add(args.revenue_m is not None and 2 <= args.revenue_m <= 50, 2, f"Revenue ${'?' if args.revenue_m is None else str(args.revenue_m)}M ARR in $2–50M range")
+class ModelError(ValueError):
+    """Raised when an ICP model cannot be evaluated safely."""
 
-    # Technographic
-    add(args.has_github, 2, "Uses GitHub/GitLab")
-    add(args.has_slack, 1, "Uses Slack")
-    add(args.has_linear, 1, "Uses Linear/Jira")
-    add(args.uses_ai_coding, 2, "Already uses AI coding tools")
 
-    # Trigger signals
-    add(args.recently_hired, 2, "Recently hired 3+ engineers")
-    add(args.recently_raised, 2, "Recently raised funding")
-    add(args.posted_about_pain, 3, "Posted about engineering velocity pain")
-    add(args.using_competitor, 2, "Currently using a competitor")
+def load_object(path: Path, label: str) -> dict[str, Any]:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except OSError as exc:
+        raise ModelError(f"cannot read {label} `{path}`: {exc}") from exc
+    except json.JSONDecodeError as exc:
+        raise ModelError(f"invalid JSON in {label} `{path}`: {exc}") from exc
+    if not isinstance(value, dict):
+        raise ModelError(f"{label} must be a JSON object")
+    return value
 
-    # Disqualifiers (auto-zero the score)
-    disqualified = False
-    if args.air_gapped:
-        disqualified = True
-        signals.append("  ✗ DISQUALIFIED: Air-gapped infrastructure")
-    if args.employees < 5:
-        disqualified = True
-        signals.append("  ✗ DISQUALIFIED: Too small (<5 engineers)")
 
-    pct = int(100 * points / max_points) if max_points > 0 and not disqualified else 0
+def lookup(value: dict[str, Any], path: str) -> Any:
+    current: Any = value
+    for segment in path.split("."):
+        if not isinstance(current, dict) or segment not in current:
+            return MISSING
+        current = current[segment]
+    return current
+
+
+def compare(actual: Any, operator: str, expected: Any = None) -> bool:
+    if operator == "exists":
+        return (actual is not MISSING) is bool(expected)
+    if actual is MISSING:
+        return False
+    if operator == "truthy":
+        return bool(actual)
+    if operator == "falsy":
+        return not bool(actual)
+    if operator == "eq":
+        return actual == expected
+    if operator == "ne":
+        return actual != expected
+    if operator in {"in", "not_in"}:
+        if not isinstance(expected, list):
+            raise ModelError(f"operator `{operator}` requires an array value")
+        result = actual in expected
+        return result if operator == "in" else not result
+    if operator == "contains":
+        if not isinstance(actual, (str, list, tuple, set, dict)):
+            return False
+        return expected in actual
+    if operator == "between":
+        if not isinstance(expected, list) or len(expected) != 2:
+            raise ModelError("operator `between` requires a two-item array value")
+        return expected[0] <= actual <= expected[1]
+    if operator == "gt":
+        return actual > expected
+    if operator == "gte":
+        return actual >= expected
+    if operator == "lt":
+        return actual < expected
+    if operator == "lte":
+        return actual <= expected
+    raise ModelError(f"unsupported operator `{operator}`")
+
+
+def validate_rule(rule: Any, path: str, *, weighted: bool) -> dict[str, Any]:
+    if not isinstance(rule, dict):
+        raise ModelError(f"{path} must be an object")
+    for key in ("id", "path", "operator"):
+        if not isinstance(rule.get(key), str) or not rule[key].strip():
+            raise ModelError(f"{path}.{key} must be a non-empty string")
+    if rule["operator"] not in OPERATORS:
+        raise ModelError(f"{path}.operator is unsupported: {rule['operator']}")
+    if weighted:
+        weight = rule.get("weight")
+        if not isinstance(weight, (int, float)) or isinstance(weight, bool) or weight <= 0:
+            raise ModelError(f"{path}.weight must be a positive number")
+    return rule
+
+
+def validate_model(model: dict[str, Any]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    criteria = model.get("criteria")
+    disqualifiers = model.get("disqualifiers", [])
+    if not isinstance(criteria, list) or not criteria:
+        raise ModelError("model.criteria must be a non-empty array")
+    if not isinstance(disqualifiers, list):
+        raise ModelError("model.disqualifiers must be an array")
+    checked_criteria = [
+        validate_rule(rule, f"model.criteria[{index}]", weighted=True)
+        for index, rule in enumerate(criteria)
+    ]
+    checked_disqualifiers = [
+        validate_rule(rule, f"model.disqualifiers[{index}]", weighted=False)
+        for index, rule in enumerate(disqualifiers)
+    ]
+    return checked_criteria, checked_disqualifiers
+
+
+def label_for_score(model: dict[str, Any], score: float) -> str:
+    thresholds = model.get("thresholds", [])
+    if not isinstance(thresholds, list):
+        raise ModelError("model.thresholds must be an array")
+    parsed: list[tuple[float, str]] = []
+    for index, item in enumerate(thresholds):
+        if not isinstance(item, dict):
+            raise ModelError(f"model.thresholds[{index}] must be an object")
+        minimum, label = item.get("min"), item.get("label")
+        if not isinstance(minimum, (int, float)) or isinstance(minimum, bool):
+            raise ModelError(f"model.thresholds[{index}].min must be numeric")
+        if not isinstance(label, str) or not label.strip():
+            raise ModelError(f"model.thresholds[{index}].label must be a non-empty string")
+        parsed.append((float(minimum), label))
+    for minimum, label in sorted(parsed, reverse=True):
+        if score >= minimum:
+            return label
+    return "Unclassified"
+
+
+def score_prospect(
+    model: dict[str, Any], prospect: dict[str, Any], *, strict_missing: bool = False
+) -> dict[str, Any]:
+    criteria, disqualifiers = validate_model(model)
+    results: list[dict[str, Any]] = []
+    total_weight = sum(float(rule["weight"]) for rule in criteria)
+    matched_weight = 0.0
+
+    for rule in criteria:
+        actual = lookup(prospect, rule["path"])
+        if strict_missing and actual is MISSING:
+            raise ModelError(f"prospect is missing criterion field `{rule['path']}`")
+        matched = compare(actual, rule["operator"], rule.get("value"))
+        if matched:
+            matched_weight += float(rule["weight"])
+        results.append(
+            {
+                "id": rule["id"],
+                "label": rule.get("label", rule["id"]),
+                "matched": matched,
+                "weight": rule["weight"],
+                "actual": None if actual is MISSING else actual,
+            }
+        )
+
+    dq_results: list[dict[str, Any]] = []
+    for rule in disqualifiers:
+        actual = lookup(prospect, rule["path"])
+        matched = compare(actual, rule["operator"], rule.get("value"))
+        dq_results.append(
+            {
+                "id": rule["id"],
+                "label": rule.get("label", rule["id"]),
+                "matched": matched,
+                "actual": None if actual is MISSING else actual,
+            }
+        )
+
+    disqualified = any(item["matched"] for item in dq_results)
+    raw_score = round(100 * matched_weight / total_weight, 2)
+    score = 0.0 if disqualified else raw_score
     return {
-        "company": args.company,
-        "score": pct,
-        "points": points,
-        "max_points": max_points,
+        "model": model.get("name", "ICP model"),
+        "prospect": prospect.get("name", prospect.get("id", "Prospect")),
+        "score": score,
+        "raw_score": raw_score,
+        "matched_weight": matched_weight,
+        "total_weight": total_weight,
         "disqualified": disqualified,
-        "signals": signals,
+        "status": "Disqualified" if disqualified else label_for_score(model, score),
+        "criteria": results,
+        "disqualifiers": dq_results,
     }
 
 
-def main() -> None:
-    p = argparse.ArgumentParser(description="Score a prospect against ICP criteria")
-    p.add_argument("--company", default="Unknown")
-    p.add_argument("--employees", type=int, default=0)
-    p.add_argument("--stage", default="", help="Seed/Series A/Series B/Series C/Public")
-    p.add_argument("--revenue-m", type=float, default=None)
-    p.add_argument("--has-github", action="store_true")
-    p.add_argument("--has-slack", action="store_true")
-    p.add_argument("--has-linear", action="store_true")
-    p.add_argument("--uses-ai-coding", action="store_true")
-    p.add_argument("--recently-hired", action="store_true")
-    p.add_argument("--recently-raised", action="store_true")
-    p.add_argument("--posted-about-pain", action="store_true")
-    p.add_argument("--using-competitor", action="store_true")
-    p.add_argument("--air-gapped", action="store_true")
-    args = p.parse_args()
+def render_text(result: dict[str, Any]) -> str:
+    lines = [
+        f"ICP score: {result['prospect']}",
+        f"Model: {result['model']}",
+        f"Score: {result['score']:.2f}% ({result['matched_weight']:g}/{result['total_weight']:g})",
+        f"Status: {result['status']}",
+        "",
+        "Criteria:",
+    ]
+    for item in result["criteria"]:
+        marker = "+" if item["matched"] else "-"
+        lines.append(f"  {marker} {item['label']} (weight {item['weight']:g})")
+    matched_dqs = [item for item in result["disqualifiers"] if item["matched"]]
+    if matched_dqs:
+        lines.extend(["", "Disqualifiers:"])
+        lines.extend(f"  ! {item['label']}" for item in matched_dqs)
+    return "\n".join(lines)
 
-    result = score(args)
-    print(f"\nICP Score: {result['company']}")
-    print(f"  Score: {result['score']}% ({result['points']}/{result['max_points']} points)")
-    if result["disqualified"]:
-        print("  Status: DISQUALIFIED")
-    elif result["score"] >= 70:
-        print("  Status: Strong ICP fit")
-    elif result["score"] >= 40:
-        print("  Status: Partial fit — investigate further")
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Score a JSON prospect using an explicit, reusable ICP model."
+    )
+    parser.add_argument("--model", type=Path, required=True, help="ICP scoring model JSON")
+    parser.add_argument("--prospect", type=Path, required=True, help="Prospect data JSON")
+    parser.add_argument("--output", choices=["text", "json"], default="text")
+    parser.add_argument(
+        "--strict-missing",
+        action="store_true",
+        help="Fail when a criterion field is absent instead of treating it as unmatched.",
+    )
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    try:
+        model = load_object(args.model, "model")
+        prospect = load_object(args.prospect, "prospect")
+        result = score_prospect(model, prospect, strict_missing=args.strict_missing)
+    except (ModelError, TypeError) as exc:
+        print(f"score_prospect: {exc}", file=sys.stderr)
+        return 2
+    if args.output == "json":
+        print(json.dumps(result, indent=2, sort_keys=True))
     else:
-        print("  Status: Weak fit — deprioritize")
-    print("\nSignals:")
-    for s in result["signals"]:
-        print(s)
+        print(render_text(result))
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

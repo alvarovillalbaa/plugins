@@ -1,6 +1,6 @@
 ---
 name: ingest
-description: Ingest any source into the brain raw/ layer and optionally compile it into canonical knowledge. Supports Twitter/X (xurl), web URLs, YouTube, LinkedIn, PDFs, and local files.
+description: Capture one source into a brain's raw layer and optionally compile only that source into canonical knowledge.
 argument-hint: "[URL, tweet ID, file path, or paste raw text]"
 allowed-tools: [Read, Write, Bash, WebFetch, AskUserQuestion, Skill]
 ---
@@ -39,7 +39,7 @@ Also read:
 
 4. **Save to raw/**
 
-   Write the result to the brain's raw folder, usually `raw/YYYY-MM-DD_<source-type>_<slug>.md`, with the standard frontmatter:
+   Write the result to the brain's raw intake folder using the naming convention `use-afs` defines (or the local equivalent from `BRAIN.md`), with the standard frontmatter:
    ```
    source: <type>
    url: <original URL or ID>
@@ -64,3 +64,7 @@ Also read:
    - If compiled: which canonical pages were created or updated and what contradictions or open threads were found.
    - If blocked: which source could not be extracted and the exact reason.
    - If queued: confirm the file is ready for the next `compile-raw` pass.
+
+## Boundary
+
+This command captures one new source. Use `compile-raw` for a queue or corpus of sources already present in the raw layer.

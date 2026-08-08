@@ -52,6 +52,15 @@ Treat these as approval-worthy even before you have exact pricing:
 - whether downtime, restart, or data movement is expected
 - whether migrations run as a one-off job or inside a steady-state runtime rollout
 
+## Database Migrations and Backfills
+
+This skill does not own migration mechanics — schema design, migration script authoring, and backfill patterns belong to `backend/databases`. At the cloud-orchestration layer:
+
+- If the project has no live users or customers yet, default to a hard cut: provision the destination schema/database directly, without backfill infrastructure, dual-write paths, or compatibility shims, even during a cross-provider migration. This mirrors `databases`' own default of no data backfills or compatibility migrations.
+- If the project has live production data and users, do not assume a hard cut is safe — stop and get an explicit migration decision from the user, same as `databases` requires.
+- Snapshot the source database immediately before any migration or provider cutover regardless of user count; this is a cheap default, not backfill work.
+- Whether a migration runs as a one-off job or inside a steady-state runtime rollout is itself an approval-relevant fact — see "What to Show the User Before Running" below.
+
 ## Use the Guard Script
 
 Example:

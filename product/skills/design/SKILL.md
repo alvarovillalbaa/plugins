@@ -30,7 +30,7 @@ Chain to these skills when the task crosses this skill's boundary:
 - `frontend`
 - `product-development`
 - `product-marketing`
-- `quality-assurance/frontend-e2e`
+- `testing/frontend-e2e`
 - `code-documentation`
 - `visualization`
 
@@ -46,13 +46,13 @@ Chain to these skills when the task crosses this skill's boundary:
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-- `hallmark`: Audit, redesign, study, or build UI with anti-AI-slop design constraints. Install: `python scripts/install-external-skills.py --skill hallmark --agent codex`.
-- `taste-skill`: Use taste guidance for visual direction, hierarchy, and UI polish decisions. Install: `python scripts/install-external-skills.py --skill taste-skill --agent codex`.
-- `taste-skill-v1`: Use legacy taste guidance when the newer taste skill does not fit the brief. Install: `python scripts/install-external-skills.py --skill taste-skill-v1 --agent codex`.
-- `gpt-tasteskill`: Use taste critique guidance for stronger visual judgment and UI decisions. Install: `python scripts/install-external-skills.py --skill gpt-tasteskill --agent codex`.
-- `impeccable`: Use impeccable UI quality guidance for execution-level frontend finish. Install: `python scripts/install-external-skills.py --skill impeccable --agent codex`.
-- `emil-design-eng`: Use design-engineering taste rules for high-quality frontend implementation. Install: `python scripts/install-external-skills.py --skill emil-design-eng --agent codex`.
-- `userinterface-wiki`: Use interface-pattern references for layout, components, states, and product UI decisions. Install: `python scripts/install-external-skills.py --skill userinterface-wiki --agent codex`.
+- `hallmark`: Audit, redesign, study, or build UI with anti-AI-slop design constraints. Install: `python3 scripts/install-external-skills.py --skill hallmark --agent codex`.
+- `taste-skill`: Use taste guidance for visual direction, hierarchy, and UI polish decisions. Install: `python3 scripts/install-external-skills.py --skill taste-skill --agent codex`.
+- `taste-skill-v1`: Use legacy taste guidance when the newer taste skill does not fit the brief. Install: `python3 scripts/install-external-skills.py --skill taste-skill-v1 --agent codex`.
+- `gpt-tasteskill`: Use taste critique guidance for stronger visual judgment and UI decisions. Install: `python3 scripts/install-external-skills.py --skill gpt-tasteskill --agent codex`.
+- `impeccable`: Use impeccable UI quality guidance for execution-level frontend finish. Install: `python3 scripts/install-external-skills.py --skill impeccable --agent codex`.
+- `emil-design-eng`: Use design-engineering taste rules for high-quality frontend implementation. Install: `python3 scripts/install-external-skills.py --skill emil-design-eng --agent codex`.
+- `userinterface-wiki`: Use interface-pattern references for layout, components, states, and product UI decisions. Install: `python3 scripts/install-external-skills.py --skill userinterface-wiki --agent codex`.
 - `fluid-functionalism`: Reference-only: Use the source-owned interaction-style guidance for motion and hover decisions. No installer target.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).

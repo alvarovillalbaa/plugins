@@ -5,7 +5,7 @@ origin:
   branch: main
   path: marketing/skills/images
 install:
-  mode: symlink-preferred
+  mode: project-managed-copy
   agents:
     - codex
     - cursor

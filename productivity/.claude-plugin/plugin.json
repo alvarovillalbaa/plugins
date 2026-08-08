@@ -1,7 +1,7 @@
 {
   "name": "productivity",
-  "description": "Reporting, research, review, documentation drift, and operating cadence workflows for the agent company.",
-  "version": "3.0.0",
+  "description": "Reporting, research, review, personal improvement, performance, meetings, and operating cadence workflows.",
+  "version": "3.1.0",
   "author": {
     "name": "Agent Company"
   },
@@ -12,6 +12,8 @@
     "productivity",
     "research",
     "review",
-    "reporting"
+    "reporting",
+    "meetings",
+    "coaching"
   ]
 }

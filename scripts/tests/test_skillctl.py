@@ -31,14 +31,14 @@ class SkillctlTests(unittest.TestCase):
         (skill / "left-to-personalize").mkdir()
         (skill / "SKILL.md").write_text("---\nname: demo\ndescription: Demo skill.\n---\n", encoding="utf-8")
         (skill / ".skillmeta.yml").write_text(
-            """id: system.demo
+            f"""id: system.demo
 name: demo
 origin:
-  repo: alvarovillalbaa/plugins
+  repo: {skillctl.CANONICAL_REPO}
   branch: main
   path: system/skills/demo
 install:
-  mode: symlink-preferred
+  mode: project-managed-copy
   agents:
     - codex
 personalization:
@@ -92,17 +92,31 @@ quality_gates:
 
         self.assertEqual(source.kind, "upstream-safe")
 
+    def test_root_discovery_and_agent_guidance_are_upstream_safe(self) -> None:
+        for name in (
+            "AGENTS.md",
+            "CITATION.cff",
+            "catalog.json",
+            "codemeta.json",
+            "context7.json",
+            "llms.txt",
+            "llms-full.txt",
+        ):
+            with self.subTest(name=name):
+                classification = skillctl.classify_path(self.tmp / name, self.tmp)
+                self.assertEqual(classification.kind, "upstream-safe")
+
     def test_render_overlays_replaces_known_placeholders(self) -> None:
         template = self.skill / "left-to-personalize" / "voice.md"
         values = self.tmp / "values.yml"
         out = self.tmp / "out"
         template.write_text("Hello {{COMPANY_NAME}} and {{MISSING}}", encoding="utf-8")
-        values.write_text("company_name: Clous\n", encoding="utf-8")
+        values.write_text("company_name: ExampleCo\n", encoding="utf-8")
 
         args = type("Args", (), {"root": str(self.tmp), "skill": "system/skills/demo", "values": str(values), "out": str(out)})
         with redirect_stdout(StringIO()):
             self.assertEqual(skillctl.render_overlays(args), 0)
-        self.assertEqual((out / "voice.md").read_text(encoding="utf-8"), "Hello Clous and {{MISSING}}")
+        self.assertEqual((out / "voice.md").read_text(encoding="utf-8"), "Hello ExampleCo and {{MISSING}}")
 
     def test_patch_bundle_requires_upstream_safe_diff(self) -> None:
         subprocess.run(["git", "init"], cwd=self.tmp, check=True, capture_output=True)
@@ -170,6 +184,35 @@ quality_gates:
         args = type("Args", (), {"root": str(self.tmp)})
         with redirect_stdout(StringIO()):
             self.assertEqual(skillctl.conflicts_check(args), 0)
+
+    def test_conflicts_check_rejects_same_plugin_skill_command_name(self) -> None:
+        system = self.tmp / "system"
+        (system / ".claude-plugin").mkdir()
+        (system / "commands").mkdir()
+        (system / ".claude-plugin" / "plugin.json").write_text(
+            '{"name": "system", "version": "3.0.0"}\n',
+            encoding="utf-8",
+        )
+        (system / "profile.yaml").write_text(
+            "slug: system\n"
+            "version: 3.0.0\n"
+            "skills:\n"
+            "  - demo\n"
+            "commands:\n"
+            "  - demo\n"
+            "agents:\n",
+            encoding="utf-8",
+        )
+        (system / "commands" / "demo.md").write_text(
+            "---\nname: demo\ndescription: Duplicate public surface.\n---\n",
+            encoding="utf-8",
+        )
+
+        args = type("Args", (), {"root": str(self.tmp)})
+        stderr = StringIO()
+        with redirect_stderr(stderr):
+            self.assertEqual(skillctl.conflicts_check(args), 1)
+        self.assertIn("conflicts with same-plugin skill `system/demo`", stderr.getvalue())
 
     def test_conflicts_check_rejects_manifest_name_mismatch(self) -> None:
         system = self.tmp / "system"

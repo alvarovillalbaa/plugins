@@ -18,10 +18,10 @@ See [`../../../skills-chaining-map.md`](../../../skills-chaining-map.md) for the
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-- `codex-loop`: Run Codex PRD/story loops with one fresh subagent per story. Install: `python scripts/install-external-skills.py --skill codex-loop --agent codex`.
-- `claude-loop`: Run Claude PRD/story loops with one fresh subagent per story. Install: `python scripts/install-external-skills.py --skill claude-loop --agent codex`.
-- `ralph`: Use Ralph-style autonomous execution loops for scoped implementation plans. Install: `python scripts/install-external-skills.py --skill ralph --agent codex`.
-- `no-mistakes`: Gate explicit ship, push, PR, or validate flows through the no-mistakes pipeline. Install: `python scripts/install-external-skills.py --skill no-mistakes --agent codex`.
+- `codex-loop`: Run Codex PRD/story loops with one fresh subagent per story. Install: `python3 scripts/install-external-skills.py --skill codex-loop --agent codex`.
+- `claude-loop`: Run Claude PRD/story loops with one fresh subagent per story. Install: `python3 scripts/install-external-skills.py --skill claude-loop --agent codex`.
+- `ralph`: Use Ralph-style autonomous execution loops for scoped implementation plans. Install: `python3 scripts/install-external-skills.py --skill ralph --agent codex`.
+- `no-mistakes`: Gate explicit ship, push, PR, or validate flows through the no-mistakes pipeline. Install: `python3 scripts/install-external-skills.py --skill no-mistakes --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
 Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).

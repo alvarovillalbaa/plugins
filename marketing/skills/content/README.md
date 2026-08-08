@@ -1,10 +1,11 @@
 # Content Writing
 
-Unified content skill covering writing, repurposing, auditing, refreshing, keyword work, context-to-content analysis, and article editing.
+Unified content skill covering writing, course creation, repurposing, auditing, refreshing, keyword work, context-to-content analysis, and article editing.
 
 ## Use this for
 
 - blog posts and long-form articles
+- source-grounded text, video, code, interactive, or mixed-media courses
 - multi-channel syndication from a canonical piece
 - GEO optimization and AI-citation-ready rewrites
 - content quality audits, refreshes, and gap analysis
@@ -28,7 +29,6 @@ https://github.com/alvarovillalbaa/plugins/tree/main/marketing/skills/content
 ## What is bundled
 
 - `examples/`
-- `hooks/`
 - `references/`
 - `scripts/`
 - `templates/`

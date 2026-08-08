@@ -1,10 +1,6 @@
 ---
 name: positioning
-description: >-
-  Use for positioning, messaging, ICP/persona framing, differentiation,
-  objection handling, and proof-point structure. Child skill of `personalize`;
-  route here from the parent router when this lane is the
-  narrowest owner.
+description: Use for positioning, messaging, ICP/persona framing, differentiation, objection handling, and proof-point structure. Child of `personalize`.
 ---
 
 # Positioning Messaging
@@ -15,7 +11,7 @@ This child skill owns positioning, messaging, ICP/persona framing, differentiati
 
 - The request is primarily about positioning, messaging, ICP/persona framing, differentiation, objection handling, and proof-point structure.
 - The parent router [`../personalize/SKILL.md`](../personalize/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, scripts, examples, or templates.
 
 ## Assets
 
@@ -23,7 +19,6 @@ This child skill owns positioning, messaging, ICP/persona framing, differentiati
 - `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 

@@ -1,6 +1,6 @@
 # Post-Mortem Template
 
-File location: `audits/YYYY/MM-DD/post-mortem-[incident-name].md`
+File location: the AFS audit surface, named `post-mortem-[incident-name].md`. Ask `use-afs` for the path.
 
 Write within 48 hours of incident resolution. Review with team within 1 week. Link from the incident ticket.
 

@@ -1,6 +1,28 @@
 {
   "name": "marketing",
-  "version": "3.0.0",
-  "description": "Content, discoverability, social media, images, slides, visualization, and video workflows for Codex.",
-  "skills": "./skills/"
+  "version": "3.1.0",
+  "description": "Content, course creation, SEO, AEO, GEO, LLM discoverability, social media, images, slides, visualization, and video workflows for Codex.",
+  "skills": "./skills/",
+  "author": {
+    "name": "Agent Company"
+  },
+  "homepage": "https://github.com/alvarovillalbaa/plugins",
+  "repository": "https://github.com/alvarovillalbaa/plugins",
+  "license": "MIT",
+  "keywords": ["agent-skills", "marketing", "SEO", "AEO", "GEO", "LLM-discoverability"],
+  "interface": {
+    "displayName": "Marketing Agent Workflows",
+    "shortDescription": "Content, growth, SEO, AEO, GEO, and media workflows.",
+    "longDescription": "Reusable marketing skills for content, courses, organic growth, answer and generative engine optimization, social media, and visual production.",
+    "developerName": "Agent Company",
+    "category": "Marketing",
+    "capabilities": ["Agent skills", "Content production", "Search and LLM discoverability"],
+    "websiteURL": "https://github.com/alvarovillalbaa/plugins",
+    "defaultPrompt": [
+      "Audit this site's SEO, AEO, and GEO readiness.",
+      "Create a content brief for this audience.",
+      "Plan a multi-channel launch campaign."
+    ],
+    "brandColor": "#F05A47"
+  }
 }

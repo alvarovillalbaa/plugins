@@ -12,7 +12,7 @@ For every source:
 
 1. Confirm the active `BRAIN.md` boundary.
 2. Fetch or extract the raw content using the source-appropriate tool.
-3. Save the result to `raw/` as a plain markdown or text file with a descriptive slug: `raw/YYYY-MM-DD_source-type_slug.md`, or to the local raw-equivalent folder from `BRAIN.md`.
+3. Save the result into the AFS raw intake surface as a plain markdown or text file with a descriptive slug, or to the local raw-equivalent folder from `BRAIN.md`. Ask `use-afs` for the path and file-naming convention; do not invent a second one.
 4. Prepend a short frontmatter block:
    ```
    source: <type>
@@ -64,7 +64,7 @@ When doing a multi-angle research pass rather than a single fetch:
 3. **Follow threads** — for high-engagement tweets, fetch the full thread with `xurl thread <id>`.
 4. **Deep-dive linked content** — for tweets with URLs, fetch those URLs using the web or PDF ingestion pattern below.
 5. **Synthesize** — compile results into one themed markdown research document.
-6. **Save** — write the synthesis to `raw/YYYY-MM-DD_x-research_<slug>.md`.
+6. **Save** — write the synthesis to the raw intake surface (slug: `x-research_<slug>`).
 
 ### Noise reduction
 
@@ -129,7 +129,7 @@ For any public LinkedIn post or profile URL, use `defuddle` or `curl` to capture
 
 ```sh
 defuddle parse "https://www.linkedin.com/posts/username_slug" --md \
-  -o raw/YYYY-MM-DD_linkedin_slug.md
+  -o <raw-intake>/linkedin_slug.md
 ```
 
 If `defuddle` cannot render the page (login wall), use `agent-browser` with an authenticated session:
@@ -158,7 +158,7 @@ Preferred tool: `defuddle`
 ```sh
 # Basic URL capture
 defuddle parse "https://example.com/article" --md \
-  -o raw/YYYY-MM-DD_web_slug.md
+  -o <raw-intake>/web_slug.md
 
 # Multiple URLs from a list file
 while IFS= read -r url; do
@@ -171,7 +171,7 @@ Fallback when `defuddle` is unavailable:
 
 ```sh
 curl -s "https://example.com/article" | pandoc -f html -t markdown \
-  -o raw/YYYY-MM-DD_web_slug.md
+  -o <raw-intake>/web_slug.md
 ```
 
 For dynamic or authenticated pages use `agent-browser`:
@@ -188,22 +188,22 @@ For JavaScript-heavy, bot-protected, or dynamically rendered sites where `defudd
 ```sh
 # Single page — prefer this first
 firecrawl scrape "https://example.com/article" --only-main-content \
-  -o raw/YYYY-MM-DD_web_slug.md
+  -o <raw-intake>/web_slug.md
 
 # Discover and scrape top results in one pass
 firecrawl search "query terms" --scrape \
-  -o raw/YYYY-MM-DD_web_query.json --json
+  -o <raw-intake>/web_query.json --json
 
 # Map a known site to find the right subpage, then scrape
 firecrawl map "https://docs.example.com" --search "topic" \
   -o raw/site-map.txt
 firecrawl scrape "https://docs.example.com/found-page" --only-main-content \
-  -o raw/YYYY-MM-DD_web_slug.md
+  -o <raw-intake>/web_slug.md
 
 # Crawl a bounded site section (use sparingly — check credits first)
 firecrawl crawl "https://docs.example.com" \
   --include-paths /docs --limit 50 --wait \
-  -o raw/YYYY-MM-DD_crawl_slug.json
+  -o <raw-intake>/crawl_slug.json
 ```
 
 Escalation order: `scrape` → `search --scrape` → `map + scrape` → `crawl bounded section` → `interact`.
@@ -240,7 +240,7 @@ yt-dlp --skip-download --write-auto-sub --sub-lang en \
   "https://www.youtube.com/watch?v=VIDEO_ID"
 
 # Convert SRT to plain text (strip timestamps)
-sed '/^[0-9]/d;/^$/d;s/<[^>]*>//g' raw/*.srt > raw/YYYY-MM-DD_youtube_slug.txt
+sed '/^[0-9]/d;/^$/d;s/<[^>]*>//g' raw/*.srt > <raw-intake>/youtube_slug.txt
 ```
 
 ### Metadata only
@@ -248,7 +248,7 @@ sed '/^[0-9]/d;/^$/d;s/<[^>]*>//g' raw/*.srt > raw/YYYY-MM-DD_youtube_slug.txt
 ```sh
 yt-dlp --dump-json --no-download "https://www.youtube.com/watch?v=VIDEO_ID" \
   | jq '{title, uploader, upload_date, description, duration, view_count, like_count}' \
-  > raw/YYYY-MM-DD_youtube_meta_slug.json
+  > <raw-intake>/youtube_meta_slug.json
 ```
 
 ### Playlist ingestion
@@ -293,13 +293,13 @@ Preferred tools: `pdftotext` (poppler), `mutool` (mupdf), or Python `pdfplumber`
 
 ```sh
 # Single PDF — plain text
-pdftotext input.pdf raw/YYYY-MM-DD_paper_slug.txt
+pdftotext input.pdf <raw-intake>/paper_slug.txt
 
 # Single PDF — preserve layout (useful for tables)
-pdftotext -layout input.pdf raw/YYYY-MM-DD_paper_slug.txt
+pdftotext -layout input.pdf <raw-intake>/paper_slug.txt
 
 # Using mutool (mupdf)
-mutool draw -F txt input.pdf > raw/YYYY-MM-DD_paper_slug.txt
+mutool draw -F txt input.pdf > <raw-intake>/paper_slug.txt
 ```
 
 Python fallback using `pdfplumber`:
@@ -360,7 +360,7 @@ For screenshots of text (e.g., Twitter screenshots, PDF screenshots):
 
 ```sh
 # macOS OCR via Shortcuts or tesseract
-tesseract screenshot.png raw/YYYY-MM-DD_ocr_slug -l eng
+tesseract screenshot.png <raw-intake>/ocr_slug -l eng
 ```
 
 ---
@@ -409,7 +409,7 @@ When an AI agent should process the entire `raw/` folder and compile evidence in
 ```
 1. Count BRAIN.md files and identify exactly one active brain root.
 2. List all files in raw/ where status != processed.
-3. If requested or configured, list candidate Memory entries from logs/, lessons/, facts/, fixes/, steers/, models/, and reflections/.
+3. If requested or configured, list candidate Memory entries from the AFS Memory surfaces (see use-afs).
 4. For each file or Memory entry:
    a. Detect type from the source field or file extension.
    b. If text/markdown: proceed to extract.
@@ -467,7 +467,7 @@ These structures appear in second-brain repos and require special handling outsi
 
 ### `facts/` folder
 
-`facts/` holds durable ambient context using a type-first structure: `facts/items/<domain>/`, `facts/episodes/<domain>/`, `facts/triples/<domain>/`.
+The fact surfaces hold durable ambient context, split by fact type. Ask `use-afs` for the types and their paths.
 
 - No extraction step is needed — these are already markdown.
 - Ensure the standard frontmatter block is present before compiling; add it if missing with `source: facts`.

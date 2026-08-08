@@ -48,19 +48,11 @@ At session end, process signals in this order:
 After the learning artifacts are written, check whether the knowledge should also change:
 
 - `AGENTS.md` / `CLAUDE.md` for stable operating rules and repo facts.
-- `SOUL.md` for persistent collaboration or tone corrections.
-- `PRINCIPLES.md` for decision heuristics.
-- Service docs such as `README.md`, `ARCHITECTURE.md`, `TESTS.md`, `SETUP.md` when teammates benefit.
-- AFS documentation destinations for human-readable discoveries:
-  - `lessons/<domain>/YYYY/MM-DD/` — verified insights that should change future behavior
-  - `facts/items/<domain>/` — stable item facts about team/company/project context (living docs)
-  - `facts/episodes/<domain>/` — session-scoped fact records (living docs)
-  - `facts/triples/<domain>/` — atomic claims for grep-based retrieval (living docs)
-  - `fixes/YYYY/MM-DD/` — solutions to non-obvious errors
-  - `logs/YYYY/MM-DD/changes.md` — terse historical change notes
-  - `audits/`, `plans/`, `results/`, `specs/`, `references/`, `cookbooks/`, `knowledge/`, or `runbooks/` when that is the correct durable destination
+- The root instruction docs that own collaboration stance and decision heuristics (see `use-afs` for the set).
+- In-folder docs such as `README.md`, `ARC.md`, `SETUP.md` when teammates benefit.
+- AFS documentation surfaces for human-readable discoveries — verified lessons, durable facts, fixes, change notes, audits, plans, results, specs, references, cookbooks, knowledge, and runbooks.
 
-**Documentation placement rules** are owned by the `code-documentation` skill. Read `skills/code-documentation/SKILL.md` before writing to AFS docs so the content lands in the right current-vs-historical surface.
+**Documentation placement rules** are owned by the `code-documentation` skill, and **AFS paths and naming are owned by `use-afs`**. Read `skills/code-documentation/SKILL.md` before writing so the content lands in the right current-vs-historical surface, and resolve every AFS path through `use-afs`. If `use-afs` is not installed, stop and report the install command instead of guessing a path.
 
 Use `references/learning-promotion.md` for the promotion rules.
 
@@ -70,7 +62,7 @@ Use `references/learning-promotion.md` for the promotion rules.
 
 | Artifact | Use it for | Write rule |
 |---|---|---|
-| `facts/items/<domain>/` | Stable item facts about team/company/project context | Update in place |
+| AFS item-fact surface | Stable facts about team/company/project context | Update in place |
 | `episodes/` | Session summary and audit trail | Write for every meaningful session |
 | `decision-traces/` | Reflection, trade-offs, assumptions, risks | Write when reasoning quality matters |
 | `triples/` | Atomic facts for grep-based retrieval | Append stable facts only |
@@ -91,7 +83,7 @@ Per-session audit trail. Summarize what happened, what changed, what was learned
 
 ### Decision traces
 
-Use when the session involved competing options, uncertain evidence, explicit trade-offs, residual risk, or a need to explain why one path won. Especially useful before updating `PRINCIPLES.md`, `SOUL.md`, or architecture docs.
+Use when the session involved competing options, uncertain evidence, explicit trade-offs, residual risk, or a need to explain why one path won. Especially useful before updating the root instruction docs that own standards and agent stance, or architecture docs.
 
 ### Triples
 
@@ -180,7 +172,7 @@ Promote only when the knowledge is:
 - non-sensitive
 - not already captured more authoritatively elsewhere
 
-Most sessions should update `episodes/`, `triples/`, or `collections/`. Fewer should produce `lessons/`. Even fewer should change `SOUL.md` or `PRINCIPLES.md`.
+Most sessions should update `episodes/`, `triples/`, or `collections/`. Fewer should produce `lessons/`. Even fewer should change the root instruction docs.
 
 ---
 

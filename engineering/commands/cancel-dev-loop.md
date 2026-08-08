@@ -1,11 +1,14 @@
 ---
 name: cancel-dev-loop
 description: "Cancel an active agentic development loop by removing its state file."
-allowed-tools: ["Bash(test -f .agentic/agentic-dev-loop.local.md:*)", "Bash(test -f .claude/agentic-dev-loop.local.md:*)", "Bash(rm .agentic/agentic-dev-loop.local.md)", "Bash(rm .claude/agentic-dev-loop.local.md)", "Read(.agentic/agentic-dev-loop.local.md)", "Read(.claude/agentic-dev-loop.local.md)"]
+argument-hint: "[state file, or blank for auto-detect]"
+allowed-tools: ["Bash(test -f .agentic/agentic-dev-loop.local.md:*)", "Bash(test -f .claude/agentic-dev-loop.local.md:*)", "Bash(rm .agentic/agentic-dev-loop.local.md)", "Bash(rm .claude/agentic-dev-loop.local.md)", "Read(.agentic/agentic-dev-loop.local.md)", "Read(.claude/agentic-dev-loop.local.md)", "Skill"]
 hide-from-slash-command-tool: "true"
 ---
 
 # Cancel Dev Loop
+
+Use skill: **agent-harness** — `skills/agent-harness/SKILL.md`.
 
 1. Check if an active loop exists:
    ```bash

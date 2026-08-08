@@ -1,10 +1,6 @@
 ---
 name: follow-up
-description: >-
-  Use for follow-up messages, waiting-state nudges, reply drafting,
-  conversation continuation, and next-step recovery. Child skill of
-  `outreach`; route here from the parent router when this lane is
-  the narrowest owner.
+description: Use for follow-up messages, waiting-state nudges, reply drafting, conversation continuation, and next-step recovery. Child of `outreach`.
 ---
 
 # Follow Up Messaging
@@ -15,15 +11,13 @@ This child skill owns follow-up messages, waiting-state nudges, reply drafting, 
 
 - The request is primarily about follow-up messages, waiting-state nudges, reply drafting, conversation continuation, and next-step recovery.
 - The parent router [`../outreach/SKILL.md`](../outreach/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, examples, or templates.
 
 ## Assets
 
 - `references/` contains lane-specific guidance moved from the original parent skill.
-- `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 

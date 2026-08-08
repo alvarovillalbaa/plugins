@@ -1,10 +1,6 @@
 ---
 name: virality
-description: >-
-  Use for viral X launch systems, launch threads, controversy research,
-  sequence planning, and performance-oriented post variants. Child skill of
-  `launches`; route here from the parent router when this
-  lane is the narrowest owner.
+description: Use for viral X launch systems, launch threads, controversy research, sequence planning, and performance-oriented post variants. Child of `launches`.
 ---
 
 # X Viral Launch
@@ -15,15 +11,13 @@ This child skill owns viral X launch systems, launch threads, controversy resear
 
 - The request is primarily about viral X launch systems, launch threads, controversy research, sequence planning, and performance-oriented post variants.
 - The parent router [`../launches/SKILL.md`](../launches/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, examples, or templates.
 
 ## Assets
 
 - `references/` contains lane-specific guidance moved from the original parent skill.
-- `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 

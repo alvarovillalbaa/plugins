@@ -2,7 +2,7 @@
 
 **Date:** YYYY-MM-DD
 **Tags:** [domain, component]
-**Location:** `lessons/<domain>/YYYY/MM-DD/[slug].md`
+**Location:** the AFS lesson surface for this domain, named `[slug].md`. Ask `use-afs` for the path.
 
 ## Problem
 

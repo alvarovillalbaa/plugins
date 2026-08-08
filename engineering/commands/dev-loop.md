@@ -2,11 +2,13 @@
 name: dev-loop
 description: "Start an agentic development loop in the current session — re-injects your task prompt each iteration until the completion promise is output or max iterations is reached."
 argument-hint: "TASK [--max-iterations N] [--completion-promise TEXT] [--verify-cmd CMD] [--spec-file PATH]"
-allowed-tools: ["Bash(${CLAUDE_PLUGIN_ROOT}/skills/agent-harness/scripts/setup-dev-loop.sh:*)"]
+allowed-tools: ["Bash(${CLAUDE_PLUGIN_ROOT}/skills/agent-harness/scripts/setup-dev-loop.sh:*)", "Skill"]
 hide-from-slash-command-tool: "true"
 ---
 
 # Dev Loop
+
+Use skill: **agent-harness** — `skills/agent-harness/SKILL.md`.
 
 Execute the setup script to initialize the agentic dev loop:
 
@@ -28,3 +30,5 @@ Then begin working on the task. Each time you try to exit, the stop hook re-inje
 ## Critical rule
 
 Only output the completion promise when the statement is completely and unequivocally TRUE. Do not lie to exit the loop, even if you think you are stuck. If genuinely blocked, document the blocker clearly and let the loop continue so the context is preserved for the next iteration.
+
+This loop converges on one user task. Use `harness-loop` only for repeated repository-harness hardening and `ar:loop` only for measured experiments with keep/discard evaluation.

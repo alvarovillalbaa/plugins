@@ -129,4 +129,8 @@ If the user kept you on `main`, do not commit or push unless they asked. Summari
 
 ## Use the Hook
 
-If the host supports it, register `hooks/check-completion.sh`. The hook exists to catch the classic failure mode: stopping after partial implementation, stale verification, or unfinished integration work.
+When the `agent-harness` skill is active in Claude, its skill-scoped `Stop`
+hook runs `scripts/completion-gate.py`. A different runtime may invoke that
+handler only when it supplies the same JSON event contract. The hook catches
+the classic failure mode: stopping after partial implementation, stale
+verification, or unfinished integration work.

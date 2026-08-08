@@ -41,9 +41,9 @@ Chain to these skills when the task crosses this skill's boundary:
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-- `hallmark`: Audit, redesign, study, or build UI with anti-AI-slop design constraints. Install: `python scripts/install-external-skills.py --skill hallmark --agent codex`.
-- `browserbase-competitor-analysis`: Use browser-backed competitor analysis workflows for market and SEO comparisons. Install: `python scripts/install-external-skills.py --skill browserbase-competitor-analysis --agent codex`.
-- `office-hours`: Use startup office-hours guidance for GTM, early customer, and product-market questions. Install: `python scripts/install-external-skills.py --skill office-hours --agent codex`.
+- `hallmark`: Audit, redesign, study, or build UI with anti-AI-slop design constraints. Install: `python3 scripts/install-external-skills.py --skill hallmark --agent codex`.
+- `browserbase-competitor-analysis`: Use browser-backed competitor analysis workflows for market and SEO comparisons. Install: `python3 scripts/install-external-skills.py --skill browserbase-competitor-analysis --agent codex`.
+- `office-hours`: Use startup office-hours guidance for GTM, early customer, and product-market questions. Install: `python3 scripts/install-external-skills.py --skill office-hours --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
 Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).

@@ -10,11 +10,11 @@ The learning system has two complementary layers:
 
 **`learning/`** — agent-internal state (machine-readable, structured JSON/JSONL, operated on by scripts). Lives at the repo root. This is the working memory of the agent.
 
-**AFS documentation output** — human-readable markdown for collaborators. Defined by the `code-documentation` skill and routed into `logs/`, `lessons/`, `facts/`, `fixes/`, `audits/`, `plans/`, `results/`, `specs/`, `references/`, `cookbooks/`, `knowledge/`, `runbooks/`, and related AFS surfaces.
+**AFS documentation output** — human-readable markdown for collaborators. Routing is defined by the `code-documentation` skill; the surfaces themselves and their paths are defined by `use-afs`.
 
 The promotion path: `learning/` artifacts → verified → the correct AFS destination for the content type.
 
-See `skills/code-documentation/references/continuous-docs.md` for timestamped and living AFS format rules.
+See `skills/code-documentation/references/continuous-docs.md` for what belongs in each artifact, and `use-afs` for paths and format rules.
 
 ## Layout
 

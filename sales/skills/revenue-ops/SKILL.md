@@ -1,9 +1,6 @@
 ---
 name: revenue-ops
-description: >-
-  Use for revenue operations, CRM stages, lifecycle definitions, handoff
-  rules, pipeline hygiene, and operating metrics. Child skill of `growth`; route here from the parent router when this lane is the narrowest
-  owner.
+description: Use for revenue operations, CRM stages, lifecycle definitions, handoff rules, pipeline hygiene, and operating metrics. Child of `growth`.
 ---
 
 # Revenue Ops
@@ -14,15 +11,13 @@ This child skill owns revenue operations, CRM stages, lifecycle definitions, han
 
 - The request is primarily about revenue operations, CRM stages, lifecycle definitions, handoff rules, pipeline hygiene, and operating metrics.
 - The parent router [`../growth/SKILL.md`](../growth/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, examples, or templates.
 
 ## Assets
 
 - `references/` contains lane-specific guidance moved from the original parent skill.
-- `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 

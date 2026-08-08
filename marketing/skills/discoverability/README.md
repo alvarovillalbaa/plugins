@@ -27,7 +27,6 @@ https://github.com/alvarovillalbaa/plugins/tree/main/marketing/skills/discoverab
 ## What is bundled
 
 - `examples/`
-- `hooks/`
 - `references/`
 - `scripts/`
 - `templates/`

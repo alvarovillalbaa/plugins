@@ -15,9 +15,12 @@ description: >-
 
 Use this agent when the user is preparing to open a PR, wants pre-merge validation, or needs a structured review of recent changes.
 
-## Primary skill
+## Primary skills
 
-`prs` — read `skills/prs/SKILL.md` and `skills/prs/references/review-specializations.md`.
+- `prs`
+- `quality-assurance`
+
+Read `skills/prs/SKILL.md` and `skills/prs/references/review-specializations.md`.
 
 ## Workflow
 
@@ -54,3 +57,8 @@ Use this agent when the user is preparing to open a PR, wants pre-merge validati
 - Findings are ordered by severity, not by file order
 - False positives are filtered aggressively — report problems that truly matter
 - If no high-confidence issues exist, say so explicitly
+
+## Routing boundaries
+
+- Own deep review of one bounded diff or pull request and return evidence-backed findings; do not manage the queue or decide portfolio priority.
+- Hand off multi-item queue disposition to `pr-triage`, implementation of fixes to `software-engineer`, and broader architecture decisions to `principal-engineer`.

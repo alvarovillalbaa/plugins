@@ -1,6 +1,6 @@
 # Technical Report Template
 
-File location: `audits/YYYY/MM-DD/[kebab-case-name].md`
+File location: the AFS audit surface, named `[kebab-case-name].md`. Ask `use-afs` for the path.
 
 Use this template for: architecture audits, performance investigations, security reviews, dependency audits, service evaluations.
 

@@ -72,9 +72,9 @@ Acceptance criteria walked one by one:
 
 ## 5. Land
 
-Single focused commit, message describing the behavior change. The session
-trace (from `hooks/pre-tool.sh`) is summarized at session end, recording the
-tool calls that produced this result.
+Single focused commit, message describing the behavior change. Preserve only
+the verification evidence needed for the handoff; do not automatically capture
+tool inputs or transcripts that may contain private data.
 
 ## What made this a good loop
 

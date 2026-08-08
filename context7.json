@@ -1,0 +1,23 @@
+{
+  "description": "Agent Company is a source repository of portable department plugins, skills, commands, agents, and runtime-neutral rules for Claude, Codex, and Cursor.",
+  "excludeFolders": [
+    ".git",
+    ".github",
+    ".playwright-mcp",
+    "docs/audits",
+    "docs/changelog",
+    "scripts/tests"
+  ],
+  "rules": [
+    "The checked-in catalog currently indexes 7 plugins, 147 skills, 49 commands, and 26 agents.",
+    "Read catalog.json or llms-full.txt for current component paths, ownership, and descriptions.",
+    "Read AGENTS.md for repository and installed-runtime invariants before modifying components.",
+    "Treat each department profile.yaml as the canonical ordered inventory for its skills, commands, and agents.",
+    "Treat SKILL.md and command or agent frontmatter descriptions as canonical routing summaries.",
+    "Follow README.md and QUICK_START.md for current installation guidance; do not infer install paths from source layout alone.",
+    "Treat project reconciliation bundles as provider-neutral, suggestion-only review data; only explicit post-review `--accept-local` may adopt an already-applied component resolution, and neither mode authorizes model invocation, patch application, or managed-target mutation.",
+    "Use component-graph.json as the complete relationship inventory; use references/component-graph.json plus scripts/component_graph.py to regenerate and resolve cycle-safe conditional candidates.",
+    "Use references/runtime-contract.json for inherited personalization and invocation-scoped variables.",
+    "Do not infer a hosted API, callable agent endpoint, authentication service, or live MCP server from this source repository."
+  ]
+}

@@ -610,3 +610,19 @@ skills:
     install_name: manim-video
     homepage: https://github.com/browser-use/video-use/tree/main/skills/manim-video
     domain: video-explainer
+  hyperframes:
+    owner: heygen-com
+    repo: https://github.com/heygen-com/hyperframes.git
+    ref: main
+    path: skills/hyperframes
+    install_name: hyperframes
+    homepage: https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes
+    domain: video
+  remotion:
+    owner: remotion-dev
+    repo: https://github.com/remotion-dev/remotion.git
+    ref: main
+    path: packages/skills/skills/remotion-best-practices
+    install_name: remotion-best-practices
+    homepage: https://github.com/remotion-dev/remotion/tree/main/packages/skills/skills/remotion-best-practices
+    domain: video

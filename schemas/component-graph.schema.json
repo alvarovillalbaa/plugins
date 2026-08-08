@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/alvarovillalbaa/plugins/schemas/component-graph.schema.json",
+  "title": "Plugin Component Graph Overlay",
+  "description": "Declares deterministic repository scan sources and explicit typed references. Nodes and inferred edges are generated rather than duplicated in this file.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sources",
+    "resolution",
+    "references"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profiles",
+        "chain_map",
+        "external_skills",
+        "external_sources"
+      ],
+      "properties": {
+        "profiles": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "chain_map": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "external_skills": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "external_sources": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "command_catalog": {
+          "$ref": "#/$defs/relativePath"
+        }
+      }
+    },
+    "resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy",
+        "breadth_execution",
+        "cycle_policy",
+        "traverse_relations"
+      ],
+      "properties": {
+        "strategy": {
+          "const": "breadth-first"
+        },
+        "breadth_execution": {
+          "const": "parallel"
+        },
+        "cycle_policy": {
+          "const": "visit-once-report-edges"
+        },
+        "traverse_relations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/relation"
+          }
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/reference"
+      }
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "componentId": {
+      "type": "string",
+      "pattern": "^(?:plugin:[a-z0-9]+(?:-[a-z0-9]+)*|(?:skill|command|rule|agent):[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*|external-skill:[a-z0-9]+(?:-[a-z0-9]+)*)$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "relation": {
+      "type": "string",
+      "enum": [
+        "contains",
+        "owns",
+        "chains-to",
+        "routes-to",
+        "references",
+        "invokes",
+        "spawns",
+        "uses"
+      ]
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "from",
+        "to",
+        "relation"
+      ],
+      "properties": {
+        "from": {
+          "$ref": "#/$defs/componentId"
+        },
+        "to": {
+          "$ref": "#/$defs/componentId"
+        },
+        "relation": {
+          "$ref": "#/$defs/relation"
+        },
+        "execution": {
+          "type": "string",
+          "enum": [
+            "parallel",
+            "sequential"
+          ],
+          "default": "parallel"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

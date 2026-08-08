@@ -245,7 +245,7 @@ def create_sample_csv(filepath: str):
 
 def main():
     parser = argparse.ArgumentParser(description='RICE Framework for Feature Prioritization')
-    parser.add_argument('input', nargs='?', help='CSV file with features or "sample" to create sample')
+    parser.add_argument('input', help='CSV file with features or "sample" to create an example CSV')
     parser.add_argument('--capacity', type=int, default=10, help='Team capacity per quarter (person-months)')
     parser.add_argument('--output', choices=['text', 'json', 'csv'], default='text', help='Output format')
 
@@ -256,17 +256,7 @@ def main():
         create_sample_csv('sample_features.csv')
         return
 
-    # Use sample data if no input provided
-    if not args.input:
-        features = [
-            {'name': 'User Dashboard', 'reach': 5000, 'impact': 'high', 'confidence': 'high', 'effort': 'l'},
-            {'name': 'Push Notifications', 'reach': 10000, 'impact': 'massive', 'confidence': 'medium', 'effort': 'm'},
-            {'name': 'Dark Mode', 'reach': 8000, 'impact': 'medium', 'confidence': 'high', 'effort': 's'},
-            {'name': 'API Rate Limiting', 'reach': 2000, 'impact': 'low', 'confidence': 'high', 'effort': 'xs'},
-            {'name': 'Social Login', 'reach': 12000, 'impact': 'high', 'confidence': 'medium', 'effort': 'm'},
-        ]
-    else:
-        features = load_features_from_csv(args.input)
+    features = load_features_from_csv(args.input)
 
     # Calculate RICE scores
     calculator = RICECalculator()

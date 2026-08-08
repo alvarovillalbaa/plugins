@@ -73,7 +73,7 @@ Answer the objection honestly and specifically; vague reassurance converts no on
 
 ## Handoffs
 
-- SEO optimization / keyword targeting → `on-page-seo`, `keywords`.
+- SEO optimization / keyword targeting → `seo`, `keywords`.
 - Generative/answer-engine visibility → `geo`, `aeo`.
 - Distribution beyond the help center → `social-media`, `syndication`.
 - Sales-facing versions of objection content → `sales` collateral.

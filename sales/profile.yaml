@@ -9,6 +9,7 @@ skills:
   - go-to-market
   - first-customers
   - technical-sales
+  - lead-signals
   - revenue-intelligence
   - sales-pipeline
   - commercial-docs
@@ -23,16 +24,13 @@ skills:
   - virality
   - growth
   - revenue-ops
-  - customer-growth
 commands:
   - account-brief
   - meet-with-clients
-  - outreach
   - competitor-scan
   - launch-virality
   - growth-experiment
 agents:
-  - sales-prospecting
   - cso
   - gtm-engineer
   - sdr

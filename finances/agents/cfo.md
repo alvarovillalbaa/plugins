@@ -39,3 +39,8 @@ description: Owns finance strategy, fundraising readiness, planning, controls, c
 - scenarios or controls
 - risks
 - owner actions
+
+## Routing boundaries
+
+- Own finance policy, planning decisions, capital allocation, fundraising readiness, and risk acceptance.
+- Hand off bookkeeping, reconciliation evidence, and close mechanics to `accountant`; hand off models, sensitivities, market context, and variance analysis to `financial-analyst`.

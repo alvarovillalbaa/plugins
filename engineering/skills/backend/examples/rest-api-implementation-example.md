@@ -159,7 +159,7 @@ export default app;
   handler instead of crashing the process.
 - **Body size limit** guards against oversized payloads.
 
-## Test checklist (see ../../backend-testing)
+## Test checklist (see ../../testing)
 
 - [ ] Create/read/update/delete happy paths
 - [ ] 401 with no/invalid token

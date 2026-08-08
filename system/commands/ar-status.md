@@ -2,10 +2,12 @@
 name: ar:status
 description: Show experiment dashboard — progress, best metric, keep rate, and results table for one or all experiments.
 argument-hint: "[domain/experiment-name] or leave blank for all experiments"
-allowed-tools: [Read, Bash, Glob]
+allowed-tools: [Read, Bash, Glob, Skill]
 ---
 
 Show the autoresearch experiment dashboard.
+
+Use skill: **loops** — `skills/loops/SKILL.md`.
 
 ## Steps
 
@@ -48,3 +50,7 @@ Show the autoresearch experiment dashboard.
    - `active` → "Continue with `/ar:loop {name}`"
    - `paused` → "Resume with `/ar:loop {name}`"
    - `done` → "View final diff with `git diff autoresearch/{name} main -- {target}`"
+
+## Boundary
+
+This command is read-only experiment status. It does not run, resume, mutate, or clean up an experiment.

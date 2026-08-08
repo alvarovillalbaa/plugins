@@ -1,0 +1,46 @@
+{
+  "role": "Engineering manager",
+  "period": {
+    "start": "2026-04-01",
+    "end": "2026-06-30"
+  },
+  "evidence": [
+    {
+      "id": "E1",
+      "source": "release log",
+      "observed_at": "2026-05-20",
+      "authoritative_direct_measure": true
+    },
+    {
+      "id": "E2",
+      "source": "project updates",
+      "observed_at": "2026-06-15"
+    },
+    {
+      "id": "E3",
+      "source": "partner feedback",
+      "observed_at": "2026-06-18"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "delivery",
+      "weight": 60,
+      "evidence_ids": ["E1"],
+      "score": 3
+    },
+    {
+      "id": "communication",
+      "weight": 25,
+      "evidence_ids": ["E2", "E3"],
+      "score": 3
+    },
+    {
+      "id": "team-development",
+      "weight": 15,
+      "evidence_ids": [],
+      "score": null
+    }
+  ],
+  "overall_score": 3
+}

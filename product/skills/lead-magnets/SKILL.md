@@ -1,9 +1,6 @@
 ---
 name: lead-magnets
-description: >-
-  Use for lead magnet strategy, survey/report assets, downloadable offers,
-  gated assets, and nurture entry points. Child skill of `product-marketing`; route here from the parent router when this lane is the
-  narrowest owner.
+description: Use for lead magnet strategy, survey/report assets, downloadable offers, gated assets, and nurture entry points. Child of `product-marketing`.
 ---
 
 # Lead Magnets
@@ -14,15 +11,13 @@ This child skill owns lead magnet strategy, survey/report assets, downloadable o
 
 - The request is primarily about lead magnet strategy, survey/report assets, downloadable offers, gated assets, and nurture entry points.
 - The parent router [`../product-marketing/SKILL.md`](../product-marketing/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, examples, or templates.
 
 ## Assets
 
 - `references/` contains lane-specific guidance moved from the original parent skill.
-- `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 

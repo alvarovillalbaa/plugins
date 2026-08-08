@@ -33,7 +33,6 @@ https://github.com/alvarovillalbaa/plugins/tree/main/finances/skills/finances
 ## What is bundled
 
 - `examples/`
-- `hooks/`
 - `references/`
 - `scripts/`
 - `templates/`

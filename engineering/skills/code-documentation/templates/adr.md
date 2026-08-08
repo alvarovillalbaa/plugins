@@ -1,6 +1,6 @@
 # Architecture Decision Record Template
 
-File location: `audits/YYYY/MM-DD/adr-[kebab-case-title].md`
+File location: the AFS audit surface, named `adr-[kebab-case-title].md`. Ask `use-afs` for the path.
 Or inline in the relevant `services/[name]/ARCHITECTURE.md` under an "Decisions" section.
 
 ADR numbering is optional — use it if your team maintains an ADR index.

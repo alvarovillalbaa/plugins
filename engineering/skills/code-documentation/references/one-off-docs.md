@@ -19,9 +19,7 @@ Use a report for:
 
 ### Location
 
-```text
-audits/YYYY/MM-DD/report-name.md
-```
+The AFS audit surface. Ask `use-afs` for the path and date format.
 
 ### Quality bar
 
@@ -45,8 +43,8 @@ Write an ADR when:
 
 Choose the repo's existing convention:
 
-- inline in a local `ARCHITECTURE.md` when the decision is local
-- `audits/YYYY/MM-DD/adr-[slug].md` when the decision is cross-cutting or report-like
+- inline in the folder's `ARC.md` when the decision is local
+- the AFS audit surface, named `adr-[slug].md`, when the decision is cross-cutting or report-like
 
 If the lasting rule becomes operational, also promote it into the relevant living doc.
 
@@ -64,15 +62,13 @@ Use for:
 
 ### Location
 
-```text
-audits/YYYY/MM-DD/post-mortem-[incident].md
-```
+The AFS audit surface, named `post-mortem-[incident].md`.
 
-Post-mortems are historical and blameless. If they surface a durable workflow or rule, update `runbooks/`, `knowledge/`, `PRINCIPLES.md`, or other living docs too.
+Post-mortems are historical and blameless. If they surface a durable workflow or rule, update the living surface that owns it — a runbook, a knowledge page, or the root instruction doc covering invariants.
 
 ## Plans vs specs
 
-- implementation plans belong in `plans/YYYY/MM-DD/`
-- durable desired-state behavior belongs in `specs/`
+- implementation plans belong in the AFS plan surface
+- durable desired-state behavior belongs in the AFS spec surface
 
-Do not use `specs/` as a graveyard of historical plan snapshots. Do not use `plans/` as the only home for a still-current behavior contract.
+Do not use the spec surface as a graveyard of historical plan snapshots. Do not leave the plan surface as the only home for a still-current behavior contract.

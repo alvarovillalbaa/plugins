@@ -6,12 +6,12 @@ Reference for creating customer-facing changelogs and marketing change articles.
 
 | Type | Purpose | Audience | Location |
 |---|---|---|---|
-| Changelog | Release notes, version history | Users, clients | `docs/changelog/YYYY-MM-DD/` |
+| Changelog | Release notes, version history | Users, clients | `docs/changelog/` |
 | Change article | Marketing, social media, newsletters | Broader audience | `docs/articles/` |
 
 ## Changelog entries
 
-**Location**: `docs/changelog/YYYY-MM-DD/<entry-name>.md`
+**Location**: `docs/changelog/<entry-name>.md`, dated using the AFS date convention. Ask `use-afs` for the format; do not invent a second one.
 
 **Principles**:
 - User-facing only: write for end users, not engineers
@@ -63,7 +63,7 @@ Omit any section with no items. Keep "Breaking changes" only when something stop
 
 ## Change articles
 
-**Location**: `docs/articles/YYYY-MM-DD-brief-description.md`
+**Location**: `docs/articles/<brief-description>.md`, dated using the AFS date convention.
 
 **Purpose**: Engaging, social-media-focused articles for X (Twitter), LinkedIn, newsletters, and client communications.
 

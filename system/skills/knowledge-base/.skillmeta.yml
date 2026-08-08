@@ -5,7 +5,7 @@ origin:
   branch: main
   path: system/skills/knowledge-base
 install:
-  mode: symlink-preferred
+  mode: project-managed-copy
   agents:
     - codex
     - cursor

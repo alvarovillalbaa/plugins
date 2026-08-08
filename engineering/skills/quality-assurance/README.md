@@ -1,14 +1,14 @@
 # Quality Assurance
 
-End-to-end QA skill for testing, debugging, secure engineering, code review, and release confidence.
+Router for the Engineering QA lanes, and owner of the canonical test-suite contract that binds all of them.
 
-## Use this for
+## What it owns
 
-- PR review and findings-first QA
-- test strategy, flaky test repair, and coverage improvement
-- debugging failing suites or CI steps
-- passive security review, threat modeling, and compliance-oriented validation
-- browser trace: full observability into network, DOM, screenshots, and console logs for agent-driven QA (`/browser-trace`)
+- The canonical `tests/` layout: `unit/`, `integration/`, `e2e/`, `smoke/`, `regression/`, `adversarial/`, `evals/`, and `tmp/`, plus support directories.
+- The five test-data tiers, from no data through mock data, a local replica database, a staging replica with rollback, and read-only production access under a four-condition gate.
+- The framework-per-test-type mapping across Python, TypeScript, browser, Go, and Ruby stacks.
+- The `tests/evals/` wrapping contract for AI products: tests that invoke an eval suite the eval system already defines, without redefining it.
+- Routing to the narrowest child: testing, simplification, security, and AI evals.
 
 ## Install
 
@@ -26,8 +26,9 @@ https://github.com/alvarovillalbaa/plugins/tree/main/engineering/skills/quality-
 
 ## What is bundled
 
-- `examples/`
-- `hooks/`
-- `references/`
-- `scripts/`
-- `templates/`
+- `references/` - the test-suite contract (layout, data tiers, frameworks, eval wrapping) and cross-cutting failure diagnosis.
+- `scripts/audit_test_layout.py` - audits a repository's `tests/` tree against the contract. Read-only.
+- `templates/test-suite-scaffold.md` - copy-ready tree, folder README stubs, runner configuration, and the `tests/README.md` contract table.
+- `examples/` - a worked audit report.
+
+Start with [`SKILL.md`](./SKILL.md).

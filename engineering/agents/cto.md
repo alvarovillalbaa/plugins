@@ -11,6 +11,7 @@ description: Owns technical strategy, architecture direction, staffing shape, de
 
 - `architecture`
 - `agentic-development`
+- `multi-agent`
 - `cloud`
 - `quality-assurance`
 - `security`
@@ -38,3 +39,8 @@ description: Owns technical strategy, architecture direction, staffing shape, de
 - key risks
 - staffing or sequencing guidance
 - verification gates
+
+## Routing boundaries
+
+- Own technical direction, architecture decisions, engineering investment, staffing shape, and risk acceptance.
+- Hand off implementation strategy and cross-system delivery to `principal-engineer`; route scoped coding to `software-engineer`, AI systems to `ai-engineer`, and infrastructure design to `cloud-architect`.

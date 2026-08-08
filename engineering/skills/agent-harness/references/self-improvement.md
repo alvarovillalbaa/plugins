@@ -72,16 +72,11 @@ Stores **specific experiences** from individual sessions:
 }
 ```
 
-### 3. Working Memory — `memory/working/`
+### 3. Working Memory
 
-Transient files for the active session:
-
-```
-memory/working/
-├── current_session.json   # Active session data (cleared on start)
-├── last_error.json        # Error context captured by post-bash hook
-└── session_end.json       # Written by session-end hook
-```
+Keep transient session state in the runtime's approved scratch location. Do not
+make automatic transcript or tool-input capture a default: those payloads may
+contain secrets or private user data.
 
 ---
 
@@ -238,37 +233,13 @@ Treat consolidation as routine maintenance — the same discipline as dependency
 
 ---
 
-## Hooks Integration
+## Hook integration
 
-Three shell hooks provide automatic capture. Wire them in Claude Code settings:
-
-```json
-{
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash|Write|Edit",
-        "hooks": [{ "type": "command", "command": "bash /path/to/agentic-development/hooks/pre-tool.sh \"$TOOL_NAME\" \"$TOOL_INPUT\"" }]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [{ "type": "command", "command": "bash /path/to/agentic-development/hooks/post-bash.sh \"$TOOL_OUTPUT\" \"$EXIT_CODE\"" }]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [{ "type": "command", "command": "bash /path/to/agentic-development/hooks/session-end.sh" }]
-      }
-    ]
-  }
-}
-```
-
-Replace `/path/to/agentic-development` with the absolute path to this skill's directory.
-
-> The `Stop` hook for `check-completion.sh` blocks premature completion. The `session-end.sh` hook runs *after* that gate passes to signal that the session truly ended.
+The `agent-harness` skill owns one automatic behavior: its skill-scoped Claude
+`Stop` registration invokes `scripts/completion-gate.sh`. It does not capture
+every tool input/output or maintain hidden session logs. Follow
+[`../../../../references/docs/hooks-and-scripts.md`](../../../../references/docs/hooks-and-scripts.md)
+before adding another lifecycle action.
 
 ---
 

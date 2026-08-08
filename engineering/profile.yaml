@@ -1,6 +1,6 @@
 slug: engineering
-version: 3.0.0
-mission: Own architecture, delivery, quality, documentation, cloud operations, security testing, and technical risk.
+version: 3.1.0
+mission: Own architecture, multi-agent execution, AI evaluation, delivery, quality, documentation, cloud operations, security testing, and technical risk.
 platforms:
   - claude
   - codex
@@ -9,17 +9,21 @@ skills:
   - agentic-development
   - architecture
   - multi-agent
+  - council
+  - agentic-loops
+  - agentic-graphs
+  - agentic-goals
   - release-landing
   - agent-harness
   - tech-debt
   - ai-engineering
   - agent-system-architecture
-  - prompt-tool-design
-  - context-memory-rag
+  - prompt-engineering
+  - context-engineering
   - ai-evals-observability
   - ai-governance-safety
   - data-ml-pipelines
-  - computer-vision-systems
+  - computer-vision
   - backend
   - apis
   - databases
@@ -34,19 +38,17 @@ skills:
   - aws-ops
   - azure-ops
   - gcp-ops
+  - paas-ops
   - cloud-architecture
   - pentest
   - web-vuln-validation
   - api-pentest
-  - cloud-container-pentest
-  - business-logic-race-testing
-  - pentest-report
   - prs
   - quality-assurance
-  - test-strategy-coverage
+  - testing
   - frontend-e2e
-  - backend-testing
   - flake
+  - simplify
   - security
   - ai-evals
   - code-documentation

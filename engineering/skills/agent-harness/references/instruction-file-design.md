@@ -12,7 +12,7 @@ Use this reference for repo-local `AGENTS.md`, `CLAUDE.md`, rules, and harness m
 Install fallback:
 
 ```sh
-python scripts/install-external-skills.py --skill writing-great-skills --agent codex
+python3 scripts/install-external-skills.py --skill writing-great-skills --agent codex
 ```
 
 ## AGENTS.md as the repo map

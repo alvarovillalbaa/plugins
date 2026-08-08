@@ -2,5 +2,27 @@
   "name": "finances",
   "version": "3.0.0",
   "description": "Finance operations, planning, reconciliation, taxes, fundraising, close, and analysis workflows for Codex.",
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "author": {
+    "name": "Agent Company"
+  },
+  "homepage": "https://github.com/alvarovillalbaa/plugins",
+  "repository": "https://github.com/alvarovillalbaa/plugins",
+  "license": "MIT",
+  "keywords": ["agent-skills", "finance", "planning", "reconciliation", "fundraising", "analysis"],
+  "interface": {
+    "displayName": "Finance Agent Workflows",
+    "shortDescription": "Planning, reconciliation, close, fundraising, and analysis.",
+    "longDescription": "Reusable finance skills for operations, planning, reconciliation, tax workflows, fundraising, month-end close, and financial analysis.",
+    "developerName": "Agent Company",
+    "category": "Finance",
+    "capabilities": ["Agent skills", "Financial operations", "Planning and analysis"],
+    "websiteURL": "https://github.com/alvarovillalbaa/plugins",
+    "defaultPrompt": [
+      "Build a finance plan for this business.",
+      "Review this reconciliation and flag exceptions.",
+      "Prepare a decision-ready financial analysis."
+    ],
+    "brandColor": "#D08A00"
+  }
 }

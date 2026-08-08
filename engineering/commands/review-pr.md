@@ -2,7 +2,7 @@
 name: review-pr
 description: "Run a comprehensive multi-lens PR review. Covers code quality, silent failures, test coverage, and comment accuracy. Defaults to the current git diff; accepts a branch, PR number, or file list."
 argument-hint: "[branch | PR# | file-list] [--lens code|errors|tests|comments|types]"
-allowed-tools: ["Bash", "Read", "Glob", "Grep", "Agent"]
+allowed-tools: ["Bash", "Read", "Glob", "Grep", "Agent", "Skill"]
 ---
 
 # PR Review
@@ -10,6 +10,8 @@ allowed-tools: ["Bash", "Read", "Glob", "Grep", "Agent"]
 Use agent: **pr-reviewer** — `agents/pr-reviewer.md`
 
 Use skill: **prs** — `skills/prs/SKILL.md`
+
+This command reviews one change set. Use `repo-review` for current repository state and `triage-prs` to classify a queue before deciding which changes merit review.
 
 ## Scope resolution
 

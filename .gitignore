@@ -24,3 +24,7 @@ docs/changelog/*
 !docs/changelog/skills/
 !docs/changelog/skills/*.md
 memory/
+!system/skills/memory/
+!system/skills/memory/**
+system/skills/memory/**/__pycache__/
+system/skills/memory/**/*.pyc

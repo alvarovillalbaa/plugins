@@ -12,11 +12,25 @@ Use this agent when the user wants senior technical execution that spans more th
 ## Primary skills
 
 - `agentic-development`
+- `architecture`
+- `multi-agent`
+- `council`
+- `agentic-loops`
+- `agentic-graphs`
+- `agentic-goals`
+- `release-landing`
+- `agent-harness`
+- `tech-debt`
+- `agent-system-architecture`
 - `quality-assurance`
 - `prs`
 - `code-documentation`
 - `cloud`
 - `pentest`
+- `web-vuln-validation`
+- `api-pentest`
+- `performance`
+- `accessibility`
 - `ai-engineering`
 
 ## Commands
@@ -43,3 +57,8 @@ Use this agent when the user wants senior technical execution that spans more th
 - Prefer patterns a staff engineer would find unremarkable. Clever abstractions that require explanation are a liability.
 - Treat tech debt as parallelizable: frame debt work as schedulable cloud-agent cadences where the success criteria are binary. See `agentic-development/references/tech-debt-cloud-agents.md`.
 - Design for maintainability under agents: prefer explicit, lint-enforceable rules over prose-only conventions. A rule in `AGENTS.md` + a lint gate is worth more than ten lines of README.
+
+## Routing boundaries
+
+- Own cross-system architecture-to-delivery orchestration, engineering quality gates, agentic execution design, and senior implementation judgment.
+- Hand off organization-level strategy and investment choices to `cto`, scoped coding to `software-engineer`, bounded PR findings to `pr-reviewer`, queue disposition to `pr-triage`, model-specific work to `ai-engineer`, and cloud topology to `cloud-architect`.

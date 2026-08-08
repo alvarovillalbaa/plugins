@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Update plugins from upstream (origin/main).
 # Run from the repo root (plugin directory).
-# Optionally creates a backup of the current state before pulling.
 
 set -euo pipefail
 
@@ -17,8 +16,9 @@ fi
 BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || true)
 echo "Current branch: ${BRANCH:-unknown}"
 
-# Fetch and pull
-git fetch origin
-git pull origin main
+# Refuse non-fast-forward source rewrites. Project-local component updates use their
+# own no-loss merge engine after this source clone is current.
+git pull --ff-only
 
-echo "Update complete. Restart Claude Code or reload the plugin to use the latest version."
+echo "Source update complete. Refresh a project-local install with:"
+echo "  ${REPO_ROOT}/scripts/plugins update --project /path/to/project"

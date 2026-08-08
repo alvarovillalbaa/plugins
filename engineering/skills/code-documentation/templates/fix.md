@@ -2,7 +2,7 @@
 
 **Date:** YYYY-MM-DD
 **Tags:** [domain, error-type]
-**Location:** `fixes/YYYY/MM-DD/[slug].md`
+**Location:** the AFS fix surface, named `[slug].md`. Ask `use-afs` for the path.
 
 ## Symptom
 

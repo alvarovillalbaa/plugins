@@ -14,3 +14,7 @@ Optional external chain: **office-hours** if installed.
 3. **Stress the wedge** - Examine why this can start small, win a beachhead, and compound.
 4. **Surface risks** - Call out hidden assumptions, market timing, founder fit, execution gaps, and unclear proof.
 5. **Return next decision** - Provide the strongest current answer, unresolved questions, and the next validation action.
+
+## Boundary
+
+This command pressure-tests an early product or market decision. Use `grill-me` for general plans and the `my-performance` skill for a period-and-rubric performance review.

@@ -67,7 +67,7 @@ Last updated: YYYY-MM-DD
 ## Related Docs
 
 - [AGENTS.md](../AGENTS.md)
-- [DESIGN.md](../DESIGN.md)
+- [TASTE.md](../TASTE.md)
 - [Relevant README, ARCHITECTURE, TESTS, or SPEC file](#)
 ```
 

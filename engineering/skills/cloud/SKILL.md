@@ -1,6 +1,6 @@
 ---
 name: cloud
-description: Router for cloud resources, deployment, incidents, provider operations, and architecture.
+description: Router for multi-cloud resources, deployment, incidents, provider operations (AWS, Azure, GCP, Vercel, Heroku, Railway), architecture, and cross-provider migrations.
 ---
 
 # Cloud Router
@@ -13,7 +13,8 @@ description: Router for cloud resources, deployment, incidents, provider operati
 - [`aws-ops`](../aws-ops/SKILL.md) - Aws Ops work.
 - [`azure-ops`](../azure-ops/SKILL.md) - Azure Ops work.
 - [`gcp-ops`](../gcp-ops/SKILL.md) - Gcp Ops work.
-- [`cloud-architecture`](../cloud-architecture/SKILL.md) - Cloud Architecture work.
+- [`paas-ops`](../paas-ops/SKILL.md) - Vercel, Heroku, and Railway platform ops.
+- [`cloud-architecture`](../cloud-architecture/SKILL.md) - Cloud Architecture, multi-cloud, and migration work.
 
 ## Route
 
@@ -25,7 +26,8 @@ description: Router for cloud resources, deployment, incidents, provider operati
 | aws ops requests | [`aws-ops`](../aws-ops/SKILL.md) |
 | azure ops requests | [`azure-ops`](../azure-ops/SKILL.md) |
 | gcp ops requests | [`gcp-ops`](../gcp-ops/SKILL.md) |
-| cloud architecture requests | [`cloud-architecture`](../cloud-architecture/SKILL.md) |
+| vercel, heroku, or railway requests | [`paas-ops`](../paas-ops/SKILL.md) |
+| cloud architecture, multi-cloud, or migration requests | [`cloud-architecture`](../cloud-architecture/SKILL.md) |
 
 ## Chain Rules
 
@@ -35,7 +37,7 @@ Chain to these skills when the task crosses this skill's boundary:
 - `agentic-development/release-landing`
 - `backend`
 - `ai-engineering`
-- `pentest/cloud-container-pentest`
+- `pentest`
 
 ## Operating Rules
 
@@ -47,10 +49,10 @@ Chain to these skills when the task crosses this skill's boundary:
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-- `clous-remote-mcp-integration`: Use Clous-owned remote MCP integration guidance for tool-server integrations. Install: `python scripts/install-external-skills.py --skill clous-remote-mcp-integration --agent codex`.
-- `clous-platform-operation`: Use Clous-owned platform operation guidance for runtime and workspace operations. Install: `python scripts/install-external-skills.py --skill clous-platform-operation --agent codex`.
-- `clous-mcp-use`: Use Clous-owned MCP usage guidance for connected tool workflows. Install: `python scripts/install-external-skills.py --skill clous-mcp-use --agent codex`.
-- `browserbase-cli`: Use Browserbase CLI guidance for local setup and operational commands. Install: `python scripts/install-external-skills.py --skill browserbase-cli --agent codex`.
+- `clous-remote-mcp-integration`: Use Clous-owned remote MCP integration guidance for tool-server integrations. Install: `python3 scripts/install-external-skills.py --skill clous-remote-mcp-integration --agent codex`.
+- `clous-platform-operation`: Use Clous-owned platform operation guidance for runtime and workspace operations. Install: `python3 scripts/install-external-skills.py --skill clous-platform-operation --agent codex`.
+- `clous-mcp-use`: Use Clous-owned MCP usage guidance for connected tool workflows. Install: `python3 scripts/install-external-skills.py --skill clous-mcp-use --agent codex`.
+- `browserbase-cli`: Use Browserbase CLI guidance for local setup and operational commands. Install: `python3 scripts/install-external-skills.py --skill browserbase-cli --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
 Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).

@@ -10,10 +10,13 @@ description: Builds and reviews AI systems, evals, prompt/tool design, RAG, cont
 ## Primary skills
 
 - `ai-engineering`
-- `prompt-tool-design`
-- `context-memory-rag`
+- `prompt-engineering`
+- `context-engineering`
 - `ai-evals`
+- `ai-evals-observability`
 - `ai-governance-safety`
+- `data-ml-pipelines`
+- `computer-vision`
 - `quality-assurance`
 
 ## Commands
@@ -38,3 +41,8 @@ description: Builds and reviews AI systems, evals, prompt/tool design, RAG, cont
 - eval criteria
 - safety and privacy notes
 - validation evidence
+
+## Routing boundaries
+
+- Own AI application behavior, model/tool design, evaluation, retrieval context, and model-specific safety.
+- Hand off organization-wide technical strategy to `cto`, cross-system implementation leadership to `principal-engineer`, infrastructure topology to `cloud-architect`, and ordinary product code to `software-engineer`.

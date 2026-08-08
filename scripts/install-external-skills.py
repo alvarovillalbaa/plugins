@@ -2,19 +2,39 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import os
 import re
 import shutil
 import subprocess
 import sys
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_REGISTRY = ROOT / "references" / "external-skills.yaml"
-DEFAULT_CHAIN_MAP = ROOT / "skills-chaining-map.md"
+SCRIPT_DIR = Path(__file__).resolve().parent
+ROOT = SCRIPT_DIR.parent
+
+
+def _default_asset(name: str, source_path: Path) -> Path:
+    """Prefer assets shipped beside the project-local runtime helper."""
+
+    runtime_asset = SCRIPT_DIR / name
+    return runtime_asset if runtime_asset.exists() else source_path
+
+
+DEFAULT_REGISTRY = _default_asset(
+    "external-skills.yaml", ROOT / "references" / "external-skills.yaml"
+)
+DEFAULT_CHAIN_MAP = _default_asset(
+    "skills-chaining-map.md", ROOT / "skills-chaining-map.md"
+)
 BACKTICK_REF_RE = re.compile(r"`([^`]+)`")
+HEX_DIGEST_RE = re.compile(r"[0-9a-f]{64}")
+COMPONENT_GRAPH_NAME = "component-graph.json"
+SUPPORT_LOCK_NAME = ".plugin-support-lock.json"
 
 
 @dataclass(frozen=True)
@@ -27,6 +47,17 @@ class ExternalSkill:
     install_name: str
     homepage: str
     domain: str
+
+
+@dataclass(frozen=True)
+class ProjectRuntimeState:
+    agents_root: Path
+    graph_path: Path
+    support_lock_path: Path
+    graph_text: str
+    support_lock_text: str
+    graph: dict[str, object]
+    support_lock: dict[str, object]
 
 
 def _clean_value(value: str) -> str:
@@ -159,11 +190,179 @@ def target_root(agent: str, dest: str | None) -> Path:
     raise ValueError(f"unsupported agent: {agent}")
 
 
+def _sha256_text(content: str) -> str:
+    return hashlib.sha256(content.encode("utf-8")).hexdigest()
+
+
+def _project_agents_root(skill_root: Path) -> Path:
+    root = skill_root.expanduser().resolve()
+    if root.name != "skills" or root.parent.name != ".agents":
+        raise ValueError(
+            "--agent project must target a project's .agents/skills directory "
+            "so component-graph.json can be refreshed"
+        )
+    return root.parent
+
+
+def _read_project_runtime_state(skill_root: Path) -> ProjectRuntimeState:
+    agents_root = _project_agents_root(skill_root)
+    graph_path = agents_root / COMPONENT_GRAPH_NAME
+    support_lock_path = agents_root / SUPPORT_LOCK_NAME
+    for label, path in (
+        ("component graph", graph_path),
+        ("managed support lock", support_lock_path),
+    ):
+        if path.is_symlink() or not path.is_file():
+            raise ValueError(f"project {label} is missing or unsafe: {path}")
+
+    try:
+        graph_text = graph_path.read_text(encoding="utf-8")
+        graph = json.loads(graph_text)
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValueError(f"invalid project component graph {graph_path}: {exc}") from exc
+    if (
+        not isinstance(graph, dict)
+        or graph.get("artifact_kind") != "component-relationship-graph"
+        or graph.get("contract") != "references/component-graph.json"
+        or not isinstance(graph.get("nodes"), list)
+    ):
+        raise ValueError(f"unsupported project component graph: {graph_path}")
+
+    try:
+        support_lock_text = support_lock_path.read_text(encoding="utf-8")
+        support_lock = json.loads(support_lock_text)
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValueError(
+            f"invalid managed support lock {support_lock_path}: {exc}"
+        ) from exc
+    files = support_lock.get("files") if isinstance(support_lock, dict) else None
+    if (
+        not isinstance(support_lock, dict)
+        or support_lock.get("schema_version") != 1
+        or not isinstance(files, dict)
+    ):
+        raise ValueError(f"unsupported managed support lock: {support_lock_path}")
+    recorded_digest = files.get(COMPONENT_GRAPH_NAME)
+    if not isinstance(recorded_digest, str) or not HEX_DIGEST_RE.fullmatch(
+        recorded_digest
+    ):
+        raise ValueError(
+            f"managed support lock has no valid {COMPONENT_GRAPH_NAME} digest: "
+            f"{support_lock_path}"
+        )
+    if _sha256_text(graph_text) != recorded_digest:
+        raise ValueError(
+            f"refusing to overwrite locally modified managed support file: {graph_path}"
+        )
+
+    return ProjectRuntimeState(
+        agents_root=agents_root,
+        graph_path=graph_path,
+        support_lock_path=support_lock_path,
+        graph_text=graph_text,
+        support_lock_text=support_lock_text,
+        graph=graph,
+        support_lock=support_lock,
+    )
+
+
+def _stage_text(path: Path, content: str) -> Path:
+    descriptor, raw_temporary = tempfile.mkstemp(
+        prefix=f".{path.name}.", dir=str(path.parent)
+    )
+    temporary = Path(raw_temporary)
+    try:
+        with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
+            handle.write(content)
+            handle.flush()
+            os.fsync(handle.fileno())
+        temporary.chmod(path.stat().st_mode & 0o777)
+    except Exception:
+        if temporary.exists():
+            temporary.unlink()
+        raise
+    return temporary
+
+
+def _replace_runtime_pair(
+    state: ProjectRuntimeState, graph_text: str, support_lock_text: str
+) -> None:
+    graph_temporary = _stage_text(state.graph_path, graph_text)
+    lock_temporary = _stage_text(state.support_lock_path, support_lock_text)
+    graph_backup = _stage_text(state.graph_path, state.graph_text)
+    lock_backup = _stage_text(state.support_lock_path, state.support_lock_text)
+    graph_replaced = False
+    lock_replaced = False
+    try:
+        os.replace(graph_temporary, state.graph_path)
+        graph_replaced = True
+        os.replace(lock_temporary, state.support_lock_path)
+        lock_replaced = True
+    except OSError:
+        if lock_replaced:
+            os.replace(lock_backup, state.support_lock_path)
+        if graph_replaced:
+            os.replace(graph_backup, state.graph_path)
+        raise
+    finally:
+        for temporary in (
+            graph_temporary,
+            lock_temporary,
+            graph_backup,
+            lock_backup,
+        ):
+            if temporary and temporary.exists():
+                temporary.unlink()
+
+
+def refresh_project_runtime(skill_root: Path) -> bool:
+    """Refresh external availability and the graph's managed-support digest."""
+
+    state = _read_project_runtime_state(skill_root)
+    skill_root = state.agents_root / "skills"
+    nodes = state.graph["nodes"]
+    assert isinstance(nodes, list)
+    changed = False
+    for raw_node in nodes:
+        if not isinstance(raw_node, dict):
+            raise ValueError(f"invalid node in project component graph: {state.graph_path}")
+        node_id = raw_node.get("id")
+        if not isinstance(node_id, str) or not node_id.startswith("external-skill:"):
+            continue
+        install_name = raw_node.get("install_name")
+        installable = raw_node.get("installable") is not False
+        if not installable or not isinstance(install_name, str) or not install_name:
+            # Reference-only external sources are graph relationships, not
+            # install targets. They intentionally have no install_name and
+            # must never become available from an unrelated local directory.
+            installed = False
+        else:
+            installed = (skill_root / install_name / "SKILL.md").is_file()
+        if raw_node.get("installed") is not installed:
+            raw_node["installed"] = installed
+            changed = True
+
+    if not changed:
+        return False
+
+    graph_text = json.dumps(
+        state.graph, indent=2, sort_keys=False, ensure_ascii=False
+    ) + "\n"
+    files = state.support_lock["files"]
+    assert isinstance(files, dict)
+    files[COMPONENT_GRAPH_NAME] = _sha256_text(graph_text)
+    support_lock_text = json.dumps(
+        state.support_lock, indent=2, sort_keys=False, ensure_ascii=False
+    ) + "\n"
+    _replace_runtime_pair(state, graph_text, support_lock_text)
+    return True
+
+
 def cache_root() -> Path:
-    configured = os.environ.get("AGENT_COMPANY_EXTERNAL_SKILLS_CACHE")
+    configured = os.environ.get("PLUGIN_BUNDLE_EXTERNAL_SKILLS_CACHE")
     if configured:
         return Path(configured).expanduser().resolve()
-    return (Path.home() / ".cache" / "agent-company" / "external-skills").resolve()
+    return (Path.home() / ".cache" / "plugin-bundle" / "external-skills").resolve()
 
 
 def cache_dir_for(skill: ExternalSkill) -> Path:
@@ -224,8 +423,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--agent",
         choices=["codex", "claude", "cursor", "project"],
-        default="codex",
-        help="Destination agent layout",
+        default="project",
+        help="Destination agent layout (default: project-local .agents/skills)",
     )
     parser.add_argument("--dest", help="Override destination skill directory")
     parser.add_argument("--dry-run", action="store_true", help="Print planned actions without installing")
@@ -247,9 +446,20 @@ def main(argv: list[str] | None = None) -> int:
             Path(args.chain_map).expanduser().resolve(),
         )
         root = target_root(args.agent, args.dest)
+        project_install = args.agent == "project" and not args.dry_run
+        if project_install:
+            _read_project_runtime_state(root)
+        runtime_changed = False
         for skill in skills:
             print(install_skill(skill, root, dry_run=args.dry_run, force=args.force))
-    except (FileNotFoundError, ValueError, subprocess.CalledProcessError) as exc:
+            if project_install:
+                runtime_changed = refresh_project_runtime(root) or runtime_changed
+        if runtime_changed:
+            print(
+                "refreshed external install state: "
+                f"{root.parent / COMPONENT_GRAPH_NAME}"
+            )
+    except (OSError, ValueError, subprocess.CalledProcessError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
 

@@ -1,9 +1,6 @@
 ---
 name: taxes
-description: >-
-  Use for tax document readiness, evidence packaging, tax-year checklists,
-  entity scoping, and filing-prep organization. Child skill of `finances`;
-  route here from the parent router when this lane is the narrowest owner.
+description: Use for tax document readiness, evidence packaging, tax-year checklists, entity scoping, and filing-prep organization. Child of `finances`.
 ---
 
 # Taxes
@@ -14,7 +11,7 @@ This child skill owns tax document readiness, evidence packaging, tax-year check
 
 - The request is primarily about tax document readiness, evidence packaging, tax-year checklists, entity scoping, and filing-prep organization.
 - The parent router [`../finances/SKILL.md`](../finances/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, scripts, examples, or templates.
 
 ## Assets
 
@@ -22,7 +19,6 @@ This child skill owns tax document readiness, evidence packaging, tax-year check
 - `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 

@@ -2,7 +2,7 @@
 
 ## Why Mann-Whitney U (not t-test)
 
-Marketing metrics — impressions, click-through rates, open rates, engagement — are rarely normally distributed. They tend to be right-skewed with outliers from viral posts or unusually strong campaigns. The Mann-Whitney U test is non-parametric: it makes no normality assumption and works reliably with small samples (n ≥ 10 per variant for high-volume channels).
+Marketing metrics — impressions, click-through rates, open rates, engagement — are often right-skewed with outliers. The Mann-Whitney U test is non-parametric and does not assume normality. That does not make a universal small sample sufficient: pre-declare the observation floor from the metric, expected effect, variance, power, and stopping plan.
 
 ## Dual Threshold Rule
 
@@ -21,13 +21,8 @@ Bootstrap CI (1,000 resamples, 95% interval) estimates the plausible range of tr
 
 ## Trending Detection
 
-Early signal at p < 0.10 with ≥ 15 samples triggers `trending` status — a watch signal, not a decision. Continue collecting data before treating as confirmed.
+Early signal at p < 0.10 with at least `TRENDING_MIN_SAMPLES` observations per variant triggers `trending` status — a configurable watch signal, not a decision. Continue collecting data to the experiment's pre-declared floor before treating a result as confirmed.
 
 ## Sample Size Thresholds
 
-| Channel type | Min samples/variant | Why |
-|---|---|---|
-| High-volume (content, email) | 10 | Data arrives fast; 10 observations sufficient for early signal |
-| Low-volume (seo, linkedin, blog) | 30 | Slower data; need more to overcome noise |
-
-Override with `--min-samples N` on `create` if your channel behaves differently.
+Pass the approved floor with `--min-samples N` on `create`. Do not infer it from channel volume: volume changes how quickly evidence arrives, not how much evidence the decision requires. If a defensible floor is unavailable, keep the experiment in planning rather than allowing the engine to invent one.

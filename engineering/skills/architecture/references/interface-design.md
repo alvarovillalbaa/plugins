@@ -5,7 +5,7 @@ Use external skill `codebase-design` for interface, seam, adapter, depth, locali
 Install fallback:
 
 ```bash
-python scripts/install-external-skills.py --skill codebase-design --agent codex
+python3 scripts/install-external-skills.py --skill codebase-design --agent codex
 ```
 
 Local contract:

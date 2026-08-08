@@ -1,6 +1,28 @@
 {
   "name": "system",
-  "version": "3.0.0",
-  "description": "Skills, memory, knowledge, learning, brain ingestion, personalization, and loop workflows for Codex.",
-  "skills": "./skills/"
+  "version": "3.1.0",
+  "description": "Skills, memory, knowledge, learning, transparent explanations, personalization, brain ingestion, and loop workflows for Codex.",
+  "skills": "./skills/",
+  "author": {
+    "name": "Agent Company"
+  },
+  "homepage": "https://github.com/alvarovillalbaa/plugins",
+  "repository": "https://github.com/alvarovillalbaa/plugins",
+  "license": "MIT",
+  "keywords": ["agent-skills", "memory", "learning", "personalization", "automation"],
+  "interface": {
+    "displayName": "System Agent Workflows",
+    "shortDescription": "Memory, learning, personalization, and agent operations.",
+    "longDescription": "Reusable skills for agent memory, knowledge, learning loops, personalization, transparent explanations, and plugin operations.",
+    "developerName": "Agent Company",
+    "category": "Productivity",
+    "capabilities": ["Agent skills", "Project personalization", "Workflow orchestration"],
+    "websiteURL": "https://github.com/alvarovillalbaa/plugins",
+    "defaultPrompt": [
+      "Personalize this project's agent workflows.",
+      "Capture this learning for future agent runs.",
+      "Review the installed plugin runtime."
+    ],
+    "brandColor": "#5B5BD6"
+  }
 }

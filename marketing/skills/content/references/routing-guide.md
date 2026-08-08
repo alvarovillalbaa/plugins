@@ -7,6 +7,7 @@ Router for all content creation work. Routes to channel or format specialist ski
 | Child | Owns |
 |-------|------|
 | `context-to-content` | Turning product/company context into content briefs |
+| `coursify` | Turning source material or ideas into outcome-aligned courses |
 | `copywrite` | Ad copy, landing page copy, email copy |
 | `humanizing` | Making AI-generated content sound human |
 | `repurposing` | Adapting content across channels |
@@ -19,13 +20,15 @@ Router for all content creation work. Routes to channel or format specialist ski
 | `video` | Video scripts and production |
 | `slides` | Slide decks |
 | `visualization` | Data visualizations and charts |
-| `hyperframes` | Mental models and conceptual frameworks |
 
 ## Routing Decision Tree
 
 ```
 Does the request start from raw company context (no content yet)?
   → context-to-content
+
+Is the requested target a course, curriculum, training program, or learning path?
+  → coursify
 
 Is this ad copy, landing page, or email marketing copy?
   → copywrite

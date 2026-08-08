@@ -2,7 +2,7 @@
 name: performance-testing
 description: >-
   Use for load tests, latency investigations, profiling, capacity validation,
-  and performance regression evidence. Child skill of `quality-assurance`;
+  and performance regression evidence. Specialist lane of `testing`;
   route here from the parent router when this lane is the narrowest owner.
 ---
 
@@ -13,8 +13,8 @@ This child skill owns load tests, latency investigations, profiling, capacity va
 ## Use When
 
 - The request is primarily about load tests, latency investigations, profiling, capacity validation, and performance regression evidence.
-- The parent router [`../../../quality-assurance/SKILL.md`](../../../quality-assurance/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The testing router [`../../../testing/SKILL.md`](../../../testing/SKILL.md) selects the relevant verification lane.
+- The work needs this lane's references, scripts, examples, or templates.
 
 ## Assets
 
@@ -22,7 +22,6 @@ This child skill owns load tests, latency investigations, profiling, capacity va
 - `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 

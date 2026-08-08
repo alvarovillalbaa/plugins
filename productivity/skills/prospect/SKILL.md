@@ -1,6 +1,6 @@
 ---
 name: prospect
-description: Turn heterogeneous inputs (LinkedIn, company site, job boards, research) into a decision-ready GTM brief with Account, Persona, and Next best motion. Use when the user has prospect/account URLs or content and needs a full positioning and outreach brief. Apply provided scorecards (ICP, ICA, signals) as authoritative rubrics.
+description: Turn LinkedIn, company site, and research inputs into a decision-ready GTM brief with Account, Persona, and Next-best-motion, using ICP/ICA scorecards as the rubric.
 version: 1.0.0
 license: MIT
 compatibility: Instruction-only. Optional scorecards and file inputs.
@@ -78,11 +78,11 @@ Markdown with **headings and information-rich bullet points**. Bold labels for l
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-- `last30days`: Use recent-30-days research guidance when freshness is part of the task. Install: `python scripts/install-external-skills.py --skill last30days --agent codex`.
-- `browserbase-company-research`: Use browser-backed company research workflows for account and market context. Install: `python scripts/install-external-skills.py --skill browserbase-company-research --agent codex`.
-- `browserbase-event-prospecting`: Use browser-backed event prospecting workflows for GTM research. Install: `python scripts/install-external-skills.py --skill browserbase-event-prospecting --agent codex`.
-- `browserbase-search`: Use Browserbase search guidance for web discovery tasks. Install: `python scripts/install-external-skills.py --skill browserbase-search --agent codex`.
-- `browserbase-fetch`: Use Browserbase fetch guidance for web retrieval tasks. Install: `python scripts/install-external-skills.py --skill browserbase-fetch --agent codex`.
+- `last30days`: Use recent-30-days research guidance when freshness is part of the task. Install: `python3 scripts/install-external-skills.py --skill last30days --agent codex`.
+- `browserbase-company-research`: Use browser-backed company research workflows for account and market context. Install: `python3 scripts/install-external-skills.py --skill browserbase-company-research --agent codex`.
+- `browserbase-event-prospecting`: Use browser-backed event prospecting workflows for GTM research. Install: `python3 scripts/install-external-skills.py --skill browserbase-event-prospecting --agent codex`.
+- `browserbase-search`: Use Browserbase search guidance for web discovery tasks. Install: `python3 scripts/install-external-skills.py --skill browserbase-search --agent codex`.
+- `browserbase-fetch`: Use Browserbase fetch guidance for web retrieval tasks. Install: `python3 scripts/install-external-skills.py --skill browserbase-fetch --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
 Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).

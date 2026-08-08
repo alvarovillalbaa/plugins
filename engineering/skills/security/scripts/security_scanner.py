@@ -6,7 +6,6 @@ Table of Contents:
     SecurityScanner - Main class for security scanning
         __init__         - Initialize with target path and options
         scan()           - Run all security scans
-        scan_secrets()   - Detect hardcoded secrets
         scan_sql_injection() - Detect SQL injection patterns
         scan_xss()       - Detect XSS vulnerabilities
         scan_command_injection() - Detect command injection
@@ -61,26 +60,6 @@ class SecurityScanner:
         'node_modules', '.git', '__pycache__', '.venv', 'venv',
         'vendor', 'dist', 'build', '.next', 'coverage'
     }
-
-    # Secret patterns
-    SECRET_PATTERNS = [
-        (r'(?i)(api[_-]?key|apikey)\s*[:=]\s*["\']?([a-zA-Z0-9_\-]{20,})["\']?',
-         'API Key', 'Hardcoded API key detected'),
-        (r'(?i)(secret[_-]?key|secretkey)\s*[:=]\s*["\']?([a-zA-Z0-9_\-]{16,})["\']?',
-         'Secret Key', 'Hardcoded secret key detected'),
-        (r'(?i)(password|passwd|pwd)\s*[:=]\s*["\']([^"\']{4,})["\']',
-         'Password', 'Hardcoded password detected'),
-        (r'(?i)(aws[_-]?access[_-]?key[_-]?id)\s*[:=]\s*["\']?(AKIA[A-Z0-9]{16})["\']?',
-         'AWS Access Key', 'Hardcoded AWS access key detected'),
-        (r'(?i)(aws[_-]?secret[_-]?access[_-]?key)\s*[:=]\s*["\']?([a-zA-Z0-9/+=]{40})["\']?',
-         'AWS Secret Key', 'Hardcoded AWS secret access key detected'),
-        (r'ghp_[a-zA-Z0-9]{36}',
-         'GitHub Token', 'GitHub personal access token detected'),
-        (r'sk-[a-zA-Z0-9]{48}',
-         'OpenAI API Key', 'OpenAI API key detected'),
-        (r'-----BEGIN\s+(RSA|DSA|EC|OPENSSH)?\s*PRIVATE KEY-----',
-         'Private Key', 'Private key detected in source code'),
-    ]
 
     # SQL injection patterns
     SQL_INJECTION_PATTERNS = [
@@ -231,15 +210,6 @@ class SecurityScanner:
 
             relative_path = str(file_path.relative_to(self.target_path) if self.target_path.is_dir() else file_path.name)
 
-            # Scan for secrets
-            self._scan_patterns(
-                lines, relative_path,
-                self.SECRET_PATTERNS,
-                'secrets',
-                'Hardcoded Secret',
-                'critical'
-            )
-
             # Scan for SQL injection
             self._scan_patterns(
                 lines, relative_path,
@@ -364,7 +334,6 @@ class SecurityScanner:
     def _get_recommendation(self, category: str) -> str:
         """Get remediation recommendation for category."""
         recommendations = {
-            'secrets': 'Remove hardcoded secrets. Use environment variables or a secrets manager (HashiCorp Vault, AWS Secrets Manager).',
             'injection': 'Use parameterized queries or prepared statements. Never concatenate user input into queries.',
             'xss': 'Always escape or sanitize user input before rendering. Use framework-provided escaping functions.',
             'path-traversal': 'Validate and sanitize file paths. Use allowlists for permitted directories.',

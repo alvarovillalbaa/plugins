@@ -1,0 +1,34 @@
+{
+  "name": "Replace with the evidence-backed model name",
+  "criteria": [
+    {
+      "id": "example_numeric_range",
+      "label": "Replace with the criterion label",
+      "path": "company.example_numeric_field",
+      "operator": "between",
+      "value": [10, 100],
+      "weight": 3
+    },
+    {
+      "id": "example_category",
+      "label": "Replace with the category criterion",
+      "path": "company.example_category",
+      "operator": "in",
+      "value": ["category-a", "category-b"],
+      "weight": 2
+    }
+  ],
+  "disqualifiers": [
+    {
+      "id": "example_disqualifier",
+      "label": "Replace with an evidence-backed exclusion",
+      "path": "constraints.example_blocker",
+      "operator": "truthy"
+    }
+  ],
+  "thresholds": [
+    {"min": 80, "label": "Strong fit"},
+    {"min": 50, "label": "Partial fit"},
+    {"min": 0, "label": "Weak fit"}
+  ]
+}

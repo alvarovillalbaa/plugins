@@ -1,0 +1,420 @@
+# Agent Company Plugins — Full Catalog
+
+> Complete source inventory for external LLMs and agents. Generated deterministically from repository metadata.
+
+## Scope
+
+- Canonical repository: [alvarovillalbaa/plugins](https://github.com/alvarovillalbaa/plugins)
+- Default branch: `main`
+- Inventory: 7 plugins, 147 skills, 49 commands, 26 agents, and 7 rule sets
+- This document describes version-controlled source assets. It does not advertise a hosted API, agent endpoint, authentication service, or live MCP server.
+
+## Canonical Documents
+
+- [README](https://github.com/alvarovillalbaa/plugins/blob/main/README.md)
+- [Agent guidance](https://github.com/alvarovillalbaa/plugins/blob/main/AGENTS.md)
+- [Quick Start](https://github.com/alvarovillalbaa/plugins/blob/main/QUICK_START.md)
+- [Installation contract](https://github.com/alvarovillalbaa/plugins/blob/main/references/docs/INSTALLATION.md)
+- [Requirement coverage](https://github.com/alvarovillalbaa/plugins/blob/main/references/docs/REQUIREMENT-COVERAGE.md)
+- [Architecture](https://github.com/alvarovillalbaa/plugins/blob/main/references/docs/ARCHITECTURE.md)
+- [Typed component graph](https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/component-graph.json)
+- [Component graph contract](https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/references/component-graph.json)
+- [Runtime context contract](https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/references/runtime-contract.json)
+- [CodeMeta](https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/codemeta.json)
+- [Citation metadata](https://github.com/alvarovillalbaa/plugins/blob/main/CITATION.cff)
+- [Changelog](https://github.com/alvarovillalbaa/plugins/blob/main/CHANGELOG.md)
+- [License](https://github.com/alvarovillalbaa/plugins/blob/main/LICENSE)
+- [Machine-readable catalog](https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/catalog.json)
+
+## Component Selection Rules
+
+- Prefer the narrowest component whose description matches the requested outcome.
+- A skill is an atomic or routing capability; a command is a stable workflow entry point; an agent orchestrates multi-step work; a rule set supplies department-wide defaults.
+- Use qualified names when the owning department matters.
+- Verify current installation guidance before copying source assets into a runtime or project.
+- Treat reconciliation bundles as suggestion-only local review data, never as source authority or proof that an update conflict was resolved; post-review `--accept-local` is explicit metadata adoption, not patch application.
+
+## Plugin Catalog
+
+### `engineering`
+
+Own architecture, multi-agent execution, AI evaluation, delivery, quality, documentation, cloud operations, security testing, and technical risk.
+
+- Version: `3.1.0`
+- Platforms declared by profile: `claude`, `codex`, `cursor`
+- [Plugin source](https://github.com/alvarovillalbaa/plugins/tree/main/engineering)
+- [Profile](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/profile.yaml)
+- Team roles: CTO, Cloud Architect, Software Engineer, Product Manager, Designer, AI Engineer
+
+#### Skills (46)
+
+- [`agentic-development`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/agentic-development/SKILL.md) (`engineering/agentic-development`) — Router for agentic software development, system design, execution loops, release landing, harness improvement, and technical debt work.
+- [`architecture`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/architecture/SKILL.md) (`engineering/architecture`) — Use for system architecture, technical design, interface decisions, planning, and architecture tradeoff work. Child of `agentic-development`.
+- [`multi-agent`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/multi-agent/SKILL.md) (`engineering/multi-agent`) — Route and coordinate multi-agent work across expert councils, adaptive loops, dependency graphs, and persistent goals. Use when several agents or workstreams must collaborate.
+- [`council`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/council/SKILL.md) (`engineering/council`) — Convene a bounded panel of expert personas to independently analyze a decision, critique each other, and produce one ruling with evidence and dissent. For high-uncertainty decisions.
+- [`agentic-loops`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/agentic-loops/SKILL.md) (`engineering/agentic-loops`) — Run a bounded inspect-act-verify-adapt loop that picks the next action until acceptance criteria are met or the budget runs out. For implementation, debugging, and investigation.
+- [`agentic-graphs`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/agentic-graphs/SKILL.md) (`engineering/agentic-graphs`) — Decompose complex work into a dynamic dependency graph, schedule ready nodes, coordinate parallel agents, and validate handoffs. For multi-workstream tasks a linear plan can't represent.
+- [`agentic-goals`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/agentic-goals/SKILL.md) (`engineering/agentic-goals`) — Define, persist, resume, and pursue an explicit user-authorized goal across turns with success criteria and evidence. Use when the agent must keep pursuing an outcome over time.
+- [`release-landing`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/release-landing/SKILL.md) (`engineering/release-landing`) — Use for engineering release landing, merge hygiene, deployment gates, hotfixes, tags, and rollback posture. Child of `agentic-development`.
+- [`agent-harness`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/agent-harness/SKILL.md) (`engineering/agent-harness`) — Use for repo agent-readiness, harness loops, instruction files, hooks, scratch space, CI feedback loops, and execution reliability. Child of `agentic-development`.
+- [`tech-debt`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/tech-debt/SKILL.md) (`engineering/tech-debt`) — Use for technical-debt elimination, refactor plans, dependency cleanup, anti-pattern removal, and schedulable debt cadences. Child of `agentic-development`.
+- [`ai-engineering`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/ai-engineering/SKILL.md) (`engineering/ai-engineering`) — Router for AI system architecture, prompt/tool design, context and memory RAG, production AI eval observability, governance/safety, data/ML pipelines, and computer vision systems.
+- [`agent-system-architecture`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/agent-system-architecture/SKILL.md) (`engineering/agent-system-architecture`) — Use for agent architectures, multi-agent topology, agent lifecycles, handoff patterns, and orchestration contracts. Child of `ai-engineering`.
+- [`prompt-engineering`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/prompt-engineering/SKILL.md) (`engineering/prompt-engineering`) — Use for system prompts, tool schemas, tool descriptions, constrained generation, and prompt/tool reliability. Child of `ai-engineering`.
+- [`context-engineering`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/context-engineering/SKILL.md) (`engineering/context-engineering`) — Design and debug context assembly, memory tiers, retrieval, RAG, vector stores, compaction, grounding, and citation contracts for AI systems.
+- [`ai-evals-observability`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/ai-evals-observability/SKILL.md) (`engineering/ai-evals-observability`) — Design and operate production evidence collection for AI systems — traces, telemetry, cost, drift signals, dashboards, and alerts. Feeds evidence to `ai-evals`, not the gate itself.
+- [`ai-governance-safety`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/ai-governance-safety/SKILL.md) (`engineering/ai-governance-safety`) — Use for agent governance, safety gates, scope isolation, autonomy limits, prompt-injection posture, and side-effect controls. Child of `ai-engineering`.
+- [`data-ml-pipelines`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/data-ml-pipelines/SKILL.md) (`engineering/data-ml-pipelines`) — Use for data pipelines, ML feature pipelines, model evaluation, fine-tuning datasets, and DataOps workflows. Child of `ai-engineering`.
+- [`computer-vision`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/computer-vision/SKILL.md) (`engineering/computer-vision`) — Use for computer vision architectures, detection, segmentation, video inference, model optimization, and production deployment. Child of `ai-engineering`.
+- [`backend`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/backend/SKILL.md) (`engineering/backend`) — Router for backend API and persistence work.
+- [`apis`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/apis/SKILL.md) (`engineering/apis`) — Use for API contracts, service boundaries, serializers, request/response shape, jobs, queues, and backend application design. Child of `backend`.
+- [`databases`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/databases/SKILL.md) (`engineering/databases`) — Use for database schemas, migrations, persistence models, indexing, transactions, normalization, and data-integrity constraints. Child of `backend`.
+- [`frontend`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/frontend/SKILL.md) (`engineering/frontend`) — Router for frontend implementation, performance, accessibility, and onboarding flows.
+- [`performance`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/performance/SKILL.md) (`engineering/performance`) — Use for frontend performance, accessibility, responsiveness, rendering stability, bundle behavior, and Core Web Vitals. Child of `frontend`.
+- [`accessibility`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/accessibility/SKILL.md) (`engineering/accessibility`) — Audit and implement frontend accessibility, semantic structure, keyboard behavior, screen-reader support, and WCAG-oriented fixes.
+- [`onboarding-flows`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/onboarding-flows/SKILL.md) (`engineering/onboarding-flows`) — Use for signup, onboarding, activation, empty states, checklists, tours, verification flows, and activation instrumentation. Child of `frontend`.
+- [`cloud`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/cloud/SKILL.md) (`engineering/cloud`) — Router for multi-cloud resources, deployment, incidents, provider operations (AWS, Azure, GCP, Vercel, Heroku, Railway), architecture, and cross-provider migrations.
+- [`resources`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/resources/SKILL.md) (`engineering/resources`) — Use for cloud inventory, cost optimization, resource sizing, waste cleanup, lifecycle policy, and utilization analysis. Child of `cloud`.
+- [`cicd`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/cicd/SKILL.md) (`engineering/cicd`) — Use for cloud deployment strategy, CI/CD wiring, OIDC or managed identity, rollout gates, and deploy automation. Child of `cloud`.
+- [`cloud-incidents`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/cloud-incidents/SKILL.md) (`engineering/cloud-incidents`) — Use for cloud incidents, runtime diagnostics, logs, health checks, cost anomalies, and operational recovery loops. Child of `cloud`.
+- [`aws-ops`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/aws-ops/SKILL.md) (`engineering/aws-ops`) — Use for AWS-specific operations for Amplify, Lambda, ECS, RDS/Aurora, DynamoDB, IAM, networking, and deployment troubleshooting. Child of `cloud`.
+- [`azure-ops`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/azure-ops/SKILL.md) (`engineering/azure-ops`) — Use for Azure-specific operations for Container Apps, App Service, Functions, storage, Key Vault, Entra ID, Foundry, and diagnostics. Child of `cloud`.
+- [`gcp-ops`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/gcp-ops/SKILL.md) (`engineering/gcp-ops`) — Use for GCP-specific operations for Cloud Run, GKE, Cloud SQL, IAM, Pub/Sub, storage, monitoring, and deployment troubleshooting. Child of `cloud`.
+- [`paas-ops`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/paas-ops/SKILL.md) (`engineering/paas-ops`) — Use for Vercel, Heroku, and Railway platform operations — deploys, environment/config management, custom domains, previews, add-ons and integrations, logs, and platform-specific CLI workflows. Child skill of `cloud`; route here from the parent router when this lane is the narrowest owner.
+- [`cloud-architecture`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/cloud-architecture/SKILL.md) (`engineering/cloud-architecture`) — Use for provider selection, service selection, cloud architecture design, migration target choices, and approval-aware architecture plans. Child of `cloud`.
+- [`pentest`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/pentest/SKILL.md) (`engineering/pentest`) — Route authorized web and API pentests while directly handling cloud and container offensive validation and chaining race testing or reporting to their canonical owners.
+- [`web-vuln-validation`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/web-vuln-validation/SKILL.md) (`engineering/web-vuln-validation`) — Use for authorized web vulnerability validation, scanner result verification, client-side testing, and browser-exposed attack paths. Child of `pentest`.
+- [`api-pentest`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/api-pentest/SKILL.md) (`engineering/api-pentest`) — Use for authorized API penetration testing, raw HTTP replay, authorization bypass checks, schema abuse, and endpoint exploit validation. Child of `pentest`.
+- [`prs`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/prs/SKILL.md) (`engineering/prs`) — Pull request management for teams of any size — PR workflow, review queues, merge policy, branch strategy, review SLAs, CI gating, and merge-conflict handling.
+- [`quality-assurance`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/quality-assurance/SKILL.md) (`engineering/quality-assurance`) — Route testing, behavior-preserving simplification, security validation, and authoritative AI evaluation work to the narrowest Engineering child, and own the canonical test-suite contract - the tests folder layout, the five test-data tiers including read-only production access, and the framework-per-test-type mapping.
+- [`testing`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/testing/SKILL.md) (`engineering/testing`) — Route and execute test strategy, coverage, backend, frontend E2E, flake, and explicitly authorized business-logic or race-condition testing.
+- [`frontend-e2e`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/frontend-e2e/SKILL.md) (`engineering/frontend-e2e`) — Use for browser QA, Playwright/Cypress flows, user-visible state validation, trace capture, and frontend regressions. Child of `testing`.
+- [`flake`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/flake/SKILL.md) (`engineering/flake`) — Use for CI failures, flaky tests, ordering problems, environment drift, cache issues, and quality gate recovery. Child of `testing`.
+- [`simplify`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/simplify/SKILL.md) (`engineering/simplify`) — Reduce duplication, indirection, branching, and unnecessary code in a defined scope while preserving behavior and proving the result.
+- [`security`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/security/SKILL.md) (`engineering/security`) — Use for passive security review, threat modeling, secure-code checks, dependency review, and compliance-oriented findings. Child of `quality-assurance`.
+- [`ai-evals`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/ai-evals/SKILL.md) (`engineering/ai-evals`) — Design, implement, calibrate, run, compare, and gate provider-neutral evaluations for LLMs, agents, RAG, tools, and prompts, with statistical comparison and release gates.
+- [`code-documentation`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/code-documentation/SKILL.md) (`engineering/code-documentation`) — Write, update, review, or continuously improve documentation for code, repos, services, and workflows — READMEs, runbooks, changelogs, ADRs, and docstrings.
+
+#### Commands (17)
+
+- [`repo-review`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/repo-review.md) (`engineering/repo-review`) — Review a repository or subsystem's current state and return prioritized quality, maintainability, and operational findings.
+- [`grill-with-docs`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/grill-with-docs.md) (`engineering/grill-with-docs`) — Stress-test a technical plan or design while keeping documentation, ADR, glossary, or decision-log context aligned.
+- [`review-architecture`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/review-architecture.md) (`engineering/review-architecture`) — Review architecture, ownership boundaries, and maintainability risks for a repo area, plan, branch, or proposed design.
+- [`deslop`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/deslop.md) (`engineering/deslop`) — Remove AI-code residue and local maintainability noise without changing product behavior.
+- [`pr-merge`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/pr-merge.md) (`engineering/pr-merge`) — Prepare and perform a local PR landing merge with explicit gates. Does not push by default.
+- [`retro`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/retro.md) (`engineering/retro`) — Analyze recent engineering work, PRs, quality signals, and lessons to produce follow-up actions.
+- [`docs-pass`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/docs-pass.md) (`engineering/docs-pass`) — Update or create the right technical documentation for a code change, service, or workflow using the code-documentation skill.
+- [`browser-trace`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/browser-trace.md) (`engineering/browser-trace`) — Capture browser observability for one URL and return searchable network, DOM, screenshot, and console evidence.
+- [`cancel-dev-loop`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/cancel-dev-loop.md) (`engineering/cancel-dev-loop`) — Cancel an active agentic development loop by removing its state file.
+- [`check-agent-compat`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/check-agent-compat.md) (`engineering/check-agent-compat`) — Run a full repo compatibility pass — scanner score, docs reliability, startup path, and validation efficiency — and produce a P0/P1/P2 finding list before extending agent autonomy.
+- [`dev-loop`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/dev-loop.md) (`engineering/dev-loop`) — Start an agentic development loop in the current session — re-injects your task prompt each iteration until the completion promise is output or max iterations is reached.
+- [`docs-site`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/docs-site.md) (`engineering/docs-site`) — Research a software project and build a complete documentation website using the project's existing stack or a justified portable default.
+- [`fix-ci`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/fix-ci.md) (`engineering/fix-ci`) — Diagnose failing continuous-integration checks, apply targeted local fixes, and verify the affected checks without assuming a hosting provider.
+- [`harness-loop`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/harness-loop.md) (`engineering/harness-loop`) — Run a harness engineering improvement loop — audits the repo each iteration, picks the highest-priority finding, enforces it as a CI gate or structural test, and stops when no P0 or P1 findings remain.
+- [`orchestrate`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/orchestrate.md) (`engineering/orchestrate`) — Decompose a large goal into bounded agent workstreams, coordinate dependencies, and verify the integrated result with one controller.
+- [`review-pr`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/review-pr.md) (`engineering/review-pr`) — Run a comprehensive multi-lens PR review. Covers code quality, silent failures, test coverage, and comment accuracy. Defaults to the current git diff; accepts a branch, PR number, or file list.
+- [`triage-prs`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/triage-prs.md) (`engineering/triage-prs`) — Intent-first PR triage. Processes a list of PRs, issues, or a whole queue. Recovers plain-language intent, judges whether the implementation solves the real problem, and routes each item to close, escalate, or continue. Follows the triage protocol from prs.
+
+#### Agents (7)
+
+- [`principal-engineer`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/principal-engineer.md) (`engineering/principal-engineer`) — Leads architecture, implementation strategy, code quality, and technical delivery across the engineering surface.
+- [`cto`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/cto.md) (`engineering/cto`) — Owns technical strategy, architecture direction, staffing shape, delivery risk, and engineering investment tradeoffs.
+- [`cloud-architect`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/cloud-architect.md) (`engineering/cloud-architect`) — Designs and reviews cloud architecture, deployment, cost, security, and reliability plans.
+- [`software-engineer`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/software-engineer.md) (`engineering/software-engineer`) — Implements scoped product or platform changes using existing repo patterns and focused verification.
+- [`ai-engineer`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/ai-engineer.md) (`engineering/ai-engineer`) — Builds and reviews AI systems, evals, prompt/tool design, RAG, context, and safety-aware model workflows.
+- [`pr-reviewer`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/pr-reviewer.md) (`engineering/pr-reviewer`) — Runs a comprehensive multi-lens PR review. Use when the user wants a thorough pre-merge review covering code quality, silent failures, test coverage, and comment accuracy. By default reviews the current git diff; can be scoped to specific files, a PR number, or a branch. Returns findings grouped by severity with file:line references and concrete fix suggestions. Should be invoked proactively before creating a PR or after completing a significant feature.
+- [`pr-triage`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/pr-triage.md) (`engineering/pr-triage`) — Intent-first PR triage agent. Processes a list of PRs, issues, or issue descriptions by recovering the plain-language intent behind each, judging whether the implementation actually solves the underlying problem, and routing each item to: close, escalate to a human (needs judgment / ready for landing), or continue autonomously through validation, review, and CI. Use when managing a PR queue, doing a queue health pass, or deciding which PRs should keep moving. Handles each item independently.
+
+#### Rule sets (1)
+
+- [`defaults`](https://github.com/alvarovillalbaa/plugins/blob/main/engineering/rules/defaults.md) (`engineering/defaults`) — Runtime-neutral policy for the engineering plugin. These rules apply to every engineering skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible implementation detail but may not relax the authorization gates or contradict the ownership boundaries below.
+
+### `finances`
+
+Run finance operations, reconciliation, planning, taxes, fundraising, fiscal close, and analysis.
+
+- Version: `3.0.0`
+- Platforms declared by profile: `claude`, `codex`, `cursor`
+- [Plugin source](https://github.com/alvarovillalbaa/plugins/tree/main/finances)
+- [Profile](https://github.com/alvarovillalbaa/plugins/blob/main/finances/profile.yaml)
+- Team roles: CEO, CFO, Financial Analyst, Accountant
+
+#### Skills (10)
+
+- [`finances`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/finances/SKILL.md) (`finances/finances`) — Router for finance operations, planning, taxes, fundraising, fiscal close, and analysis.
+- [`expenses`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/expenses/SKILL.md) (`finances/expenses`) — Use for expense operations, bill monitoring, receipt intake, categorization, recurring bill calendars, and spend alerts. Child of `finances`.
+- [`reconciliation`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/reconciliation/SKILL.md) (`finances/reconciliation`) — Use for bank reconciliation, GL/subledger tie-outs, receipt matching, variance explanation, and evidence tracking. Child of `finances`.
+- [`planning`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/planning/SKILL.md) (`finances/planning`) — Use for financial planning, CFO briefings, burn/runway, scenario models, budgets, forecasts, and board-ready finance narratives. Child of `finances`.
+- [`taxes`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/taxes/SKILL.md) (`finances/taxes`) — Use for tax document readiness, evidence packaging, tax-year checklists, entity scoping, and filing-prep organization. Child of `finances`.
+- [`fundraising`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/fundraising/SKILL.md) (`finances/fundraising`) — Use for fundraising finance support, diligence materials, investor data rooms, process diagnostics, and finance-backed investor answers. Child of `finances`.
+- [`fiscal-close`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/fiscal-close/SKILL.md) (`finances/fiscal-close`) — Use for month-end close calendars, owners, blockers, dependencies, close dashboards, T+ cadences, and accelerated close work. Child of `finances`.
+- [`quantitative`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/quantitative/SKILL.md) (`finances/quantitative`) — Use for quantitative finance analysis, modeling, portfolio metrics, statistical analysis, and structured numerical decision support. Child of `finances`.
+- [`fundamentals`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/fundamentals/SKILL.md) (`finances/fundamentals`) — Use for fundamental company analysis, financial statement review, unit economics, valuation inputs, and business quality assessment. Child of `finances`.
+- [`macro`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/macro/SKILL.md) (`finances/macro`) — Use for macro analysis, market regime review, rates/inflation/currency context, sector-level implications, and scenario framing. Child of `finances`.
+
+#### Commands (5)
+
+- [`reconcile-books`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/commands/reconcile-books.md) (`finances/reconcile-books`) — Reconcile bank statements, receipts, and ledger rows into auditable outputs using the finances skill.
+- [`model-scenarios`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/commands/model-scenarios.md) (`finances/model-scenarios`) — Build, review, or extend a financial model and produce scenario outputs using the finances skill.
+- [`investor-messaging`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/commands/investor-messaging.md) (`finances/investor-messaging`) — Generate the investor narrative, tailored hooks, and FAQ rebuttals from fundraising materials using the fundraising skill.
+- [`materials-audit`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/commands/materials-audit.md) (`finances/materials-audit`) — Audit fundraising materials and produce a prioritized fix list using the fundraising skill.
+- [`pipeline-diagnostics`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/commands/pipeline-diagnostics.md) (`finances/pipeline-diagnostics`) — Analyze fundraising pipeline health and produce a speed-up plan using the fundraising skill.
+
+#### Agents (3)
+
+- [`financial-analyst`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/agents/financial-analyst.md) (`finances/financial-analyst`) — Produces ratio analysis, budgeting, forecasting, scenario modeling, and investor-grade financial synthesis.
+- [`cfo`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/agents/cfo.md) (`finances/cfo`) — Owns finance strategy, fundraising readiness, planning, controls, close quality, and financial tradeoffs.
+- [`accountant`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/agents/accountant.md) (`finances/accountant`) — Handles reconciliation, close support, evidence tracking, journal-entry queues, and accounting controls.
+
+#### Rule sets (1)
+
+- [`defaults`](https://github.com/alvarovillalbaa/plugins/blob/main/finances/rules/defaults.md) (`finances/defaults`) — Runtime-neutral policy for the Finances plugin. These rules apply to every finance skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible implementation detail but may not relax the authorization gates or contradict the ownership boundaries below.
+
+### `marketing`
+
+Create, teach, adapt, distribute, and visualize growth content across courses, SEO, AEO, GEO, LLM discovery, social, slides, images, and video.
+
+- Version: `3.1.0`
+- Platforms declared by profile: `claude`, `codex`, `cursor`
+- [Plugin source](https://github.com/alvarovillalbaa/plugins/tree/main/marketing)
+- [Profile](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/profile.yaml)
+- Team roles: Growth Lead, Product Manager, Designer, GTM Engineers
+
+#### Skills (23)
+
+- [`content`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/content/SKILL.md) (`marketing/content`) — Router for content creation, course design, adaptation, syndication, keyword work, and copy refinement.
+- [`humanizing`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/humanizing/SKILL.md) (`marketing/humanizing`) — Use for rewriting AI-like or stiff prose into human, specific, voice-aligned writing while preserving meaning. Child of `content`.
+- [`repurposing`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/repurposing/SKILL.md) (`marketing/repurposing`) — Use for turning one source asset into channel-specific posts, newsletters, articles, and distribution packs. Child of `content`.
+- [`syndication`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/syndication/SKILL.md) (`marketing/syndication`) — Adapt finished content for channel-specific distribution, reposting, newsletter, social, and campaign syndication.
+- [`keywords`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/keywords/SKILL.md) (`marketing/keywords`) — Use for keyword discovery, search intent mapping, opportunity scoring, topic clusters, and content calendar inputs. Child of `content`.
+- [`context-to-content`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/context-to-content/SKILL.md) (`marketing/context-to-content`) — Use for turning support tickets, customer questions, sales objections, and internal FAQs into content briefs and help articles. Child of `content`.
+- [`coursify`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/coursify/SKILL.md) (`marketing/coursify`) — Turn source material or an idea into a teachable course with learning outcomes, curriculum, lessons, exercises, and a production plan. Chains to slides, video, or image skills as needed.
+- [`copywrite`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/copywrite/SKILL.md) (`marketing/copywrite`) — Use for editorial and general-purpose copywrite that is not in-product UX copy or conversion-owned product marketing copy. Child of `content`.
+- [`discoverability`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/discoverability/SKILL.md) (`marketing/discoverability`) — Router for SEO, AEO, GEO, and technical discoverability work.
+- [`seo`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/seo/SKILL.md) (`marketing/seo`) — Router for combined SEO and GEO optimization — on-page SEO, LLM discovery files, structured data, and AI referrer measurement. Routes narrow technical work to `technical-seo`.
+- [`technical-seo`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/technical-seo/SKILL.md) (`marketing/technical-seo`) — Use for technical SEO audits, crawlability, robots, sitemaps, metadata implementation, structured data, and web performance constraints. Child of `seo`.
+- [`aeo`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/aeo/SKILL.md) (`marketing/aeo`) — Use for answer-engine optimization, FAQ coverage, concise answer blocks, entity clarity, and question-oriented content structure. Child of `discoverability`.
+- [`geo`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/geo/SKILL.md) (`marketing/geo`) — Use for GEO and AI discoverability, quotable blocks, citation readiness, LLM visibility, and AI search content structure. Child of `discoverability`.
+- [`growth-engine`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/growth-engine/SKILL.md) (`marketing/growth-engine`) — Autonomous growth experiment framework — runs A/B tests, logs results, analyzes statistics, and auto-promotes winners to a living playbook. Use before/after publishing content.
+- [`social-media`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/social-media/SKILL.md) (`marketing/social-media`) — Router for LinkedIn and X social publishing workflows.
+- [`x-posts`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/x-posts/SKILL.md) (`marketing/x-posts`) — Use for X posts, replies, quote posts, engagement prompts, thread hooks, and daily interaction writing. Child of `social-media`.
+- [`linkedin-posts`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/linkedin-posts/SKILL.md) (`marketing/linkedin-posts`) — Draft and adapt LinkedIn posts, carousels, founder updates, and professional engagement content.
+- [`x-articles`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/x-articles/SKILL.md) (`marketing/x-articles`) — Draft long-form X articles, expanded threads, and article-style social content.
+- [`linkedin-articles`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/linkedin-articles/SKILL.md) (`marketing/linkedin-articles`) — Draft long-form LinkedIn articles and newsletter-style professional posts.
+- [`video`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/video/SKILL.md) (`marketing/video`) — Route programmatic and generated video work to official external framework skills and local cross-media specialists.
+- [`images`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/images/SKILL.md) (`marketing/images`) — Create polished image assets by authoring the visual in code — product shots, dashboards, UI mockups, terminal cards, diagrams, and mixed compositions.
+- [`slides`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/slides/SKILL.md) (`marketing/slides`) — Create and evolve code-based slide decks and presentations (HTML/CSS/JS or React) or AI-generated image slide packs. Use for new decks, redesigns, PPT conversions, and slide QA.
+- [`visualization`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/visualization/SKILL.md) (`marketing/visualization`) — Generate polished, self-contained visual explainers, diagrams, dashboards, and comparison pages from technical or business inputs. Use whenever a diagram or dashboard beats a text wall.
+
+#### Commands (6)
+
+- [`blog-draft`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/commands/blog-draft.md) (`marketing/blog-draft`) — Turn notes, research, transcripts, or a rough idea into a structured blog article using the content skill.
+- [`content-brief`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/commands/content-brief.md) (`marketing/content-brief`) — Create a working content brief from a topic, campaign, transcript, or knowledge dump, then optionally route into drafting commands.
+- [`social-pack`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/commands/social-pack.md) (`marketing/social-pack`) — Turn one canonical piece into a distribution pack across LinkedIn and X using syndication and related content skills.
+- [`linkedin-engage`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/commands/linkedin-engage.md) (`marketing/linkedin-engage`) — Draft public LinkedIn comments, replies, or repost copy using the LinkedIn publishing skill.
+- [`x-engage`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/commands/x-engage.md) (`marketing/x-engage`) — Draft public X replies, quote posts, or short conversation sequences using the X publishing skill.
+- [`x-post`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/commands/x-post.md) (`marketing/x-post`) — Draft an original X post or thread from scratch using the research-driven writing framework — hooks, formats, and optional topic research.
+
+#### Agents (1)
+
+- [`growth-lead`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/agents/growth-lead.md) (`marketing/growth-lead`) — Orchestrates product marketing, GTM execution, content distribution, and growth experimentation across the marketing surface.
+
+#### Rule sets (1)
+
+- [`defaults`](https://github.com/alvarovillalbaa/plugins/blob/main/marketing/rules/defaults.md) (`marketing/defaults`) — Runtime-neutral policy for the Marketing plugin. These rules apply to every marketing skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible channel detail but may not relax the authorization gates or contradict the ownership boundaries below.
+
+### `product`
+
+Shape product direction, clarify user needs, design product experiences, and turn market insight into execution.
+
+- Version: `3.0.0`
+- Platforms declared by profile: `claude`, `codex`, `cursor`
+- [Plugin source](https://github.com/alvarovillalbaa/plugins/tree/main/product)
+- [Profile](https://github.com/alvarovillalbaa/plugins/blob/main/product/profile.yaml)
+- Team roles: Product Manager, Designer
+
+#### Skills (17)
+
+- [`product-development`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/product-development/SKILL.md) (`product/product-development`) — Router for product strategy, discovery, PRDs, experiments, and user stories.
+- [`strategy`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/strategy/SKILL.md) (`product/strategy`) — Use for product strategy, quarterly direction, roadmap themes, vision, OKRs, portfolio tradeoffs, and decision memos. Child of `product-development`.
+- [`discovery`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/discovery/SKILL.md) (`product/discovery`) — Customer discovery, qualitative interviews, theme/pain synthesis, JTBD, opportunity mapping, and RICE/ICE/WSJF prioritization. Child of `product-development`.
+- [`prds`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/prds/SKILL.md) (`product/prds`) — Use for PRDs, feature briefs, requirements, scope boundaries, release criteria, and cross-functional product specs. Child of `product-development`.
+- [`experiments`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/experiments/SKILL.md) (`product/experiments`) — Use for product experiments, A/B tests, success metrics, sample sizing, decision rules, and experiment backlogs. Child of `product-development`.
+- [`user-stories`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/user-stories/SKILL.md) (`product/user-stories`) — Use for user stories, acceptance criteria, epic breakdown, story point estimation, sprint planning, and Definition of Done. Child of `product-development`.
+- [`product-marketing`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/product-marketing/SKILL.md) (`product/product-marketing`) — Router for product marketing, CRO, content-led growth, lead magnets, and buyer psychology.
+- [`cro`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/cro/SKILL.md) (`product/cro`) — Use for conversion-rate optimization for pages and funnels, page diagnostics, CTA promises, proof placement, and test ideas. Child of `product-marketing`.
+- [`content-led`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/content-led/SKILL.md) (`product/content-led`) — Use for content strategy, editorial themes, distribution logic, thought leadership systems, and demand-generation content plans. Child of `product-marketing`.
+- [`lead-magnets`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/lead-magnets/SKILL.md) (`product/lead-magnets`) — Use for lead magnet strategy, survey/report assets, downloadable offers, gated assets, and nurture entry points. Child of `product-marketing`.
+- [`buyer-psychology`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/buyer-psychology/SKILL.md) (`product/buyer-psychology`) — Use for buyer psychology, motivation mapping, emotional triggers, objection logic, decision criteria, and persuasion risk review. Child of `product-marketing`.
+- [`design`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/design/SKILL.md) (`product/design`) — Router for product design taste, direction, systems, polish, and critique.
+- [`taste`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/taste/SKILL.md) (`product/taste`) — Use for visual taste calibration, style references, brand-sensitive quality bars, and qualitative direction for interface feel. Child of `design`.
+- [`direction`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/direction/SKILL.md) (`product/direction`) — Use for visual direction, UI concept framing, design language choices, and option shaping before detailed component work. Child of `design`.
+- [`design-systems`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/design-systems/SKILL.md) (`product/design-systems`) — Use for design systems, shared primitives, tokens, component APIs, reusable UI patterns, and design-system drift. Child of `design`.
+- [`polish`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/polish/SKILL.md) (`product/polish`) — Use for UI polish, visual defects, layout fit, spacing, states, motion, interaction finish, and screenshot-based cleanup. Child of `design`.
+- [`critique`](https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/critique/SKILL.md) (`product/critique`) — Use for structured design critique, UX review, visual hierarchy assessment, and improvement recommendations before implementation. Child of `design`.
+
+#### Commands (1)
+
+- [`product-review`](https://github.com/alvarovillalbaa/plugins/blob/main/product/commands/product-review.md) (`product/product-review`) — Review a product surface with engineering, design, or combined lenses and produce prioritized findings.
+
+#### Agents (2)
+
+- [`product-manager`](https://github.com/alvarovillalbaa/plugins/blob/main/product/agents/product-manager.md) (`product/product-manager`) — Owns product contracts, discovery, PRDs, prioritization, acceptance criteria, and user-story quality.
+- [`designer`](https://github.com/alvarovillalbaa/plugins/blob/main/product/agents/designer.md) (`product/designer`) — Reviews and shapes product experience, design direction, design systems, polish, and UX risk.
+
+#### Rule sets (1)
+
+- [`defaults`](https://github.com/alvarovillalbaa/plugins/blob/main/product/rules/defaults.md) (`product/defaults`) — Runtime-neutral policy for the Product plugin. These rules apply to every product skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible method detail but may not relax the authorization gates or contradict the ownership boundaries below.
+
+### `productivity`
+
+Own reporting, research, review, evidence-led personal growth, meetings, and executive operating workflows.
+
+- Version: `3.1.0`
+- Platforms declared by profile: `claude`, `codex`, `cursor`
+- [Plugin source](https://github.com/alvarovillalbaa/plugins/tree/main/productivity)
+- [Profile](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/profile.yaml)
+- Team roles: CEO, Executive Assistant, VP of Operations, Research Lead
+
+#### Skills (16)
+
+- [`reporting`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/reporting/SKILL.md) (`productivity/reporting`) — Route reporting and content audits while directly owning pentest findings, evidence packaging, severity calibration, remediation guidance, and disclosure communication.
+- [`content-audit`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/content-audit/SKILL.md) (`productivity/content-audit`) — Use for content audits, quality checks, decay diagnosis, content refresh plans, and publishing quality gates. Child of `reporting`.
+- [`research`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/research/SKILL.md) (`productivity/research`) — Router for market, vendor, customer, SEO-gap, and prospect research.
+- [`market-competitor-research`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/market-competitor-research/SKILL.md) (`productivity/market-competitor-research`) — Use for market maps, competitor intelligence, category research, positioning evidence, public-web discovery, and source-backed opportunity analysis. Child of `research`.
+- [`diligence-vendor-research`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/diligence-vendor-research/SKILL.md) (`productivity/diligence-vendor-research`) — Use for vendor diligence, product comparisons, buyer risk, filings, practitioner research, and decision-ready diligence memos. Child of `research`.
+- [`seo-competitor-gap`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/seo-competitor-gap/SKILL.md) (`productivity/seo-competitor-gap`) — Use for SEO competitor gap audits, SERP comparison, content gap analysis, authority benchmarking, and opportunity prioritization. Child of `research`.
+- [`prospect`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/prospect/SKILL.md) (`productivity/prospect`) — Turn LinkedIn, company site, and research inputs into a decision-ready GTM brief with Account, Persona, and Next-best-motion, using ICP/ICA scorecards as the rubric.
+- [`review`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/review/SKILL.md) (`productivity/review`) — Router for code review, design review, grilling, and documentation drift review.
+- [`code-review`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/code-review/SKILL.md) (`productivity/code-review`) — Use for code review, diff risk assessment, PR findings, regression risk, test gaps, and maintainability critique. Child of `review`.
+- [`design-review`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/design-review/SKILL.md) (`productivity/design-review`) — Use for design review, UX critique, visual hierarchy, interaction risk, accessibility observations, and polish recommendations. Child of `review`.
+- [`grill`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/grill/SKILL.md) (`productivity/grill`) — Use for adversarial critique, plan stress-testing, simplification pressure, execution risk, and weak-assumption exposure. Child of `review`.
+- [`documentation-drift`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/documentation-drift/SKILL.md) (`productivity/documentation-drift`) — Use for agent documentation drift review, instruction-file audits, stale doc detection, and owner-doc update recommendations. Child of `review`.
+- [`improve-me`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/improve-me/SKILL.md) (`productivity/improve-me`) — Turn evidence about the user's own work into a focused improvement plan with prioritized experiments. Only on explicit request; routes roasting to `roast-me` and rubric reviews to `my-performance`.
+- [`roast-me`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/roast-me/SKILL.md) (`productivity/roast-me`) — Deliver an explicitly requested, sharp but constructive roast of the user's own work or decisions, using cited evidence and concrete next actions. Only on direct request.
+- [`my-performance`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/my-performance/SKILL.md) (`productivity/my-performance`) — Evaluate the user's own performance for a stated role/period against an explicit rubric, separating evidence from inference. Self-review only, never covert evaluation of others.
+- [`meetings`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/meetings/SKILL.md) (`productivity/meetings`) — Prepare, support, and close out meetings: briefs, agendas, notes, decisions, action tracking, and follow-ups, for a single meeting or a recurring portfolio.
+
+#### Commands (3)
+
+- [`office-hours`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/commands/office-hours.md) (`productivity/office-hours`) — Interview a startup, product, or builder decision for idea quality, demand reality, wedge, risks, and next decision.
+- [`inbox-triage`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/commands/inbox-triage.md) (`productivity/inbox-triage`) — Triage inbound email threads, summarize next actions, and draft replies using the productivity command workflow.
+- [`grill-me`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/commands/grill-me.md) (`productivity/grill-me`) — Relentlessly interview the user about a plan or design, walking every branch of the decision tree one question at a time until reaching full shared understanding.
+
+#### Agents (5)
+
+- [`ceo`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/agents/ceo.md) (`productivity/ceo`) — Frames company-level decisions, operating priorities, fundraising narrative, and cross-functional tradeoffs.
+- [`executive-assistant`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/agents/executive-assistant.md) (`productivity/executive-assistant`) — Coordinates inbox, meeting portfolios, scheduling prep, follow-through, lightweight research, evidence-led growth support, and memory hygiene.
+- [`reviewer`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/agents/reviewer.md) (`productivity/reviewer`) — Reviews code, design, content, documentation, and reasoning with explicit evidence, severity, and corrective actions.
+- [`deep-research`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/agents/deep-research.md) (`productivity/deep-research`) — Runs multi-pass structured research — primary sources, secondary evidence, social signal, and people or company enrichment — then packages findings as a decision artifact with dated evidence, visible logic, and a next action.
+- [`vp-of-operations`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/agents/vp-of-operations.md) (`productivity/vp-of-operations`) — Owns the operating cadence of the company across reporting, process quality, execution tracking, and cross-functional follow-through.
+
+#### Rule sets (1)
+
+- [`defaults`](https://github.com/alvarovillalbaa/plugins/blob/main/productivity/rules/defaults.md) (`productivity/defaults`) — Runtime-neutral policy for the Productivity plugin. These rules apply to every productivity skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible workflow detail but may not relax the authorization gates or contradict the ownership boundaries below.
+
+### `sales`
+
+Run go-to-market, pipeline, outreach, launches, virality, and revenue growth workflows.
+
+- Version: `3.0.0`
+- Platforms declared by profile: `claude`, `codex`, `cursor`
+- [Plugin source](https://github.com/alvarovillalbaa/plugins/tree/main/sales)
+- [Profile](https://github.com/alvarovillalbaa/plugins/blob/main/sales/profile.yaml)
+- Team roles: CSO, GTM Engineer, SDR, Account Executive
+
+#### Skills (18)
+
+- [`go-to-market`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/go-to-market/SKILL.md) (`sales/go-to-market`) — Router for GTM strategy, first customers, technical sales, lead signals, and revenue intelligence.
+- [`first-customers`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/first-customers/SKILL.md) (`sales/first-customers`) — Use for first-customer selling, early wedge selection, founder-led sales, design partners, and first proof loops. Child of `go-to-market`.
+- [`technical-sales`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/technical-sales/SKILL.md) (`sales/technical-sales`) — Use for technical sales motions, solution fit, discovery-to-demo translation, technical objections, and proof-of-concept framing. Child of `go-to-market`.
+- [`lead-signals`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/lead-signals/SKILL.md) (`sales/lead-signals`) — Discover evidence-backed buying, hiring, funding, and intent signals for prospects, write them to a Notion Signals database, and link them to People/Companies records.
+- [`revenue-intelligence`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/revenue-intelligence/SKILL.md) (`sales/revenue-intelligence`) — Use for revenue intelligence from calls, opportunities, CRM, and attribution; pipeline risk; forecast inputs; and buying committee insight. Child of `go-to-market`.
+- [`sales-pipeline`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/sales-pipeline/SKILL.md) (`sales/sales-pipeline`) — Router for pipeline operations, commercial documents, collateral, and deal health work.
+- [`commercial-docs`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/commercial-docs/SKILL.md) (`sales/commercial-docs`) — Use for commercial documents, sales one-pagers, objection docs, mutual action plans, security questionnaires, and proposal support. Child of `go-to-market`.
+- [`collateral`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/collateral/SKILL.md) (`sales/collateral`) — Create and adapt sales collateral, one-pagers, battlecards, case-study briefs, and buyer-facing enablement material.
+- [`outreach`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/outreach/SKILL.md) (`sales/outreach`) — Router for outbound and follow-up messaging across email, LinkedIn, and X.
+- [`initial`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/initial/SKILL.md) (`sales/initial`) — Draft first-touch outreach for email, LinkedIn, X, and direct response channels.
+- [`sequence`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/sequence/SKILL.md) (`sales/sequence`) — Design multi-touch outbound sequences with channel, timing, and message progression.
+- [`follow-up`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/follow-up/SKILL.md) (`sales/follow-up`) — Use for follow-up messages, waiting-state nudges, reply drafting, conversation continuation, and next-step recovery. Child of `outreach`.
+- [`linkedin-dms`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/linkedin-dms/SKILL.md) (`sales/linkedin-dms`) — Use for LinkedIn comments, connection requests, DM replies, follow-up sequences, and professional engagement writing. Child of `outreach`.
+- [`x-dms`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/x-dms/SKILL.md) (`sales/x-dms`) — Draft and refine X direct messages and reply-to-DM sales motions.
+- [`launches`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/launches/SKILL.md) (`sales/launches`) — Router for launch motions and virality systems.
+- [`virality`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/virality/SKILL.md) (`sales/virality`) — Use for viral X launch systems, launch threads, controversy research, sequence planning, and performance-oriented post variants. Child of `launches`.
+- [`growth`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/growth/SKILL.md) (`sales/growth`) — Route revenue operations while directly owning customer growth, retention, expansion, churn-risk review, lifecycle nudges, and growth experiments.
+- [`revenue-ops`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/revenue-ops/SKILL.md) (`sales/revenue-ops`) — Use for revenue operations, CRM stages, lifecycle definitions, handoff rules, pipeline hygiene, and operating metrics. Child of `growth`.
+
+#### Commands (5)
+
+- [`account-brief`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/commands/account-brief.md) (`sales/account-brief`) — Produce a focused account or prospect research brief using prospect, without drafting full outreach sequences.
+- [`meet-with-clients`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/commands/meet-with-clients.md) (`sales/meet-with-clients`) — Prepare, run, and follow up on client meetings with sales, technical-sales, and follow-up workflows.
+- [`competitor-scan`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/commands/competitor-scan.md) (`sales/competitor-scan`) — Run a focused competitor or market-moves scan using productivity research skills.
+- [`launch-virality`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/commands/launch-virality.md) (`sales/launch-virality`) — Build an evidence-led X launch campaign with positioning, post variants, distribution phases, and measurable follow-through.
+- [`growth-experiment`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/commands/growth-experiment.md) (`sales/growth-experiment`) — Plan a focused growth experiment using the sales growth skill.
+
+#### Agents (4)
+
+- [`cso`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/agents/cso.md) (`sales/cso`) — Owns GTM strategy, pipeline health, revenue operating model, sales priorities, and commercial tradeoffs.
+- [`gtm-engineer`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/agents/gtm-engineer.md) (`sales/gtm-engineer`) — Builds and improves GTM systems, campaign automation, data flows, and revenue experiments.
+- [`sdr`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/agents/sdr.md) (`sales/sdr`) — Runs prospecting, lead-signal capture, account qualification, first-touch outreach, follow-up queues, and early pipeline creation.
+- [`account-executive`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/agents/account-executive.md) (`sales/account-executive`) — Runs discovery, demos, objections, follow-up, opportunity strategy, and deal progression.
+
+#### Rule sets (1)
+
+- [`defaults`](https://github.com/alvarovillalbaa/plugins/blob/main/sales/rules/defaults.md) (`sales/defaults`) — Runtime-neutral policy for the Sales plugin. These rules apply to every sales skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible channel or stage detail but may not relax the authorization gates or contradict the ownership boundaries below.
+
+### `system`
+
+Maintain plugins, skills, memory, knowledge, learning, brain ingestion, personalization, auditable work explanations, and repeatable improvement loops.
+
+- Version: `3.1.0`
+- Platforms declared by profile: `claude`, `codex`, `cursor`
+- [Plugin source](https://github.com/alvarovillalbaa/plugins/tree/main/system)
+- [Profile](https://github.com/alvarovillalbaa/plugins/blob/main/system/profile.yaml)
+- Team roles: CEO, Executive Assistant, Principal Engineer
+
+#### Skills (17)
+
+- [`auto-improve`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/auto-improve/SKILL.md) (`system/auto-improve`) — Improve project-local agent context, docs, personalization, and installed plugin/skill copies under `.agents`. Never writes upstream to the canonical plugins source.
+- [`plugins-management`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/plugins-management/SKILL.md) (`system/plugins-management`) — Manage plugin and skill taxonomy, project installation, no-loss updates, conflict review, lifecycle, metadata, external sources, and capability-preserving consolidation.
+- [`skill-eval-loop`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/skill-eval-loop/SKILL.md) (`system/skill-eval-loop`) — Use for skill evaluation loops, regression checks for skill behavior, prompt/skill mutation proposals, and explicit improvement gates. Child of `plugins-management`.
+- [`memory`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/memory/SKILL.md) (`system/memory`) — Retrieve, reconcile, and curate durable agent memory across available runtimes. Use when prior decisions or cross-session facts may matter, or to save/update/delete a memory.
+- [`explain-yourself`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/explain-yourself/SKILL.md) (`system/explain-yourself`) — Explain an agent's plan, status, decisions, or postmortem with concise, evidence-backed reasoning summaries. Use when asked what was done, why, or what remains uncertain.
+- [`knowledge-base`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/knowledge-base/SKILL.md) (`system/knowledge-base`) — Use for knowledge-base improvement, dedupe proposals, canonical page health, missing source promotion, and knowledge drift repair. Child of `plugins-management`.
+- [`learning`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/learning/SKILL.md) (`system/learning`) — Router for lessons, teaching, and durable learning records.
+- [`lessons`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/lessons/SKILL.md) (`system/lessons`) — Create, curate, and promote lessons from repo work, user corrections, and successful workflows.
+- [`brain`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/brain/SKILL.md) (`system/brain`) — Route and maintain BRAIN.md-bounded second-brain workflows — raw ingestion, folder adaptation, memory-to-knowledge compilation, and canonical knowledge updates.
+- [`ingestion`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/ingestion/SKILL.md) (`system/ingestion`) — Raw source ingestion, transcript/artifact parsing, canonical page promotion, and Memory-to-knowledge compilation. Child of `brain`; use when this is the narrowest owner.
+- [`personalize`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/personalize/SKILL.md) (`system/personalize`) — Router for user, company, voice, positioning, and ICP personalization.
+- [`communication-style`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/communication-style/SKILL.md) (`system/communication-style`) — Use for writing-style capture, approved-example analysis, sender or brand voice summaries, and reusable style constraints. Child of `personalize`.
+- [`voice`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/voice/SKILL.md) (`system/voice`) — Use for sender voice learning, approved-message analysis, style guides, forbidden phrases, and personalized writing constraints. Child of `personalize`.
+- [`calibration`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/calibration/SKILL.md) (`system/calibration`) — Calibrate communication and output preferences from examples, feedback, and prior accepted work.
+- [`positioning`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/positioning/SKILL.md) (`system/positioning`) — Use for positioning, messaging, ICP/persona framing, differentiation, objection handling, and proof-point structure. Child of `personalize`.
+- [`icp`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/icp/SKILL.md) (`system/icp`) — Capture, refine, and apply ideal-customer-profile signals for research, positioning, sales, and marketing work.
+- [`loops`](https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/loops/SKILL.md) (`system/loops`) — Run and maintain repeatable improvement, evaluation, memory, and experimentation loops.
+
+#### Commands (12)
+
+- [`learning-sync`](https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/learning-sync.md) (`system/learning-sync`) — Capture durable project or workflow lessons and update the active repository's learning artifacts.
+- [`ar-run`](https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/ar-run.md) (`system/ar-run`; public name `ar:run`) — Run a single iteration of an autoresearch experiment. Reads state, decides one change, commits, evaluates, and keeps or discards.
+- [`ar-status`](https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/ar-status.md) (`system/ar-status`; public name `ar:status`) — Show experiment dashboard — progress, best metric, keep rate, and results table for one or all experiments.
+- [`ar-loop`](https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/ar-loop.md) (`system/ar-loop`; public name `ar:loop`) — Start an autonomous experiment loop. The experiment-runner agent runs iterations continuously, keeping improvements and discarding failures, until interrupted or the goal is met.
+- [`ar-setup`](https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/ar-setup.md) (`system/ar-setup`; public name `ar:setup`) — Create and validate the configuration for one metric-driven autoresearch experiment.
+- [`compile-raw`](https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/compile-raw.md) (`system/compile-raw`) — Compile a scoped queue of previously captured raw sources into canonical knowledge with provenance and contradiction tracking.
+- [`ingest`](https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/ingest.md) (`system/ingest`) — Capture one source into a brain's raw layer and optionally compile only that source into canonical knowledge.
+- [`si-extract`](https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/si-extract.md) (`system/si-extract`; public name `si:extract`) — Turn a proven recurring pattern or debugging solution into a standalone portable skill. The skill will work in any project with no hardcoded paths or project-specific values.
+- [`si-promote`](https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/si-promote.md) (`system/si-promote`; public name `si:promote`) — Stage, review, and explicitly approve promotion of one proven memory into its canonical policy owner without losing provenance.
+- [`si-remember`](https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/si-remember.md) (`system/si-remember`; public name `si:remember`) — Stage and explicitly confirm one provenance-rich durable memory record in an authorized store.
+- [`si-review`](https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/si-review.md) (`system/si-review`; public name `si:review`) — Perform a detailed read-only review of one scoped memory store and return evidence-backed correction, consolidation, and promotion candidates.
+- [`si-status`](https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/si-status.md) (`system/si-status`; public name `si:status`) — Show a compact read-only health snapshot for one scoped memory store, including provenance, freshness, conflicts, and capacity.
+
+#### Agents (4)
+
+- [`system-steward`](https://github.com/alvarovillalbaa/plugins/blob/main/system/agents/system-steward.md) (`system/system-steward`) — Coordinates portable plugin maintenance, knowledge flows, personalization policy, evaluation, and improvement across the system surface.
+- [`experiment-runner`](https://github.com/alvarovillalbaa/plugins/blob/main/system/agents/experiment-runner.md) (`system/experiment-runner`) — Autonomous experimenter that optimizes a target file by a measurable metric. Reads experiment state from `.autoresearch/`, decides what ONE change to try based on accumulated evidence and strategy escalation, makes the change, commits, runs the evaluator, and keeps or discards based on outcome. Spawned by `/ar:loop` and `/ar:run`.
+- [`memory-analyst`](https://github.com/alvarovillalbaa/plugins/blob/main/system/agents/memory-analyst.md) (`system/memory-analyst`) — Read-only analyst for one explicitly authorized memory store and its scoped policy sources. Finds freshness issues, conflicts, consolidation opportunities, and promotion candidates with provenance. Spawned by /si:review.
+- [`skill-extractor`](https://github.com/alvarovillalbaa/plugins/blob/main/system/agents/skill-extractor.md) (`system/skill-extractor`) — Transforms a proven pattern or debugging solution into a standalone, portable Agent Skill. Generates `SKILL.md` with proper frontmatter, reference docs, and examples that work in any project. Spawned by `/si:extract` when a recurring solution should become reusable.
+
+#### Rule sets (1)
+
+- [`defaults`](https://github.com/alvarovillalbaa/plugins/blob/main/system/rules/defaults.md) (`system/defaults`) — Runtime-neutral policy for the System plugin. These rules apply to every system skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible implementation detail but may not relax the authorization gates or contradict the ownership boundaries below.

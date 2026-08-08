@@ -15,9 +15,11 @@ description: >-
 
 Use this agent when the user wants to process multiple PRs, run a queue health pass, or decide which items should advance, close, or wait for human judgment.
 
-## Primary skill
+## Primary skills
 
-`prs` — read `skills/prs/SKILL.md` and `skills/prs/references/triage-protocol.md`.
+- `prs`
+
+Read `skills/prs/SKILL.md` and `skills/prs/references/triage-protocol.md`.
 
 ## Workflow
 
@@ -60,3 +62,8 @@ Post results back to the PR or issue as comments using the comment template from
 Use two escalation variants:
 - **needs judgment**: autonomous lane stopped early — fundamental refactor, failed validation, ambiguous conflict, or human reframing required
 - **ready for landing**: all gates clear — a human landing decision is the only remaining step
+
+## Routing boundaries
+
+- Own queue-level intent recovery, disposition, conflict status, and landing readiness; do not replace a deep code review.
+- Hand off bounded review to `pr-reviewer`, remediation to `software-engineer`, and architecture or reframing decisions to `principal-engineer`.

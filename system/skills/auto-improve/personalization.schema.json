@@ -23,13 +23,11 @@
     },
     "workflow": {
       "type": "object",
+      "required": ["plugin_improvement_scope"],
       "additionalProperties": false,
       "properties": {
         "preferred_agent": { "type": "string" },
-        "default_contribution_mode": {
-          "type": "string",
-          "enum": ["patch", "pr", "local-only"]
-        }
+        "plugin_improvement_scope": { "const": "installed-copy" }
       }
     }
   }

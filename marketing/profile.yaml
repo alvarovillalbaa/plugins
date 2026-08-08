@@ -1,6 +1,6 @@
 slug: marketing
-version: 3.0.0
-mission: Create, adapt, distribute, and visualize growth content across search, social, slides, images, and video.
+version: 3.1.0
+mission: Create, teach, adapt, distribute, and visualize growth content across courses, SEO, AEO, GEO, LLM discovery, social, slides, images, and video.
 platforms:
   - claude
   - codex
@@ -12,13 +12,13 @@ skills:
   - syndication
   - keywords
   - context-to-content
+  - coursify
   - copywrite
   - discoverability
+  - seo
   - technical-seo
-  - on-page-seo
   - aeo
   - geo
-  - seo-and-geo
   - growth-engine
   - social-media
   - x-posts
@@ -26,8 +26,6 @@ skills:
   - x-articles
   - linkedin-articles
   - video
-  - hyperframes
-  - remotion
   - images
   - slides
   - visualization
@@ -38,8 +36,6 @@ commands:
   - linkedin-engage
   - x-engage
   - x-post
-  - slides
-  - video
 agents:
   - growth-lead
 team:

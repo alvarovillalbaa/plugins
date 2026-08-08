@@ -1,15 +1,16 @@
 slug: system
-version: 3.0.0
-mission: Maintain skills, memory, knowledge, learning, brain ingestion, personalization, and repeatable improvement loops.
+version: 3.1.0
+mission: Maintain plugins, skills, memory, knowledge, learning, brain ingestion, personalization, auditable work explanations, and repeatable improvement loops.
 platforms:
   - claude
   - codex
   - cursor
 skills:
   - auto-improve
-  - skills-management
+  - plugins-management
   - skill-eval-loop
   - memory
+  - explain-yourself
   - knowledge-base
   - learning
   - lessons
@@ -24,7 +25,6 @@ skills:
   - loops
 commands:
   - learning-sync
-  - update-memories
   - ar-run
   - ar-status
   - ar-loop
@@ -37,6 +37,7 @@ commands:
   - si-review
   - si-status
 agents:
+  - system-steward
   - experiment-runner
   - memory-analyst
   - skill-extractor

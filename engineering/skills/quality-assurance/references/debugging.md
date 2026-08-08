@@ -1,5 +1,25 @@
 # Debugging Reference
 
+Cross-cutting failure diagnosis, shared by every QA lane. Reach for a child skill once the failure
+class is known: `testing` for coverage and suite design, its `flake` child for intermittency, and
+`frontend-e2e` for browser-level symptoms.
+
+## Contents
+
+- [Debugging loop](#debugging-loop)
+- [Triage the failure class first](#triage-the-failure-class-first)
+- [Read failures completely](#read-failures-completely)
+- [Error diagnosis workflow](#error-diagnosis-workflow)
+- [CI-only failure workflow](#ci-only-failure-workflow)
+- [Regression correlation](#regression-correlation)
+- [Flaky test protocol](#flaky-test-protocol)
+- [Performance debugging](#performance-debugging)
+- [Performance diagnosis workflow](#performance-diagnosis-workflow)
+- [Observability-led debugging](#observability-led-debugging)
+- [Error Pattern Reference](#error-pattern-reference)
+- [CI-Only Failure Patterns](#ci-only-failure-patterns)
+- [Debugging Async Code](#debugging-async-code)
+
 ## Debugging loop
 
 Never jump from symptom to fix. Use this order:

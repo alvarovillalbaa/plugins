@@ -56,7 +56,7 @@ Typical source types:
 - article captures and bookmarks
 - meeting transcripts
 - repository notes, code excerpts, and research artifacts
-- repo-local Memory folders such as `logs/`, `lessons/`, `facts/`, `fixes/`, `steers/`, `models/`, and `reflections/`
+- repo-local AFS Memory surfaces (ask `use-afs` for the current set)
 
 ### Absorb
 

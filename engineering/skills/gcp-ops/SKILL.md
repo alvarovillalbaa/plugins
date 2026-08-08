@@ -1,10 +1,6 @@
 ---
 name: gcp-ops
-description: >-
-  Use for GCP-specific operations for Cloud Run, GKE, Cloud SQL, IAM, Pub/Sub,
-  storage, monitoring, and deployment troubleshooting. Child skill of
-  `cloud`; route here from the parent router when this lane is
-  the narrowest owner.
+description: Use for GCP-specific operations for Cloud Run, GKE, Cloud SQL, IAM, Pub/Sub, storage, monitoring, and deployment troubleshooting. Child of `cloud`.
 ---
 
 # GCP Platform Ops
@@ -15,19 +11,17 @@ This child skill owns GCP-specific operations for Cloud Run, GKE, Cloud SQL, IAM
 
 - The request is primarily about GCP-specific operations for Cloud Run, GKE, Cloud SQL, IAM, Pub/Sub, storage, monitoring, and deployment troubleshooting.
 - The parent router [`../cloud/SKILL.md`](../cloud/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, examples, or templates.
 
 ## Assets
 
 - `references/` contains lane-specific guidance moved from the original parent skill.
-- `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 
-- Chain to `quality-assurance`, `agentic-development/release-landing`, `backend`, `ai-engineering`, `pentest/cloud-container-pentest` when the task crosses this child's boundary.
+- Chain to `quality-assurance`, `agentic-development/release-landing`, `backend`, `ai-engineering`, `pentest` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 

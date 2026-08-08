@@ -1,10 +1,6 @@
 ---
 name: voice
-description: >-
-  Use for sender voice learning, approved-message analysis, style guides,
-  forbidden phrases, and personalized writing constraints. Child skill of
-  `personalize`; route here from the parent router when this lane is
-  the narrowest owner.
+description: Use for sender voice learning, approved-message analysis, style guides, forbidden phrases, and personalized writing constraints. Child of `personalize`.
 ---
 
 # Sender Voice Calibration
@@ -15,15 +11,13 @@ This child skill owns sender voice learning, approved-message analysis, style gu
 
 - The request is primarily about sender voice learning, approved-message analysis, style guides, forbidden phrases, and personalized writing constraints.
 - The parent router [`../personalize/SKILL.md`](../personalize/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, examples, or templates.
 
 ## Assets
 
 - `references/` contains lane-specific guidance moved from the original parent skill.
-- `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 
@@ -35,8 +29,8 @@ This child skill owns sender voice learning, approved-message analysis, style gu
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-- `unslop`: Remove generic AI-writing tells while preserving meaning and voice. Install: `python scripts/install-external-skills.py --skill unslop --agent codex`.
-- `stop-slop`: Apply stricter prose cleanup for predictable AI writing patterns. Install: `python scripts/install-external-skills.py --skill stop-slop --agent codex`.
+- `unslop`: Remove generic AI-writing tells while preserving meaning and voice. Install: `python3 scripts/install-external-skills.py --skill unslop --agent codex`.
+- `stop-slop`: Apply stricter prose cleanup for predictable AI writing patterns. Install: `python3 scripts/install-external-skills.py --skill stop-slop --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
 Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).

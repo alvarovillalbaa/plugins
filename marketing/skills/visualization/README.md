@@ -28,7 +28,6 @@ https://github.com/alvarovillalbaa/plugins/tree/main/marketing/skills/visualizat
 
 - `agents/`
 - `examples/`
-- `hooks/`
 - `references/`
 - `scripts/`
 - `templates/`

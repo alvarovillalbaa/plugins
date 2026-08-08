@@ -1,9 +1,6 @@
 ---
 name: ai-governance-safety
-description: >-
-  Use for agent governance, safety gates, scope isolation, autonomy limits,
-  prompt-injection posture, and side-effect controls. Child skill of `ai-engineering`; route here from the parent router when this lane is the
-  narrowest owner.
+description: Use for agent governance, safety gates, scope isolation, autonomy limits, prompt-injection posture, and side-effect controls. Child of `ai-engineering`.
 ---
 
 # AI Governance Safety
@@ -14,7 +11,7 @@ This child skill owns agent governance, safety gates, scope isolation, autonomy 
 
 - The request is primarily about agent governance, safety gates, scope isolation, autonomy limits, prompt-injection posture, and side-effect controls.
 - The parent router [`../ai-engineering/SKILL.md`](../ai-engineering/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, scripts, examples, or templates.
 
 ## Assets
 
@@ -22,11 +19,10 @@ This child skill owns agent governance, safety gates, scope isolation, autonomy 
 - `scripts/` contains executable helpers owned by this lane.
 - `templates/` contains reusable output or implementation templates for this lane.
 - `examples/` contains sample inputs, outputs, or usage artifacts.
-- `hooks/` contains hook entrypoints only when this lane owns hook behavior.
 
 ## Chain Rules
 
-- Chain to `quality-assurance/ai-evals`, `quality-assurance/security`, `backend`, `cloud`, `skills-management`, `brain` when the task crosses this child's boundary.
+- Chain to `quality-assurance/ai-evals`, `quality-assurance/security`, `backend`, `cloud`, `plugins-management`, `brain` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 

@@ -110,31 +110,13 @@ Default flow:
 1. Scan the session for 1–3 things that are true beyond this session — patterns, decisions, or insights that would change how future cycles approach similar problems.
 2. For each learning, check whether an existing knowledge page should absorb it.
 3. If a match exists: update the compiled-truth section and append a timeline entry.
-4. If no match exists: create a new knowledge file with the YAML frontmatter schema below.
+4. If no match exists: create a new knowledge file using the frontmatter schema from [`page_model.md`](page_model.md#searchable-frontmatter-schema).
 5. Check for contradictions: does this learning conflict with anything already in the knowledge base?
    - If yes, surface the contradiction explicitly — update the relevant page's open-threads section or create a conflict note.
    - Do not silently overwrite existing knowledge.
 6. Update `LOG.md` and any index files touched.
 
-YAML frontmatter schema for new knowledge files:
-
-```yaml
----
-type: insight  # insight | decision | procedure | fact | question
-tags: [domain, subtopic]
-confidence: high  # high | medium | low
-created: YYYY-MM-DD
-source: session | ingest | research | meeting | url
----
-```
-
-Field meanings:
-- `type: insight` — a learned pattern or conclusion that generalizes beyond one event
-- `type: decision` — a recorded choice with rationale, context, and trade-offs
-- `type: procedure` — a repeatable how-to that should not need to be rediscovered
-- `type: fact` — a stable empirical claim with provenance
-- `type: question` — an open thread worth tracking until resolved
-- `confidence` — `high` (verified), `medium` (partially sourced), `low` (hypothesis or early signal)
+New knowledge files carry the frontmatter schema defined in [`page_model.md`](page_model.md#searchable-frontmatter-schema) — including its `type` and `confidence` vocabularies. It is defined once there; do not restate or extend it here.
 
 Rules:
 - Extract learnings, not events. "We chose Postgres" is an event. "Managed databases reduce operational burden enough to justify the cost until you exceed 10TB" is a learning.

@@ -1,0 +1,168 @@
+{
+  "title": "Reliable Agent Tool Calls",
+  "audience": "Engineers who can read JSON and run tests",
+  "entry_level": "Intermediate software engineering",
+  "desired_transformation": "Design and verify bounded agent tools with explicit failure contracts",
+  "format": "code-and-video",
+  "prerequisites": [
+    "Read JSON Schema",
+    "Run a local test command"
+  ],
+  "accessibility": {
+    "needs": [
+      "Non-audio path through every lesson",
+      "Keyboard-operable code labs"
+    ],
+    "provisions": [
+      "Captions and transcripts for every video",
+      "Keyboard access for interactive labs",
+      "Text alternatives for meaningful diagrams"
+    ],
+    "gaps": []
+  },
+  "source_map": [
+    {
+      "id": "tool-contract-spec",
+      "location": "docs/tool-contracts.md",
+      "authority_or_date": "Canonical internal specification, reviewed 2026-07-28",
+      "used_by": [
+        "design-tool-contract",
+        "schema-first-tools"
+      ],
+      "notes_or_license": "User-authorized internal source; quote only within the course workspace"
+    },
+    {
+      "id": "failure-test-suite",
+      "location": "tests/tool-failures/",
+      "authority_or_date": "Executable repository evidence observed 2026-08-02",
+      "used_by": [
+        "verify-tool-call",
+        "failure-contract-tests",
+        "capstone"
+      ],
+      "notes_or_license": "Repository-local examples; preserve original notices"
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "design-tool-contract",
+      "statement": "Design a strict tool contract for a bounded agent action",
+      "evidence_of_mastery": "A reviewed schema that rejects out-of-scope and malformed actions"
+    },
+    {
+      "id": "verify-tool-call",
+      "statement": "Verify tool arguments and failure behavior with executable tests",
+      "evidence_of_mastery": "Passing positive and negative tests against the supplied harness"
+    }
+  ],
+  "modules": [
+    {
+      "id": "tool-contracts",
+      "title": "Tool Contracts",
+      "prerequisites": [],
+      "aligned_outcomes": [
+        "design-tool-contract"
+      ],
+      "lessons": [
+        {
+          "id": "schema-first-tools",
+          "title": "Start from the boundary schema",
+          "objective": "Write a strict input and output schema for one tool",
+          "duration_minutes": 25,
+          "formats": [
+            "text",
+            "code",
+            "video"
+          ],
+          "source_refs": [
+            "tool-contract-spec"
+          ],
+          "exercise": {
+            "type": "code-lab",
+            "instructions": "Tighten a permissive schema until all supplied invalid fixtures fail closed"
+          },
+          "assessment": {
+            "type": "rubric",
+            "evidence": "Schema and reviewer checklist meet every contract criterion",
+            "aligned_outcomes": [
+              "design-tool-contract"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "tool-verification",
+      "title": "Executable Verification",
+      "prerequisites": [
+        "tool-contracts"
+      ],
+      "aligned_outcomes": [
+        "verify-tool-call"
+      ],
+      "lessons": [
+        {
+          "id": "failure-contract-tests",
+          "title": "Test failure contracts",
+          "objective": "Create passing tests for invalid and unavailable tool paths",
+          "duration_minutes": 35,
+          "formats": [
+            "code",
+            "interactive"
+          ],
+          "source_refs": [
+            "failure-test-suite"
+          ],
+          "exercise": {
+            "type": "debugging-lab",
+            "instructions": "Repair the implementation until every positive and negative fixture passes"
+          },
+          "assessment": {
+            "type": "executable-tests",
+            "evidence": "The unchanged reference suite passes in the target environment",
+            "aligned_outcomes": [
+              "verify-tool-call"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "capstone": {
+    "required": true,
+    "authentic_task": "Design and test a new bounded tool from an ambiguous product request",
+    "aligned_outcomes": [
+      "design-tool-contract",
+      "verify-tool-call"
+    ],
+    "rubric_or_acceptance_criteria": "The schema is bounded, invalid paths fail closed, and all supplied tests pass",
+    "answer_key_location": "instructor/capstone-scoring-anchors.md",
+    "remediation_path": "Repeat the failing contract lesson and resubmit only the failed rubric dimension"
+  },
+  "production_plan": [
+    {
+      "artifact_id": "schema-lesson-package",
+      "artifact": "Canonical lesson, code lab, and captioned demonstration",
+      "canonical_unit_id": "schema-first-tools",
+      "owning_skill": "content and code-documentation",
+      "status": "planned",
+      "verification": "Run schema fixtures and verify caption transcript parity"
+    },
+    {
+      "artifact_id": "failure-test-lab",
+      "artifact": "Runnable interactive failure-contract lab",
+      "canonical_unit_id": "failure-contract-tests",
+      "owning_skill": "quality-assurance",
+      "status": "planned",
+      "verification": "Run the reference suite and keyboard-only interaction check"
+    },
+    {
+      "artifact_id": "capstone-package",
+      "artifact": "Capstone brief, hidden fixtures, and instructor scoring anchors",
+      "canonical_unit_id": "capstone",
+      "owning_skill": "coursify",
+      "status": "planned",
+      "verification": "Trace every rubric dimension to an outcome and protected answer-key location"
+    }
+  ]
+}

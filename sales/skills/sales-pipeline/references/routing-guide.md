@@ -8,7 +8,7 @@ Router for sales pipeline management. Routes to specialist skills.
 |-------|------|
 | `revenue-intelligence` | Pipeline analysis, deal signals, risk scoring |
 | `revenue-ops` | CRM hygiene, process design, forecasting |
-| `customer-growth` | Expansion within existing accounts |
+| `growth` | Expansion, retention, and churn-risk work within existing accounts |
 
 ## When to Use This Skill Directly
 

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Improve Me"
+  short_description: "Turn evidence into focused growth experiments"
+  default_prompt: "Use $improve-me to turn evidence about my work into prioritized professional growth experiments and check-ins."
+policy:
+  allow_implicit_invocation: false

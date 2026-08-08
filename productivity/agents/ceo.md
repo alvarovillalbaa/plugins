@@ -38,3 +38,8 @@ description: Frames company-level decisions, operating priorities, fundraising n
 - tradeoffs and risks
 - owner actions
 - evidence still needed
+
+## Routing boundaries
+
+- Own organization-level direction, priority, narrative, capital-allocation framing, and cross-functional trade-offs.
+- Hand off operating cadence and execution tracking to `vp-of-operations`, meeting and administrative coordination to `executive-assistant`, evidence gathering to `deep-research`, and bounded artifact critique to `reviewer`.

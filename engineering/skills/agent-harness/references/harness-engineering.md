@@ -12,7 +12,7 @@ Score the repo against these dimensions before prescribing changes:
 |---|---|
 | Context architecture | Root `AGENTS.md`/`CLAUDE.md` is a short map, roughly 100 lines, pointing to versioned docs instead of embedding a manual. |
 | Execution harness | Timeouts, token budgets, stall/loop detection, HITL escalation, trace integrity, and signal telemetry are implemented and tested. |
-| Subsystem guidance | High-risk areas have local `AGENTS.md`, `ARCHITECTURE.md`, or README files with protocols, invariants, anti-patterns, debug steps, and required skills. |
+| Subsystem guidance | High-risk areas have local `AGENTS.md`, `ARC.md`, or README files with protocols, invariants, anti-patterns, debug steps, and required skills. |
 | Mechanical enforcement | Layer boundaries, file size, naming, logging, schema validation, doc links, and tool-spec completeness are checked by linters, structural tests, or CI. |
 | CI feedback | Feature-branch CI runs the checks agents need: lint, typecheck, tests, build, cycles/import boundaries, i18n/schema checks, and machine-readable failure output. |
 | Tests and evals | Unit/integration/e2e tests cover code behavior; evals cover agent behavior, tool-call quality, golden interactions, and harness correctness. |
@@ -236,8 +236,10 @@ Agents should be able to answer "what failed, where, and after which change?" fr
 Use repo-local files, not chat history, as the system of record:
 
 - `docs/solutions/` — structured per-solution files with YAML frontmatter; preferred for any learning that should be searchable by future agents (see `references/institutional-learnings.md`)
-- `docs/research/YYYY/MM-DD/topic.md` for subsystem investigations
-- `docs/lessons/<domain>/YYYY/MM-DD/topic.md` for prose notes where speed matters more than structure
+- the AFS research surface for subsystem investigations
+- the AFS lesson surface for prose notes where speed matters more than structure
+
+Resolve those paths and their date format through `use-afs`; do not hardcode a second convention here.
 - `docs/runbooks/agent-debugging.md` for common diagnostic paths
 - `docs/references/product-context.md` when product docs are external or symlinked outside the repo
 
@@ -300,13 +302,13 @@ Emit a quality-score diff vs. last week
 **DocGardeningAgent** (run after each merged PR):
 
 ```
-Check if changed files have corresponding service docs (README.md, ARCHITECTURE.md)
+Check if changed files have corresponding service docs (README.md, ARC.md)
 Check if today's daily log has an entry for the changed service
 Check if AGENTS.md references that now have a broken path
 Open a follow-up task or PR if gaps found
 ```
 
-Wire existing skills-management skills to scheduled tasks by invoking the skill from a cron or CI schedule step rather than only from chat.
+Wire existing plugins-management skills to scheduled tasks by invoking the skill from a cron or CI schedule step rather than only from chat.
 
 ### 10. Agent Legibility
 

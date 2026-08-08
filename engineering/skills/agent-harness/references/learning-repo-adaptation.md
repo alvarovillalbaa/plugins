@@ -32,7 +32,7 @@ Likely promotion targets:
 
 - root `AGENTS.md`
 - service `README.md`
-- `ARCHITECTURE.md`
+- `ARC.md`
 - `TESTS.md`
 - `cookbooks/`
 
@@ -55,7 +55,7 @@ Often add:
 Likely promotion targets:
 
 - component or app `README.md`
-- `ARCHITECTURE.md`
+- `ARC.md`
 - `TESTS.md`
 - design or frontend docs
 
@@ -122,8 +122,8 @@ Do not let one `patterns.md` turn into an unsearchable dump.
 
 Use this rule of thumb after consolidation:
 
-- Agent behavior change: `AGENTS.md`, `SOUL.md`, `PRINCIPLES.md`
-- Human-facing repo knowledge: `README.md`, `ARCHITECTURE.md`, `TESTS.md`, `SETUP.md`
+- Agent behavior change: the root instruction docs (`AGENTS.md` and the rest of the set `use-afs` defines)
+- Human-facing repo knowledge: `README.md`, `ARC.md`, `TESTS.md`, `SETUP.md`
 - Historical session knowledge: `learning/episodes/`, `learning/decision-traces/`
 - Stable atomic facts: `learning/triples/facts.jsonl`
 

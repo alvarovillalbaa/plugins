@@ -2,5 +2,27 @@
   "name": "sales",
   "version": "3.0.0",
   "description": "GTM, sales pipeline, outreach, launches, virality, and growth workflows for Codex.",
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "author": {
+    "name": "Agent Company"
+  },
+  "homepage": "https://github.com/alvarovillalbaa/plugins",
+  "repository": "https://github.com/alvarovillalbaa/plugins",
+  "license": "MIT",
+  "keywords": ["agent-skills", "sales", "GTM", "outreach", "pipeline", "growth"],
+  "interface": {
+    "displayName": "Sales Agent Workflows",
+    "shortDescription": "GTM, outreach, pipeline, launch, and growth workflows.",
+    "longDescription": "Reusable sales skills for go-to-market planning, prospecting, outreach, pipeline operations, launches, virality, and growth.",
+    "developerName": "Agent Company",
+    "category": "Sales",
+    "capabilities": ["Agent skills", "GTM planning", "Sales operations"],
+    "websiteURL": "https://github.com/alvarovillalbaa/plugins",
+    "defaultPrompt": [
+      "Build a go-to-market plan for this product.",
+      "Draft personalized outreach for this audience.",
+      "Review this sales pipeline and next actions."
+    ],
+    "brandColor": "#15A36D"
+  }
 }

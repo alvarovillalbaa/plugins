@@ -174,7 +174,7 @@ Detailed output templates for technical SEO audit steps 3-9. Referenced from [SK
 
 ## Step 7: Audit Structured Data
 
-> **CORE-EEAT alignment**: Schema markup quality maps to O05 (Schema Markup) in the CORE-EEAT benchmark. See [core-eeat-benchmark.md](../../on-page-seo/references/core-eeat-benchmark.md) for full scoring criteria and [content-audit](../../../../productivity/skills/content-audit/SKILL.md) for full content quality audits.
+> **CORE-EEAT alignment**: Schema markup quality maps to O05 (Schema Markup) in the CORE-EEAT benchmark. See [core-eeat-benchmark.md](../../seo/references/core-eeat-benchmark.md) for full scoring criteria and [content-audit](../../../../productivity/skills/content-audit/SKILL.md) for full content quality audits.
 
 ```markdown
 ## Structured Data Analysis

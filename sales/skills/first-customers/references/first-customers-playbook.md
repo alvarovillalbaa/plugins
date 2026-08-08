@@ -75,5 +75,5 @@ Build a tight loop: sell → deliver value → capture proof → use proof to se
 - Outreach drafting → `outreach`, `initial`, `sequence`.
 - Account research → `prospect`.
 - Discovery technique → product `discovery`.
-- Expanding/retaining once landed → `customer-growth`.
+- Expanding/retaining once landed → `growth`.
 - Wins into marketing assets → `marketing` (case studies); ICP refinement → `system` (`icp`).

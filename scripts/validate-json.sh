@@ -1,60 +1,64 @@
-#!/bin/bash
-# Validate JSON outputs and optionally validate against a schema.
-# Reads hook input JSON from stdin.
+#!/usr/bin/env bash
+# Validate JSON files, optionally against one JSON Schema.
 
-python3 - <<'PY'
+set -euo pipefail
+
+python3 - "$@" <<'PY'
+from __future__ import annotations
+
+import argparse
 import importlib.util
 import json
-import os
 import sys
 from pathlib import Path
 
-try:
-    data = json.load(sys.stdin)
-except Exception:
-    sys.exit(0)
 
-file_path = data.get("tool_input", {}).get("file_path") or data.get("tool_input", {}).get("path") or ""
-if not file_path or not file_path.endswith(".json"):
-    sys.exit(0)
+def iter_json_files(inputs: list[str]):
+    seen = set()
+    for raw in inputs:
+        path = Path(raw).expanduser()
+        candidates = [path] if path.is_file() else path.rglob("*.json") if path.is_dir() else []
+        for candidate in candidates:
+            if any(part in {".git", "node_modules", ".playwright-mcp"} for part in candidate.parts):
+                continue
+            resolved = candidate.resolve()
+            if candidate.suffix == ".json" and resolved not in seen:
+                seen.add(resolved)
+                yield candidate
 
-path = Path(file_path)
-if not path.is_file():
-    sys.exit(0)
 
-try:
-    with path.open("r", encoding="utf-8") as f:
-        payload = json.load(f)
-except Exception as exc:
-    print(f"Invalid JSON: {path} ({exc})")
-    sys.exit(2)
+parser = argparse.ArgumentParser(description="Validate JSON files in one or more files/directories.")
+parser.add_argument("paths", nargs="*", default=["."], help="JSON file or directory (default: current directory)")
+parser.add_argument("--schema", help="Optional JSON Schema applied to every selected file")
+args = parser.parse_args()
 
-schema_path = os.environ.get("JSON_SCHEMA", "").strip()
-if not schema_path:
-    candidate = path.with_suffix(".schema.json")
-    if candidate.is_file():
-        schema_path = str(candidate)
-
-if not schema_path:
-    sys.exit(0)
-
-schema_file = Path(schema_path)
-if not schema_file.is_file():
-    print(f"Schema file not found: {schema_path}")
-    sys.exit(2)
-
-if importlib.util.find_spec("jsonschema") is None:
-    print("jsonschema not installed; skipping schema validation.")
-    sys.exit(0)
-
-try:
+schema = None
+if args.schema:
+    schema_path = Path(args.schema).expanduser()
+    if not schema_path.is_file():
+        parser.error(f"schema file not found: {schema_path}")
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    if importlib.util.find_spec("jsonschema") is None:
+        parser.error("--schema requires the `jsonschema` Python package")
     import jsonschema
-    with schema_file.open("r", encoding="utf-8") as f:
-        schema = json.load(f)
-    jsonschema.validate(instance=payload, schema=schema)
-except Exception as exc:
-    print(f"JSON schema validation failed: {schema_path} ({exc})")
-    sys.exit(2)
 
-sys.exit(0)
+failures = []
+files = list(iter_json_files(args.paths))
+if not files:
+    parser.error("no JSON files found")
+
+for path in files:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if schema is not None:
+            jsonschema.validate(instance=payload, schema=schema)
+    except Exception as exc:
+        failures.append(f"{path}: {exc}")
+
+if failures:
+    for failure in failures:
+        print(failure, file=sys.stderr)
+    raise SystemExit(1)
+
+print(f"Validated {len(files)} JSON file(s).")
 PY

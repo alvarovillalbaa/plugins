@@ -1,0 +1,33 @@
+{
+  "meetings": [
+    {
+      "meeting_id": "roadmap",
+      "scheduled_start": "2026-08-03T09:00:00+02:00",
+      "scheduled_end": "2026-08-03T10:00:00+02:00",
+      "decisions": [
+        {"key": "launch-scope", "text": "Ship the core workflow first."}
+      ],
+      "actions": [
+        {
+          "id": "A-17",
+          "action": "Publish the scope decision.",
+          "owner": "Ari",
+          "due_date": "2026-08-04"
+        }
+      ]
+    },
+    {
+      "meeting_id": "customer-call",
+      "scheduled_start": "2026-08-03T09:30:00+02:00",
+      "scheduled_end": "2026-08-03T10:15:00+02:00",
+      "actions": [
+        {
+          "id": "A-18",
+          "action": "Draft the customer follow-up.",
+          "owner": "Bea",
+          "due_date": "2026-08-03"
+        }
+      ]
+    }
+  ]
+}

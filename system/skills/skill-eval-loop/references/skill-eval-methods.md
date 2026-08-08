@@ -94,7 +94,7 @@ Bound the loop (max iterations) and keep each change small and reversible.
 
 ## Handoffs
 
-- Applying approved skill edits → `skills-management`.
+- Applying approved skill edits → `plugins-management`.
 - Orchestrating the loop on a cadence → `loops`, `auto-improve`.
 - Failures worth a durable lesson → `lessons`.
 - Deep eval/observability tooling for AI features → engineering `ai-evals-observability`, `ai-evals`.

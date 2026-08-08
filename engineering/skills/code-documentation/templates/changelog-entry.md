@@ -57,7 +57,7 @@ Two separate changelogs serve different audiences. Use this template for both, b
 
 ## Internal Engineering Changelog / Release Notes
 
-**Location:** Part of release PR description, or `audits/YYYY/MM-DD/release-notes.md`
+**Location:** Part of the release PR description, or `release-notes.md` in the AFS audit surface.
 
 **For engineers — can include technical details, migration steps, breaking changes.**
 

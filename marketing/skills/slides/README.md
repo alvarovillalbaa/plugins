@@ -44,7 +44,6 @@ https://github.com/alvarovillalbaa/slides
 
 - `agents/`
 - `examples/`
-- `hooks/`
 - `references/`
 - `scripts/`
 - `templates/`

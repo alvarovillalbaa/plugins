@@ -1,8 +1,8 @@
 {
   "name": "engineering",
   "displayName": "Engineering",
-  "version": "3.0.0",
-  "description": "Architecture, implementation, QA, cloud, pentest, PR, and engineering documentation workflows",
+  "version": "3.1.0",
+  "description": "Architecture, multi-agent execution, AI evals, implementation, QA, cloud, pentest, PR, and documentation workflows",
   "author": {
     "name": "Agent Company",
     "email": "alvarovillalbaa@icloud.com"
@@ -13,6 +13,8 @@
     "architecture",
     "qa",
     "cloud",
-    "security"
+    "security",
+    "multi-agent",
+    "evals"
   ]
 }

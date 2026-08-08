@@ -17,12 +17,12 @@ Use multiple spawned copies for parallel work, for example `gtm-engineer x2`; do
 - `sales-pipeline`
 - `outreach`
 - `launches`
+- `virality`
 
 ## Commands
 
 - `growth-experiment`
 - `launch-virality`
-- `outreach`
 - `account-brief`
 
 ## Workflow
@@ -39,3 +39,8 @@ Use multiple spawned copies for parallel work, for example `gtm-engineer x2`; do
 - required inputs
 - assets or automations
 - measurement and handoff
+
+## Routing boundaries
+
+- Own GTM systems, automation, data flows, launches, virality mechanics, and measurable revenue experiments.
+- Hand off human prospect qualification and message execution to `sdr`, qualified opportunity work to `account-executive`, and sales strategy or metric policy to `cso`.

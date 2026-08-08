@@ -1,48 +1,30 @@
-# Eval Results Report: <suite name>
+# Eval Decision Report: <run ID>
 
-- **Run date:** <YYYY-MM-DD>
-- **Model:** <id>
-- **Dataset:** <path> (<n> cases)
-- **Commit / prompt version:** <sha or version>
+## Official decision
 
-## Headline
+- Decision: <pass | fail | inconclusive>
+- Target, prompt, evaluator, and dataset versions: <immutable IDs>
+- Sample manifest: <manifest ID and row count>
+- Overall gate: <persisted gate ID>
 
-| Metric | Value | Gate | Pass? |
-| --- | --- | --- | --- |
-| Accuracy | <x.x%> | ≥ <y%> | <yes/no> |
-| Precision | <0.xx> | — | — |
-| Recall | <0.xx> | — | — |
-| F1 | <0.xx> | — | — |
+## Evidence
 
-<One sentence: ship / block / investigate.>
+- Pass rate and paired effect: <estimate>
+- Uncertainty and practical threshold: <interval and predeclared delta>
+- Critical failures: <count and row IDs>
+- Cost and latency guardrails: <result>
+- Included cohorts: <coverage>
+- Excluded or uncalibrated cohorts: <not evaluated / not calibrated>
 
-## Comparison to baseline
+## Failure attribution
 
-| Metric | Previous | Current | Δ |
-| --- | --- | --- | --- |
-| Accuracy | <%> | <%> | <+/-> |
-
-<Did anything regress? Which run is the baseline?>
-
-## Failures
-
-| id | input (short) | expected | predicted | category |
+| Row or cohort | Failed field/gate | Owner | Classification | Evidence |
 | --- | --- | --- | --- | --- |
-| <id> | <...> | <...> | <...> | <model-miss / bad-label / ambiguous> |
+| <id> | <component> | <target/dataset/evaluator/infra> | <failure type> | <artifact IDs> |
 
-## Analysis
+## Release action
 
-<Patterns across failures. Are they real model misses, dataset/labeling issues,
-or scorer artifacts? What is the single highest-leverage fix?>
-
-## Actions
-
-- [ ] <fix prompt / add few-shot / relabel case / adjust scorer>
-- [ ] Re-run and confirm gate passes
-- [ ] <update baseline if intentionally moved>
-
-## Reproduce
-
-```bash
-python scripts/run_evals.py --dataset <path> --model <id> --out evals/results.json
-```
+- Action: <reject | investigate | holdout qualify | shadow | canary | promote>
+- Approval required: <yes/no and why>
+- Rollback trigger and pointer: <declared trigger and release ID>
+- Residual risk: <what remains uncertain>

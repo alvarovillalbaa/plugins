@@ -17,9 +17,14 @@ A plugin is identified by a required manifest file:
   Everything else (commands/, agents/, skills/, hooks/, `.mcp.json`, scripts/, etc.) lives at the **plugin root**, **not** inside `.claude-plugin/`. ([Claude Code][2])
 
 Repo rule: this package is stricter than the general Claude plugin shape.
-Department plugin roots do not contain `hooks/` or `scripts/`; hooks and helper
-scripts live inside the owning skill folder, while shared repo tooling lives in
-the company-root `scripts/` directory.
+Department plugin roots may contain `hooks/hooks.json` for plugin-wide Claude
+hook registrations and `scripts/` only for the handlers referenced by those
+registrations. Skill-owned on-demand tools and skill-scoped hook handlers live
+inside the owning skill's `scripts/` directory. Shared repository tooling lives
+in the company-root `scripts/` directory. Unregistered executables and Markdown
+checklists do not belong in `hooks/`.
+
+See [`../hooks-and-scripts.md`](../hooks-and-scripts.md) for the full boundary.
 
 ### Why plugins exist (vs `.claude/` per-project config)
 

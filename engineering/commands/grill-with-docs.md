@@ -12,3 +12,7 @@ Use skills: **architecture**, **code-documentation**, and optional external **gr
 3. **Check documentation drift** - Identify which living docs, ADRs, glossary entries, or runbooks would need updates if the decision lands.
 4. **Produce the decision log** - Summarize decisions, rejected options, remaining questions, and affected docs.
 5. **Update docs when requested** - If the user wants write-back, update the closest owner docs through `code-documentation`.
+
+## Boundary
+
+This is an interactive decision interview that keeps supporting docs aligned. Use `review-architecture` for an evidence-led architecture audit with findings and fixes.

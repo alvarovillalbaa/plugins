@@ -1,6 +1,6 @@
 slug: productivity
-version: 3.0.0
-mission: Own reporting, research, review, documentation drift, and executive operating workflows.
+version: 3.1.0
+mission: Own reporting, research, review, evidence-led personal growth, meetings, and executive operating workflows.
 platforms:
   - claude
   - codex
@@ -11,7 +11,6 @@ skills:
   - research
   - market-competitor-research
   - diligence-vendor-research
-  - customer-qual-research
   - seo-competitor-gap
   - prospect
   - review
@@ -19,17 +18,18 @@ skills:
   - design-review
   - grill
   - documentation-drift
+  - improve-me
+  - roast-me
+  - my-performance
+  - meetings
 commands:
   - office-hours
   - inbox-triage
-  - research
   - grill-me
-  - content-audit
-  - documentation-drift
 agents:
   - ceo
   - executive-assistant
-  - executive
+  - reviewer
   - deep-research
   - vp-of-operations
 team:

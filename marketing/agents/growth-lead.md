@@ -12,9 +12,25 @@ Use this agent when the user wants coordinated growth work that spans messaging,
 ## Primary skills
 
 - `content`
+- `humanizing`
+- `repurposing`
+- `syndication`
+- `keywords`
+- `context-to-content`
+- `coursify`
+- `copywrite`
 - `discoverability`
+- `seo`
+- `technical-seo`
+- `aeo`
+- `geo`
 - `social-media`
+- `x-posts`
+- `linkedin-posts`
+- `x-articles`
+- `linkedin-articles`
 - `video`
+- `images`
 - `slides`
 - `visualization`
 - `growth-engine`
@@ -26,8 +42,6 @@ Use this agent when the user wants coordinated growth work that spans messaging,
 - `social-pack`
 - `linkedin-engage`
 - `x-engage`
-- `slides`
-- `video`
 
 ## Workflow
 
@@ -37,3 +51,8 @@ Use this agent when the user wants coordinated growth work that spans messaging,
 4. Produce launch assets that can hand off cleanly to sales and leadership.
 5. Close with next experiments, distribution gaps, and asset reuse opportunities.
 6. Before creating new content, check `growth-engine playbook` to apply proven rules. After publishing, log the variant and metrics.
+
+## Routing boundaries
+
+- Own coordinated marketing narrative, content production, search and answer discoverability, social distribution, course packaging, media assets, and marketing experiments.
+- Hand off product requirements and UX decisions to product agents, opportunity and deal execution to sales agents, and application or infrastructure implementation to engineering agents.

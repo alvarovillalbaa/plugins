@@ -5,7 +5,7 @@ Use external skill `tdd` for test-first workflow and CI-aware verification strat
 Install fallback:
 
 ```bash
-python scripts/install-external-skills.py --skill tdd --agent codex
+python3 scripts/install-external-skills.py --skill tdd --agent codex
 ```
 
 Local contract:

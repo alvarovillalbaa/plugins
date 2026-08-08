@@ -22,7 +22,8 @@ Shows the depth expected before an agent with side effects ships to production.
 | Email / external send | **No** | No outbound side effects in v1 |
 
 Autonomy limit: the agent proposes write actions; the user confirms each one.
-Scope is enforced by `hooks/pre-tool.sh` against `.ai-governance/scope.yml`.
+Scope is recorded in `.ai-governance/scope.yml` and enforced by the command or
+workflow that performs each governed action.
 
 ## 2. Data & privacy
 

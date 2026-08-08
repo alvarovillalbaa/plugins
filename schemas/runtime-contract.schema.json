@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/alvarovillalbaa/plugins/schemas/runtime-contract.schema.json",
+  "title": "Clous Agent Component Runtime Contract",
+  "type": "object",
+  "required": ["schema_version", "personalization", "variables", "chaining", "components"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string", "minLength": 1 },
+    "schema_version": { "const": 1 },
+    "personalization": {
+      "type": "object",
+      "required": ["enabled_by_default", "applies_to", "first_use", "project_store", "example_store", "default_variables"],
+      "additionalProperties": false,
+      "properties": {
+        "enabled_by_default": { "type": "boolean" },
+        "applies_to": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["skill", "command", "rule", "agent"] }
+        },
+        "first_use": { "enum": ["prompt-for-relevant-missing-values"] },
+        "project_store": { "$ref": "#/$defs/projectAgentPath" },
+        "example_store": { "$ref": "#/$defs/projectAgentPath" },
+        "default_variables": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "variables": {
+      "type": "object",
+      "required": ["resolution_order", "placeholder_syntax", "definitions"],
+      "additionalProperties": false,
+      "properties": {
+        "resolution_order": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["invocation", "session", "project", "default"] }
+        },
+        "placeholder_syntax": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "definitions": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/variable" }
+        }
+      }
+    },
+    "chaining": {
+      "type": "object",
+      "required": ["identity_format", "depth", "parallelism", "visit_policy", "cycles", "external_dependencies"],
+      "additionalProperties": false,
+      "properties": {
+        "identity_format": { "type": "string" },
+        "depth": { "const": "unbounded" },
+        "parallelism": { "const": "breadth-levels" },
+        "visit_policy": { "const": "once-per-resolution" },
+        "cycles": { "const": "allowed-reported-no-reentry" },
+        "external_dependencies": { "enum": ["resolve-if-installed", "prompt-to-install"] }
+      }
+    },
+    "components": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(plugin|skill|command|rule|agent|external-skill):[a-z0-9][a-z0-9-]*(/[a-z0-9][a-z0-9-]*)?$"
+      },
+      "additionalProperties": { "$ref": "#/$defs/component" }
+    }
+  },
+  "$defs": {
+    "projectAgentPath": {
+      "type": "string",
+      "pattern": "^\\.agents/(?!\\.\\.(?:/|$))(?!.*\\/\\.\\.(?:/|$))[^/].*$"
+    },
+    "variable": {
+      "type": "object",
+      "required": ["scope", "type", "prompt", "required", "sensitive"],
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "enum": ["project", "session", "invocation"] },
+        "type": { "enum": ["string", "boolean", "number", "string-list"] },
+        "prompt": { "type": "string", "minLength": 1 },
+        "required": { "type": "boolean" },
+        "sensitive": { "type": "boolean" },
+        "default": {}
+      }
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "personalization": { "enum": ["inherit", "enabled", "disabled"] },
+        "variables": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

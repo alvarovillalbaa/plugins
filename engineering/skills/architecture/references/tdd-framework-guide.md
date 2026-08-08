@@ -5,7 +5,7 @@ Use external skill `tdd` for framework-specific test examples and mocking rules.
 Install fallback:
 
 ```bash
-python scripts/install-external-skills.py --skill tdd --agent codex
+python3 scripts/install-external-skills.py --skill tdd --agent codex
 ```
 
 Local contract:

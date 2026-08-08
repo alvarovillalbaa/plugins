@@ -5,6 +5,8 @@ argument-hint: "[surface, PRD, screenshot, branch, or flow] [--lens=engineering|
 allowed-tools: [Read, Write, Grep, Glob, Bash, AskUserQuestion, Skill]
 ---
 
+Use skill: **critique** — `skills/critique/SKILL.md`.
+
 Use skills by lens:
 
 - **engineering**: `architecture`, `quality-assurance`, `frontend`, and `code-documentation`
@@ -16,3 +18,7 @@ Use skills by lens:
 3. **Review the surface** - Evaluate user outcome, workflow completeness, edge cases, implementation risk, and design quality.
 4. **Prioritize** - Separate blockers, important issues, and improvements. Tie each issue to evidence.
 5. **Deliver** - Return findings, recommended fixes, verification, and docs/spec updates.
+
+## Boundary
+
+This command reviews an existing product artifact or experience. It does not create roadmap commitments, a new PRD, or implementation unless the user separately requests that work.

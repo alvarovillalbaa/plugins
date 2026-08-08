@@ -7,4 +7,6 @@ description: Draft first-touch outreach for email, LinkedIn, X, and direct respo
 
 Use this skill for the named lane in the current taxonomy. Route to sibling skills when the request crosses ownership boundaries, and preserve local rules over external guidance when they conflict.
 
+Use `scripts/personalize_outreach.py` to merge caller-supplied prospect data into a caller-supplied template. Review the merged copy before any external send.
+
 See [`../../../skills-chaining-map.md`](../../../skills-chaining-map.md) for the complete skills-chaining graph.

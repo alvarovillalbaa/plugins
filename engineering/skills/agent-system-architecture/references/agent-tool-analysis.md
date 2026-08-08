@@ -4,7 +4,7 @@ Systematic analysis of agent tool definitions, registry/composition, schemas, en
 
 Use when: auditing tools, adding or changing tools, debugging tool-call failures, or aligning tool sets with agent profiles.
 
-Companion references: `agent-analysis.md` (agent-level), `architecture-analysis.md` (structural), `tool-description-auditor.md` in `prompt-tool-design`.
+Companion references: `agent-analysis.md` (agent-level), `architecture-analysis.md` (structural), `tool-description-auditor.md` in `prompt-engineering`.
 
 ## Primary surfaces
 

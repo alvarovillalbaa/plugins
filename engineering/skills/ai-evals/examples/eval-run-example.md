@@ -1,77 +1,31 @@
-# Eval Run Example: Intent Classifier (20 cases)
+# Offline Eval Run Example
 
-A worked example of running `scripts/run_evals.py` against a small dataset and
-reading the result. The task under test classifies a support message into one
-of: `billing`, `bug`, `feature`, `other`.
+Use `support-eval-spec.json` with `support-eval-data.jsonl`. The spec composes typed variables with exact, contains, regex, numeric, JSON-valid, all, any, not, weighted, and hard-gate operations. Its manifest includes the governing data-policy fingerprint and the content ID of these exact ordered rows. The second row is a sealed holdout.
 
-## Dataset (excerpt)
-
-`evals/intent.jsonl`:
-
-```jsonl
-{"id": "c1", "input": "I was charged twice this month", "expected": "billing", "match": "exact"}
-{"id": "c2", "input": "the export button does nothing", "expected": "bug", "match": "exact"}
-{"id": "c3", "input": "can you add dark mode?", "expected": "feature", "match": "exact"}
-{"id": "c4", "input": "thanks for the help yesterday", "expected": "other", "match": "exact"}
-```
-
-20 cases total, balanced across the four labels.
-
-## Command
+Run the authoritative evaluation:
 
 ```bash
-python scripts/run_evals.py \
-  --dataset evals/intent.jsonl \
-  --provider anthropic \
-  --model claude-sonnet-4-6 \
-  --out evals/results.json
+python3 scripts/run_evals.py \
+  --spec examples/support-eval-spec.json \
+  --dataset examples/support-eval-data.jsonl \
+  --out /tmp/support-eval-results.json
 ```
 
-## Output
+Expected headline:
 
-```
-Done: 18/20 passed (accuracy=90.0%, precision=0.95, recall=0.90, f1=0.92)
-```
-
-`evals/results.json` summary:
-
-```json
-{
-  "summary": {
-    "total": 20,
-    "passed": 18,
-    "failed": 2,
-    "accuracy": 0.9,
-    "precision": 0.95,
-    "recall": 0.9,
-    "f1": 0.92,
-    "model": "claude-sonnet-4-6"
-  }
-}
+```text
+pass: 2/2 rows passed; errors=0; run_id=<stable content-addressed ID>
 ```
 
-## Failure triage
+The output preserves field decisions inside each row and persists row, dataset, eval-set, and run gates. Running the same inputs again produces the same manifest, run, result, and gate IDs. Changing, reordering, adding, or removing a row without explicitly resealing the spec exits 2 before scoring.
 
-The two failures, pulled from `results.json` `cases`:
-
-| id | input | expected | predicted | note |
-| --- | --- | --- | --- | --- |
-| c12 | "your app crashed and I lost my draft, I want a refund" | bug | billing | genuinely mixed intent; ambiguous label |
-| c17 | "how do I change my plan?" | billing | other | model treated it as a how-to question |
-
-- **c12** is a labeling problem, not a model problem — split into multi-label or
-  pick the primary intent and document the rule.
-- **c17** is a real miss — add a few-shot example clarifying that plan changes
-  are billing, then re-run.
-
-## Regression gate
-
-Wire this into CI so accuracy cannot silently drop:
+Verify optimizer isolation:
 
 ```bash
-python scripts/run_evals.py --dataset evals/intent.jsonl --out evals/results.json
-python -c "import json,sys; acc=json.load(open('evals/results.json'))['summary']['accuracy']; sys.exit(0 if acc>=0.85 else 1)"
+python3 scripts/run_evals.py \
+  --spec examples/support-eval-spec.json \
+  --dataset examples/support-eval-data.jsonl \
+  --mode optimization
 ```
 
-The session-end hook archives `results.json` into `evals/history/` so runs are
-comparable over time.
+The command exits 2 because optimizer-visible input contains a holdout row. Build a separate train/validation-only manifest for candidate generation; do not filter the sealed manifest opportunistically.

@@ -5,7 +5,9 @@ argument-hint: "[file, folder, diff, or repo area]"
 allowed-tools: [Read, Write, Grep, Glob, Bash, AskUserQuestion, Skill]
 ---
 
-Use skills: **quality-assurance** and **prs**.
+Use skill: **simplify** — `skills/simplify/SKILL.md`.
+
+Chain to **quality-assurance** for behavior verification and **prs** only when the scope is a proposed change.
 
 Optional external chain: **deslop** from `references/external-skills.yaml`.
 
@@ -14,3 +16,7 @@ Optional external chain: **deslop** from `references/external-skills.yaml`.
 3. **Remove residue** - Tighten vague names, redundant comments, dead branches, needless wrappers, duplicated logic, and low-signal generated prose.
 4. **Verify narrowly** - Run the smallest relevant checks for the touched surface.
 5. **Report exact changes** - Summarize behavior preservation, cleanup choices, and residual risks.
+
+## Boundary
+
+This command removes maintainability noise without changing behavior. Use `repo-review` to find broader defects and `review-architecture` for structural redesign.

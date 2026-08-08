@@ -18,15 +18,19 @@ Before canonical writes:
 
 If the user targets a subdirectory inside a larger workspace, count from the requested target root first. If the task would cross a higher-level `BRAIN.md`, stop and clarify the intended boundary.
 
-## AFS External Reference
+## AFS Authority
 
-The canonical Agentic File System (AFS) definition lives outside this skill. Prefer the external source over the summaries below to avoid drift:
+The Agentic File System (AFS) is defined **externally** and is deliberately not restated here.
 
-- **Skill**: `use-afs` — install with `python scripts/install-external-skills.py --skill use-afs --agent codex`. When installed, defer to it for the full AFS layout, naming conventions, and responsibility mapping.
+- **Skill**: `use-afs` — install with `python3 scripts/install-external-skills.py --skill use-afs --agent codex`. It is the authoritative and only source for the AFS layout, folder taxonomy, naming conventions, timestamp format, and responsibility mapping.
 - **Reference site**: `afs-livid.vercel.app`
 - **Source repo**: `github.com/alvarovillalbaa/afs`
 
-The adaptation modes below are summaries. When `use-afs` is installed, it is authoritative and wins over these summaries on any conflict.
+Before any AFS-pathed write, read `use-afs`. If it is not installed, **stop and report the install command** rather than inferring or reconstructing the taxonomy from memory or from folders that happen to exist in the target repo.
+
+Local deltas AFS does not define live in [`../../../../references/docs/afs-profile.md`](../../../../references/docs/afs-profile.md).
+
+The adaptation modes below describe *how much* of AFS applies to a given workspace. They do not define what AFS contains.
 
 ## Adaptation Modes
 
@@ -34,14 +38,9 @@ The adaptation modes below are summaries. When `use-afs` is installed, it is aut
 
 ### strict-afs
 
-Use when no meaningful local standard exists. Create or follow the final Agentic File System:
+Use when no meaningful local standard exists. Create or follow the full AFS shell exactly as `use-afs` defines it, including its installation profile for the repo's shape — application repositories place the shell in `docs/`.
 
-- Memory: `logs/`, `lessons/`, `fixes/`, `steers/`, `models/`, `reflections/`
-- Facts (living, type-first): `facts/items/<domain>/`, `facts/episodes/<domain>/`, `facts/triples/<domain>/`
-- Operational: `audits/`, `raw/`, domain folders, `plans/`, `results/`, `specs/`, `sources/`, `lib/`, `objects/`, `templates/`
-- Source of truth: `references/`, `cookbooks/`, `knowledge/`, `runbooks/`, `research/`
-
-Timestamped Memory and operational-history content uses the local date convention from `BRAIN.md`; if unspecified, use `YYYY/MM-DD/`.
+If `BRAIN.md` specifies a local date convention, it wins for timestamped content; otherwise use the AFS convention.
 
 ### partial-afs
 
@@ -61,32 +60,17 @@ Native mode is not permission to skip provenance or boundary checks. It only cha
 
 ## Canonical Knowledge Paths
 
-Default canonical knowledge lives under:
-
-```text
-knowledge/<domain>/<subject>/<topic>/<case>/
-```
+`use-afs` owns the knowledge surface and its internal path shape. What this contract adds:
 
 Omit empty levels. Use the smallest path that stays navigable. Do not create deep empty trees. If a topic is a single page in a folder, use the local naming convention (`README.md`, `index.md`, or `<topic>.md`) from nearby files or `BRAIN.md`.
 
-Non-timestamped source-of-truth directories such as `knowledge/`, `references/`, `cookbooks/`, `runbooks/`, `research/`, `facts/`, and `specs/` are living surfaces. Rewrite them into current truth. Timestamped Memory folders preserve history and evidence.
+Source-of-truth surfaces are living: rewrite them into current truth. Timestamped Memory surfaces preserve history and evidence. `use-afs` decides which is which.
 
 ## Inputs That May Compile Into Knowledge
 
-Compilation is not limited to `raw/`.
+Compilation is not limited to raw source material. Every AFS Memory surface — plus raw intake — is a valid evidence input.
 
-Default evidence inputs:
-
-- `raw/` source material
-- `logs/`
-- `lessons/`
-- `facts/`
-- `fixes/`
-- `steers/`
-- `models/`
-- `reflections/`
-
-Treat these Memory folders as evidence and experience, not as automatically canonical truth. Search `knowledge/` first, then rewrite existing owner pages and append evidence according to the page model.
+Treat Memory surfaces as evidence and experience, not as automatically canonical truth. Search the knowledge surface first, then rewrite existing owner pages and append evidence according to the page model.
 
 Do not read global agent memory outside the repo unless the user explicitly asks or `BRAIN.md` opts in.
 

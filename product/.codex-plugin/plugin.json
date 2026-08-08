@@ -2,5 +2,27 @@
   "name": "product",
   "version": "3.0.0",
   "description": "Product development, product marketing, and product design workflows for Codex.",
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "author": {
+    "name": "Agent Company"
+  },
+  "homepage": "https://github.com/alvarovillalbaa/plugins",
+  "repository": "https://github.com/alvarovillalbaa/plugins",
+  "license": "MIT",
+  "keywords": ["agent-skills", "product", "product-design", "product-marketing", "roadmaps"],
+  "interface": {
+    "displayName": "Product Agent Workflows",
+    "shortDescription": "Product development, design, and marketing workflows.",
+    "longDescription": "Reusable product skills for discovery, product development, product design, positioning, product marketing, and roadmap decisions.",
+    "developerName": "Agent Company",
+    "category": "Product Management",
+    "capabilities": ["Agent skills", "Product discovery", "Product strategy and design"],
+    "websiteURL": "https://github.com/alvarovillalbaa/plugins",
+    "defaultPrompt": [
+      "Turn this problem into a product plan.",
+      "Review this product experience and prioritize improvements.",
+      "Create positioning for this product and audience."
+    ],
+    "brandColor": "#9C5DE5"
+  }
 }

@@ -1,20 +1,49 @@
 ---
 name: si:review
-description: Analyze auto-memory for promotion candidates, stale entries, consolidation opportunities, and conflicts with CLAUDE.md. Produces a prioritized report without modifying any files.
-allowed-tools: [Agent]
+description: Perform a detailed read-only review of one scoped memory store and return evidence-backed correction, consolidation, and promotion candidates.
+argument-hint: "[project root or authorized memory-store path]"
+allowed-tools: [Agent, Read, Glob, Skill]
 ---
 
-Spawn the **memory-analyst** agent (`agents/memory-analyst.md`) to analyze:
+Run a read-only review through the canonical `memory` contract.
 
-- `~/.claude/projects/*/memory/MEMORY.md` and all topic files in the same directory
-- `./CLAUDE.md`, `~/.claude/CLAUDE.md`, and all files in `.claude/rules/`
+Use skill: **memory** — `skills/memory/SKILL.md`.
 
-The agent should produce a structured report with:
-1. Promotion candidates (scored ≥ 6 on durability × impact × scope)
-2. Stale entries (referencing deleted files, outdated versions, or removed patterns)
-3. Consolidation groups (overlapping entries to merge)
-4. Conflicts (memory entries that contradict existing CLAUDE.md rules)
-5. Health metrics (MEMORY.md line count vs. 200-line limit, CLAUDE.md line count)
-6. Top 3 recommended actions
+## Scope first
 
-After the report is delivered, offer to run `/si:promote` on the highest-scoring candidate.
+1. Resolve exactly one project root or memory store from the argument or current
+   workspace. If neither is unambiguous, ask for the scope before reading.
+2. Discover the runtime's store rather than assuming a Claude-specific path.
+3. Include project policy files only inside that resolved root. Read a global
+   user policy or another project only when the user separately authorizes that
+   source for this review.
+4. Never use a wildcard that crosses project, workspace, user, or runtime
+   boundaries.
+
+## Delegate the review
+
+Spawn the **memory-analyst** agent (`agents/memory-analyst.md`) with an explicit
+input packet containing:
+
+- resolved project root and memory-store path;
+- authorized policy files or directories;
+- as-of date and requested time horizon;
+- excluded sources and sensitivity constraints.
+
+The agent should return:
+
+1. promotion candidates with durability, impact, scope, provenance, and
+   freshness;
+2. stale or unverifiable claims with the evidence for that judgment;
+3. consolidation candidates that preserve every source and qualifier;
+4. conflicts showing both claims and their precedence or unresolved status;
+5. store health metrics appropriate to the discovered runtime;
+6. the top three proposed actions.
+
+The report is read-only. Present promotions, corrections, merges, and deletions
+as exact candidates with targets. Offer `/si:promote` only after the user can
+inspect the candidate; do not mutate memory or policy files from this command.
+
+## Boundary
+
+This command performs a detailed candidate-level audit. Use `si:status` for a compact health snapshot and inventory summary.

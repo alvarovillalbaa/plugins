@@ -1,12 +1,12 @@
 ---
 name: code-documentation
-description: This skill should be used when the user asks to write, update, review, scaffold, move, remove, or continuously improve documentation for code, folders, services, repos, workflows, architectural decisions, or operational processes. Trigger for inline docs, `README.md`, `ARC.md`, `SETUP.md`, `RUNBOOK.md`, `CHANGELOG.md`, `SECURITY.md`, `OVERVIEW.md`, `FAQ.md`, `DECISIONS.md`, `DEPENDENCIES.md`, `AGENTS.md`, `PLAN.md`, `SPEC.md`, `SOUL.md`, `PRINCIPLES.md`, `DESIGN.md`, `logs/`, `lessons/`, `facts/`, `fixes/`, `steers/`, `models/`, `reflections/`, `audits/`, `raw/`, `plans/`, `results/`, `specs/`, `sources/`, `lib/`, `objects/`, `templates/`, `references/`, `cookbooks/`, `knowledge/`, `runbooks/`, `research/`, `official-documentation/`, MDX docs, JSDoc/TSDoc, docstrings, ADRs, post-mortems, migration guides, documentation cleanups, and documentation-impact reviews.
+description: Write, update, review, or continuously improve documentation for code, repos, services, and workflows — READMEs, runbooks, changelogs, ADRs, and docstrings.
 version: 2.0.0
 ---
 
 # Code Documentation
 
-Last updated: 2026-06-28
+Last updated: 2026-08-07
 
 Write documentation that stays close to the code, stays coherent over time, and gives humans and agents one clear place to look.
 
@@ -23,34 +23,62 @@ This skill owns the documentation contract, not only doc generation. Use it to:
 
 Use live external skills when they are installed. If one is missing, report the fallback command instead of copying its guidance inline. Local skill rules, repo-specific facts, safety gates, product/channel constraints, and explicit local exceptions win over external guidance when they conflict.
 
-- `unslop`: Remove generic AI-writing tells while preserving meaning and voice. Install: `python scripts/install-external-skills.py --skill unslop --agent codex`.
-- `stop-slop`: Apply stricter prose cleanup for predictable AI writing patterns. Install: `python scripts/install-external-skills.py --skill stop-slop --agent codex`.
-- `writing-great-skills`: Use external skill-authoring quality rules when creating or revising skills. Install: `python scripts/install-external-skills.py --skill writing-great-skills --agent codex`.
-- `teach`: Create mission-grounded learning material, resources, records, and lessons. Install: `python scripts/install-external-skills.py --skill teach --agent codex`.
-- `grilling`: Interview one decision at a time until a plan or design is sharp. Install: `python scripts/install-external-skills.py --skill grilling --agent codex`.
-- `grill-me`: Shortcut into a grilling session for plan or design stress testing. Install: `python scripts/install-external-skills.py --skill grill-me --agent codex`.
-- `grill-with-docs`: Stress-test a plan or design while maintaining docs, ADRs, and glossary context. Install: `python scripts/install-external-skills.py --skill grill-with-docs --agent codex`.
-- `visual-explainer`: Use visual explanation guidance for diagrams, concepts, and teachable visuals. Install: `python scripts/install-external-skills.py --skill visual-explainer --agent codex`.
-- `use-afs`: Use the AFS filesystem layout and naming conventions as the authoritative standard instead of duplicating guidance inline. Prevents drift between this skill and the canonical spec. Sources: [afs-livid.vercel.app](https://afs-livid.vercel.app) and [github.com/alvarovillalbaa/afs](https://github.com/alvarovillalbaa/afs). Install: `python scripts/install-external-skills.py --skill use-afs --agent codex`.
+- `unslop`: Remove generic AI-writing tells while preserving meaning and voice. Install: `python3 scripts/install-external-skills.py --skill unslop --agent codex`.
+- `stop-slop`: Apply stricter prose cleanup for predictable AI writing patterns. Install: `python3 scripts/install-external-skills.py --skill stop-slop --agent codex`.
+- `writing-great-skills`: Use external skill-authoring quality rules when creating or revising skills. Install: `python3 scripts/install-external-skills.py --skill writing-great-skills --agent codex`.
+- `teach`: Create mission-grounded learning material, resources, records, and lessons. Install: `python3 scripts/install-external-skills.py --skill teach --agent codex`.
+- `grilling`: Interview one decision at a time until a plan or design is sharp. Install: `python3 scripts/install-external-skills.py --skill grilling --agent codex`.
+- `grill-me`: Shortcut into a grilling session for plan or design stress testing. Install: `python3 scripts/install-external-skills.py --skill grill-me --agent codex`.
+- `grill-with-docs`: Stress-test a plan or design while maintaining docs, ADRs, and glossary context. Install: `python3 scripts/install-external-skills.py --skill grill-with-docs --agent codex`.
+- `visual-explainer`: Use visual explanation guidance for diagrams, concepts, and teachable visuals. Install: `python3 scripts/install-external-skills.py --skill visual-explainer --agent codex`.
+- `use-afs`: **Required for AFS-pathed work.** The authoritative and only source for AFS filesystem layout and naming conventions. If it is missing, stop AFS-pathed work and report the install command rather than improvising a taxonomy. Sources: [afs-livid.vercel.app](https://afs-livid.vercel.app) and [github.com/alvarovillalbaa/afs](https://github.com/alvarovillalbaa/afs). Install: `python3 scripts/install-external-skills.py --skill use-afs --agent codex`.
 
 Registry: [`../../../references/external-skills.yaml`](../../../references/external-skills.yaml).
 Reference-only sources: [`../../../references/external-sources.yaml`](../../../references/external-sources.yaml).
 
+## AFS authority
+
+This skill does **not** define the AFS layout, folder taxonomy, naming conventions, or timestamp
+format. AFS is an external standard; restating it here caused drift.
+
+Before any AFS-pathed read, write, move, or scaffold, read the installed `use-afs` skill. If it is
+not installed, stop and report:
+
+```bash
+python3 scripts/install-external-skills.py --skill use-afs --agent codex
+```
+
+Do not infer or reconstruct the taxonomy from memory or from folders that happen to exist in the
+target repo.
+
+Local deltas AFS does not define — the in-folder documentation contract, the `Last updated:` rule,
+and this repo's exceptions — live in
+[`../../../references/docs/afs-profile.md`](../../../references/docs/afs-profile.md).
+
+Non-AFS documentation work is not blocked by this gate: inline docs, in-folder docs, and edits to
+files already in known locations proceed normally.
+
 ## Core model
 
-Documentation in this repo falls into seven surfaces:
+Documentation falls into five surfaces:
 
 1. **Inline docs** — docstrings, JSDoc/TSDoc, comments, types
-2. **In-folder docs** — `README.md`, `ARC.md`, and related files that explain one folder
-3. **Root instruction docs** — `AGENTS.md`, `PLAN.md`, `SPEC.md`, `SOUL.md`, `PRINCIPLES.md`, `DESIGN.md`
-4. **Timestamped history** — logs, lessons, facts, fixes, audits, raw material, implementation plans
-5. **Living source-of-truth docs** — specs, references, cookbooks, knowledge, runbooks, research, official docs, source registries, generated libraries
-6. **Domain-specific AFS paths** — `<domain>/<folder>/` only when the repo genuinely needs domain-specific surfaces such as `health/` or `investing/`
-7. **Documentation websites** — Nextra or equivalent sites for projects with external users; generated via the `/docs-site` command after a full project research phase
+2. **In-folder docs** — `README.md`, `ARC.md`, and related files that explain one folder; see the
+   contract in the AFS profile
+3. **Root instruction docs** — the UPPERCASE Markdown files at the repo root; `use-afs` owns the
+   canonical set
+4. **AFS shell docs** — memory, operational, and source-of-truth surfaces; `use-afs` owns the
+   taxonomy and placement. For application repositories the shell lives in `docs/`
+5. **Documentation websites** — Nextra or equivalent sites for projects with external users;
+   generated via the `/docs-site` command after a full project research phase
 
-Default rule: put the doc in the narrowest place that future readers will naturally check first. Use surface 7 only when the project has external users or when in-repo Markdown is insufficient.
+Default rule: put the doc in the narrowest place that future readers will naturally check first. Use
+surface 5 only when the project has external users or when in-repo Markdown is insufficient.
 
 ## Quick routing
+
+Routing to an AFS destination is a `use-afs` question — ask it for the path. This skill routes the
+surfaces it owns:
 
 | Need | Default location |
 |---|---|
@@ -59,188 +87,44 @@ Default rule: put the doc in the narrowest place that future readers will natura
 | Explain internal design or data flow for one folder | `ARC.md` in that folder |
 | Explain setup for one area | `SETUP.md` in that folder |
 | Explain a folder-local workflow | `RUNBOOK.md` in that folder |
-| Record repo-wide customization to the user's needs, codebase, and ways of working | `AGENTS.md` |
-| Record how plans should be made and reviewed | `PLAN.md` |
-| Record how specs should be written and maintained | `SPEC.md` |
-| Record the agents' personality and collaboration stance | `SOUL.md` |
-| Record invariants, constraints, and max/min rules | `PRINCIPLES.md` |
-| Record the design system or frontend interaction language | `DESIGN.md` |
-| Append a terse change note | `logs/YYYY/MM-DD/changes.md` |
-| Record a verified reusable lesson | `lessons/<domain>/YYYY/MM-DD/` |
-| Record a durable item fact about the user, company, or project | `facts/items/<domain>/` |
-| Record a durable episode fact (session-scoped) | `facts/episodes/<domain>/` |
-| Record a durable triple fact (atomic claim) | `facts/triples/<domain>/` |
-| Store work outputs and computed results | `results/YYYY/MM-DD/` |
-| Record a reusable non-obvious fix | `fixes/YYYY/MM-DD/*.md` |
-| Record a trace of agent work that was steered or corrected | `steers/YYYY/MM-DD/*.md` |
-| Record a brief decision, problem, or goal log | `models/YYYY/MM-DD/*.md` |
-| Record a detailed platform-grounded reflection | `reflections/YYYY/MM-DD/*.md` |
-| Record an analytical report, ADR, post-mortem, or audit | `audits/YYYY/MM-DD/` |
-| Store raw material pending ingest | `raw/YYYY/MM-DD/` unless the repo already has a different ingest convention |
-| Record an implementation plan or plan-driven-development artifact | `plans/YYYY/MM-DD/` |
-| Store structured objects (clients, employees, companies) | `objects/<type>/` |
-| Store a reusable template (prompts, emails, documents) | `templates/` |
-| Record a living desired-state behavior contract | `specs/` |
-| Keep monitored URLs and source registries | `sources/` |
-| Keep generated drafts, registries, or reusable library artifacts | `lib/` |
-| Keep stable code, API, or URL references | `references/` |
-| Keep "how we actually do this here" technical recipes | `cookbooks/` |
-| Keep timeless canonical knowledge | `knowledge/` |
-| Keep operational procedures | `runbooks/` |
-| Keep ongoing research | `research/` |
-| Keep copied or vendor official documentation | `official-documentation/` |
-
-## Final AFS
-
-The final Agentic File System is:
-
-> **AFS authority:** When `use-afs` is installed, defer to it for full filesystem naming conventions and layout rules. The summary below is a compact routing reference; the external skill prevents drift from the canonical standard at [afs-livid.vercel.app](https://afs-livid.vercel.app) and [github.com/alvarovillalbaa/afs](https://github.com/alvarovillalbaa/afs).
-
-### Memory
-
-- `logs/` — brief logs, 2 lines max, append to `changes.md` in the latest date directory, about every meaningful code or doc change
-- `lessons/` — lessons learned from experience, organized by domain then date
-- `facts/` — type-first live docs for durable context: `facts/items/<domain>/`, `facts/episodes/<domain>/`, `facts/triples/<domain>/`
-- `fixes/` — reusable error solutions and debugging resolutions
-- `steers/` — traces of agent work that was steered or corrected by a human or secondary LLM; what the agent got wrong or didn't fully get right
-- `models/` — brief logs of every decision made, problem encountered, or goal set
-- `reflections/` — detailed reflections grounded in the platform and recent experience
-
-### Operational
-
-- `audits/` — comprehensive reports and analytical audits
-- `raw/` — raw source material waiting to be ingested and then promoted into `knowledge/` or another canonical destination
-- `<domain>/<folder>/` — additional domain-specific paths only when the domain genuinely needs them
-- `plans/` — implementation plans and plan-driven-development artifacts
-- `results/` — stored work outputs and computed results
-- `specs/` — living specs describing how something should behave
-- `sources/` — URL-based source registries worth monitoring over time
-- `lib/` — generated drafts, registries, support artifacts, or other reusable generated content
-- `objects/<type>/` — structured objects such as clients, employees, or companies (e.g., `objects/clients/`)
-- `templates/` — reusable artifacts such as AI prompts, emails, or document templates
-
-### Source of truth
-
-- `references/` — code, URL, API, schema, and factual references
-- `cookbooks/` — technical guides for how something is actually done in this codebase
-- `knowledge/` — timeless maintained knowledge about the codebase and how to do things
-- `runbooks/` — operational procedures and exact workflows
-- `research/` — continuous research on engineering topics
-- `official-documentation/` — copied external official documentation; not continuously iterated
+| Record repo-wide operating rules, planning protocol, specs protocol, agent stance, invariants, or the design language | The matching root instruction doc — see `use-afs` for which one owns each |
+| Log a change, lesson, fact, fix, steer, decision, reflection, audit, plan, result, or raw source | An AFS memory/operational surface — ask `use-afs` for the path |
+| Keep a living spec, reference, cookbook, knowledge page, runbook, research page, or source registry | An AFS source-of-truth surface — ask `use-afs` for the path |
+| Publish docs for external users | A documentation website (see below) |
 
 ## Timestamped vs living docs
 
-Use one rule only for timestamped material:
+`use-afs` decides which surfaces are timestamped and which are living, and owns the date format.
+What this skill adds is the editorial rule:
 
-- `*/YYYY/MM-DD/*.md`
+- Timestamped docs are historical evidence or work-in-time artifacts.
+- Living docs are the current source of truth.
 
-Default timestamped families:
+Do not keep the same operational guidance as both a living doc and a timestamped doc unless the
+timestamped doc is clearly historical context and the living doc clearly owns the current rule.
 
-- `logs/`
-- `lessons/`
-- `fixes/`
-- `steers/`
-- `models/`
-- `reflections/`
-- `audits/`
-- `raw/`
-- `plans/`
-- `results/`
-
-Default living documentation families:
-
-- `facts/` (type-first: `facts/items/<domain>/`, `facts/episodes/<domain>/`, `facts/triples/<domain>/`)
-- `specs/`
-- `sources/`
-- `lib/`
-- `references/`
-- `cookbooks/`
-- `knowledge/`
-- `runbooks/`
-- `research/`
-- `official-documentation/`
-- root instruction docs
-- in-folder docs
-
-Important distinction:
-
-- timestamped docs are historical evidence or work-in-time artifacts
-- living docs are the current source of truth
-
-Do not keep the same operational guidance as both a live doc and a timestamped doc unless the timestamped doc is clearly historical context and the living doc clearly owns the current rule.
-
-## Last-updated rule
-
-Every living documentation file must include:
-
-```markdown
-Last updated: YYYY-MM-DD
-```
-
-Place it directly under the H1 or immediately after frontmatter. Refresh it whenever the file is touched.
-
-This applies to:
-
-- `AGENTS.md`, `PLAN.md`, `SPEC.md`, `SOUL.md`, `PRINCIPLES.md`, `DESIGN.md`
-- in-folder docs such as `README.md`, `ARC.md`, `SETUP.md`, `RUNBOOK.md`, `SECURITY.md`, `OVERVIEW.md`, `FAQ.md`, `DECISIONS.md`, `DEPENDENCIES.md`
-- living AFS docs in `facts/`, `specs/`, `sources/`, `lib/`, `references/`, `cookbooks/`, `knowledge/`, `runbooks/`, `research/`, and `official-documentation/`
+Every living documentation file carries `Last updated: YYYY-MM-DD` under the H1 or immediately after
+frontmatter, refreshed whenever the file is touched. See the AFS profile for the full rule.
 
 ## In-folder documentation contract
 
-Outside the AFS folders, every meaningful code folder can carry its own documentation.
+Outside the AFS shell, every meaningful code folder can carry its own documentation. The core /
+conditional / rare sets and each file's intent are defined in
+[`../../../references/docs/afs-profile.md`](../../../references/docs/afs-profile.md).
 
-### Core
-
-Always consider these first:
-
-- `README.md`
-- `ARC.md`
-
-### Conditional
-
-Add only when the folder actually needs them:
-
-- `SETUP.md`
-- `RUNBOOK.md`
-- `CHANGELOG.md`
-- `SECURITY.md`
-
-### Rare
-
-Use when the domain justifies them:
-
-- `OVERVIEW.md`
-- `FAQ.md`
-- `DECISIONS.md`
-- `DEPENDENCIES.md`
-
-### File intent
-
-- `README.md` — entry point, purpose, usage, links to neighboring docs
-- `ARC.md` — internals, boundaries, flows, and design decisions
-- `SETUP.md` — non-obvious environment and initialization steps
-- `RUNBOOK.md` — local operational workflow for this folder
-- `CHANGELOG.md` — user-facing or package-facing release history
-- `SECURITY.md` — security boundaries, secrets handling, abuse cases, review expectations
-- `OVERVIEW.md` — concept-first orientation when README would become too dense
-- `FAQ.md` — repeated questions and troubleshooting
-- `DECISIONS.md` — folder-local decisions that do not justify standalone ADRs
-- `DEPENDENCIES.md` — dependency map, contracts, and upgrade notes
-
-Use the smallest set that makes the folder legible.
+Use the smallest set that makes the folder legible. In-folder docs stay beside the code they
+describe — never relocate them into `docs/`.
 
 ## Root instruction docs are documentation
 
-Treat these as first-class documentation, not miscellaneous meta files:
+Treat the root UPPERCASE Markdown files as first-class documentation, not miscellaneous meta files.
+`use-afs` owns which files make up that set and what each is for; read it before creating or
+renaming one.
 
-- `AGENTS.md` — general customization to the user's needs, codebase, and ways of working
-- `PLAN.md` — customize how planning should be done and what plans should look like
-- `SPEC.md` — customize how specs should look and what they must define
-- `SOUL.md` — provide personality to AI agents
-- `PRINCIPLES.md` — customize principles, constraints, and max/min rules that should always hold
-- `DESIGN.md` — define the design system and frontend interaction language
+They stay at the repo root even when the rest of the AFS shell lives in `docs/`.
 
-When the repo's operating model changes, update these the same way you would update a README or runbook.
+When the repo's operating model changes, update these the same way you would update a README or
+runbook.
 
 ## Conflict handling
 
@@ -254,26 +138,26 @@ Before creating or expanding docs:
 
 Examples:
 
-- If a one-off implementation plan became the durable policy, keep the original under `plans/YYYY/MM-DD/` and promote the lasting rule into `PLAN.md`, `SPEC.md`, `runbooks/`, `cookbooks/`, or `knowledge/`.
-- If an old `docs/memories/` or `docs/guides/` tree conflicts with the final AFS, move or remove it instead of preserving two competing systems.
+- If a one-off implementation plan became the durable policy, keep the original where AFS files plans and promote the lasting rule into the root instruction doc or living source-of-truth surface that owns it.
+- If a legacy tree such as `docs/memories/` or `docs/guides/` conflicts with the AFS shell, move or remove it instead of preserving two competing systems.
 
 ## Relationship to other skills
 
-- `skills-management` should use this taxonomy as its documentation contract and treat root instruction docs as first-class mutation targets.
+- `plugins-management` should use this contract for documentation and treat root instruction docs as first-class mutation targets.
 - `agentic-development` should consult this skill before writing plans, specs, runbooks, or promoted learning artifacts.
-- `brain` owns the broader AFS and the `raw/ -> knowledge/` compilation model; this skill owns how documentation is routed inside that filesystem.
+- `brain` owns the raw-to-knowledge compilation model; this skill owns how documentation is routed inside the filesystem.
 - `memory` can shape how memory systems persist and retrieve information, but durable human-readable documentation should still route through this skill's contract.
-- `auto-improve` should continuously improve root instruction docs (`AGENTS.md`, `PLAN.md`, `SPEC.md`, `SOUL.md`, `PRINCIPLES.md`, `DESIGN.md`) as first-class targets in its self-improvement loops, the same way it improves skills and knowledge.
-- `use-afs` is the authoritative source for AFS layout and naming conventions; when installed, defer to it instead of expanding AFS guidance inline here.
+- `auto-improve` should continuously improve the root instruction docs as first-class targets in its self-improvement loops, the same way it improves skills and knowledge.
+- `use-afs` is the authoritative and only source for AFS layout and naming conventions. Never expand AFS guidance inline here.
 - Use the shared [promotion matrix](../../../references/docs/promotion-matrix.md) when deciding whether a signal belongs in memory rules, `facts/`, `lessons/`, `fixes/`, `raw/`, `knowledge/`, generated improvement bundles, or living docs.
 
 ## Workflow
 
 1. Check repo-local rules first: `AGENTS.md`, `CLAUDE.md`, project READMEs, `BRAIN.md`, or existing doc conventions.
-2. Detect whether the repo already has a working AFS or whether legacy paths conflict with it.
-3. Decide the surface: inline doc, folder doc, root instruction doc, timestamped historical doc, or living source-of-truth doc.
+2. Detect the AFS installation profile (shell at root vs in `docs/`) and whether legacy paths conflict with it. If the destination is AFS-pathed and `use-afs` is not installed, stop and report the install command.
+3. Decide the surface: inline doc, folder doc, root instruction doc, or an AFS surface.
 4. Update the closest existing document before creating a new one.
-5. For timestamped destinations, use `*/YYYY/MM-DD/*.md` and normalize directories with `mkdir` if needed.
+5. For AFS destinations, take the path and date format from `use-afs`, then normalize directories with `mkdir` if needed.
 6. For living docs, add or refresh `Last updated: YYYY-MM-DD`.
 7. If durable guidance is buried in a historical note, promote it upstream into the proper living doc.
 8. Move or delete docs that no longer fit the contract.
@@ -365,7 +249,7 @@ Use them only when the repo actually follows that style.
 
 Load only what the task needs:
 
-- `references/documentation-types.md` — AFS taxonomy, root docs, in-folder docs, timestamp/live rules
+- `references/documentation-types.md` — how to pick a documentation surface and what each type is for
 - `references/continuous-docs.md` — logs, lessons, facts, fixes, living-doc maintenance
 - `references/frontend-documentation.md` — component, hook, route, and UX-contract docs
 - `references/one-off-docs.md` — audits, ADRs, post-mortems, migration notes
@@ -374,7 +258,7 @@ Load only what the task needs:
 - `references/nextjs-code-to-docs-mapping.md` — Next.js source-to-doc mapping
 - `references/project-research.md` — systematic codebase research before writing project-level docs
 - `references/docs-site.md` — Nextra scaffolding, page templates, Vercel deployment
-- `references/product-comms-docs.md` — customer-facing changelogs (`docs/changelog/YYYY-MM-DD/`) and change articles (`docs/articles/`) with structure templates, tone, and quality checklist
+- `references/product-comms-docs.md` — customer-facing changelogs and change articles with structure templates, tone, and quality checklist
 
 ## Templates
 

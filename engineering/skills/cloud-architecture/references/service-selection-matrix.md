@@ -65,6 +65,23 @@ Use this reference when deciding between provider-native services. The goal is n
 | Policy guardrails | Organizations, SCPs, Config | Azure Policy, Management Groups | Organization Policy, Security Command Center | Treat org-scope policy changes as high-risk. |
 | Cost management | Cost Explorer, Budgets | Cost Management, Advisor | Billing reports, Recommender | Always tag or label resources for owner and environment. |
 
+## PaaS Alternative (Vercel / Heroku / Railway)
+
+Vercel, Heroku, and Railway are not hyperscalers and don't map row-for-row onto the tables above — they collapse most of the "Compute," "Network and Edge," and "Identity and Secrets" concerns into one managed platform instead of composable services.
+
+| Need | Vercel | Heroku | Railway | Notes |
+| --- | --- | --- | --- | --- |
+| Static site or framework hosting | Native, edge-optimized (esp. Next.js) | Static buildpacks, not the primary use case | Static buildpacks, not the primary use case | Vercel is the strongest default for frontend-framework hosting. |
+| Containerized/general web API | Serverless/Edge Functions only, no long-running compute | Dynos (web/worker), general-purpose | Services, general-purpose, usage-billed | Heroku/Railway fit long-running processes; Vercel doesn't. |
+| Background workers | Not supported natively | Worker dynos | Worker services | Use Heroku or Railway when the workload needs a long-lived worker. |
+| Managed relational DB | Not offered directly (use an external provider) | Heroku Postgres add-on | Railway Postgres plugin | Heroku/Railway provision Postgres as a first-class attached service; Vercel does not. |
+| Cache/broker | Not offered directly | Heroku Redis add-on | Railway Redis plugin | Same pattern as the DB row above. |
+| Preview environments | Automatic, per-PR/branch | Review apps (pipeline-configured) | Per-PR/branch environments (configured) | All three offer this; it's a core reason to prefer PaaS for iteration speed. |
+| Secrets | Env vars per environment (dev/preview/prod) | Config vars (app-scoped) | Variables (per service/environment, with cross-service references) | No dedicated secrets-manager product; treat as the system of record for its own scope only. |
+| CI identity | Git-integration deploy or scoped `VERCEL_TOKEN` | Git-integration deploy or scoped API key | Git-integration deploy or scoped `RAILWAY_TOKEN` | Prefer git-integration auto-deploy over long-lived tokens in CI where available. |
+
+Use this table to decide whether a workload fits a PaaS provider at all before consulting the hyperscaler tables above. See [`../paas-ops/references/paas-selection-guide.md`](../../paas-ops/references/paas-selection-guide.md) for the fuller decision framework and [`../paas-ops/SKILL.md`](../../paas-ops/SKILL.md) for per-provider operational detail.
+
 ## Cost Defaults
 
 - Dev and staging should start single-region, low replica count, and no premium HA unless there is a realistic test requirement.

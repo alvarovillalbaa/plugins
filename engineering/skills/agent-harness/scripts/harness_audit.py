@@ -431,16 +431,16 @@ def score_memory_quality(root: Path, text_files: list[Path]) -> Dimension:
     if has_any(
         root,
         [
-            ".agents/skills/skills-management",
-            ".codex/skills/skills-management",
-            "engineering/skills/skills-management",
-            "system/skills/skills-management",
+            ".agents/skills/plugins-management",
+            ".codex/skills/plugins-management",
+            "engineering/skills/plugins-management",
+            "system/skills/plugins-management",
             "learning",
         ],
     ):
         dim.add(1, "Auto-improvement or learning infrastructure detected.")
     else:
-        dim.gap("No skills-managementment or learning infrastructure detected.")
+        dim.gap("No plugins-managementment or learning infrastructure detected.")
 
     all_repo_text = all_text.lower()
     if re.search(r"doc[- ]gardening|garbage collection|garbage.collection.agent|doc.gardening.agent|architecture drift|stale doc|quality score", all_repo_text):

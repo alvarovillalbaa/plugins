@@ -12,3 +12,7 @@ Use skill: **syndication** — `skills/syndication/SKILL.md`. Optionally use **l
 3. **Generate the pack** – Use `syndication` to create channel-native variants with differentiated hooks and framing.
 4. **Deepen one format if needed** – If the user wants a hero X or LinkedIn long-form asset, route through `x-articles` or `linkedin-articles`.
 5. **Deliver** – Output the per-channel drafts and a suggested publish order.
+
+## Boundary
+
+This command adapts an existing canonical asset across channels. Use `content-brief` to plan the source and `blog-draft` to create a net-new article.

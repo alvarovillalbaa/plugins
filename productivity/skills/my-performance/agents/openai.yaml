@@ -1,0 +1,6 @@
+interface:
+  display_name: "My Performance"
+  short_description: "Evaluate performance against an explicit rubric"
+  default_prompt: "Use $my-performance to evaluate my performance for a stated role and period against an explicit rubric."
+policy:
+  allow_implicit_invocation: false

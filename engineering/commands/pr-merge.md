@@ -5,7 +5,9 @@ argument-hint: "[PR number, branch, or local branch] [--base main]"
 allowed-tools: [Read, Grep, Glob, Bash, AskUserQuestion, Skill]
 ---
 
-Use skills: **prs**, **quality-assurance**, and **code-documentation**.
+Use skill: **release-landing** — `skills/release-landing/SKILL.md`.
+
+Chain to **prs**, **quality-assurance**, and **code-documentation** for review, verification, and release-note evidence.
 
 1. **Resolve target** - Determine the PR number or branch and the base branch. Default base is `main`.
 2. **Check landing gates** - Inspect PR status, review state, diff risk, tests, docs, and local dirty state.

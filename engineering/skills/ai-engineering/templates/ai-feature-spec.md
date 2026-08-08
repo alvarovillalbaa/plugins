@@ -53,7 +53,7 @@ deterministic code? If a rule-based approach would work, say so and stop.>
 ## Rollout
 
 - [ ] Behind a flag
-- [ ] Logged token usage (see hooks/session-end.sh)
+- [ ] Logged token usage through the selected provider or observability path
 - [ ] Eval gate passing
 - [ ] Cost monitored
 

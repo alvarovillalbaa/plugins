@@ -10,8 +10,10 @@ Supports batch mode (up to 10 variants simultaneously).
 
 Usage:
   # Create a new experiment
-  python3 experiment-engine.py create --agent content --hypothesis "Thread posts get 2x impressions vs single posts" \
-    --variable "format" --variants '["thread", "single"]' --metric "impressions" --cycle-hours 8
+  python3 experiment-engine.py create --agent content --channel social \
+    --hypothesis "Thread posts get 2x impressions vs single posts" \
+    --variable "format" --variants '["thread", "single"]' --metric "impressions" \
+    --cycle-hours 8 --min-samples 100
 
   # Log a data point for a running experiment
   python3 experiment-engine.py log --agent content --experiment-id EXP-001 --variant "thread" \
@@ -33,52 +35,67 @@ import argparse, json, os, sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-import numpy as np
-from scipy import stats
-
 # ── Configuration ──────────────────────────────────────────────────────────────
 # Base directory for experiment data. Override with GROWTH_ENGINE_DATA_DIR env var.
 BASE_DIR = Path(os.environ.get("GROWTH_ENGINE_DATA_DIR", "./data/experiments"))
 
-# Define your agent/channel taxonomy. High-volume channels need fewer samples
-# per variant because data arrives faster. Adjust to match your setup.
-HIGH_VOLUME_AGENTS = set(os.environ.get("HIGH_VOLUME_AGENTS", "content,email").split(","))
-LOW_VOLUME_AGENTS = set(os.environ.get("LOW_VOLUME_AGENTS", "seo,linkedin,blog").split(","))
-
 # Batch mode: allow up to this many variants simultaneously (vs simple A/B)
 BATCH_MODE_MAX_VARIANTS = int(os.environ.get("BATCH_MODE_MAX_VARIANTS", "10"))
-
-# Map agent names to their marketing channels. Customize for your org.
-AGENT_CHANNEL = {
-    "content":  "social",
-    "email":    "email",
-    "linkedin": "linkedin",
-    "seo":      "seo",
-    "blog":     "blog",
-}
 
 # Statistical parameters
 BOOTSTRAP_ITERATIONS = int(os.environ.get("BOOTSTRAP_ITERATIONS", "1000"))
 P_WINNER = float(os.environ.get("P_WINNER", "0.05"))    # p-value threshold for declaring a winner
 P_TREND = float(os.environ.get("P_TREND", "0.10"))      # p-value threshold for "trending" status
 LIFT_WIN = float(os.environ.get("LIFT_WIN", "15.0"))     # minimum % lift required for "keep" decision
+TRENDING_MIN_SAMPLES = int(os.environ.get("TRENDING_MIN_SAMPLES", "15"))
 
 
-def get_min_samples(agent: str, override: int | None = None) -> int:
-    """Return minimum samples per variant before scoring.
-    High-volume channels (email, social) need fewer samples (10).
-    Low-volume channels (SEO, blog) need more (30) for reliable signal.
-    Explicit override wins if > 3.
-    """
-    if override is not None and override > 3:
-        return override
-    return 10 if agent in HIGH_VOLUME_AGENTS else 30
+def get_min_samples(value: int) -> int:
+    """Validate the pre-declared, experiment-specific sample threshold."""
+    if value < 2:
+        raise ValueError("--min-samples must be at least 2 per variant")
+    return value
+
+
+def parse_variants(value: str, batch_mode: bool) -> list[str]:
+    """Parse and validate a caller-supplied variant array."""
+    try:
+        variants = json.loads(value)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"--variants must be valid JSON: {exc}") from exc
+    if (
+        not isinstance(variants, list)
+        or len(variants) < 2
+        or any(not isinstance(item, str) or not item.strip() for item in variants)
+    ):
+        raise ValueError("--variants must be a JSON array of at least two non-empty strings")
+    if len(set(variants)) != len(variants):
+        raise ValueError("--variants must not contain duplicates")
+    limit = BATCH_MODE_MAX_VARIANTS if batch_mode else 2
+    if len(variants) > limit:
+        flag = " with --batch-mode" if not batch_mode else ""
+        raise ValueError(f"at most {limit} variants are allowed{flag}")
+    return variants
+
+
+def scientific_modules():
+    """Load optional scoring dependencies only for statistical operations."""
+    try:
+        import numpy as np
+        from scipy import stats
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "scoring requires optional dependencies; run "
+            "`python3 -m pip install -r scripts/requirements.txt`"
+        ) from exc
+    return np, stats
 
 
 def bootstrap_lift_ci(a_vals, b_vals, n_iter=BOOTSTRAP_ITERATIONS, ci=95):
     """Bootstrap confidence interval for lift = (mean(b) - mean(a)) / mean(a) * 100.
     Returns (lower_bound, upper_bound) as percentages, or (None, None) if baseline is zero.
     """
+    np, _ = scientific_modules()
     a = np.array(a_vals, dtype=float)
     b = np.array(b_vals, dtype=float)
     lifts = []
@@ -124,18 +141,14 @@ def cmd_create(args):
     experiments = load_json(d / "experiments.json", [])
 
     exp_id = next_id(args.agent)
-    min_s = get_min_samples(args.agent, args.min_samples if args.min_samples != 3 else None)
-
-    variants = json.loads(args.variants)
     batch_mode = getattr(args, "batch_mode", False)
-    if batch_mode and len(variants) > BATCH_MODE_MAX_VARIANTS:
-        print(f"⚠️  Batch mode capped at {BATCH_MODE_MAX_VARIANTS} variants (got {len(variants)})")
-        variants = variants[:BATCH_MODE_MAX_VARIANTS]
+    min_s = get_min_samples(args.min_samples)
+    variants = parse_variants(args.variants, batch_mode)
 
     experiment = {
         "id": exp_id,
         "agent": args.agent,
-        "channel": AGENT_CHANNEL.get(args.agent, "unknown"),
+        "channel": args.channel or args.agent,
         "hypothesis": args.hypothesis,
         "variable": args.variable,
         "variants": variants,
@@ -175,6 +188,12 @@ def cmd_log(args):
 
     for exp in experiments:
         if exp["id"] == args.experiment_id:
+            if args.variant not in exp.get("variants", []):
+                print(
+                    f"❌ Variant '{args.variant}' is not registered for {args.experiment_id}",
+                    file=sys.stderr,
+                )
+                sys.exit(1)
             dp = {
                 "variant": args.variant,
                 "metrics": json.loads(args.metrics),
@@ -191,6 +210,7 @@ def cmd_log(args):
 
 
 def cmd_score(args):
+    np, stats = scientific_modules()
     d = get_agent_dir(args.agent)
     experiments = load_json(d / "experiments.json", [])
 
@@ -205,26 +225,32 @@ def cmd_score(args):
                 variant_data[v].append(dp["metrics"].get(exp["primary_metric"], 0))
 
             baseline_v = exp["baseline_variant"]
-            min_samples = exp.get("min_samples",
-                                  get_min_samples(exp["agent"]) if "agent" in exp else 15)
+            min_samples = exp.get("min_samples")
+            if not isinstance(min_samples, int) or min_samples < 2:
+                print(
+                    f"❌ {exp['id']}: missing a valid min_samples value; migrate the experiment before scoring",
+                    file=sys.stderr,
+                )
+                sys.exit(1)
 
             # Enforce per-variant sample floor
             insufficient = []
-            for v, data in variant_data.items():
+            for v in exp.get("variants", []):
+                data = variant_data.get(v, [])
                 if len(data) < min_samples:
                     insufficient.append((v, len(data)))
 
             if insufficient:
                 for v, n in insufficient:
                     print(f"⏳ {exp['id']}: Variant '{v}' has {n}/{min_samples} samples. Need more data.")
-                # Check for trending signal even with fewer samples (need at least 15)
+                # Check for a configurable early watch signal; never treat it as a decision.
                 all_counts = {v: len(data) for v, data in variant_data.items()}
                 min_count = min(all_counts.values()) if all_counts else 0
-                if min_count >= 15 and baseline_v in variant_data:
+                if min_count >= TRENDING_MIN_SAMPLES and baseline_v in variant_data:
                     baseline_vals = variant_data[baseline_v]
                     best_trend_v, best_trend_p = None, 1.0
                     for v, vals in variant_data.items():
-                        if v == baseline_v or len(vals) < 15:
+                        if v == baseline_v or len(vals) < TRENDING_MIN_SAMPLES:
                             continue
                         _, p = stats.mannwhitneyu(baseline_vals, vals, alternative="less")
                         if p < P_TREND and p < best_trend_p:
@@ -377,7 +403,7 @@ def cmd_list(args):
                 continue
         dp_count = len(exp.get("data_points", []))
         icon = icons.get(s, "❓")
-        ch = exp.get("channel", AGENT_CHANNEL.get(exp["agent"], "?"))
+        ch = exp.get("channel", exp.get("agent", "?"))
         print(f"{icon} {exp['id']}: {exp['hypothesis']}")
         print(f"   Variable: {exp['variable']} | Channel: {ch} | Status: {s} | Data points: {dp_count}")
         if exp.get("winner"):
@@ -414,29 +440,23 @@ def cmd_suggest(args):
     experiments = load_json(d / "experiments.json", [])
     playbook = load_json(d / "playbook.json", {})
 
-    # Define testable categories per channel. Customize these for your business.
-    categories = {
-        "content": ["hook_style", "post_format", "cta_type", "post_time", "thread_length",
-                     "emoji_usage", "data_vs_narrative", "question_vs_statement"],
-        "email": ["subject_line_style", "opener_type", "email_length", "personalization_depth",
-                   "cta_style", "send_time", "follow_up_timing", "social_proof_type"],
-        "linkedin": ["inmail_opener", "role_framing", "company_pitch", "personalization_level",
-                      "subject_line", "follow_up_cadence"],
-        "blog": ["headline_style", "content_format", "platform_priority", "visual_style",
-                  "posting_time", "content_length"],
-        "seo": ["title_tag_format", "meta_description_style", "content_structure",
-                 "internal_linking", "heading_format"]
-    }
+    try:
+        categories = json.loads(args.categories)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"--categories must be valid JSON: {exc}") from exc
+    if (
+        not isinstance(categories, list)
+        or not categories
+        or any(not isinstance(item, str) or not item.strip() for item in categories)
+    ):
+        raise ValueError("--categories must be a non-empty JSON array of strings")
 
     tested = set(playbook.keys())
     tested.update(e["variable"] for e in experiments if e["status"] in ("running", "active", "trending"))
-    agent_cats = categories.get(args.agent, [])
-    untested = [c for c in agent_cats if c not in tested]
-    min_s = get_min_samples(args.agent)
-    ch = AGENT_CHANNEL.get(args.agent, "?")
+    untested = [category for category in categories if category not in tested]
 
     if untested:
-        print(f"💡 Suggested next experiments for {args.agent} ({ch}, min {min_s} samples/variant):")
+        print(f"💡 Untested categories for {args.agent}:")
         for cat in untested[:3]:
             print(f"   → {cat}")
     else:
@@ -448,14 +468,19 @@ def main():
     sub = parser.add_subparsers(dest="command")
 
     p_create = sub.add_parser("create", help="Create a new experiment")
-    p_create.add_argument("--agent", required=True, help="Agent/channel name (e.g., content, email, seo)")
+    p_create.add_argument("--agent", required=True, help="Experiment owner or lane name")
+    p_create.add_argument("--channel", help="Optional channel label; defaults to --agent")
     p_create.add_argument("--hypothesis", required=True, help="What you're testing and expected outcome")
     p_create.add_argument("--variable", required=True, help="The variable being tested (e.g., hook_style)")
     p_create.add_argument("--variants", required=True, help="JSON array of variant names")
     p_create.add_argument("--metric", required=True, help="Primary metric to optimize (e.g., impressions)")
     p_create.add_argument("--cycle-hours", type=int, default=24, help="Hours per experiment cycle (default: 24)")
-    p_create.add_argument("--min-samples", type=int, default=3,
-                          help="Override min samples/variant (default: auto based on channel volume)")
+    p_create.add_argument(
+        "--min-samples",
+        type=int,
+        required=True,
+        help="Pre-declared minimum observations per variant, based on the experiment design.",
+    )
     p_create.add_argument("--batch-mode", action="store_true",
                           help="Enable batch mode: up to 10 variants simultaneously")
 
@@ -479,14 +504,22 @@ def main():
 
     p_sug = sub.add_parser("suggest", help="Suggest next experiments based on gaps")
     p_sug.add_argument("--agent", required=True)
+    p_sug.add_argument(
+        "--categories",
+        required=True,
+        help='JSON array of evidence-backed test categories, e.g. ["headline","cta"]',
+    )
 
     args = parser.parse_args()
     if not args.command:
         parser.print_help()
         return
 
-    {"create": cmd_create, "log": cmd_log, "score": cmd_score,
-     "list": cmd_list, "playbook": cmd_playbook, "suggest": cmd_suggest}[args.command](args)
+    try:
+        {"create": cmd_create, "log": cmd_log, "score": cmd_score,
+         "list": cmd_list, "playbook": cmd_playbook, "suggest": cmd_suggest}[args.command](args)
+    except (RuntimeError, ValueError) as exc:
+        parser.error(str(exc))
 
 
 if __name__ == "__main__":

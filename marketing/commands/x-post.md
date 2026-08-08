@@ -19,3 +19,7 @@ Reference: `skills/x-posts/references/x-research-workflow.md`
 7. **Deliver** — Output the draft(s) with a one-line rationale for the chosen format and hook angle.
 
 If the user provides a draft to improve rather than create from scratch, analyze it against the writing guidelines and rewrite with specific improvements explained.
+
+## Boundary
+
+This command creates one organic X post or thread. Use `x-engage` for replies and quote posts; use Sales `launch-virality` for a coordinated launch campaign.

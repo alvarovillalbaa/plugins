@@ -17,7 +17,8 @@
 | --- | --- | --- | --- |
 | <capability> | <yes/no> | <why> | <per-action / none> |
 
-> Enforce this table in `.ai-governance/scope.yml` (see hooks/pre-tool.sh).
+> Record this table in `.ai-governance/scope.yml` and enforce it in the command
+> or workflow that performs each governed action.
 
 ## Data & privacy
 

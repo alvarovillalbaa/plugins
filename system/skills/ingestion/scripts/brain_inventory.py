@@ -13,40 +13,14 @@ from pathlib import Path
 from typing import Iterable
 
 
-AFS_MEMORY_DIRS = (
-    "logs",
-    "lessons",
-    "fixes",
-    "steers",
-    "models",
-    "reflections",
-)
-
-AFS_FACTS_DIRS = (
-    "facts/items",
-    "facts/episodes",
-    "facts/triples",
-)
-
-AFS_OPERATIONAL_DIRS = (
-    "audits",
-    "raw",
-    "plans",
-    "results",
-    "specs",
-    "sources",
-    "lib",
-    "objects",
-    "templates",
-)
-
-AFS_TRUTH_DIRS = (
-    "references",
-    "cookbooks",
-    "knowledge",
-    "runbooks",
-    "research",
-)
+# This script deliberately holds NO copy of the AFS taxonomy. AFS is defined
+# externally by the `use-afs` skill; duplicating its folder lists here is what
+# caused them to drift out of sync. Surfaces are discovered from the filesystem
+# instead, so this tool stays correct when the standard changes.
+#
+# The only contracts encoded here are brain-owned, not AFS-owned: the raw status
+# frontmatter contract and the adaptation-mode vocabulary. See
+# ../../brain/references/brain_contract.md
 
 TOOLS = (
     "xurl",
@@ -111,6 +85,13 @@ def detect_brains(root: Path) -> list[Path]:
 
 
 def infer_mode(root: Path, brain_files: list[Path]) -> str:
+    """Read the adaptation mode BRAIN.md declares.
+
+    Modes are brain vocabulary, not AFS vocabulary. When BRAIN.md does not
+    declare one, report `undeclared` rather than guessing: deciding between
+    strict and partial requires knowing the AFS taxonomy, which only `use-afs`
+    is allowed to define.
+    """
     if not brain_files:
         return "missing"
     if len(brain_files) > 1:
@@ -123,10 +104,7 @@ def infer_mode(root: Path, brain_files: list[Path]) -> str:
         return "partial-afs"
     if "strict-afs" in text or "strict afs" in text:
         return "strict-afs"
-
-    known_dirs = set(AFS_MEMORY_DIRS + AFS_OPERATIONAL_DIRS + AFS_TRUTH_DIRS) | {"facts"}
-    existing = {p.name for p in root.iterdir() if p.is_dir()} if root.exists() else set()
-    return "partial-afs" if existing & known_dirs else "strict-afs"
+    return "undeclared"
 
 
 def active_root(root: Path, brain_files: list[Path]) -> Path:
@@ -135,16 +113,57 @@ def active_root(root: Path, brain_files: list[Path]) -> Path:
     return root
 
 
-def folder_map(root: Path) -> dict[str, dict[str, str | bool]]:
-    mapping: dict[str, dict[str, str | bool]] = {}
-    all_dirs = AFS_MEMORY_DIRS + AFS_FACTS_DIRS + AFS_OPERATIONAL_DIRS + AFS_TRUTH_DIRS
-    for name in all_dirs:
-        path = root / name
-        mapping[name] = {
-            "path": str(path),
-            "exists": path.is_dir(),
-        }
-    return mapping
+def detect_shell(root: Path) -> tuple[Path, str]:
+    """Locate the documentation shell and report which installation profile is in use.
+
+    AFS places the shell at the root for empty or sparse folders and inside
+    `docs/` for application repositories. Detect which applies rather than
+    assuming; `use-afs` remains the authority on what belongs inside.
+
+    A populated `docs/` is the application-profile signal. Root-level directories
+    are not a useful counter-signal in an application repo, where most of them
+    hold source code rather than documentation surfaces.
+    """
+    docs = root / "docs"
+    if docs.is_dir() and any(
+        p.is_dir() and p.name not in SKIP_DIRS and not p.name.startswith(".")
+        for p in docs.iterdir()
+    ):
+        return docs, "docs"
+    return root, "root"
+
+
+def discover_surfaces(root: Path, depth: int = 2) -> dict[str, dict[str, object]]:
+    """Inventory the directories that actually exist, without asserting a taxonomy.
+
+    Descends one extra level into directories that contain only subdirectories,
+    so type-first surfaces are reported individually rather than as one bucket.
+    """
+    found: dict[str, dict[str, object]] = {}
+    if not root.is_dir():
+        return found
+
+    def walk(base: Path, prefix: str, level: int) -> None:
+        try:
+            entries = sorted(p for p in base.iterdir() if p.is_dir())
+        except OSError:
+            return
+        for entry in entries:
+            if entry.name in SKIP_DIRS or entry.name.startswith("."):
+                continue
+            name = f"{prefix}{entry.name}"
+            children = [p for p in entry.iterdir() if p.is_dir() and p.name not in SKIP_DIRS]
+            files = sum(1 for p in iter_files(entry) if p.is_file())
+            only_dirs = bool(children) and not any(
+                p.is_file() for p in entry.iterdir() if not p.name.startswith(".")
+            )
+            if only_dirs and level < depth:
+                walk(entry, f"{name}/", level + 1)
+            else:
+                found[name] = {"path": str(entry), "files": files}
+
+    walk(root, "", 1)
+    return found
 
 
 def classify_source(path: Path, fields: dict[str, str]) -> str:
@@ -155,31 +174,35 @@ def classify_source(path: Path, fields: dict[str, str]) -> str:
     return suffix or "no-extension"
 
 
-def raw_inventory(root: Path) -> dict[str, object]:
-    raw_root = root / "raw"
-    result: dict[str, object] = {
-        "path": str(raw_root),
-        "exists": raw_root.is_dir(),
-        "total_files": 0,
-        "by_status": {},
-        "by_source": {},
-        "blocked": [],
-    }
-    if not raw_root.is_dir():
-        return result
+def intake_inventory(root: Path) -> dict[str, object]:
+    """Inventory intake material by the raw status contract, not by folder name.
 
+    Every raw entry carries `status: unprocessed|processed|blocked` frontmatter
+    (see brain_contract.md). Selecting on that contract finds the queue wherever
+    the active brain keeps it, including native layouts that never use the AFS
+    folder name.
+    """
     by_status: Counter[str] = Counter()
     by_source: Counter[str] = Counter()
+    by_dir: Counter[str] = Counter()
     blocked: list[dict[str, str]] = []
     total = 0
 
-    for path in sorted(p for p in iter_files(raw_root) if p.is_file()):
-        total += 1
+    for path in sorted(p for p in iter_files(root) if p.is_file()):
+        if path.suffix.lower() not in {".md", ".markdown", ".txt", ".json"}:
+            continue
         fields = parse_frontmatter(path)
-        status = fields.get("status", "unprocessed").lower() or "unprocessed"
-        source = classify_source(path, fields)
+        status = fields.get("status", "").lower()
+        if status not in {"unprocessed", "processed", "blocked"}:
+            continue
+
+        total += 1
         by_status[status] += 1
-        by_source[source] += 1
+        by_source[classify_source(path, fields)] += 1
+        try:
+            by_dir[str(path.parent.relative_to(root))] += 1
+        except ValueError:
+            by_dir[str(path.parent)] += 1
         if status == "blocked":
             blocked.append(
                 {
@@ -188,23 +211,13 @@ def raw_inventory(root: Path) -> dict[str, object]:
                 }
             )
 
-    result["total_files"] = total
-    result["by_status"] = dict(sorted(by_status.items()))
-    result["by_source"] = dict(sorted(by_source.items()))
-    result["blocked"] = blocked
-    return result
-
-
-def memory_inventory(root: Path) -> dict[str, object]:
-    result: dict[str, object] = {}
-    for name in AFS_MEMORY_DIRS:
-        directory = root / name
-        if not directory.is_dir():
-            result[name] = {"exists": False, "files": 0}
-            continue
-        count = sum(1 for path in iter_files(directory) if path.is_file())
-        result[name] = {"exists": True, "files": count}
-    return result
+    return {
+        "total_files": total,
+        "by_status": dict(sorted(by_status.items())),
+        "by_source": dict(sorted(by_source.items())),
+        "by_directory": dict(sorted(by_dir.items())),
+        "blocked": blocked,
+    }
 
 
 def tool_inventory() -> dict[str, str | None]:
@@ -215,18 +228,23 @@ def build_inventory(root: Path, include_memory: bool) -> dict[str, object]:
     root = root.resolve()
     brain_files = detect_brains(root)
     boundary = active_root(root, brain_files)
+    shell_root, profile = detect_shell(boundary)
     data: dict[str, object] = {
         "target_root": str(root),
         "brain_count": len(brain_files),
         "brain_files": [str(path) for path in brain_files],
         "active_root": str(boundary),
         "mode": infer_mode(boundary, brain_files),
-        "folders": folder_map(boundary),
-        "raw": raw_inventory(boundary),
+        "shell_root": str(shell_root),
+        "install_profile": profile,
+        "surfaces": discover_surfaces(shell_root),
+        "intake": intake_inventory(shell_root),
         "tools": tool_inventory(),
     }
     if include_memory:
-        data["memory"] = memory_inventory(boundary)
+        data["surface_file_counts"] = {
+            name: info["files"] for name, info in data["surfaces"].items()  # type: ignore[index]
+        }
     return data
 
 
@@ -237,25 +255,30 @@ def print_text(data: dict[str, object]) -> None:
         print(f"  - {path}")
     print(f"Active root: {data['active_root']}")
     print(f"Mode: {data['mode']}")
+    print(f"Install profile: {data['install_profile']} (shell: {data['shell_root']})")
 
-    raw = data["raw"]  # type: ignore[assignment]
-    print("\nRaw queue:")
-    print(f"  Path: {raw['path']}")
-    print(f"  Exists: {raw['exists']}")
-    print(f"  Total files: {raw['total_files']}")
-    print(f"  By status: {raw['by_status']}")
-    print(f"  By source: {raw['by_source']}")
-    if raw["blocked"]:
+    surfaces = data["surfaces"]  # type: ignore[assignment]
+    print(f"\nDiscovered surfaces ({len(surfaces)}):")
+    for name, info in surfaces.items():
+        print(f"  {name}: {info['files']} files")
+    print("  (taxonomy validation belongs to use-afs, not this script)")
+
+    intake = data["intake"]  # type: ignore[assignment]
+    print("\nIntake queue (files carrying a raw status contract):")
+    print(f"  Total files: {intake['total_files']}")
+    print(f"  By status: {intake['by_status']}")
+    print(f"  By source: {intake['by_source']}")
+    print(f"  By directory: {intake['by_directory']}")
+    if intake["blocked"]:
         print("  Blocked:")
-        for item in raw["blocked"]:
+        for item in intake["blocked"]:
             reason = item.get("blocked_reason") or "unspecified"
             print(f"    - {item['path']} ({reason})")
 
-    if "memory" in data:
-        print("\nMemory candidates:")
-        memory = data["memory"]  # type: ignore[assignment]
-        for name, item in memory.items():
-            print(f"  {name}: {item['files'] if item['exists'] else 0}")
+    if "surface_file_counts" in data:
+        print("\nMemory candidates (by discovered surface):")
+        for name, count in data["surface_file_counts"].items():  # type: ignore[index]
+            print(f"  {name}: {count}")
 
     print("\nTools:")
     tools = data["tools"]  # type: ignore[assignment]
@@ -270,7 +293,7 @@ def main() -> int:
     parser.add_argument(
         "--include-memory",
         action="store_true",
-        help="include repo-local AFS Memory folder counts",
+        help="include per-surface file counts for discovered surfaces",
     )
     args = parser.parse_args()
 

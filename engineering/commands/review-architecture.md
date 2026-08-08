@@ -14,3 +14,7 @@ Optional external chains: **codebase-design**, **improve-codebase-architecture**
 3. **Review structure** - Check coupling, layering, boundaries, data ownership, failure modes, and testability.
 4. **Stress decisions** - Use focused questions for weak assumptions or missing tradeoffs.
 5. **Report findings** - Lead with architecture risks, affected files, recommended fixes, and verification or doc updates.
+
+## Boundary
+
+This command produces evidence-led architecture findings. Use `grill-with-docs` when the primary need is an interactive decision interview.

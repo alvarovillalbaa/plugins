@@ -2,10 +2,12 @@
 name: ar:run
 description: Run a single iteration of an autoresearch experiment. Reads state, decides one change, commits, evaluates, and keeps or discards.
 argument-hint: "[domain/experiment-name]"
-allowed-tools: [Agent, Read, Bash]
+allowed-tools: [Agent, Read, Bash, Skill]
 ---
 
 Run one iteration of an autoresearch experiment.
+
+Use skill: **loops** — `skills/loops/SKILL.md`.
 
 ## Steps
 
@@ -32,3 +34,7 @@ Run one iteration of an autoresearch experiment.
    - Suggestion for next run
 
 To run autonomously in a loop: `/ar:loop {domain}/{name}`
+
+## Boundary
+
+This command runs exactly one configured experiment iteration; it does not create the experiment or start an unattended loop.

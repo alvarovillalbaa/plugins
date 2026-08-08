@@ -14,7 +14,7 @@ The target file is whichever persistent instruction file the tool reads on every
 |------|------|
 | Claude Code | `CLAUDE.md` (project root or `~/.claude/CLAUDE.md` for user-wide) |
 | Cursor / Windsurf | `AGENTS.md` |
-| Any repo | Whichever of `AGENTS.md`, `CLAUDE.md`, `SOUL.md`, `PRINCIPLES.md` the repo has chosen |
+| Any repo | Whichever of `AGENTS.md`, `CLAUDE.md`, or the other root instruction docs the repo has chosen |
 
 The update writes **only** two sections:
 

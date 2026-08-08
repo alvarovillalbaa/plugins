@@ -1,6 +1,6 @@
 ---
 name: growth
-description: Router for revenue operations, customer growth, retention, and growth experiments.
+description: Route revenue operations while directly owning customer growth, retention, expansion, churn-risk review, lifecycle nudges, and growth experiments.
 ---
 
 # Growth Router
@@ -8,14 +8,13 @@ description: Router for revenue operations, customer growth, retention, and grow
 ## Children
 
 - [`revenue-ops`](../revenue-ops/SKILL.md) - Revenue Ops work.
-- [`customer-growth`](../customer-growth/SKILL.md) - Customer Growth work.
 
 ## Route
 
 | Request | Use |
 | --- | --- |
 | revenue ops requests | [`revenue-ops`](../revenue-ops/SKILL.md) |
-| customer growth requests | [`customer-growth`](../customer-growth/SKILL.md) |
+| Customer growth, retention, expansion, churn risk, lifecycle nudges, or customer-success GTM | Handle directly with this skill using `references/customer-growth-playbook.md` |
 
 ## Chain Rules
 
@@ -24,6 +23,11 @@ Chain to these skills when the task crosses this skill's boundary:
 - `go-to-market`
 - `sales-pipeline`
 - `reporting`
+- `product-marketing`
+- `product-development`
+- `outreach`
+- `prospect`
+- `research`
 
 ## Operating Rules
 

@@ -12,3 +12,7 @@ Use this command workflow directly. Chain to **review** for risk or escalation d
 3. **Draft replies where needed** – Produce concise drafts for the messages that matter.
 4. **Highlight risk and urgency** – Make deadlines, blockers, and escalation cases explicit.
 5. **Deliver** – Output the triage list, reply drafts, and any repeatable inbox rules the user should keep.
+
+## Boundary
+
+This command triages user-supplied or explicitly authorized inbound messages. It drafts replies by default and does not send, archive, label, or open a private inbox without separate authorization.

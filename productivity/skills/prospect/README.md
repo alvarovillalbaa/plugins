@@ -26,7 +26,6 @@ https://github.com/alvarovillalbaa/plugins/tree/main/productivity/skills/prospec
 ## What is bundled
 
 - `examples/`
-- `hooks/`
 - `references/`
 - `scripts/`
 - `templates/`

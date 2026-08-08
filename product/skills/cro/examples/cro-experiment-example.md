@@ -20,7 +20,7 @@ Funnel drop-off concentrates at the form step: 62% reach the form, only 6.5% of 
 
 ## Sizing
 
-Baseline 4.0%, minimum detectable effect +0.8pp (4.0% → 4.8%), power 80%, alpha 5%, two-sided. Required ≈ 9,100 per arm → ~2 weeks at current traffic. (See `scripts/calculate_sample_size.py`.)
+Baseline 4.0%, minimum detectable effect +0.8pp (4.0% → 4.8%), power 80%, alpha 5%, two-sided. Required ≈ 10,318 per arm → ~2.3 weeks at current traffic. (See `../../experiments/scripts/sample_size_calculator.py`.)
 
 ## Result (after 15 days)
 

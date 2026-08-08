@@ -27,7 +27,6 @@ https://github.com/alvarovillalbaa/plugins/tree/main/marketing/skills/social-med
 ## What is bundled
 
 - `examples/`
-- `hooks/`
 - `references/`
 - `scripts/`
 - `templates/`

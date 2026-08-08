@@ -8,13 +8,13 @@ Router skill for AI system architecture, prompt/tool design, context and memory/
 
 | Domain | Child skill |
 |--------|-------------|
-| System prompts, tool schemas, MCP, prompt patterns, constrained generation | [`prompt-tool-design`](../prompt-tool-design/SKILL.md) |
+| System prompts, tool schemas, MCP, prompt patterns, constrained generation | [`prompt-engineering`](../prompt-engineering/SKILL.md) |
 | Agent topology, multi-agent orchestration, handoffs, A2A, lifecycle, RunSteeringService | [`agent-system-architecture`](../agent-system-architecture/SKILL.md) |
-| Context assembly, memory tiers, retrieval, RAG, vector stores, compaction, grounding | [`context-memory-rag`](../context-memory-rag/SKILL.md) |
+| Context assembly, memory tiers, retrieval, RAG, vector stores, compaction, grounding | [`context-engineering`](../context-engineering/SKILL.md) |
 | Eval architecture, traces, AI metrics, score monitoring, regression gates, observability | [`ai-evals-observability`](../ai-evals-observability/SKILL.md) |
 | Agent governance, safety gates, scope isolation, autonomy limits, HITL, prompt-injection | [`ai-governance-safety`](../ai-governance-safety/SKILL.md) |
 | Data pipelines, ML features, fine-tuning datasets, model eval, DataOps | [`data-ml-pipelines`](../data-ml-pipelines/SKILL.md) |
-| Computer vision architectures, detection, segmentation, video inference, model serving | [`computer-vision-systems`](../computer-vision-systems/SKILL.md) |
+| Computer vision architectures, detection, segmentation, video inference, model serving | [`computer-vision`](../computer-vision/SKILL.md) |
 
 ## Install
 

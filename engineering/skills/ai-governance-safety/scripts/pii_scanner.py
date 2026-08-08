@@ -8,7 +8,7 @@ forensic tool — it favors recall and will surface false positives.
 
 Usage:
   pii_scanner.py file1.txt file2.md
-  echo "contact me at a@b.com" | pii_scanner.py -
+  echo "contact me at person@example.com" | pii_scanner.py -
   pii_scanner.py --fail-on-match output/      # exit 1 if any PII found
 """
 

@@ -3,7 +3,7 @@
 **Type:** items | episodes | triples
 **Domain:** [domain, e.g. general, engineering, product, customers]
 **Category:** user | company | customer | infrastructure | business | process
-**Location:** `facts/<type>/<domain>/[slug].md`
+**Location:** the AFS fact surface for this fact's type. Ask `use-afs` for the path.
 
 ## Fact
 

@@ -1,97 +1,20 @@
 ---
 name: ar:setup
-description: Set up a new autoresearch experiment interactively. Creates the .autoresearch/ directory structure with config, program.md, and optionally a starter evaluator.
-argument-hint: "[domain/experiment-name] [--target path] [--eval command] [--metric name] [--direction lower|higher]"
-allowed-tools: [Read, Write, Bash, AskUserQuestion]
+description: Create and validate the configuration for one metric-driven autoresearch experiment.
+argument-hint: "[domain/experiment-name] [--target PATH] [--eval CMD] [--metric NAME] [--direction lower|higher]"
+allowed-tools: [Read, Write, Bash, AskUserQuestion, Skill]
 ---
 
-Set up a new autoresearch experiment.
+Use skill: **loops** — `skills/loops/SKILL.md`.
 
-## If arguments are provided
+1. **Resolve the experiment** — Gather a portable slug, one target, objective, constraints, evaluation command, metric name and direction, time budget, and project- or user-scoped storage choice.
+2. **Validate prerequisites** — Require a version-controlled project for keep/discard behavior, an existing target, and an evaluator that prints the named numeric metric. Do not initialize or commit a repository unless the user explicitly requests it.
+3. **Create state** — Write the experiment under the scope selected by the user. Project scope uses `.autoresearch/<domain>/<name>/`; user scope uses the current runtime's documented user experiment store.
+4. **Write the contract** — Create `program.md` with objective, constraints, strategy, and notes; create `config.cfg` with target, evaluation command, metric, direction, and time budget; initialize `results.tsv` with `commit`, `metric`, `status`, and `description` columns.
+5. **Protect generated output** — Add only experiment result and log patterns to the nearest applicable ignore file. Preserve existing ignore rules.
+6. **Test once** — Run the evaluator, confirm the metric can be parsed, and record the baseline without changing the target.
+7. **Deliver** — Report the experiment path, verified evaluation command, baseline, metric direction, constraints, and the exact `ar:run` or `ar:loop` invocation.
 
-Parse them:
-- `--target` — the file to optimize
-- `--eval` — the command that outputs a metric (must print `metric_name: value` to stdout)
-- `--metric` — the metric name to look for in eval output
-- `--direction` — `lower` or `higher` (is lower or higher better?)
-- `--scope` — `project` (default, stored in repo) or `user` (stored in `~/.autoresearch/`)
+## Boundary
 
-## If arguments are missing
-
-Ask the user:
-1. What domain? (engineering / marketing / content / prompts / custom)
-2. What experiment name? (slug, lowercase, hyphens)
-3. What file to optimize? (the target)
-4. How do we measure success? (the evaluation command)
-5. What is the metric name in the output?
-6. Is lower or higher better?
-
-## What to create
-
-**Project-scoped** (default):
-```
-.autoresearch/
-├── config.yaml
-├── .gitignore                    # ignores results.tsv, *.log
-└── {domain}/{experiment-name}/
-    ├── program.md                # objectives, constraints, strategy
-    ├── config.cfg                # target, eval cmd, metric, direction
-    └── results.tsv               # experiment log (starts with header row)
-```
-
-**config.cfg format:**
-```ini
-target = src/path/to/file.py
-evaluate_cmd = pytest bench.py --tb=no -q
-metric = p50_ms
-metric_direction = lower
-time_budget_minutes = 5
-```
-
-**results.tsv header:**
-```
-commit	metric	status	description
-```
-
-**program.md template:**
-```markdown
-# Experiment: {name}
-
-## Objective
-Improve `{metric}` ({direction} is better) for `{target}`.
-
-## Constraints
-- Do not change the evaluator
-- No new dependencies
-- Keep changes to one variable per experiment
-
-## Strategy
-- Runs 1-5: Low-hanging fruit (obvious improvements)
-- Runs 6-15: Systematic exploration (vary one parameter at a time)
-- Runs 16-30: Structural changes (algorithm swaps)
-- Runs 30+: Radical experiments (different approaches)
-
-## Notes
-[Update after every 10 experiments with what is working and what is not]
-```
-
-**.gitignore additions:**
-```
-.autoresearch/*/results.tsv
-.autoresearch/*/*.log
-```
-
-## Proactive checks before finishing
-
-- **Verify target exists** — if not, `git init && git add . && git commit -m 'initial'` if needed
-- **Test the eval command once** — run it, verify it prints `metric_name: value` to stdout
-- **Confirm metric direction** — ask if unclear
-- **Check git repo** — experiments require git for keep/discard mechanism
-
-## Output
-
-Report:
-1. Experiment created at `.autoresearch/{domain}/{name}/`
-2. Eval command verified: [output sample]
-3. Metric: `{metric}` ({direction} is better)
-4. Ready to run: `/ar:run {domain}/{name}` or `/ar:loop {domain}/{name}`
+This command creates experiment state only. Use `ar:run` for one iteration, `ar:loop` for repeated iterations, and `ar:status` for read-only inspection.

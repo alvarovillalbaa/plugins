@@ -103,14 +103,14 @@ def main(argv: list[str] | None = None) -> int:
         print()
         print("Install missing skills with:")
         for skill_id in missing:
-            command = f"python scripts/install-external-skills.py --skill {skill_id} --agent {args.agent}"
+            command = f"python3 scripts/install-external-skills.py --skill {skill_id} --agent {args.agent}"
             if args.dest:
                 command += f" --dest {args.dest}"
             print(f"  {command}")
 
-        if os.environ.get("AGENT_COMPANY_AUTO_INSTALL_EXTERNAL_SKILLS") == "1":
+        if os.environ.get("PLUGIN_BUNDLE_AUTO_INSTALL_EXTERNAL_SKILLS") == "1":
             print()
-            print("AGENT_COMPANY_AUTO_INSTALL_EXTERNAL_SKILLS=1 set; installing missing skills.")
+            print("PLUGIN_BUNDLE_AUTO_INSTALL_EXTERNAL_SKILLS=1 set; installing missing skills.")
             failures += install_missing(missing, args.agent, args.dest)
 
     if failures:

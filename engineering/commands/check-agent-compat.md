@@ -2,11 +2,13 @@
 name: check-agent-compat
 description: "Run a full repo compatibility pass — scanner score, docs reliability, startup path, and validation efficiency — and produce a P0/P1/P2 finding list before extending agent autonomy."
 argument-hint: "[REPO ROOT]"
-allowed-tools: [Agent, Read, Bash]
+allowed-tools: [Agent, Read, Bash, Skill]
 hide-from-slash-command-tool: "true"
 ---
 
 # Check Agent Compatibility
+
+Use skill: **agent-harness** — `skills/agent-harness/SKILL.md`.
 
 Run the four-phase compatibility scan before extending agent autonomy on a repo or starting a long harness loop. Produces a structured finding list with concrete remediation steps.
 

@@ -1,0 +1,2718 @@
+{
+  "schema_version": 1,
+  "name": "Agent Company Plugins",
+  "description": "Source catalog for portable department plugins, skills, commands, agents, and runtime-neutral rules for Claude, Codex, and Cursor.",
+  "scope": "Version-controlled source assets only. This catalog does not advertise a hosted API, callable agent endpoint, authentication service, or live MCP server.",
+  "repository": "alvarovillalbaa/plugins",
+  "repository_url": "https://github.com/alvarovillalbaa/plugins",
+  "default_branch": "main",
+  "generated_by": "scripts/generate_discovery_catalog.py",
+  "generated_from": [
+    "*/profile.yaml",
+    "*/skills/*/SKILL.md frontmatter",
+    "*/commands/*.md frontmatter",
+    "*/agents/*.md frontmatter",
+    "*/rules/*.md"
+  ],
+  "counts": {
+    "plugins": 7,
+    "skills": 147,
+    "commands": 49,
+    "agents": 26,
+    "rules": 7
+  },
+  "canonical_documents": {
+    "readme": "https://github.com/alvarovillalbaa/plugins/blob/main/README.md",
+    "agent_guidance": "https://github.com/alvarovillalbaa/plugins/blob/main/AGENTS.md",
+    "quick_start": "https://github.com/alvarovillalbaa/plugins/blob/main/QUICK_START.md",
+    "installation": "https://github.com/alvarovillalbaa/plugins/blob/main/references/docs/INSTALLATION.md",
+    "requirement_coverage": "https://github.com/alvarovillalbaa/plugins/blob/main/references/docs/REQUIREMENT-COVERAGE.md",
+    "architecture": "https://github.com/alvarovillalbaa/plugins/blob/main/references/docs/ARCHITECTURE.md",
+    "component_graph": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/component-graph.json",
+    "component_graph_contract": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/references/component-graph.json",
+    "runtime_contract": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/references/runtime-contract.json",
+    "changelog": "https://github.com/alvarovillalbaa/plugins/blob/main/CHANGELOG.md",
+    "license": "https://github.com/alvarovillalbaa/plugins/blob/main/LICENSE",
+    "llms": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/llms.txt",
+    "llms_full": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/llms-full.txt",
+    "catalog": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/catalog.json",
+    "codemeta": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/codemeta.json",
+    "citation": "https://github.com/alvarovillalbaa/plugins/blob/main/CITATION.cff"
+  },
+  "plugins": [
+    {
+      "id": "engineering",
+      "name": "engineering",
+      "version": "3.1.0",
+      "mission": "Own architecture, multi-agent execution, AI evaluation, delivery, quality, documentation, cloud operations, security testing, and technical risk.",
+      "platforms": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "team": [
+        "CTO",
+        "Cloud Architect",
+        "Software Engineer",
+        "Product Manager",
+        "Designer",
+        "AI Engineer"
+      ],
+      "path": "engineering",
+      "url": "https://github.com/alvarovillalbaa/plugins/tree/main/engineering",
+      "profile": {
+        "path": "engineering/profile.yaml",
+        "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/profile.yaml",
+        "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/profile.yaml"
+      },
+      "manifests": {
+        "claude": {
+          "path": "engineering/.claude-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/.claude-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/.claude-plugin/plugin.json"
+        },
+        "codex": {
+          "path": "engineering/.codex-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/.codex-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/.codex-plugin/plugin.json"
+        },
+        "cursor": {
+          "path": "engineering/.cursor-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/.cursor-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/.cursor-plugin/plugin.json"
+        }
+      },
+      "counts": {
+        "skills": 46,
+        "commands": 17,
+        "agents": 7,
+        "rules": 1
+      },
+      "skills": [
+        {
+          "id": "engineering/skill/agentic-development",
+          "name": "agentic-development",
+          "install_name": "agentic-development",
+          "qualified_name": "engineering/agentic-development",
+          "description": "Router for agentic software development, system design, execution loops, release landing, harness improvement, and technical debt work.",
+          "path": "engineering/skills/agentic-development/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/agentic-development/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/agentic-development/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/architecture",
+          "name": "architecture",
+          "install_name": "architecture",
+          "qualified_name": "engineering/architecture",
+          "description": "Use for system architecture, technical design, interface decisions, planning, and architecture tradeoff work. Child of `agentic-development`.",
+          "path": "engineering/skills/architecture/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/architecture/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/architecture/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/multi-agent",
+          "name": "multi-agent",
+          "install_name": "multi-agent",
+          "qualified_name": "engineering/multi-agent",
+          "description": "Route and coordinate multi-agent work across expert councils, adaptive loops, dependency graphs, and persistent goals. Use when several agents or workstreams must collaborate.",
+          "path": "engineering/skills/multi-agent/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/multi-agent/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/multi-agent/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/council",
+          "name": "council",
+          "install_name": "council",
+          "qualified_name": "engineering/council",
+          "description": "Convene a bounded panel of expert personas to independently analyze a decision, critique each other, and produce one ruling with evidence and dissent. For high-uncertainty decisions.",
+          "path": "engineering/skills/council/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/council/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/council/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/agentic-loops",
+          "name": "agentic-loops",
+          "install_name": "agentic-loops",
+          "qualified_name": "engineering/agentic-loops",
+          "description": "Run a bounded inspect-act-verify-adapt loop that picks the next action until acceptance criteria are met or the budget runs out. For implementation, debugging, and investigation.",
+          "path": "engineering/skills/agentic-loops/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/agentic-loops/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/agentic-loops/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/agentic-graphs",
+          "name": "agentic-graphs",
+          "install_name": "agentic-graphs",
+          "qualified_name": "engineering/agentic-graphs",
+          "description": "Decompose complex work into a dynamic dependency graph, schedule ready nodes, coordinate parallel agents, and validate handoffs. For multi-workstream tasks a linear plan can't represent.",
+          "path": "engineering/skills/agentic-graphs/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/agentic-graphs/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/agentic-graphs/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/agentic-goals",
+          "name": "agentic-goals",
+          "install_name": "agentic-goals",
+          "qualified_name": "engineering/agentic-goals",
+          "description": "Define, persist, resume, and pursue an explicit user-authorized goal across turns with success criteria and evidence. Use when the agent must keep pursuing an outcome over time.",
+          "path": "engineering/skills/agentic-goals/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/agentic-goals/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/agentic-goals/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/release-landing",
+          "name": "release-landing",
+          "install_name": "release-landing",
+          "qualified_name": "engineering/release-landing",
+          "description": "Use for engineering release landing, merge hygiene, deployment gates, hotfixes, tags, and rollback posture. Child of `agentic-development`.",
+          "path": "engineering/skills/release-landing/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/release-landing/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/release-landing/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/agent-harness",
+          "name": "agent-harness",
+          "install_name": "agent-harness",
+          "qualified_name": "engineering/agent-harness",
+          "description": "Use for repo agent-readiness, harness loops, instruction files, hooks, scratch space, CI feedback loops, and execution reliability. Child of `agentic-development`.",
+          "path": "engineering/skills/agent-harness/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/agent-harness/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/agent-harness/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/tech-debt",
+          "name": "tech-debt",
+          "install_name": "tech-debt",
+          "qualified_name": "engineering/tech-debt",
+          "description": "Use for technical-debt elimination, refactor plans, dependency cleanup, anti-pattern removal, and schedulable debt cadences. Child of `agentic-development`.",
+          "path": "engineering/skills/tech-debt/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/tech-debt/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/tech-debt/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/ai-engineering",
+          "name": "ai-engineering",
+          "install_name": "ai-engineering",
+          "qualified_name": "engineering/ai-engineering",
+          "description": "Router for AI system architecture, prompt/tool design, context and memory RAG, production AI eval observability, governance/safety, data/ML pipelines, and computer vision systems.",
+          "path": "engineering/skills/ai-engineering/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/ai-engineering/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/ai-engineering/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/agent-system-architecture",
+          "name": "agent-system-architecture",
+          "install_name": "agent-system-architecture",
+          "qualified_name": "engineering/agent-system-architecture",
+          "description": "Use for agent architectures, multi-agent topology, agent lifecycles, handoff patterns, and orchestration contracts. Child of `ai-engineering`.",
+          "path": "engineering/skills/agent-system-architecture/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/agent-system-architecture/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/agent-system-architecture/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/prompt-engineering",
+          "name": "prompt-engineering",
+          "install_name": "prompt-engineering",
+          "qualified_name": "engineering/prompt-engineering",
+          "description": "Use for system prompts, tool schemas, tool descriptions, constrained generation, and prompt/tool reliability. Child of `ai-engineering`.",
+          "path": "engineering/skills/prompt-engineering/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/prompt-engineering/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/prompt-engineering/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/context-engineering",
+          "name": "context-engineering",
+          "install_name": "context-engineering",
+          "qualified_name": "engineering/context-engineering",
+          "description": "Design and debug context assembly, memory tiers, retrieval, RAG, vector stores, compaction, grounding, and citation contracts for AI systems.",
+          "path": "engineering/skills/context-engineering/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/context-engineering/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/context-engineering/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/ai-evals-observability",
+          "name": "ai-evals-observability",
+          "install_name": "ai-evals-observability",
+          "qualified_name": "engineering/ai-evals-observability",
+          "description": "Design and operate production evidence collection for AI systems — traces, telemetry, cost, drift signals, dashboards, and alerts. Feeds evidence to `ai-evals`, not the gate itself.",
+          "path": "engineering/skills/ai-evals-observability/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/ai-evals-observability/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/ai-evals-observability/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/ai-governance-safety",
+          "name": "ai-governance-safety",
+          "install_name": "ai-governance-safety",
+          "qualified_name": "engineering/ai-governance-safety",
+          "description": "Use for agent governance, safety gates, scope isolation, autonomy limits, prompt-injection posture, and side-effect controls. Child of `ai-engineering`.",
+          "path": "engineering/skills/ai-governance-safety/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/ai-governance-safety/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/ai-governance-safety/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/data-ml-pipelines",
+          "name": "data-ml-pipelines",
+          "install_name": "data-ml-pipelines",
+          "qualified_name": "engineering/data-ml-pipelines",
+          "description": "Use for data pipelines, ML feature pipelines, model evaluation, fine-tuning datasets, and DataOps workflows. Child of `ai-engineering`.",
+          "path": "engineering/skills/data-ml-pipelines/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/data-ml-pipelines/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/data-ml-pipelines/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/computer-vision",
+          "name": "computer-vision",
+          "install_name": "computer-vision",
+          "qualified_name": "engineering/computer-vision",
+          "description": "Use for computer vision architectures, detection, segmentation, video inference, model optimization, and production deployment. Child of `ai-engineering`.",
+          "path": "engineering/skills/computer-vision/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/computer-vision/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/computer-vision/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/backend",
+          "name": "backend",
+          "install_name": "backend",
+          "qualified_name": "engineering/backend",
+          "description": "Router for backend API and persistence work.",
+          "path": "engineering/skills/backend/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/backend/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/backend/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/apis",
+          "name": "apis",
+          "install_name": "apis",
+          "qualified_name": "engineering/apis",
+          "description": "Use for API contracts, service boundaries, serializers, request/response shape, jobs, queues, and backend application design. Child of `backend`.",
+          "path": "engineering/skills/apis/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/apis/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/apis/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/databases",
+          "name": "databases",
+          "install_name": "databases",
+          "qualified_name": "engineering/databases",
+          "description": "Use for database schemas, migrations, persistence models, indexing, transactions, normalization, and data-integrity constraints. Child of `backend`.",
+          "path": "engineering/skills/databases/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/databases/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/databases/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/frontend",
+          "name": "frontend",
+          "install_name": "frontend",
+          "qualified_name": "engineering/frontend",
+          "description": "Router for frontend implementation, performance, accessibility, and onboarding flows.",
+          "path": "engineering/skills/frontend/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/frontend/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/frontend/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/performance",
+          "name": "performance",
+          "install_name": "performance",
+          "qualified_name": "engineering/performance",
+          "description": "Use for frontend performance, accessibility, responsiveness, rendering stability, bundle behavior, and Core Web Vitals. Child of `frontend`.",
+          "path": "engineering/skills/performance/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/performance/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/performance/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/accessibility",
+          "name": "accessibility",
+          "install_name": "accessibility",
+          "qualified_name": "engineering/accessibility",
+          "description": "Audit and implement frontend accessibility, semantic structure, keyboard behavior, screen-reader support, and WCAG-oriented fixes.",
+          "path": "engineering/skills/accessibility/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/accessibility/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/accessibility/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/onboarding-flows",
+          "name": "onboarding-flows",
+          "install_name": "onboarding-flows",
+          "qualified_name": "engineering/onboarding-flows",
+          "description": "Use for signup, onboarding, activation, empty states, checklists, tours, verification flows, and activation instrumentation. Child of `frontend`.",
+          "path": "engineering/skills/onboarding-flows/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/onboarding-flows/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/onboarding-flows/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/cloud",
+          "name": "cloud",
+          "install_name": "cloud",
+          "qualified_name": "engineering/cloud",
+          "description": "Router for multi-cloud resources, deployment, incidents, provider operations (AWS, Azure, GCP, Vercel, Heroku, Railway), architecture, and cross-provider migrations.",
+          "path": "engineering/skills/cloud/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/cloud/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/cloud/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/resources",
+          "name": "resources",
+          "install_name": "resources",
+          "qualified_name": "engineering/resources",
+          "description": "Use for cloud inventory, cost optimization, resource sizing, waste cleanup, lifecycle policy, and utilization analysis. Child of `cloud`.",
+          "path": "engineering/skills/resources/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/resources/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/resources/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/cicd",
+          "name": "cicd",
+          "install_name": "cicd",
+          "qualified_name": "engineering/cicd",
+          "description": "Use for cloud deployment strategy, CI/CD wiring, OIDC or managed identity, rollout gates, and deploy automation. Child of `cloud`.",
+          "path": "engineering/skills/cicd/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/cicd/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/cicd/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/cloud-incidents",
+          "name": "cloud-incidents",
+          "install_name": "cloud-incidents",
+          "qualified_name": "engineering/cloud-incidents",
+          "description": "Use for cloud incidents, runtime diagnostics, logs, health checks, cost anomalies, and operational recovery loops. Child of `cloud`.",
+          "path": "engineering/skills/cloud-incidents/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/cloud-incidents/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/cloud-incidents/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/aws-ops",
+          "name": "aws-ops",
+          "install_name": "aws-ops",
+          "qualified_name": "engineering/aws-ops",
+          "description": "Use for AWS-specific operations for Amplify, Lambda, ECS, RDS/Aurora, DynamoDB, IAM, networking, and deployment troubleshooting. Child of `cloud`.",
+          "path": "engineering/skills/aws-ops/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/aws-ops/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/aws-ops/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/azure-ops",
+          "name": "azure-ops",
+          "install_name": "azure-ops",
+          "qualified_name": "engineering/azure-ops",
+          "description": "Use for Azure-specific operations for Container Apps, App Service, Functions, storage, Key Vault, Entra ID, Foundry, and diagnostics. Child of `cloud`.",
+          "path": "engineering/skills/azure-ops/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/azure-ops/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/azure-ops/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/gcp-ops",
+          "name": "gcp-ops",
+          "install_name": "gcp-ops",
+          "qualified_name": "engineering/gcp-ops",
+          "description": "Use for GCP-specific operations for Cloud Run, GKE, Cloud SQL, IAM, Pub/Sub, storage, monitoring, and deployment troubleshooting. Child of `cloud`.",
+          "path": "engineering/skills/gcp-ops/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/gcp-ops/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/gcp-ops/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/paas-ops",
+          "name": "paas-ops",
+          "install_name": "paas-ops",
+          "qualified_name": "engineering/paas-ops",
+          "description": "Use for Vercel, Heroku, and Railway platform operations — deploys, environment/config management, custom domains, previews, add-ons and integrations, logs, and platform-specific CLI workflows. Child skill of `cloud`; route here from the parent router when this lane is the narrowest owner.",
+          "path": "engineering/skills/paas-ops/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/paas-ops/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/paas-ops/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/cloud-architecture",
+          "name": "cloud-architecture",
+          "install_name": "cloud-architecture",
+          "qualified_name": "engineering/cloud-architecture",
+          "description": "Use for provider selection, service selection, cloud architecture design, migration target choices, and approval-aware architecture plans. Child of `cloud`.",
+          "path": "engineering/skills/cloud-architecture/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/cloud-architecture/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/cloud-architecture/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/pentest",
+          "name": "pentest",
+          "install_name": "pentest",
+          "qualified_name": "engineering/pentest",
+          "description": "Route authorized web and API pentests while directly handling cloud and container offensive validation and chaining race testing or reporting to their canonical owners.",
+          "path": "engineering/skills/pentest/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/pentest/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/pentest/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/web-vuln-validation",
+          "name": "web-vuln-validation",
+          "install_name": "web-vuln-validation",
+          "qualified_name": "engineering/web-vuln-validation",
+          "description": "Use for authorized web vulnerability validation, scanner result verification, client-side testing, and browser-exposed attack paths. Child of `pentest`.",
+          "path": "engineering/skills/web-vuln-validation/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/web-vuln-validation/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/web-vuln-validation/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/api-pentest",
+          "name": "api-pentest",
+          "install_name": "api-pentest",
+          "qualified_name": "engineering/api-pentest",
+          "description": "Use for authorized API penetration testing, raw HTTP replay, authorization bypass checks, schema abuse, and endpoint exploit validation. Child of `pentest`.",
+          "path": "engineering/skills/api-pentest/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/api-pentest/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/api-pentest/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/prs",
+          "name": "prs",
+          "install_name": "prs",
+          "qualified_name": "engineering/prs",
+          "description": "Pull request management for teams of any size — PR workflow, review queues, merge policy, branch strategy, review SLAs, CI gating, and merge-conflict handling.",
+          "path": "engineering/skills/prs/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/prs/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/prs/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/quality-assurance",
+          "name": "quality-assurance",
+          "install_name": "quality-assurance",
+          "qualified_name": "engineering/quality-assurance",
+          "description": "Route testing, behavior-preserving simplification, security validation, and authoritative AI evaluation work to the narrowest Engineering child, and own the canonical test-suite contract - the tests folder layout, the five test-data tiers including read-only production access, and the framework-per-test-type mapping.",
+          "path": "engineering/skills/quality-assurance/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/quality-assurance/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/quality-assurance/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/testing",
+          "name": "testing",
+          "install_name": "testing",
+          "qualified_name": "engineering/testing",
+          "description": "Route and execute test strategy, coverage, backend, frontend E2E, flake, and explicitly authorized business-logic or race-condition testing.",
+          "path": "engineering/skills/testing/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/testing/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/testing/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/frontend-e2e",
+          "name": "frontend-e2e",
+          "install_name": "frontend-e2e",
+          "qualified_name": "engineering/frontend-e2e",
+          "description": "Use for browser QA, Playwright/Cypress flows, user-visible state validation, trace capture, and frontend regressions. Child of `testing`.",
+          "path": "engineering/skills/frontend-e2e/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/frontend-e2e/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/frontend-e2e/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/flake",
+          "name": "flake",
+          "install_name": "flake",
+          "qualified_name": "engineering/flake",
+          "description": "Use for CI failures, flaky tests, ordering problems, environment drift, cache issues, and quality gate recovery. Child of `testing`.",
+          "path": "engineering/skills/flake/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/flake/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/flake/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/simplify",
+          "name": "simplify",
+          "install_name": "simplify",
+          "qualified_name": "engineering/simplify",
+          "description": "Reduce duplication, indirection, branching, and unnecessary code in a defined scope while preserving behavior and proving the result.",
+          "path": "engineering/skills/simplify/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/simplify/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/simplify/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/security",
+          "name": "security",
+          "install_name": "security",
+          "qualified_name": "engineering/security",
+          "description": "Use for passive security review, threat modeling, secure-code checks, dependency review, and compliance-oriented findings. Child of `quality-assurance`.",
+          "path": "engineering/skills/security/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/security/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/security/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/ai-evals",
+          "name": "ai-evals",
+          "install_name": "ai-evals",
+          "qualified_name": "engineering/ai-evals",
+          "description": "Design, implement, calibrate, run, compare, and gate provider-neutral evaluations for LLMs, agents, RAG, tools, and prompts, with statistical comparison and release gates.",
+          "path": "engineering/skills/ai-evals/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/ai-evals/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/ai-evals/SKILL.md"
+        },
+        {
+          "id": "engineering/skill/code-documentation",
+          "name": "code-documentation",
+          "install_name": "code-documentation",
+          "qualified_name": "engineering/code-documentation",
+          "description": "Write, update, review, or continuously improve documentation for code, repos, services, and workflows — READMEs, runbooks, changelogs, ADRs, and docstrings.",
+          "path": "engineering/skills/code-documentation/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/skills/code-documentation/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/skills/code-documentation/SKILL.md"
+        }
+      ],
+      "commands": [
+        {
+          "id": "engineering/command/repo-review",
+          "name": "repo-review",
+          "install_name": "repo-review",
+          "qualified_name": "engineering/repo-review",
+          "description": "Review a repository or subsystem's current state and return prioritized quality, maintainability, and operational findings.",
+          "path": "engineering/commands/repo-review.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/repo-review.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/repo-review.md"
+        },
+        {
+          "id": "engineering/command/grill-with-docs",
+          "name": "grill-with-docs",
+          "install_name": "grill-with-docs",
+          "qualified_name": "engineering/grill-with-docs",
+          "description": "Stress-test a technical plan or design while keeping documentation, ADR, glossary, or decision-log context aligned.",
+          "path": "engineering/commands/grill-with-docs.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/grill-with-docs.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/grill-with-docs.md"
+        },
+        {
+          "id": "engineering/command/review-architecture",
+          "name": "review-architecture",
+          "install_name": "review-architecture",
+          "qualified_name": "engineering/review-architecture",
+          "description": "Review architecture, ownership boundaries, and maintainability risks for a repo area, plan, branch, or proposed design.",
+          "path": "engineering/commands/review-architecture.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/review-architecture.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/review-architecture.md"
+        },
+        {
+          "id": "engineering/command/deslop",
+          "name": "deslop",
+          "install_name": "deslop",
+          "qualified_name": "engineering/deslop",
+          "description": "Remove AI-code residue and local maintainability noise without changing product behavior.",
+          "path": "engineering/commands/deslop.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/deslop.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/deslop.md"
+        },
+        {
+          "id": "engineering/command/pr-merge",
+          "name": "pr-merge",
+          "install_name": "pr-merge",
+          "qualified_name": "engineering/pr-merge",
+          "description": "Prepare and perform a local PR landing merge with explicit gates. Does not push by default.",
+          "path": "engineering/commands/pr-merge.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/pr-merge.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/pr-merge.md"
+        },
+        {
+          "id": "engineering/command/retro",
+          "name": "retro",
+          "install_name": "retro",
+          "qualified_name": "engineering/retro",
+          "description": "Analyze recent engineering work, PRs, quality signals, and lessons to produce follow-up actions.",
+          "path": "engineering/commands/retro.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/retro.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/retro.md"
+        },
+        {
+          "id": "engineering/command/docs-pass",
+          "name": "docs-pass",
+          "install_name": "docs-pass",
+          "qualified_name": "engineering/docs-pass",
+          "description": "Update or create the right technical documentation for a code change, service, or workflow using the code-documentation skill.",
+          "path": "engineering/commands/docs-pass.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/docs-pass.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/docs-pass.md"
+        },
+        {
+          "id": "engineering/command/browser-trace",
+          "name": "browser-trace",
+          "install_name": "browser-trace",
+          "qualified_name": "engineering/browser-trace",
+          "description": "Capture browser observability for one URL and return searchable network, DOM, screenshot, and console evidence.",
+          "path": "engineering/commands/browser-trace.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/browser-trace.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/browser-trace.md"
+        },
+        {
+          "id": "engineering/command/cancel-dev-loop",
+          "name": "cancel-dev-loop",
+          "install_name": "cancel-dev-loop",
+          "qualified_name": "engineering/cancel-dev-loop",
+          "description": "Cancel an active agentic development loop by removing its state file.",
+          "path": "engineering/commands/cancel-dev-loop.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/cancel-dev-loop.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/cancel-dev-loop.md"
+        },
+        {
+          "id": "engineering/command/check-agent-compat",
+          "name": "check-agent-compat",
+          "install_name": "check-agent-compat",
+          "qualified_name": "engineering/check-agent-compat",
+          "description": "Run a full repo compatibility pass — scanner score, docs reliability, startup path, and validation efficiency — and produce a P0/P1/P2 finding list before extending agent autonomy.",
+          "path": "engineering/commands/check-agent-compat.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/check-agent-compat.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/check-agent-compat.md"
+        },
+        {
+          "id": "engineering/command/dev-loop",
+          "name": "dev-loop",
+          "install_name": "dev-loop",
+          "qualified_name": "engineering/dev-loop",
+          "description": "Start an agentic development loop in the current session — re-injects your task prompt each iteration until the completion promise is output or max iterations is reached.",
+          "path": "engineering/commands/dev-loop.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/dev-loop.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/dev-loop.md"
+        },
+        {
+          "id": "engineering/command/docs-site",
+          "name": "docs-site",
+          "install_name": "docs-site",
+          "qualified_name": "engineering/docs-site",
+          "description": "Research a software project and build a complete documentation website using the project's existing stack or a justified portable default.",
+          "path": "engineering/commands/docs-site.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/docs-site.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/docs-site.md"
+        },
+        {
+          "id": "engineering/command/fix-ci",
+          "name": "fix-ci",
+          "install_name": "fix-ci",
+          "qualified_name": "engineering/fix-ci",
+          "description": "Diagnose failing continuous-integration checks, apply targeted local fixes, and verify the affected checks without assuming a hosting provider.",
+          "path": "engineering/commands/fix-ci.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/fix-ci.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/fix-ci.md"
+        },
+        {
+          "id": "engineering/command/harness-loop",
+          "name": "harness-loop",
+          "install_name": "harness-loop",
+          "qualified_name": "engineering/harness-loop",
+          "description": "Run a harness engineering improvement loop — audits the repo each iteration, picks the highest-priority finding, enforces it as a CI gate or structural test, and stops when no P0 or P1 findings remain.",
+          "path": "engineering/commands/harness-loop.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/harness-loop.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/harness-loop.md"
+        },
+        {
+          "id": "engineering/command/orchestrate",
+          "name": "orchestrate",
+          "install_name": "orchestrate",
+          "qualified_name": "engineering/orchestrate",
+          "description": "Decompose a large goal into bounded agent workstreams, coordinate dependencies, and verify the integrated result with one controller.",
+          "path": "engineering/commands/orchestrate.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/orchestrate.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/orchestrate.md"
+        },
+        {
+          "id": "engineering/command/review-pr",
+          "name": "review-pr",
+          "install_name": "review-pr",
+          "qualified_name": "engineering/review-pr",
+          "description": "Run a comprehensive multi-lens PR review. Covers code quality, silent failures, test coverage, and comment accuracy. Defaults to the current git diff; accepts a branch, PR number, or file list.",
+          "path": "engineering/commands/review-pr.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/review-pr.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/review-pr.md"
+        },
+        {
+          "id": "engineering/command/triage-prs",
+          "name": "triage-prs",
+          "install_name": "triage-prs",
+          "qualified_name": "engineering/triage-prs",
+          "description": "Intent-first PR triage. Processes a list of PRs, issues, or a whole queue. Recovers plain-language intent, judges whether the implementation solves the real problem, and routes each item to close, escalate, or continue. Follows the triage protocol from prs.",
+          "path": "engineering/commands/triage-prs.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/commands/triage-prs.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/commands/triage-prs.md"
+        }
+      ],
+      "agents": [
+        {
+          "id": "engineering/agent/principal-engineer",
+          "name": "principal-engineer",
+          "install_name": "principal-engineer",
+          "qualified_name": "engineering/principal-engineer",
+          "description": "Leads architecture, implementation strategy, code quality, and technical delivery across the engineering surface.",
+          "path": "engineering/agents/principal-engineer.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/principal-engineer.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/agents/principal-engineer.md"
+        },
+        {
+          "id": "engineering/agent/cto",
+          "name": "cto",
+          "install_name": "cto",
+          "qualified_name": "engineering/cto",
+          "description": "Owns technical strategy, architecture direction, staffing shape, delivery risk, and engineering investment tradeoffs.",
+          "path": "engineering/agents/cto.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/cto.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/agents/cto.md"
+        },
+        {
+          "id": "engineering/agent/cloud-architect",
+          "name": "cloud-architect",
+          "install_name": "cloud-architect",
+          "qualified_name": "engineering/cloud-architect",
+          "description": "Designs and reviews cloud architecture, deployment, cost, security, and reliability plans.",
+          "path": "engineering/agents/cloud-architect.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/cloud-architect.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/agents/cloud-architect.md"
+        },
+        {
+          "id": "engineering/agent/software-engineer",
+          "name": "software-engineer",
+          "install_name": "software-engineer",
+          "qualified_name": "engineering/software-engineer",
+          "description": "Implements scoped product or platform changes using existing repo patterns and focused verification.",
+          "path": "engineering/agents/software-engineer.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/software-engineer.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/agents/software-engineer.md"
+        },
+        {
+          "id": "engineering/agent/ai-engineer",
+          "name": "ai-engineer",
+          "install_name": "ai-engineer",
+          "qualified_name": "engineering/ai-engineer",
+          "description": "Builds and reviews AI systems, evals, prompt/tool design, RAG, context, and safety-aware model workflows.",
+          "path": "engineering/agents/ai-engineer.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/ai-engineer.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/agents/ai-engineer.md"
+        },
+        {
+          "id": "engineering/agent/pr-reviewer",
+          "name": "pr-reviewer",
+          "install_name": "pr-reviewer",
+          "qualified_name": "engineering/pr-reviewer",
+          "description": "Runs a comprehensive multi-lens PR review. Use when the user wants a thorough pre-merge review covering code quality, silent failures, test coverage, and comment accuracy. By default reviews the current git diff; can be scoped to specific files, a PR number, or a branch. Returns findings grouped by severity with file:line references and concrete fix suggestions. Should be invoked proactively before creating a PR or after completing a significant feature.",
+          "path": "engineering/agents/pr-reviewer.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/pr-reviewer.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/agents/pr-reviewer.md"
+        },
+        {
+          "id": "engineering/agent/pr-triage",
+          "name": "pr-triage",
+          "install_name": "pr-triage",
+          "qualified_name": "engineering/pr-triage",
+          "description": "Intent-first PR triage agent. Processes a list of PRs, issues, or issue descriptions by recovering the plain-language intent behind each, judging whether the implementation actually solves the underlying problem, and routing each item to: close, escalate to a human (needs judgment / ready for landing), or continue autonomously through validation, review, and CI. Use when managing a PR queue, doing a queue health pass, or deciding which PRs should keep moving. Handles each item independently.",
+          "path": "engineering/agents/pr-triage.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/agents/pr-triage.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/agents/pr-triage.md"
+        }
+      ],
+      "rules": [
+        {
+          "id": "engineering/rule/defaults",
+          "name": "defaults",
+          "install_name": "defaults",
+          "qualified_name": "engineering/defaults",
+          "description": "Runtime-neutral policy for the engineering plugin. These rules apply to every engineering skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible implementation detail but may not relax the authorization gates or contradict the ownership boundaries below.",
+          "path": "engineering/rules/defaults.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/engineering/rules/defaults.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/engineering/rules/defaults.md"
+        }
+      ]
+    },
+    {
+      "id": "finances",
+      "name": "finances",
+      "version": "3.0.0",
+      "mission": "Run finance operations, reconciliation, planning, taxes, fundraising, fiscal close, and analysis.",
+      "platforms": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "team": [
+        "CEO",
+        "CFO",
+        "Financial Analyst",
+        "Accountant"
+      ],
+      "path": "finances",
+      "url": "https://github.com/alvarovillalbaa/plugins/tree/main/finances",
+      "profile": {
+        "path": "finances/profile.yaml",
+        "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/profile.yaml",
+        "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/profile.yaml"
+      },
+      "manifests": {
+        "claude": {
+          "path": "finances/.claude-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/.claude-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/.claude-plugin/plugin.json"
+        },
+        "codex": {
+          "path": "finances/.codex-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/.codex-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/.codex-plugin/plugin.json"
+        },
+        "cursor": {
+          "path": "finances/.cursor-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/.cursor-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/.cursor-plugin/plugin.json"
+        }
+      },
+      "counts": {
+        "skills": 10,
+        "commands": 5,
+        "agents": 3,
+        "rules": 1
+      },
+      "skills": [
+        {
+          "id": "finances/skill/finances",
+          "name": "finances",
+          "install_name": "finances",
+          "qualified_name": "finances/finances",
+          "description": "Router for finance operations, planning, taxes, fundraising, fiscal close, and analysis.",
+          "path": "finances/skills/finances/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/finances/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/skills/finances/SKILL.md"
+        },
+        {
+          "id": "finances/skill/expenses",
+          "name": "expenses",
+          "install_name": "expenses",
+          "qualified_name": "finances/expenses",
+          "description": "Use for expense operations, bill monitoring, receipt intake, categorization, recurring bill calendars, and spend alerts. Child of `finances`.",
+          "path": "finances/skills/expenses/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/expenses/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/skills/expenses/SKILL.md"
+        },
+        {
+          "id": "finances/skill/reconciliation",
+          "name": "reconciliation",
+          "install_name": "reconciliation",
+          "qualified_name": "finances/reconciliation",
+          "description": "Use for bank reconciliation, GL/subledger tie-outs, receipt matching, variance explanation, and evidence tracking. Child of `finances`.",
+          "path": "finances/skills/reconciliation/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/reconciliation/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/skills/reconciliation/SKILL.md"
+        },
+        {
+          "id": "finances/skill/planning",
+          "name": "planning",
+          "install_name": "planning",
+          "qualified_name": "finances/planning",
+          "description": "Use for financial planning, CFO briefings, burn/runway, scenario models, budgets, forecasts, and board-ready finance narratives. Child of `finances`.",
+          "path": "finances/skills/planning/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/planning/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/skills/planning/SKILL.md"
+        },
+        {
+          "id": "finances/skill/taxes",
+          "name": "taxes",
+          "install_name": "taxes",
+          "qualified_name": "finances/taxes",
+          "description": "Use for tax document readiness, evidence packaging, tax-year checklists, entity scoping, and filing-prep organization. Child of `finances`.",
+          "path": "finances/skills/taxes/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/taxes/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/skills/taxes/SKILL.md"
+        },
+        {
+          "id": "finances/skill/fundraising",
+          "name": "fundraising",
+          "install_name": "fundraising",
+          "qualified_name": "finances/fundraising",
+          "description": "Use for fundraising finance support, diligence materials, investor data rooms, process diagnostics, and finance-backed investor answers. Child of `finances`.",
+          "path": "finances/skills/fundraising/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/fundraising/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/skills/fundraising/SKILL.md"
+        },
+        {
+          "id": "finances/skill/fiscal-close",
+          "name": "fiscal-close",
+          "install_name": "fiscal-close",
+          "qualified_name": "finances/fiscal-close",
+          "description": "Use for month-end close calendars, owners, blockers, dependencies, close dashboards, T+ cadences, and accelerated close work. Child of `finances`.",
+          "path": "finances/skills/fiscal-close/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/fiscal-close/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/skills/fiscal-close/SKILL.md"
+        },
+        {
+          "id": "finances/skill/quantitative",
+          "name": "quantitative",
+          "install_name": "quantitative",
+          "qualified_name": "finances/quantitative",
+          "description": "Use for quantitative finance analysis, modeling, portfolio metrics, statistical analysis, and structured numerical decision support. Child of `finances`.",
+          "path": "finances/skills/quantitative/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/quantitative/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/skills/quantitative/SKILL.md"
+        },
+        {
+          "id": "finances/skill/fundamentals",
+          "name": "fundamentals",
+          "install_name": "fundamentals",
+          "qualified_name": "finances/fundamentals",
+          "description": "Use for fundamental company analysis, financial statement review, unit economics, valuation inputs, and business quality assessment. Child of `finances`.",
+          "path": "finances/skills/fundamentals/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/fundamentals/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/skills/fundamentals/SKILL.md"
+        },
+        {
+          "id": "finances/skill/macro",
+          "name": "macro",
+          "install_name": "macro",
+          "qualified_name": "finances/macro",
+          "description": "Use for macro analysis, market regime review, rates/inflation/currency context, sector-level implications, and scenario framing. Child of `finances`.",
+          "path": "finances/skills/macro/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/skills/macro/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/skills/macro/SKILL.md"
+        }
+      ],
+      "commands": [
+        {
+          "id": "finances/command/reconcile-books",
+          "name": "reconcile-books",
+          "install_name": "reconcile-books",
+          "qualified_name": "finances/reconcile-books",
+          "description": "Reconcile bank statements, receipts, and ledger rows into auditable outputs using the finances skill.",
+          "path": "finances/commands/reconcile-books.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/commands/reconcile-books.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/commands/reconcile-books.md"
+        },
+        {
+          "id": "finances/command/model-scenarios",
+          "name": "model-scenarios",
+          "install_name": "model-scenarios",
+          "qualified_name": "finances/model-scenarios",
+          "description": "Build, review, or extend a financial model and produce scenario outputs using the finances skill.",
+          "path": "finances/commands/model-scenarios.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/commands/model-scenarios.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/commands/model-scenarios.md"
+        },
+        {
+          "id": "finances/command/investor-messaging",
+          "name": "investor-messaging",
+          "install_name": "investor-messaging",
+          "qualified_name": "finances/investor-messaging",
+          "description": "Generate the investor narrative, tailored hooks, and FAQ rebuttals from fundraising materials using the fundraising skill.",
+          "path": "finances/commands/investor-messaging.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/commands/investor-messaging.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/commands/investor-messaging.md"
+        },
+        {
+          "id": "finances/command/materials-audit",
+          "name": "materials-audit",
+          "install_name": "materials-audit",
+          "qualified_name": "finances/materials-audit",
+          "description": "Audit fundraising materials and produce a prioritized fix list using the fundraising skill.",
+          "path": "finances/commands/materials-audit.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/commands/materials-audit.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/commands/materials-audit.md"
+        },
+        {
+          "id": "finances/command/pipeline-diagnostics",
+          "name": "pipeline-diagnostics",
+          "install_name": "pipeline-diagnostics",
+          "qualified_name": "finances/pipeline-diagnostics",
+          "description": "Analyze fundraising pipeline health and produce a speed-up plan using the fundraising skill.",
+          "path": "finances/commands/pipeline-diagnostics.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/commands/pipeline-diagnostics.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/commands/pipeline-diagnostics.md"
+        }
+      ],
+      "agents": [
+        {
+          "id": "finances/agent/financial-analyst",
+          "name": "financial-analyst",
+          "install_name": "financial-analyst",
+          "qualified_name": "finances/financial-analyst",
+          "description": "Produces ratio analysis, budgeting, forecasting, scenario modeling, and investor-grade financial synthesis.",
+          "path": "finances/agents/financial-analyst.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/agents/financial-analyst.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/agents/financial-analyst.md"
+        },
+        {
+          "id": "finances/agent/cfo",
+          "name": "cfo",
+          "install_name": "cfo",
+          "qualified_name": "finances/cfo",
+          "description": "Owns finance strategy, fundraising readiness, planning, controls, close quality, and financial tradeoffs.",
+          "path": "finances/agents/cfo.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/agents/cfo.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/agents/cfo.md"
+        },
+        {
+          "id": "finances/agent/accountant",
+          "name": "accountant",
+          "install_name": "accountant",
+          "qualified_name": "finances/accountant",
+          "description": "Handles reconciliation, close support, evidence tracking, journal-entry queues, and accounting controls.",
+          "path": "finances/agents/accountant.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/agents/accountant.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/agents/accountant.md"
+        }
+      ],
+      "rules": [
+        {
+          "id": "finances/rule/defaults",
+          "name": "defaults",
+          "install_name": "defaults",
+          "qualified_name": "finances/defaults",
+          "description": "Runtime-neutral policy for the Finances plugin. These rules apply to every finance skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible implementation detail but may not relax the authorization gates or contradict the ownership boundaries below.",
+          "path": "finances/rules/defaults.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/finances/rules/defaults.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/finances/rules/defaults.md"
+        }
+      ]
+    },
+    {
+      "id": "marketing",
+      "name": "marketing",
+      "version": "3.1.0",
+      "mission": "Create, teach, adapt, distribute, and visualize growth content across courses, SEO, AEO, GEO, LLM discovery, social, slides, images, and video.",
+      "platforms": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "team": [
+        "Growth Lead",
+        "Product Manager",
+        "Designer",
+        "GTM Engineers"
+      ],
+      "path": "marketing",
+      "url": "https://github.com/alvarovillalbaa/plugins/tree/main/marketing",
+      "profile": {
+        "path": "marketing/profile.yaml",
+        "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/profile.yaml",
+        "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/profile.yaml"
+      },
+      "manifests": {
+        "claude": {
+          "path": "marketing/.claude-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/.claude-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/.claude-plugin/plugin.json"
+        },
+        "codex": {
+          "path": "marketing/.codex-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/.codex-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/.codex-plugin/plugin.json"
+        },
+        "cursor": {
+          "path": "marketing/.cursor-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/.cursor-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/.cursor-plugin/plugin.json"
+        }
+      },
+      "counts": {
+        "skills": 23,
+        "commands": 6,
+        "agents": 1,
+        "rules": 1
+      },
+      "skills": [
+        {
+          "id": "marketing/skill/content",
+          "name": "content",
+          "install_name": "content",
+          "qualified_name": "marketing/content",
+          "description": "Router for content creation, course design, adaptation, syndication, keyword work, and copy refinement.",
+          "path": "marketing/skills/content/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/content/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/content/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/humanizing",
+          "name": "humanizing",
+          "install_name": "humanizing",
+          "qualified_name": "marketing/humanizing",
+          "description": "Use for rewriting AI-like or stiff prose into human, specific, voice-aligned writing while preserving meaning. Child of `content`.",
+          "path": "marketing/skills/humanizing/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/humanizing/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/humanizing/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/repurposing",
+          "name": "repurposing",
+          "install_name": "repurposing",
+          "qualified_name": "marketing/repurposing",
+          "description": "Use for turning one source asset into channel-specific posts, newsletters, articles, and distribution packs. Child of `content`.",
+          "path": "marketing/skills/repurposing/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/repurposing/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/repurposing/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/syndication",
+          "name": "syndication",
+          "install_name": "syndication",
+          "qualified_name": "marketing/syndication",
+          "description": "Adapt finished content for channel-specific distribution, reposting, newsletter, social, and campaign syndication.",
+          "path": "marketing/skills/syndication/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/syndication/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/syndication/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/keywords",
+          "name": "keywords",
+          "install_name": "keywords",
+          "qualified_name": "marketing/keywords",
+          "description": "Use for keyword discovery, search intent mapping, opportunity scoring, topic clusters, and content calendar inputs. Child of `content`.",
+          "path": "marketing/skills/keywords/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/keywords/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/keywords/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/context-to-content",
+          "name": "context-to-content",
+          "install_name": "context-to-content",
+          "qualified_name": "marketing/context-to-content",
+          "description": "Use for turning support tickets, customer questions, sales objections, and internal FAQs into content briefs and help articles. Child of `content`.",
+          "path": "marketing/skills/context-to-content/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/context-to-content/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/context-to-content/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/coursify",
+          "name": "coursify",
+          "install_name": "coursify",
+          "qualified_name": "marketing/coursify",
+          "description": "Turn source material or an idea into a teachable course with learning outcomes, curriculum, lessons, exercises, and a production plan. Chains to slides, video, or image skills as needed.",
+          "path": "marketing/skills/coursify/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/coursify/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/coursify/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/copywrite",
+          "name": "copywrite",
+          "install_name": "copywrite",
+          "qualified_name": "marketing/copywrite",
+          "description": "Use for editorial and general-purpose copywrite that is not in-product UX copy or conversion-owned product marketing copy. Child of `content`.",
+          "path": "marketing/skills/copywrite/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/copywrite/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/copywrite/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/discoverability",
+          "name": "discoverability",
+          "install_name": "discoverability",
+          "qualified_name": "marketing/discoverability",
+          "description": "Router for SEO, AEO, GEO, and technical discoverability work.",
+          "path": "marketing/skills/discoverability/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/discoverability/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/discoverability/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/seo",
+          "name": "seo",
+          "install_name": "seo",
+          "qualified_name": "marketing/seo",
+          "description": "Router for combined SEO and GEO optimization — on-page SEO, LLM discovery files, structured data, and AI referrer measurement. Routes narrow technical work to `technical-seo`.",
+          "path": "marketing/skills/seo/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/seo/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/seo/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/technical-seo",
+          "name": "technical-seo",
+          "install_name": "technical-seo",
+          "qualified_name": "marketing/technical-seo",
+          "description": "Use for technical SEO audits, crawlability, robots, sitemaps, metadata implementation, structured data, and web performance constraints. Child of `seo`.",
+          "path": "marketing/skills/technical-seo/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/technical-seo/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/technical-seo/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/aeo",
+          "name": "aeo",
+          "install_name": "aeo",
+          "qualified_name": "marketing/aeo",
+          "description": "Use for answer-engine optimization, FAQ coverage, concise answer blocks, entity clarity, and question-oriented content structure. Child of `discoverability`.",
+          "path": "marketing/skills/aeo/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/aeo/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/aeo/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/geo",
+          "name": "geo",
+          "install_name": "geo",
+          "qualified_name": "marketing/geo",
+          "description": "Use for GEO and AI discoverability, quotable blocks, citation readiness, LLM visibility, and AI search content structure. Child of `discoverability`.",
+          "path": "marketing/skills/geo/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/geo/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/geo/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/growth-engine",
+          "name": "growth-engine",
+          "install_name": "growth-engine",
+          "qualified_name": "marketing/growth-engine",
+          "description": "Autonomous growth experiment framework — runs A/B tests, logs results, analyzes statistics, and auto-promotes winners to a living playbook. Use before/after publishing content.",
+          "path": "marketing/skills/growth-engine/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/growth-engine/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/growth-engine/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/social-media",
+          "name": "social-media",
+          "install_name": "social-media",
+          "qualified_name": "marketing/social-media",
+          "description": "Router for LinkedIn and X social publishing workflows.",
+          "path": "marketing/skills/social-media/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/social-media/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/social-media/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/x-posts",
+          "name": "x-posts",
+          "install_name": "x-posts",
+          "qualified_name": "marketing/x-posts",
+          "description": "Use for X posts, replies, quote posts, engagement prompts, thread hooks, and daily interaction writing. Child of `social-media`.",
+          "path": "marketing/skills/x-posts/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/x-posts/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/x-posts/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/linkedin-posts",
+          "name": "linkedin-posts",
+          "install_name": "linkedin-posts",
+          "qualified_name": "marketing/linkedin-posts",
+          "description": "Draft and adapt LinkedIn posts, carousels, founder updates, and professional engagement content.",
+          "path": "marketing/skills/linkedin-posts/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/linkedin-posts/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/linkedin-posts/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/x-articles",
+          "name": "x-articles",
+          "install_name": "x-articles",
+          "qualified_name": "marketing/x-articles",
+          "description": "Draft long-form X articles, expanded threads, and article-style social content.",
+          "path": "marketing/skills/x-articles/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/x-articles/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/x-articles/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/linkedin-articles",
+          "name": "linkedin-articles",
+          "install_name": "linkedin-articles",
+          "qualified_name": "marketing/linkedin-articles",
+          "description": "Draft long-form LinkedIn articles and newsletter-style professional posts.",
+          "path": "marketing/skills/linkedin-articles/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/linkedin-articles/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/linkedin-articles/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/video",
+          "name": "video",
+          "install_name": "video",
+          "qualified_name": "marketing/video",
+          "description": "Route programmatic and generated video work to official external framework skills and local cross-media specialists.",
+          "path": "marketing/skills/video/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/video/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/video/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/images",
+          "name": "images",
+          "install_name": "images",
+          "qualified_name": "marketing/images",
+          "description": "Create polished image assets by authoring the visual in code — product shots, dashboards, UI mockups, terminal cards, diagrams, and mixed compositions.",
+          "path": "marketing/skills/images/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/images/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/images/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/slides",
+          "name": "slides",
+          "install_name": "slides",
+          "qualified_name": "marketing/slides",
+          "description": "Create and evolve code-based slide decks and presentations (HTML/CSS/JS or React) or AI-generated image slide packs. Use for new decks, redesigns, PPT conversions, and slide QA.",
+          "path": "marketing/skills/slides/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/slides/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/slides/SKILL.md"
+        },
+        {
+          "id": "marketing/skill/visualization",
+          "name": "visualization",
+          "install_name": "visualization",
+          "qualified_name": "marketing/visualization",
+          "description": "Generate polished, self-contained visual explainers, diagrams, dashboards, and comparison pages from technical or business inputs. Use whenever a diagram or dashboard beats a text wall.",
+          "path": "marketing/skills/visualization/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/skills/visualization/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/skills/visualization/SKILL.md"
+        }
+      ],
+      "commands": [
+        {
+          "id": "marketing/command/blog-draft",
+          "name": "blog-draft",
+          "install_name": "blog-draft",
+          "qualified_name": "marketing/blog-draft",
+          "description": "Turn notes, research, transcripts, or a rough idea into a structured blog article using the content skill.",
+          "path": "marketing/commands/blog-draft.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/commands/blog-draft.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/commands/blog-draft.md"
+        },
+        {
+          "id": "marketing/command/content-brief",
+          "name": "content-brief",
+          "install_name": "content-brief",
+          "qualified_name": "marketing/content-brief",
+          "description": "Create a working content brief from a topic, campaign, transcript, or knowledge dump, then optionally route into drafting commands.",
+          "path": "marketing/commands/content-brief.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/commands/content-brief.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/commands/content-brief.md"
+        },
+        {
+          "id": "marketing/command/social-pack",
+          "name": "social-pack",
+          "install_name": "social-pack",
+          "qualified_name": "marketing/social-pack",
+          "description": "Turn one canonical piece into a distribution pack across LinkedIn and X using syndication and related content skills.",
+          "path": "marketing/commands/social-pack.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/commands/social-pack.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/commands/social-pack.md"
+        },
+        {
+          "id": "marketing/command/linkedin-engage",
+          "name": "linkedin-engage",
+          "install_name": "linkedin-engage",
+          "qualified_name": "marketing/linkedin-engage",
+          "description": "Draft public LinkedIn comments, replies, or repost copy using the LinkedIn publishing skill.",
+          "path": "marketing/commands/linkedin-engage.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/commands/linkedin-engage.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/commands/linkedin-engage.md"
+        },
+        {
+          "id": "marketing/command/x-engage",
+          "name": "x-engage",
+          "install_name": "x-engage",
+          "qualified_name": "marketing/x-engage",
+          "description": "Draft public X replies, quote posts, or short conversation sequences using the X publishing skill.",
+          "path": "marketing/commands/x-engage.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/commands/x-engage.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/commands/x-engage.md"
+        },
+        {
+          "id": "marketing/command/x-post",
+          "name": "x-post",
+          "install_name": "x-post",
+          "qualified_name": "marketing/x-post",
+          "description": "Draft an original X post or thread from scratch using the research-driven writing framework — hooks, formats, and optional topic research.",
+          "path": "marketing/commands/x-post.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/commands/x-post.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/commands/x-post.md"
+        }
+      ],
+      "agents": [
+        {
+          "id": "marketing/agent/growth-lead",
+          "name": "growth-lead",
+          "install_name": "growth-lead",
+          "qualified_name": "marketing/growth-lead",
+          "description": "Orchestrates product marketing, GTM execution, content distribution, and growth experimentation across the marketing surface.",
+          "path": "marketing/agents/growth-lead.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/agents/growth-lead.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/agents/growth-lead.md"
+        }
+      ],
+      "rules": [
+        {
+          "id": "marketing/rule/defaults",
+          "name": "defaults",
+          "install_name": "defaults",
+          "qualified_name": "marketing/defaults",
+          "description": "Runtime-neutral policy for the Marketing plugin. These rules apply to every marketing skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible channel detail but may not relax the authorization gates or contradict the ownership boundaries below.",
+          "path": "marketing/rules/defaults.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/marketing/rules/defaults.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/marketing/rules/defaults.md"
+        }
+      ]
+    },
+    {
+      "id": "product",
+      "name": "product",
+      "version": "3.0.0",
+      "mission": "Shape product direction, clarify user needs, design product experiences, and turn market insight into execution.",
+      "platforms": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "team": [
+        "Product Manager",
+        "Designer"
+      ],
+      "path": "product",
+      "url": "https://github.com/alvarovillalbaa/plugins/tree/main/product",
+      "profile": {
+        "path": "product/profile.yaml",
+        "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/profile.yaml",
+        "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/profile.yaml"
+      },
+      "manifests": {
+        "claude": {
+          "path": "product/.claude-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/.claude-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/.claude-plugin/plugin.json"
+        },
+        "codex": {
+          "path": "product/.codex-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/.codex-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/.codex-plugin/plugin.json"
+        },
+        "cursor": {
+          "path": "product/.cursor-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/.cursor-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/.cursor-plugin/plugin.json"
+        }
+      },
+      "counts": {
+        "skills": 17,
+        "commands": 1,
+        "agents": 2,
+        "rules": 1
+      },
+      "skills": [
+        {
+          "id": "product/skill/product-development",
+          "name": "product-development",
+          "install_name": "product-development",
+          "qualified_name": "product/product-development",
+          "description": "Router for product strategy, discovery, PRDs, experiments, and user stories.",
+          "path": "product/skills/product-development/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/product-development/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/product-development/SKILL.md"
+        },
+        {
+          "id": "product/skill/strategy",
+          "name": "strategy",
+          "install_name": "strategy",
+          "qualified_name": "product/strategy",
+          "description": "Use for product strategy, quarterly direction, roadmap themes, vision, OKRs, portfolio tradeoffs, and decision memos. Child of `product-development`.",
+          "path": "product/skills/strategy/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/strategy/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/strategy/SKILL.md"
+        },
+        {
+          "id": "product/skill/discovery",
+          "name": "discovery",
+          "install_name": "discovery",
+          "qualified_name": "product/discovery",
+          "description": "Customer discovery, qualitative interviews, theme/pain synthesis, JTBD, opportunity mapping, and RICE/ICE/WSJF prioritization. Child of `product-development`.",
+          "path": "product/skills/discovery/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/discovery/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/discovery/SKILL.md"
+        },
+        {
+          "id": "product/skill/prds",
+          "name": "prds",
+          "install_name": "prds",
+          "qualified_name": "product/prds",
+          "description": "Use for PRDs, feature briefs, requirements, scope boundaries, release criteria, and cross-functional product specs. Child of `product-development`.",
+          "path": "product/skills/prds/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/prds/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/prds/SKILL.md"
+        },
+        {
+          "id": "product/skill/experiments",
+          "name": "experiments",
+          "install_name": "experiments",
+          "qualified_name": "product/experiments",
+          "description": "Use for product experiments, A/B tests, success metrics, sample sizing, decision rules, and experiment backlogs. Child of `product-development`.",
+          "path": "product/skills/experiments/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/experiments/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/experiments/SKILL.md"
+        },
+        {
+          "id": "product/skill/user-stories",
+          "name": "user-stories",
+          "install_name": "user-stories",
+          "qualified_name": "product/user-stories",
+          "description": "Use for user stories, acceptance criteria, epic breakdown, story point estimation, sprint planning, and Definition of Done. Child of `product-development`.",
+          "path": "product/skills/user-stories/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/user-stories/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/user-stories/SKILL.md"
+        },
+        {
+          "id": "product/skill/product-marketing",
+          "name": "product-marketing",
+          "install_name": "product-marketing",
+          "qualified_name": "product/product-marketing",
+          "description": "Router for product marketing, CRO, content-led growth, lead magnets, and buyer psychology.",
+          "path": "product/skills/product-marketing/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/product-marketing/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/product-marketing/SKILL.md"
+        },
+        {
+          "id": "product/skill/cro",
+          "name": "cro",
+          "install_name": "cro",
+          "qualified_name": "product/cro",
+          "description": "Use for conversion-rate optimization for pages and funnels, page diagnostics, CTA promises, proof placement, and test ideas. Child of `product-marketing`.",
+          "path": "product/skills/cro/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/cro/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/cro/SKILL.md"
+        },
+        {
+          "id": "product/skill/content-led",
+          "name": "content-led",
+          "install_name": "content-led",
+          "qualified_name": "product/content-led",
+          "description": "Use for content strategy, editorial themes, distribution logic, thought leadership systems, and demand-generation content plans. Child of `product-marketing`.",
+          "path": "product/skills/content-led/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/content-led/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/content-led/SKILL.md"
+        },
+        {
+          "id": "product/skill/lead-magnets",
+          "name": "lead-magnets",
+          "install_name": "lead-magnets",
+          "qualified_name": "product/lead-magnets",
+          "description": "Use for lead magnet strategy, survey/report assets, downloadable offers, gated assets, and nurture entry points. Child of `product-marketing`.",
+          "path": "product/skills/lead-magnets/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/lead-magnets/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/lead-magnets/SKILL.md"
+        },
+        {
+          "id": "product/skill/buyer-psychology",
+          "name": "buyer-psychology",
+          "install_name": "buyer-psychology",
+          "qualified_name": "product/buyer-psychology",
+          "description": "Use for buyer psychology, motivation mapping, emotional triggers, objection logic, decision criteria, and persuasion risk review. Child of `product-marketing`.",
+          "path": "product/skills/buyer-psychology/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/buyer-psychology/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/buyer-psychology/SKILL.md"
+        },
+        {
+          "id": "product/skill/design",
+          "name": "design",
+          "install_name": "design",
+          "qualified_name": "product/design",
+          "description": "Router for product design taste, direction, systems, polish, and critique.",
+          "path": "product/skills/design/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/design/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/design/SKILL.md"
+        },
+        {
+          "id": "product/skill/taste",
+          "name": "taste",
+          "install_name": "taste",
+          "qualified_name": "product/taste",
+          "description": "Use for visual taste calibration, style references, brand-sensitive quality bars, and qualitative direction for interface feel. Child of `design`.",
+          "path": "product/skills/taste/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/taste/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/taste/SKILL.md"
+        },
+        {
+          "id": "product/skill/direction",
+          "name": "direction",
+          "install_name": "direction",
+          "qualified_name": "product/direction",
+          "description": "Use for visual direction, UI concept framing, design language choices, and option shaping before detailed component work. Child of `design`.",
+          "path": "product/skills/direction/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/direction/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/direction/SKILL.md"
+        },
+        {
+          "id": "product/skill/design-systems",
+          "name": "design-systems",
+          "install_name": "design-systems",
+          "qualified_name": "product/design-systems",
+          "description": "Use for design systems, shared primitives, tokens, component APIs, reusable UI patterns, and design-system drift. Child of `design`.",
+          "path": "product/skills/design-systems/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/design-systems/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/design-systems/SKILL.md"
+        },
+        {
+          "id": "product/skill/polish",
+          "name": "polish",
+          "install_name": "polish",
+          "qualified_name": "product/polish",
+          "description": "Use for UI polish, visual defects, layout fit, spacing, states, motion, interaction finish, and screenshot-based cleanup. Child of `design`.",
+          "path": "product/skills/polish/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/polish/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/polish/SKILL.md"
+        },
+        {
+          "id": "product/skill/critique",
+          "name": "critique",
+          "install_name": "critique",
+          "qualified_name": "product/critique",
+          "description": "Use for structured design critique, UX review, visual hierarchy assessment, and improvement recommendations before implementation. Child of `design`.",
+          "path": "product/skills/critique/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/skills/critique/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/skills/critique/SKILL.md"
+        }
+      ],
+      "commands": [
+        {
+          "id": "product/command/product-review",
+          "name": "product-review",
+          "install_name": "product-review",
+          "qualified_name": "product/product-review",
+          "description": "Review a product surface with engineering, design, or combined lenses and produce prioritized findings.",
+          "path": "product/commands/product-review.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/commands/product-review.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/commands/product-review.md"
+        }
+      ],
+      "agents": [
+        {
+          "id": "product/agent/product-manager",
+          "name": "product-manager",
+          "install_name": "product-manager",
+          "qualified_name": "product/product-manager",
+          "description": "Owns product contracts, discovery, PRDs, prioritization, acceptance criteria, and user-story quality.",
+          "path": "product/agents/product-manager.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/agents/product-manager.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/agents/product-manager.md"
+        },
+        {
+          "id": "product/agent/designer",
+          "name": "designer",
+          "install_name": "designer",
+          "qualified_name": "product/designer",
+          "description": "Reviews and shapes product experience, design direction, design systems, polish, and UX risk.",
+          "path": "product/agents/designer.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/agents/designer.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/agents/designer.md"
+        }
+      ],
+      "rules": [
+        {
+          "id": "product/rule/defaults",
+          "name": "defaults",
+          "install_name": "defaults",
+          "qualified_name": "product/defaults",
+          "description": "Runtime-neutral policy for the Product plugin. These rules apply to every product skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible method detail but may not relax the authorization gates or contradict the ownership boundaries below.",
+          "path": "product/rules/defaults.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/product/rules/defaults.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/product/rules/defaults.md"
+        }
+      ]
+    },
+    {
+      "id": "productivity",
+      "name": "productivity",
+      "version": "3.1.0",
+      "mission": "Own reporting, research, review, evidence-led personal growth, meetings, and executive operating workflows.",
+      "platforms": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "team": [
+        "CEO",
+        "Executive Assistant",
+        "VP of Operations",
+        "Research Lead"
+      ],
+      "path": "productivity",
+      "url": "https://github.com/alvarovillalbaa/plugins/tree/main/productivity",
+      "profile": {
+        "path": "productivity/profile.yaml",
+        "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/profile.yaml",
+        "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/profile.yaml"
+      },
+      "manifests": {
+        "claude": {
+          "path": "productivity/.claude-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/.claude-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/.claude-plugin/plugin.json"
+        },
+        "codex": {
+          "path": "productivity/.codex-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/.codex-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/.codex-plugin/plugin.json"
+        },
+        "cursor": {
+          "path": "productivity/.cursor-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/.cursor-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/.cursor-plugin/plugin.json"
+        }
+      },
+      "counts": {
+        "skills": 16,
+        "commands": 3,
+        "agents": 5,
+        "rules": 1
+      },
+      "skills": [
+        {
+          "id": "productivity/skill/reporting",
+          "name": "reporting",
+          "install_name": "reporting",
+          "qualified_name": "productivity/reporting",
+          "description": "Route reporting and content audits while directly owning pentest findings, evidence packaging, severity calibration, remediation guidance, and disclosure communication.",
+          "path": "productivity/skills/reporting/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/reporting/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/reporting/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/content-audit",
+          "name": "content-audit",
+          "install_name": "content-audit",
+          "qualified_name": "productivity/content-audit",
+          "description": "Use for content audits, quality checks, decay diagnosis, content refresh plans, and publishing quality gates. Child of `reporting`.",
+          "path": "productivity/skills/content-audit/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/content-audit/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/content-audit/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/research",
+          "name": "research",
+          "install_name": "research",
+          "qualified_name": "productivity/research",
+          "description": "Router for market, vendor, customer, SEO-gap, and prospect research.",
+          "path": "productivity/skills/research/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/research/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/research/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/market-competitor-research",
+          "name": "market-competitor-research",
+          "install_name": "market-competitor-research",
+          "qualified_name": "productivity/market-competitor-research",
+          "description": "Use for market maps, competitor intelligence, category research, positioning evidence, public-web discovery, and source-backed opportunity analysis. Child of `research`.",
+          "path": "productivity/skills/market-competitor-research/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/market-competitor-research/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/market-competitor-research/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/diligence-vendor-research",
+          "name": "diligence-vendor-research",
+          "install_name": "diligence-vendor-research",
+          "qualified_name": "productivity/diligence-vendor-research",
+          "description": "Use for vendor diligence, product comparisons, buyer risk, filings, practitioner research, and decision-ready diligence memos. Child of `research`.",
+          "path": "productivity/skills/diligence-vendor-research/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/diligence-vendor-research/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/diligence-vendor-research/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/seo-competitor-gap",
+          "name": "seo-competitor-gap",
+          "install_name": "seo-competitor-gap",
+          "qualified_name": "productivity/seo-competitor-gap",
+          "description": "Use for SEO competitor gap audits, SERP comparison, content gap analysis, authority benchmarking, and opportunity prioritization. Child of `research`.",
+          "path": "productivity/skills/seo-competitor-gap/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/seo-competitor-gap/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/seo-competitor-gap/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/prospect",
+          "name": "prospect",
+          "install_name": "prospect",
+          "qualified_name": "productivity/prospect",
+          "description": "Turn LinkedIn, company site, and research inputs into a decision-ready GTM brief with Account, Persona, and Next-best-motion, using ICP/ICA scorecards as the rubric.",
+          "path": "productivity/skills/prospect/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/prospect/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/prospect/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/review",
+          "name": "review",
+          "install_name": "review",
+          "qualified_name": "productivity/review",
+          "description": "Router for code review, design review, grilling, and documentation drift review.",
+          "path": "productivity/skills/review/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/review/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/review/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/code-review",
+          "name": "code-review",
+          "install_name": "code-review",
+          "qualified_name": "productivity/code-review",
+          "description": "Use for code review, diff risk assessment, PR findings, regression risk, test gaps, and maintainability critique. Child of `review`.",
+          "path": "productivity/skills/code-review/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/code-review/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/code-review/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/design-review",
+          "name": "design-review",
+          "install_name": "design-review",
+          "qualified_name": "productivity/design-review",
+          "description": "Use for design review, UX critique, visual hierarchy, interaction risk, accessibility observations, and polish recommendations. Child of `review`.",
+          "path": "productivity/skills/design-review/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/design-review/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/design-review/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/grill",
+          "name": "grill",
+          "install_name": "grill",
+          "qualified_name": "productivity/grill",
+          "description": "Use for adversarial critique, plan stress-testing, simplification pressure, execution risk, and weak-assumption exposure. Child of `review`.",
+          "path": "productivity/skills/grill/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/grill/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/grill/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/documentation-drift",
+          "name": "documentation-drift",
+          "install_name": "documentation-drift",
+          "qualified_name": "productivity/documentation-drift",
+          "description": "Use for agent documentation drift review, instruction-file audits, stale doc detection, and owner-doc update recommendations. Child of `review`.",
+          "path": "productivity/skills/documentation-drift/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/documentation-drift/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/documentation-drift/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/improve-me",
+          "name": "improve-me",
+          "install_name": "improve-me",
+          "qualified_name": "productivity/improve-me",
+          "description": "Turn evidence about the user's own work into a focused improvement plan with prioritized experiments. Only on explicit request; routes roasting to `roast-me` and rubric reviews to `my-performance`.",
+          "path": "productivity/skills/improve-me/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/improve-me/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/improve-me/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/roast-me",
+          "name": "roast-me",
+          "install_name": "roast-me",
+          "qualified_name": "productivity/roast-me",
+          "description": "Deliver an explicitly requested, sharp but constructive roast of the user's own work or decisions, using cited evidence and concrete next actions. Only on direct request.",
+          "path": "productivity/skills/roast-me/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/roast-me/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/roast-me/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/my-performance",
+          "name": "my-performance",
+          "install_name": "my-performance",
+          "qualified_name": "productivity/my-performance",
+          "description": "Evaluate the user's own performance for a stated role/period against an explicit rubric, separating evidence from inference. Self-review only, never covert evaluation of others.",
+          "path": "productivity/skills/my-performance/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/my-performance/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/my-performance/SKILL.md"
+        },
+        {
+          "id": "productivity/skill/meetings",
+          "name": "meetings",
+          "install_name": "meetings",
+          "qualified_name": "productivity/meetings",
+          "description": "Prepare, support, and close out meetings: briefs, agendas, notes, decisions, action tracking, and follow-ups, for a single meeting or a recurring portfolio.",
+          "path": "productivity/skills/meetings/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/skills/meetings/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/skills/meetings/SKILL.md"
+        }
+      ],
+      "commands": [
+        {
+          "id": "productivity/command/office-hours",
+          "name": "office-hours",
+          "install_name": "office-hours",
+          "qualified_name": "productivity/office-hours",
+          "description": "Interview a startup, product, or builder decision for idea quality, demand reality, wedge, risks, and next decision.",
+          "path": "productivity/commands/office-hours.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/commands/office-hours.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/commands/office-hours.md"
+        },
+        {
+          "id": "productivity/command/inbox-triage",
+          "name": "inbox-triage",
+          "install_name": "inbox-triage",
+          "qualified_name": "productivity/inbox-triage",
+          "description": "Triage inbound email threads, summarize next actions, and draft replies using the productivity command workflow.",
+          "path": "productivity/commands/inbox-triage.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/commands/inbox-triage.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/commands/inbox-triage.md"
+        },
+        {
+          "id": "productivity/command/grill-me",
+          "name": "grill-me",
+          "install_name": "grill-me",
+          "qualified_name": "productivity/grill-me",
+          "description": "Relentlessly interview the user about a plan or design, walking every branch of the decision tree one question at a time until reaching full shared understanding.",
+          "path": "productivity/commands/grill-me.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/commands/grill-me.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/commands/grill-me.md"
+        }
+      ],
+      "agents": [
+        {
+          "id": "productivity/agent/ceo",
+          "name": "ceo",
+          "install_name": "ceo",
+          "qualified_name": "productivity/ceo",
+          "description": "Frames company-level decisions, operating priorities, fundraising narrative, and cross-functional tradeoffs.",
+          "path": "productivity/agents/ceo.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/agents/ceo.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/agents/ceo.md"
+        },
+        {
+          "id": "productivity/agent/executive-assistant",
+          "name": "executive-assistant",
+          "install_name": "executive-assistant",
+          "qualified_name": "productivity/executive-assistant",
+          "description": "Coordinates inbox, meeting portfolios, scheduling prep, follow-through, lightweight research, evidence-led growth support, and memory hygiene.",
+          "path": "productivity/agents/executive-assistant.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/agents/executive-assistant.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/agents/executive-assistant.md"
+        },
+        {
+          "id": "productivity/agent/reviewer",
+          "name": "reviewer",
+          "install_name": "reviewer",
+          "qualified_name": "productivity/reviewer",
+          "description": "Reviews code, design, content, documentation, and reasoning with explicit evidence, severity, and corrective actions.",
+          "path": "productivity/agents/reviewer.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/agents/reviewer.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/agents/reviewer.md"
+        },
+        {
+          "id": "productivity/agent/deep-research",
+          "name": "deep-research",
+          "install_name": "deep-research",
+          "qualified_name": "productivity/deep-research",
+          "description": "Runs multi-pass structured research — primary sources, secondary evidence, social signal, and people or company enrichment — then packages findings as a decision artifact with dated evidence, visible logic, and a next action.",
+          "path": "productivity/agents/deep-research.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/agents/deep-research.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/agents/deep-research.md"
+        },
+        {
+          "id": "productivity/agent/vp-of-operations",
+          "name": "vp-of-operations",
+          "install_name": "vp-of-operations",
+          "qualified_name": "productivity/vp-of-operations",
+          "description": "Owns the operating cadence of the company across reporting, process quality, execution tracking, and cross-functional follow-through.",
+          "path": "productivity/agents/vp-of-operations.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/agents/vp-of-operations.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/agents/vp-of-operations.md"
+        }
+      ],
+      "rules": [
+        {
+          "id": "productivity/rule/defaults",
+          "name": "defaults",
+          "install_name": "defaults",
+          "qualified_name": "productivity/defaults",
+          "description": "Runtime-neutral policy for the Productivity plugin. These rules apply to every productivity skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible workflow detail but may not relax the authorization gates or contradict the ownership boundaries below.",
+          "path": "productivity/rules/defaults.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/productivity/rules/defaults.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/productivity/rules/defaults.md"
+        }
+      ]
+    },
+    {
+      "id": "sales",
+      "name": "sales",
+      "version": "3.0.0",
+      "mission": "Run go-to-market, pipeline, outreach, launches, virality, and revenue growth workflows.",
+      "platforms": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "team": [
+        "CSO",
+        "GTM Engineer",
+        "SDR",
+        "Account Executive"
+      ],
+      "path": "sales",
+      "url": "https://github.com/alvarovillalbaa/plugins/tree/main/sales",
+      "profile": {
+        "path": "sales/profile.yaml",
+        "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/profile.yaml",
+        "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/profile.yaml"
+      },
+      "manifests": {
+        "claude": {
+          "path": "sales/.claude-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/.claude-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/.claude-plugin/plugin.json"
+        },
+        "codex": {
+          "path": "sales/.codex-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/.codex-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/.codex-plugin/plugin.json"
+        },
+        "cursor": {
+          "path": "sales/.cursor-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/.cursor-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/.cursor-plugin/plugin.json"
+        }
+      },
+      "counts": {
+        "skills": 18,
+        "commands": 5,
+        "agents": 4,
+        "rules": 1
+      },
+      "skills": [
+        {
+          "id": "sales/skill/go-to-market",
+          "name": "go-to-market",
+          "install_name": "go-to-market",
+          "qualified_name": "sales/go-to-market",
+          "description": "Router for GTM strategy, first customers, technical sales, lead signals, and revenue intelligence.",
+          "path": "sales/skills/go-to-market/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/go-to-market/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/go-to-market/SKILL.md"
+        },
+        {
+          "id": "sales/skill/first-customers",
+          "name": "first-customers",
+          "install_name": "first-customers",
+          "qualified_name": "sales/first-customers",
+          "description": "Use for first-customer selling, early wedge selection, founder-led sales, design partners, and first proof loops. Child of `go-to-market`.",
+          "path": "sales/skills/first-customers/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/first-customers/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/first-customers/SKILL.md"
+        },
+        {
+          "id": "sales/skill/technical-sales",
+          "name": "technical-sales",
+          "install_name": "technical-sales",
+          "qualified_name": "sales/technical-sales",
+          "description": "Use for technical sales motions, solution fit, discovery-to-demo translation, technical objections, and proof-of-concept framing. Child of `go-to-market`.",
+          "path": "sales/skills/technical-sales/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/technical-sales/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/technical-sales/SKILL.md"
+        },
+        {
+          "id": "sales/skill/lead-signals",
+          "name": "lead-signals",
+          "install_name": "lead-signals",
+          "qualified_name": "sales/lead-signals",
+          "description": "Discover evidence-backed buying, hiring, funding, and intent signals for prospects, write them to a Notion Signals database, and link them to People/Companies records.",
+          "path": "sales/skills/lead-signals/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/lead-signals/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/lead-signals/SKILL.md"
+        },
+        {
+          "id": "sales/skill/revenue-intelligence",
+          "name": "revenue-intelligence",
+          "install_name": "revenue-intelligence",
+          "qualified_name": "sales/revenue-intelligence",
+          "description": "Use for revenue intelligence from calls, opportunities, CRM, and attribution; pipeline risk; forecast inputs; and buying committee insight. Child of `go-to-market`.",
+          "path": "sales/skills/revenue-intelligence/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/revenue-intelligence/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/revenue-intelligence/SKILL.md"
+        },
+        {
+          "id": "sales/skill/sales-pipeline",
+          "name": "sales-pipeline",
+          "install_name": "sales-pipeline",
+          "qualified_name": "sales/sales-pipeline",
+          "description": "Router for pipeline operations, commercial documents, collateral, and deal health work.",
+          "path": "sales/skills/sales-pipeline/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/sales-pipeline/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/sales-pipeline/SKILL.md"
+        },
+        {
+          "id": "sales/skill/commercial-docs",
+          "name": "commercial-docs",
+          "install_name": "commercial-docs",
+          "qualified_name": "sales/commercial-docs",
+          "description": "Use for commercial documents, sales one-pagers, objection docs, mutual action plans, security questionnaires, and proposal support. Child of `go-to-market`.",
+          "path": "sales/skills/commercial-docs/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/commercial-docs/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/commercial-docs/SKILL.md"
+        },
+        {
+          "id": "sales/skill/collateral",
+          "name": "collateral",
+          "install_name": "collateral",
+          "qualified_name": "sales/collateral",
+          "description": "Create and adapt sales collateral, one-pagers, battlecards, case-study briefs, and buyer-facing enablement material.",
+          "path": "sales/skills/collateral/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/collateral/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/collateral/SKILL.md"
+        },
+        {
+          "id": "sales/skill/outreach",
+          "name": "outreach",
+          "install_name": "outreach",
+          "qualified_name": "sales/outreach",
+          "description": "Router for outbound and follow-up messaging across email, LinkedIn, and X.",
+          "path": "sales/skills/outreach/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/outreach/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/outreach/SKILL.md"
+        },
+        {
+          "id": "sales/skill/initial",
+          "name": "initial",
+          "install_name": "initial",
+          "qualified_name": "sales/initial",
+          "description": "Draft first-touch outreach for email, LinkedIn, X, and direct response channels.",
+          "path": "sales/skills/initial/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/initial/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/initial/SKILL.md"
+        },
+        {
+          "id": "sales/skill/sequence",
+          "name": "sequence",
+          "install_name": "sequence",
+          "qualified_name": "sales/sequence",
+          "description": "Design multi-touch outbound sequences with channel, timing, and message progression.",
+          "path": "sales/skills/sequence/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/sequence/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/sequence/SKILL.md"
+        },
+        {
+          "id": "sales/skill/follow-up",
+          "name": "follow-up",
+          "install_name": "follow-up",
+          "qualified_name": "sales/follow-up",
+          "description": "Use for follow-up messages, waiting-state nudges, reply drafting, conversation continuation, and next-step recovery. Child of `outreach`.",
+          "path": "sales/skills/follow-up/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/follow-up/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/follow-up/SKILL.md"
+        },
+        {
+          "id": "sales/skill/linkedin-dms",
+          "name": "linkedin-dms",
+          "install_name": "linkedin-dms",
+          "qualified_name": "sales/linkedin-dms",
+          "description": "Use for LinkedIn comments, connection requests, DM replies, follow-up sequences, and professional engagement writing. Child of `outreach`.",
+          "path": "sales/skills/linkedin-dms/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/linkedin-dms/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/linkedin-dms/SKILL.md"
+        },
+        {
+          "id": "sales/skill/x-dms",
+          "name": "x-dms",
+          "install_name": "x-dms",
+          "qualified_name": "sales/x-dms",
+          "description": "Draft and refine X direct messages and reply-to-DM sales motions.",
+          "path": "sales/skills/x-dms/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/x-dms/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/x-dms/SKILL.md"
+        },
+        {
+          "id": "sales/skill/launches",
+          "name": "launches",
+          "install_name": "launches",
+          "qualified_name": "sales/launches",
+          "description": "Router for launch motions and virality systems.",
+          "path": "sales/skills/launches/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/launches/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/launches/SKILL.md"
+        },
+        {
+          "id": "sales/skill/virality",
+          "name": "virality",
+          "install_name": "virality",
+          "qualified_name": "sales/virality",
+          "description": "Use for viral X launch systems, launch threads, controversy research, sequence planning, and performance-oriented post variants. Child of `launches`.",
+          "path": "sales/skills/virality/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/virality/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/virality/SKILL.md"
+        },
+        {
+          "id": "sales/skill/growth",
+          "name": "growth",
+          "install_name": "growth",
+          "qualified_name": "sales/growth",
+          "description": "Route revenue operations while directly owning customer growth, retention, expansion, churn-risk review, lifecycle nudges, and growth experiments.",
+          "path": "sales/skills/growth/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/growth/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/growth/SKILL.md"
+        },
+        {
+          "id": "sales/skill/revenue-ops",
+          "name": "revenue-ops",
+          "install_name": "revenue-ops",
+          "qualified_name": "sales/revenue-ops",
+          "description": "Use for revenue operations, CRM stages, lifecycle definitions, handoff rules, pipeline hygiene, and operating metrics. Child of `growth`.",
+          "path": "sales/skills/revenue-ops/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/skills/revenue-ops/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/skills/revenue-ops/SKILL.md"
+        }
+      ],
+      "commands": [
+        {
+          "id": "sales/command/account-brief",
+          "name": "account-brief",
+          "install_name": "account-brief",
+          "qualified_name": "sales/account-brief",
+          "description": "Produce a focused account or prospect research brief using prospect, without drafting full outreach sequences.",
+          "path": "sales/commands/account-brief.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/commands/account-brief.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/commands/account-brief.md"
+        },
+        {
+          "id": "sales/command/meet-with-clients",
+          "name": "meet-with-clients",
+          "install_name": "meet-with-clients",
+          "qualified_name": "sales/meet-with-clients",
+          "description": "Prepare, run, and follow up on client meetings with sales, technical-sales, and follow-up workflows.",
+          "path": "sales/commands/meet-with-clients.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/commands/meet-with-clients.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/commands/meet-with-clients.md"
+        },
+        {
+          "id": "sales/command/competitor-scan",
+          "name": "competitor-scan",
+          "install_name": "competitor-scan",
+          "qualified_name": "sales/competitor-scan",
+          "description": "Run a focused competitor or market-moves scan using productivity research skills.",
+          "path": "sales/commands/competitor-scan.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/commands/competitor-scan.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/commands/competitor-scan.md"
+        },
+        {
+          "id": "sales/command/launch-virality",
+          "name": "launch-virality",
+          "install_name": "launch-virality",
+          "qualified_name": "sales/launch-virality",
+          "description": "Build an evidence-led X launch campaign with positioning, post variants, distribution phases, and measurable follow-through.",
+          "path": "sales/commands/launch-virality.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/commands/launch-virality.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/commands/launch-virality.md"
+        },
+        {
+          "id": "sales/command/growth-experiment",
+          "name": "growth-experiment",
+          "install_name": "growth-experiment",
+          "qualified_name": "sales/growth-experiment",
+          "description": "Plan a focused growth experiment using the sales growth skill.",
+          "path": "sales/commands/growth-experiment.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/commands/growth-experiment.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/commands/growth-experiment.md"
+        }
+      ],
+      "agents": [
+        {
+          "id": "sales/agent/cso",
+          "name": "cso",
+          "install_name": "cso",
+          "qualified_name": "sales/cso",
+          "description": "Owns GTM strategy, pipeline health, revenue operating model, sales priorities, and commercial tradeoffs.",
+          "path": "sales/agents/cso.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/agents/cso.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/agents/cso.md"
+        },
+        {
+          "id": "sales/agent/gtm-engineer",
+          "name": "gtm-engineer",
+          "install_name": "gtm-engineer",
+          "qualified_name": "sales/gtm-engineer",
+          "description": "Builds and improves GTM systems, campaign automation, data flows, and revenue experiments.",
+          "path": "sales/agents/gtm-engineer.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/agents/gtm-engineer.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/agents/gtm-engineer.md"
+        },
+        {
+          "id": "sales/agent/sdr",
+          "name": "sdr",
+          "install_name": "sdr",
+          "qualified_name": "sales/sdr",
+          "description": "Runs prospecting, lead-signal capture, account qualification, first-touch outreach, follow-up queues, and early pipeline creation.",
+          "path": "sales/agents/sdr.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/agents/sdr.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/agents/sdr.md"
+        },
+        {
+          "id": "sales/agent/account-executive",
+          "name": "account-executive",
+          "install_name": "account-executive",
+          "qualified_name": "sales/account-executive",
+          "description": "Runs discovery, demos, objections, follow-up, opportunity strategy, and deal progression.",
+          "path": "sales/agents/account-executive.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/agents/account-executive.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/agents/account-executive.md"
+        }
+      ],
+      "rules": [
+        {
+          "id": "sales/rule/defaults",
+          "name": "defaults",
+          "install_name": "defaults",
+          "qualified_name": "sales/defaults",
+          "description": "Runtime-neutral policy for the Sales plugin. These rules apply to every sales skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible channel or stage detail but may not relax the authorization gates or contradict the ownership boundaries below.",
+          "path": "sales/rules/defaults.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/sales/rules/defaults.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/sales/rules/defaults.md"
+        }
+      ]
+    },
+    {
+      "id": "system",
+      "name": "system",
+      "version": "3.1.0",
+      "mission": "Maintain plugins, skills, memory, knowledge, learning, brain ingestion, personalization, auditable work explanations, and repeatable improvement loops.",
+      "platforms": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "team": [
+        "CEO",
+        "Executive Assistant",
+        "Principal Engineer"
+      ],
+      "path": "system",
+      "url": "https://github.com/alvarovillalbaa/plugins/tree/main/system",
+      "profile": {
+        "path": "system/profile.yaml",
+        "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/profile.yaml",
+        "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/profile.yaml"
+      },
+      "manifests": {
+        "claude": {
+          "path": "system/.claude-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/.claude-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/.claude-plugin/plugin.json"
+        },
+        "codex": {
+          "path": "system/.codex-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/.codex-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/.codex-plugin/plugin.json"
+        },
+        "cursor": {
+          "path": "system/.cursor-plugin/plugin.json",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/.cursor-plugin/plugin.json",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/.cursor-plugin/plugin.json"
+        }
+      },
+      "counts": {
+        "skills": 17,
+        "commands": 12,
+        "agents": 4,
+        "rules": 1
+      },
+      "skills": [
+        {
+          "id": "system/skill/auto-improve",
+          "name": "auto-improve",
+          "install_name": "auto-improve",
+          "qualified_name": "system/auto-improve",
+          "description": "Improve project-local agent context, docs, personalization, and installed plugin/skill copies under `.agents`. Never writes upstream to the canonical plugins source.",
+          "path": "system/skills/auto-improve/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/auto-improve/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/auto-improve/SKILL.md"
+        },
+        {
+          "id": "system/skill/plugins-management",
+          "name": "plugins-management",
+          "install_name": "plugins-management",
+          "qualified_name": "system/plugins-management",
+          "description": "Manage plugin and skill taxonomy, project installation, no-loss updates, conflict review, lifecycle, metadata, external sources, and capability-preserving consolidation.",
+          "path": "system/skills/plugins-management/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/plugins-management/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/plugins-management/SKILL.md"
+        },
+        {
+          "id": "system/skill/skill-eval-loop",
+          "name": "skill-eval-loop",
+          "install_name": "skill-eval-loop",
+          "qualified_name": "system/skill-eval-loop",
+          "description": "Use for skill evaluation loops, regression checks for skill behavior, prompt/skill mutation proposals, and explicit improvement gates. Child of `plugins-management`.",
+          "path": "system/skills/skill-eval-loop/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/skill-eval-loop/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/skill-eval-loop/SKILL.md"
+        },
+        {
+          "id": "system/skill/memory",
+          "name": "memory",
+          "install_name": "memory",
+          "qualified_name": "system/memory",
+          "description": "Retrieve, reconcile, and curate durable agent memory across available runtimes. Use when prior decisions or cross-session facts may matter, or to save/update/delete a memory.",
+          "path": "system/skills/memory/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/memory/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/memory/SKILL.md"
+        },
+        {
+          "id": "system/skill/explain-yourself",
+          "name": "explain-yourself",
+          "install_name": "explain-yourself",
+          "qualified_name": "system/explain-yourself",
+          "description": "Explain an agent's plan, status, decisions, or postmortem with concise, evidence-backed reasoning summaries. Use when asked what was done, why, or what remains uncertain.",
+          "path": "system/skills/explain-yourself/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/explain-yourself/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/explain-yourself/SKILL.md"
+        },
+        {
+          "id": "system/skill/knowledge-base",
+          "name": "knowledge-base",
+          "install_name": "knowledge-base",
+          "qualified_name": "system/knowledge-base",
+          "description": "Use for knowledge-base improvement, dedupe proposals, canonical page health, missing source promotion, and knowledge drift repair. Child of `plugins-management`.",
+          "path": "system/skills/knowledge-base/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/knowledge-base/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/knowledge-base/SKILL.md"
+        },
+        {
+          "id": "system/skill/learning",
+          "name": "learning",
+          "install_name": "learning",
+          "qualified_name": "system/learning",
+          "description": "Router for lessons, teaching, and durable learning records.",
+          "path": "system/skills/learning/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/learning/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/learning/SKILL.md"
+        },
+        {
+          "id": "system/skill/lessons",
+          "name": "lessons",
+          "install_name": "lessons",
+          "qualified_name": "system/lessons",
+          "description": "Create, curate, and promote lessons from repo work, user corrections, and successful workflows.",
+          "path": "system/skills/lessons/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/lessons/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/lessons/SKILL.md"
+        },
+        {
+          "id": "system/skill/brain",
+          "name": "brain",
+          "install_name": "brain",
+          "qualified_name": "system/brain",
+          "description": "Route and maintain BRAIN.md-bounded second-brain workflows — raw ingestion, folder adaptation, memory-to-knowledge compilation, and canonical knowledge updates.",
+          "path": "system/skills/brain/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/brain/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/brain/SKILL.md"
+        },
+        {
+          "id": "system/skill/ingestion",
+          "name": "ingestion",
+          "install_name": "ingestion",
+          "qualified_name": "system/ingestion",
+          "description": "Raw source ingestion, transcript/artifact parsing, canonical page promotion, and Memory-to-knowledge compilation. Child of `brain`; use when this is the narrowest owner.",
+          "path": "system/skills/ingestion/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/ingestion/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/ingestion/SKILL.md"
+        },
+        {
+          "id": "system/skill/personalize",
+          "name": "personalize",
+          "install_name": "personalize",
+          "qualified_name": "system/personalize",
+          "description": "Router for user, company, voice, positioning, and ICP personalization.",
+          "path": "system/skills/personalize/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/personalize/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/personalize/SKILL.md"
+        },
+        {
+          "id": "system/skill/communication-style",
+          "name": "communication-style",
+          "install_name": "communication-style",
+          "qualified_name": "system/communication-style",
+          "description": "Use for writing-style capture, approved-example analysis, sender or brand voice summaries, and reusable style constraints. Child of `personalize`.",
+          "path": "system/skills/communication-style/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/communication-style/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/communication-style/SKILL.md"
+        },
+        {
+          "id": "system/skill/voice",
+          "name": "voice",
+          "install_name": "voice",
+          "qualified_name": "system/voice",
+          "description": "Use for sender voice learning, approved-message analysis, style guides, forbidden phrases, and personalized writing constraints. Child of `personalize`.",
+          "path": "system/skills/voice/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/voice/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/voice/SKILL.md"
+        },
+        {
+          "id": "system/skill/calibration",
+          "name": "calibration",
+          "install_name": "calibration",
+          "qualified_name": "system/calibration",
+          "description": "Calibrate communication and output preferences from examples, feedback, and prior accepted work.",
+          "path": "system/skills/calibration/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/calibration/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/calibration/SKILL.md"
+        },
+        {
+          "id": "system/skill/positioning",
+          "name": "positioning",
+          "install_name": "positioning",
+          "qualified_name": "system/positioning",
+          "description": "Use for positioning, messaging, ICP/persona framing, differentiation, objection handling, and proof-point structure. Child of `personalize`.",
+          "path": "system/skills/positioning/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/positioning/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/positioning/SKILL.md"
+        },
+        {
+          "id": "system/skill/icp",
+          "name": "icp",
+          "install_name": "icp",
+          "qualified_name": "system/icp",
+          "description": "Capture, refine, and apply ideal-customer-profile signals for research, positioning, sales, and marketing work.",
+          "path": "system/skills/icp/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/icp/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/icp/SKILL.md"
+        },
+        {
+          "id": "system/skill/loops",
+          "name": "loops",
+          "install_name": "loops",
+          "qualified_name": "system/loops",
+          "description": "Run and maintain repeatable improvement, evaluation, memory, and experimentation loops.",
+          "path": "system/skills/loops/SKILL.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/loops/SKILL.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/loops/SKILL.md"
+        }
+      ],
+      "commands": [
+        {
+          "id": "system/command/learning-sync",
+          "name": "learning-sync",
+          "install_name": "learning-sync",
+          "qualified_name": "system/learning-sync",
+          "description": "Capture durable project or workflow lessons and update the active repository's learning artifacts.",
+          "path": "system/commands/learning-sync.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/learning-sync.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/commands/learning-sync.md"
+        },
+        {
+          "id": "system/command/ar-run",
+          "name": "ar:run",
+          "install_name": "ar-run",
+          "qualified_name": "system/ar-run",
+          "description": "Run a single iteration of an autoresearch experiment. Reads state, decides one change, commits, evaluates, and keeps or discards.",
+          "path": "system/commands/ar-run.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/ar-run.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/commands/ar-run.md"
+        },
+        {
+          "id": "system/command/ar-status",
+          "name": "ar:status",
+          "install_name": "ar-status",
+          "qualified_name": "system/ar-status",
+          "description": "Show experiment dashboard — progress, best metric, keep rate, and results table for one or all experiments.",
+          "path": "system/commands/ar-status.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/ar-status.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/commands/ar-status.md"
+        },
+        {
+          "id": "system/command/ar-loop",
+          "name": "ar:loop",
+          "install_name": "ar-loop",
+          "qualified_name": "system/ar-loop",
+          "description": "Start an autonomous experiment loop. The experiment-runner agent runs iterations continuously, keeping improvements and discarding failures, until interrupted or the goal is met.",
+          "path": "system/commands/ar-loop.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/ar-loop.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/commands/ar-loop.md"
+        },
+        {
+          "id": "system/command/ar-setup",
+          "name": "ar:setup",
+          "install_name": "ar-setup",
+          "qualified_name": "system/ar-setup",
+          "description": "Create and validate the configuration for one metric-driven autoresearch experiment.",
+          "path": "system/commands/ar-setup.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/ar-setup.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/commands/ar-setup.md"
+        },
+        {
+          "id": "system/command/compile-raw",
+          "name": "compile-raw",
+          "install_name": "compile-raw",
+          "qualified_name": "system/compile-raw",
+          "description": "Compile a scoped queue of previously captured raw sources into canonical knowledge with provenance and contradiction tracking.",
+          "path": "system/commands/compile-raw.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/compile-raw.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/commands/compile-raw.md"
+        },
+        {
+          "id": "system/command/ingest",
+          "name": "ingest",
+          "install_name": "ingest",
+          "qualified_name": "system/ingest",
+          "description": "Capture one source into a brain's raw layer and optionally compile only that source into canonical knowledge.",
+          "path": "system/commands/ingest.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/ingest.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/commands/ingest.md"
+        },
+        {
+          "id": "system/command/si-extract",
+          "name": "si:extract",
+          "install_name": "si-extract",
+          "qualified_name": "system/si-extract",
+          "description": "Turn a proven recurring pattern or debugging solution into a standalone portable skill. The skill will work in any project with no hardcoded paths or project-specific values.",
+          "path": "system/commands/si-extract.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/si-extract.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/commands/si-extract.md"
+        },
+        {
+          "id": "system/command/si-promote",
+          "name": "si:promote",
+          "install_name": "si-promote",
+          "qualified_name": "system/si-promote",
+          "description": "Stage, review, and explicitly approve promotion of one proven memory into its canonical policy owner without losing provenance.",
+          "path": "system/commands/si-promote.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/si-promote.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/commands/si-promote.md"
+        },
+        {
+          "id": "system/command/si-remember",
+          "name": "si:remember",
+          "install_name": "si-remember",
+          "qualified_name": "system/si-remember",
+          "description": "Stage and explicitly confirm one provenance-rich durable memory record in an authorized store.",
+          "path": "system/commands/si-remember.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/si-remember.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/commands/si-remember.md"
+        },
+        {
+          "id": "system/command/si-review",
+          "name": "si:review",
+          "install_name": "si-review",
+          "qualified_name": "system/si-review",
+          "description": "Perform a detailed read-only review of one scoped memory store and return evidence-backed correction, consolidation, and promotion candidates.",
+          "path": "system/commands/si-review.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/si-review.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/commands/si-review.md"
+        },
+        {
+          "id": "system/command/si-status",
+          "name": "si:status",
+          "install_name": "si-status",
+          "qualified_name": "system/si-status",
+          "description": "Show a compact read-only health snapshot for one scoped memory store, including provenance, freshness, conflicts, and capacity.",
+          "path": "system/commands/si-status.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/si-status.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/commands/si-status.md"
+        }
+      ],
+      "agents": [
+        {
+          "id": "system/agent/system-steward",
+          "name": "system-steward",
+          "install_name": "system-steward",
+          "qualified_name": "system/system-steward",
+          "description": "Coordinates portable plugin maintenance, knowledge flows, personalization policy, evaluation, and improvement across the system surface.",
+          "path": "system/agents/system-steward.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/agents/system-steward.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/agents/system-steward.md"
+        },
+        {
+          "id": "system/agent/experiment-runner",
+          "name": "experiment-runner",
+          "install_name": "experiment-runner",
+          "qualified_name": "system/experiment-runner",
+          "description": "Autonomous experimenter that optimizes a target file by a measurable metric. Reads experiment state from `.autoresearch/`, decides what ONE change to try based on accumulated evidence and strategy escalation, makes the change, commits, runs the evaluator, and keeps or discards based on outcome. Spawned by `/ar:loop` and `/ar:run`.",
+          "path": "system/agents/experiment-runner.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/agents/experiment-runner.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/agents/experiment-runner.md"
+        },
+        {
+          "id": "system/agent/memory-analyst",
+          "name": "memory-analyst",
+          "install_name": "memory-analyst",
+          "qualified_name": "system/memory-analyst",
+          "description": "Read-only analyst for one explicitly authorized memory store and its scoped policy sources. Finds freshness issues, conflicts, consolidation opportunities, and promotion candidates with provenance. Spawned by /si:review.",
+          "path": "system/agents/memory-analyst.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/agents/memory-analyst.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/agents/memory-analyst.md"
+        },
+        {
+          "id": "system/agent/skill-extractor",
+          "name": "skill-extractor",
+          "install_name": "skill-extractor",
+          "qualified_name": "system/skill-extractor",
+          "description": "Transforms a proven pattern or debugging solution into a standalone, portable Agent Skill. Generates `SKILL.md` with proper frontmatter, reference docs, and examples that work in any project. Spawned by `/si:extract` when a recurring solution should become reusable.",
+          "path": "system/agents/skill-extractor.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/agents/skill-extractor.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/agents/skill-extractor.md"
+        }
+      ],
+      "rules": [
+        {
+          "id": "system/rule/defaults",
+          "name": "defaults",
+          "install_name": "defaults",
+          "qualified_name": "system/defaults",
+          "description": "Runtime-neutral policy for the System plugin. These rules apply to every system skill and agent. Platform safety requirements and the user's explicitly authorized scope take precedence; narrower skills may add compatible implementation detail but may not relax the authorization gates or contradict the ownership boundaries below.",
+          "path": "system/rules/defaults.md",
+          "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/rules/defaults.md",
+          "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/rules/defaults.md"
+        }
+      ]
+    }
+  ]
+}

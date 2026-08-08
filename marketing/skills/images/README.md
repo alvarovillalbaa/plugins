@@ -20,7 +20,6 @@ https://github.com/alvarovillalbaa/plugins/tree/main/marketing/skills/images
 
 - `agents/`
 - `examples/`
-- `hooks/`
 - `references/`
 - `scripts/`
 - `templates/`

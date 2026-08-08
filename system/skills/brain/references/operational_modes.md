@@ -30,7 +30,7 @@ Default flow:
 2. Map the current structure.
 3. Inspect representative notes, templates, dashboards, boards, or instruction files.
 4. Choose the adaptation mode: strict AFS, partial AFS, or native company standard.
-5. Create or refresh `BRAIN.md`, `knowledge/INDEX.md`, and `logs/YYYY/MM-DD/changes.md` (or the brain's equivalent log path).
+5. Create or refresh `BRAIN.md`, the knowledge index, and the change log for the current date (resolve the log path via `use-afs`, or use the brain's equivalent).
 6. Preserve existing naming, metadata, and folder conventions when they already work.
 7. If an operating manual already exists, diff mentally and avoid overwriting it without approval.
 
@@ -76,17 +76,9 @@ If an ingest only creates new pages and rewrites nothing, it was probably too sh
 
 ## Memory-to-knowledge mode
 
-Use when the user wants `knowledge/` iterated from repo Memory, or when a compile pass should include experience captured outside `raw/`.
+Use when the user wants canonical knowledge iterated from repo Memory, or when a compile pass should include experience captured outside raw intake.
 
-Default inputs:
-
-- `logs/`
-- `lessons/`
-- `facts/`
-- `fixes/`
-- `steers/`
-- `models/`
-- `reflections/`
+Default inputs: every AFS Memory surface. Ask `use-afs` for the current set rather than working from a list held here.
 
 Default flow:
 
@@ -118,7 +110,7 @@ Use when the user wants continuity, a boot-up sequence, or a fast context restor
 
 Load progressively:
 
-- `L0`: `CRITICAL_FACTS.md`, `PINNED.md`, `facts/items/general/`, and identity/preferences
+- `L0`: `CRITICAL_FACTS.md`, `PINNED.md`, the general-domain fact surface, and identity/preferences
 - `L1`: `INDEX.md` and recent `LOG.md`
 - `L2`: current-state files, today's note, recent daily logs, active boards, active projects
 - `L3`: deep project pages or raw sources only when the current task needs them
@@ -327,17 +319,7 @@ Default flow:
 6. Update `LOG.md` and any relevant index files.
 7. Report: what was saved, what was updated, and any contradictions found.
 
-Frontmatter schema for new knowledge files:
-
-```yaml
----
-type: insight  # insight | decision | procedure | fact | question
-tags: [domain, subtopic]
-confidence: high  # high | medium | low
-created: YYYY-MM-DD
-source: session | ingest | research | meeting
----
-```
+Use the frontmatter schema defined in [`page_model.md`](page_model.md#searchable-frontmatter-schema). It is defined once there; do not restate or extend it here.
 
 Rules:
 - Extract learnings, not events. "We decided X" is an event. "Fast iteration beats perfect planning when scope is unclear" is a learning.

@@ -2,11 +2,12 @@
 
 Router for video content production. Routes to video production specialist skills.
 
-## Child Skills
+## Framework Routes
 
-| Child | Owns |
+| Route | Owns |
 |-------|------|
-| `remotion` | Programmatic video generation with React + Remotion |
+| external `hyperframes` | HyperFrames video composition and generation |
+| external `remotion-best-practices` via registry key `remotion` | Programmatic video generation with React + Remotion |
 | `slides` | Slide-based video (Loom-style, presentation recordings) |
 
 ## When to Use This Skill Directly
@@ -29,7 +30,7 @@ Router for video content production. Routes to video production specialist skill
 1. **Brief** — Define audience, goal, format, length, distribution channel.
 2. **Script** — Write full script or bullet-point outline before production.
 3. **Storyboard** — For animated/remotion videos, sketch key frames.
-4. **Produce** — Generate or record with the appropriate child skill.
+4. **Produce** — Generate or record with the appropriate official external framework skill or local cross-media skill.
 5. **Review** — Check pacing, audio quality, brand consistency.
 6. **Distribute** — Route to the appropriate platform via `syndication` or `social-media`.
 

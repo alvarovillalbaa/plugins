@@ -1,9 +1,6 @@
 ---
 name: agent-system-architecture
-description: >-
-  Use for agent architectures, multi-agent topology, agent lifecycles, handoff
-  patterns, and orchestration contracts. Child skill of `ai-engineering`;
-  route here from the parent router when this lane is the narrowest owner.
+description: Use for agent architectures, multi-agent topology, agent lifecycles, handoff patterns, and orchestration contracts. Child of `ai-engineering`.
 ---
 
 # Agent System Architecture
@@ -14,7 +11,7 @@ This child skill owns agent architectures, multi-agent topology, agent lifecycle
 
 - The request is primarily about agent architectures, multi-agent topology, agent lifecycles, handoff patterns, and orchestration contracts.
 - The parent router [`../ai-engineering/SKILL.md`](../ai-engineering/SKILL.md) selects this child.
-- The work needs this lane's references, scripts, examples, hooks, or templates.
+- The work needs this lane's references, examples, or templates.
 
 ## References
 
@@ -24,7 +21,7 @@ This child skill owns agent architectures, multi-agent topology, agent lifecycle
 
 ## Chain Rules
 
-- Chain to `quality-assurance/ai-evals`, `quality-assurance/security`, `backend`, `cloud`, `skills-management`, `brain` when the task crosses this child's boundary.
+- Chain to `quality-assurance/ai-evals`, `quality-assurance/security`, `backend`, `cloud`, `plugins-management`, `brain` when the task crosses this child's boundary.
 - Use repo-local personalization documents for company, product, voice, cloud, QA, or finance facts instead of hardcoding them here.
 - Preserve parent safety and approval rules for destructive, security-sensitive, finance-sensitive, or cloud-costly work.
 

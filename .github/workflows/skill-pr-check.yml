@@ -4,8 +4,17 @@ on:
   pull_request:
     paths:
       - ".github/workflows/skill-pr-check.yml"
+      - ".claude-plugin/marketplace.json"
+      - "AGENTS.md"
+      - "CITATION.cff"
+      - "codemeta.json"
+      - "catalog.json"
+      - "context7.json"
+      - "llms.txt"
+      - "llms-full.txt"
       - "scripts/**"
       - "schemas/**"
+      - "skills-chaining-map.md"
       - "system/**"
       - "marketing/**"
       - "sales/**"
@@ -13,7 +22,7 @@ on:
       - "product/**"
       - "finances/**"
       - "productivity/**"
-      - "references/docs/**"
+      - "references/**"
 
 permissions:
   contents: read
@@ -32,6 +41,14 @@ jobs:
           python3 scripts/skillctl.py meta check --root . --require-all
           python3 scripts/skillctl.py conflicts check --root .
           python3 scripts/validate_skills.py .
+
+      - name: Run bundled contract tests
+        run: python3 scripts/run_skill_tests.py .
+
+      - name: Check generated discovery artifacts
+        run: |
+          python3 scripts/generate_discovery_catalog.py --check
+          python3 scripts/component_graph.py build --check
 
       - name: Classify changed files
         run: |

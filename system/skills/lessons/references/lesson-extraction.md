@@ -75,5 +75,5 @@ This mirrors knowledge-base promotion — provisional until earned.
 - Durable persistence → `memory`.
 - Communication/style preferences specifically → `calibration`, `communication-style`, `voice`.
 - Broader knowledge entries → `knowledge-base`.
-- Lessons that should change a skill → `skills-management`, `skill-eval-loop`.
+- Lessons that should change a skill → `plugins-management`, `skill-eval-loop`.
 - Running the extraction on a cadence → `loops`, `learning`.

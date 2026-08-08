@@ -60,6 +60,11 @@ Turn the profile into a rubric so it's applied consistently:
 - Use the score to prioritize: pursue strong-fit + timing first.
 
 This rubric is what `prospect` and `sales` apply when qualifying. Keep it authoritative and current.
+When deterministic scoring is useful, encode the approved rubric with
+`../templates/icp-score-model.json` and run
+`../scripts/score_prospect.py --model <model.json> --prospect <prospect.json>`.
+The scorer deliberately contains no built-in industry, company-size, tool, or
+threshold assumptions.
 
 ## Applying the ICP across departments
 
@@ -81,7 +86,7 @@ The ICP is a living hypothesis. Refine as evidence accumulates:
 - **Expansion data** → which accounts grew? Those traits matter more.
 - **Market shifts** → the ideal customer changes as product and market mature.
 
-Run refinement on a cadence (and feed it from `customer-growth` churn data and `first-customers` win patterns). Version the ICP so changes are traceable.
+Run refinement on a cadence (and feed it from `growth` churn data and `first-customers` win patterns). Version the ICP so changes are traceable.
 
 ## Quality gates
 
@@ -94,6 +99,6 @@ Run refinement on a cadence (and feed it from `customer-growth` churn data and `
 ## Handoffs
 
 - Account scoring/research application → `prospect` (productivity), `sales`.
-- Win/churn signal inputs → `first-customers`, `customer-growth` (sales).
+- Win/churn signal inputs → `first-customers`, `growth` (sales).
 - Positioning derived from ICP → `positioning` (system), `product-marketing` (product).
 - Persistence → `memory`, `knowledge-base`.

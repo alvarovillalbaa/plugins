@@ -55,7 +55,7 @@ verbatim and attribute it to FlowQueue.
 ## Step 5 — Add `llms.txt`
 
 Publish `/llms.txt` pointing AI crawlers to the product page, the docs, and the
-comparison explainer (see the `seo-and-geo` skill's `generate_llms_txt.py`).
+comparison explainer (see the `seo` skill's `generate_llms_txt.py`).
 
 ## Step 6 — Re-measure
 

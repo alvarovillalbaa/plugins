@@ -6,7 +6,7 @@ Workflow for an agent-driven eval creation system: discovering context, compilin
 
 **Do not use for:** eval contract schema definitions (see `evals-system.md`) or CI gate configuration.
 
-**Related child skills:** `ai-evals-observability`, `prompt-tool-design`, `data-ml-pipelines`
+**Related child skills:** `ai-evals-observability`, `prompt-engineering`, `data-ml-pipelines`
 
 **Required evals:** `eval_case_coverage_gap`, `golden_dataset_version_integrity`
 

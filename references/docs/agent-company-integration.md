@@ -8,7 +8,7 @@ that should not live inside portable `SKILL.md` files or agent instructions.
 Commands live inside department plugin directories, for example:
 
 - `marketing/commands/blog-draft.md`
-- `sales/commands/outreach.md`
+- `sales/commands/account-brief.md`
 - `engineering/commands/review-pr.md`
 - `system/commands/ar-run.md`
 
@@ -51,4 +51,5 @@ Do not treat those paths as upstream. Trace them back to this repository with
 python3 scripts/skillctl.py structure check --root .
 python3 scripts/skillctl.py meta check --root . --require-all
 python3 scripts/validate_skills.py .
+python3 scripts/audit_commands.py .
 ```

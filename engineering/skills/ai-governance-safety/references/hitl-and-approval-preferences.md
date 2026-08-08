@@ -6,7 +6,7 @@ Production safety architecture for human-in-the-loop confirmation: approval scop
 
 **Do not use for:** generic agent safety governance (see `agent-governance-safety.md`) or tool confirmation policy schema (see `tool-call-design.md`).
 
-**Related child skills:** `ai-governance-safety`, `agent-system-architecture`, `prompt-tool-design`
+**Related child skills:** `ai-governance-safety`, `agent-system-architecture`, `prompt-engineering`
 
 **Required evals:** `hitl_block_renders_frontend`, `approval_preference_resolution`, `child_hitl_bubbles_to_parent`
 

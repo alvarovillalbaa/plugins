@@ -2,32 +2,28 @@
 
 ## Install
 
-- **Claude Code marketplace:** add the root marketplace and install one department plugin, for example `engineering@agent-company`.
-- **Local Claude development:** `claude --plugin-dir /path/to/plugins/engineering`.
-- **Codex:** point Codex at one department directory, for example `/path/to/plugins/engineering`.
-- **Portable skills:** install or symlink individual folders from `<department>/skills/<skill-name>/`.
-
-Prefer a source-tracked local clone for skills that agents may improve later:
+Prefer the first-party interactive installer. It supports complete plugins and
+individual skills, commands, rules, and agents in the flat project-local
+`.agents` layout:
 
 ```bash
-git clone https://github.com/alvarovillalbaa/plugins.git ~/.agent-sources/plugins
-cd ~/.agent-sources/plugins
-python3 scripts/skillctl.py install system/skills/auto-improve --agent codex --mode symlink
+git clone https://github.com/alvarovillalbaa/plugins.git ~/.local/share/clous-plugins
+cd /path/to/your-project
+~/.local/share/clous-plugins/scripts/plugins install
 ```
+
+See [`INSTALLATION.md`](INSTALLATION.md) for explicit selectors and the supported
+secondary paths: `npx skills add`, Claude/Codex marketplace installs, runtime plugin
+directories, symlinks, external skill chains, and manual copies.
 
 ## Personalize
 
-Initialize local overlays on first use:
+Configure known project values explicitly, or let the runtime ask only when a
+missing value first becomes relevant:
 
 ```bash
-python3 scripts/skillctl.py personalize init --skill system/skills/auto-improve
-```
-
-Update learned preferences only in the overlay:
-
-```bash
-python3 scripts/skillctl.py personalize update \
-  --skill system/skills/auto-improve \
+~/.local/share/clous-plugins/scripts/plugins configure \
+  --project . \
   --set user.role="Principal Engineer"
 ```
 
@@ -42,5 +38,35 @@ python3 scripts/validate_skills.py .
 
 ## Update
 
-From repo root you can run `./scripts/update.sh` to auto-detect and update, or
-`./scripts/update-from-upstream.sh` for a direct git-based update.
+Update the canonical clone, then merge the refreshed managed components into the
+target project:
+
+```bash
+git -C ~/.local/share/clous-plugins pull --ff-only
+~/.local/share/clous-plugins/scripts/plugins update --project /path/to/your-project
+```
+
+If the update cannot merge safely, export a provider-neutral review bundle only
+after explicitly choosing to do so:
+
+```bash
+~/.local/share/clous-plugins/scripts/plugins reconcile \
+  --project /path/to/your-project
+```
+
+The command writes base/local/incoming context when available and marks legacy
+base content unavailable rather than inventing it. It does not invoke AI, apply
+patches, mutate managed targets or locks, or persist secrets. Apply any reviewed
+resolution manually. A component resolution that does not naturally converge
+through `update` can then be adopted explicitly:
+
+```bash
+~/.local/share/clous-plugins/scripts/plugins reconcile \
+  --project /path/to/your-project \
+  --accept-local <conflict-id>
+```
+
+The adoption preview requires confirmation and changes only validated conflict
+metadata; it never edits the component. Managed document blocks are not
+adoptable—restore the generated block and keep customization outside its
+markers.

@@ -25,11 +25,24 @@ from collections import defaultdict
 # Base directory for experiment data. Must match experiment-engine.py setting.
 BASE_DIR = Path(os.environ.get("GROWTH_ENGINE_DATA_DIR", "./data/experiments"))
 
-# Agent names to scan. Customize to match your agent taxonomy.
-AGENTS = os.environ.get("GROWTH_ENGINE_AGENTS", "content,email,linkedin,seo,blog").split(",")
+# Optional explicit agent/channel list. Without it, discover data directories so
+# a new company or channel taxonomy does not require editing this script.
+CONFIGURED_AGENTS = [
+    item.strip()
+    for item in os.environ.get("GROWTH_ENGINE_AGENTS", "").split(",")
+    if item.strip()
+]
 
 RESULTS_COLS = ["experiment_id", "variable", "variant", "metric_value", "sample_n", "status", "date", "description"]
 PLAYBOOK_COLS = ["experiment_id", "agent", "channel", "rule", "lift_pct", "p_value", "date_added", "notes"]
+
+
+def agent_names():
+    if CONFIGURED_AGENTS:
+        return CONFIGURED_AGENTS
+    if not BASE_DIR.is_dir():
+        return []
+    return sorted(path.name for path in BASE_DIR.iterdir() if path.is_dir())
 
 
 def parse_tsv(filepath, expected_cols):
@@ -92,7 +105,7 @@ def load_all_results(weeks_back=1):
     """Load all results TSV rows across agents, filtered by week."""
     start, end = week_range(weeks_back)
     all_rows = []
-    for agent in AGENTS:
+    for agent in agent_names():
         filepath = BASE_DIR / agent.strip() / "results.tsv"
         rows = parse_tsv(filepath, RESULTS_COLS)
         for row in rows:
@@ -106,7 +119,7 @@ def load_all_results(weeks_back=1):
 def load_all_playbooks():
     """Load all playbook TSV rows across agents."""
     all_rows = []
-    for agent in AGENTS:
+    for agent in agent_names():
         filepath = BASE_DIR / agent.strip() / "playbook.tsv"
         rows = parse_tsv(filepath, PLAYBOOK_COLS)
         for row in rows:
@@ -259,7 +272,7 @@ def generate_scorecard(weeks_back=1):
 
     planned_statuses = {"planned", "next", "queued", "upcoming"}
     all_results_unfiltered = []
-    for agent in AGENTS:
+    for agent in agent_names():
         filepath = BASE_DIR / agent.strip() / "results.tsv"
         rows = parse_tsv(filepath, RESULTS_COLS)
         for row in rows:

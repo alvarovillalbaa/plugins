@@ -1,0 +1,43 @@
+# Agent Company Plugins
+
+> Portable department plugins, skills, commands, agents, and runtime-neutral rules for Claude, Codex, and Cursor.
+
+This source repository currently catalogs 7 plugins, 147 skills, 49 commands, 26 agents, and 7 rule sets.
+
+## Canonical Sources
+
+- [Repository](https://github.com/alvarovillalbaa/plugins): canonical source and release history
+- [README](https://github.com/alvarovillalbaa/plugins/blob/main/README.md): overview and installation guidance
+- [Agent guidance](https://github.com/alvarovillalbaa/plugins/blob/main/AGENTS.md): repository and runtime invariants for coding agents
+- [Quick Start](https://github.com/alvarovillalbaa/plugins/blob/main/QUICK_START.md): supported installation workflows
+- [Installation contract](https://github.com/alvarovillalbaa/plugins/blob/main/references/docs/INSTALLATION.md): preferred interactive command, flat layout, and no-loss updates
+- [Requirement coverage](https://github.com/alvarovillalbaa/plugins/blob/main/references/docs/REQUIREMENT-COVERAGE.md): implementation and verification map
+- [Machine-readable catalog](https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/catalog.json): complete structured inventory
+- [Full LLM catalog](https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/llms-full.txt): descriptions and source links for every component
+- [Typed component graph](https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/component-graph.json): complete recursive internal, external, plugin, and cross-element relationship inventory
+- [Component graph contract](https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/references/component-graph.json): explicit references, source inventories, and resolution policy
+- [Runtime context contract](https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/references/runtime-contract.json): inherited personalization and dynamic variables
+- [CodeMeta](https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/codemeta.json): structured software-project metadata
+- [Citation metadata](https://github.com/alvarovillalbaa/plugins/blob/main/CITATION.cff): software citation information
+- [Architecture](https://github.com/alvarovillalbaa/plugins/blob/main/references/docs/ARCHITECTURE.md): source and plugin model
+- [Changelog](https://github.com/alvarovillalbaa/plugins/blob/main/CHANGELOG.md): current changes and deprecations
+
+## Plugins
+
+- [`engineering`](https://github.com/alvarovillalbaa/plugins/tree/main/engineering): Own architecture, multi-agent execution, AI evaluation, delivery, quality, documentation, cloud operations, security testing, and technical risk. (46 skills, 17 commands, 7 agents)
+- [`finances`](https://github.com/alvarovillalbaa/plugins/tree/main/finances): Run finance operations, reconciliation, planning, taxes, fundraising, fiscal close, and analysis. (10 skills, 5 commands, 3 agents)
+- [`marketing`](https://github.com/alvarovillalbaa/plugins/tree/main/marketing): Create, teach, adapt, distribute, and visualize growth content across courses, SEO, AEO, GEO, LLM discovery, social, slides, images, and video. (23 skills, 6 commands, 1 agent)
+- [`product`](https://github.com/alvarovillalbaa/plugins/tree/main/product): Shape product direction, clarify user needs, design product experiences, and turn market insight into execution. (17 skills, 1 command, 2 agents)
+- [`productivity`](https://github.com/alvarovillalbaa/plugins/tree/main/productivity): Own reporting, research, review, evidence-led personal growth, meetings, and executive operating workflows. (16 skills, 3 commands, 5 agents)
+- [`sales`](https://github.com/alvarovillalbaa/plugins/tree/main/sales): Run go-to-market, pipeline, outreach, launches, virality, and revenue growth workflows. (18 skills, 5 commands, 4 agents)
+- [`system`](https://github.com/alvarovillalbaa/plugins/tree/main/system): Maintain plugins, skills, memory, knowledge, learning, brain ingestion, personalization, auditable work explanations, and repeatable improvement loops. (17 skills, 12 commands, 4 agents)
+
+## Instructions for Large Language Models
+
+- Treat this repository and the linked source files as authoritative for current component names, descriptions, and ownership.
+- Use `catalog.json` or `llms-full.txt` to select the narrowest matching plugin, skill, command, or agent.
+- Follow the installation contract and prefer the first-party project installer; do not infer install paths from the source layout alone.
+- For unresolved installed-update conflicts, use the explicit first-party `reconcile` workflow only to export provider-neutral review context; use `--accept-local` only after explicit human approval of an already-applied component resolution, and never infer that either mode invokes AI or edits the component target.
+- Treat graph edges as conditional relationship candidates: select only task-relevant available nodes, traverse breadth-first without a depth cap, visit each node once, and report rather than re-enter cycle edges.
+- Do not infer a hosted API, callable agent endpoint, authentication service, or live MCP server from these source manifests.
+- Distinguish canonical source files from local runtime copies, generated outputs, and user-specific personalization.

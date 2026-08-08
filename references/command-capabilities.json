@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "selection_rule": "Commands are reserved for stable orchestration, lifecycle control, deterministic helpers, or a narrower outcome that is not already exposed by a same-name local skill.",
+  "commands": [
+    {
+      "path": "engineering/commands/browser-trace.md",
+      "capability": "engineering.browser-observability-capture",
+      "owner": "engineering/frontend-e2e",
+      "boundary": "Captures one browser trace; it does not perform a repository or change review."
+    },
+    {
+      "path": "engineering/commands/cancel-dev-loop.md",
+      "capability": "engineering.development-loop-cancel",
+      "owner": "engineering/agent-harness",
+      "boundary": "Cancels one development-loop state file; it does not alter experiment or orchestration state."
+    },
+    {
+      "path": "engineering/commands/check-agent-compat.md",
+      "capability": "engineering.agent-readiness-audit",
+      "owner": "engineering/agent-harness",
+      "boundary": "Audits readiness before autonomous work; it does not fix CI or review a code change."
+    },
+    {
+      "path": "engineering/commands/deslop.md",
+      "capability": "engineering.behavior-preserving-code-cleanup",
+      "owner": "engineering/simplify",
+      "boundary": "Removes maintainability noise without behavior changes; it does not redesign architecture."
+    },
+    {
+      "path": "engineering/commands/dev-loop.md",
+      "capability": "engineering.development-task-loop",
+      "owner": "engineering/agent-harness",
+      "boundary": "Converges on one implementation task; it is not a harness-hardening or measured-experiment loop."
+    },
+    {
+      "path": "engineering/commands/docs-pass.md",
+      "capability": "engineering.bounded-documentation-update",
+      "owner": "engineering/code-documentation",
+      "boundary": "Updates bounded technical documentation; it does not build a complete documentation site."
+    },
+    {
+      "path": "engineering/commands/docs-site.md",
+      "capability": "engineering.documentation-site-build",
+      "owner": "engineering/code-documentation",
+      "boundary": "Builds a complete documentation website; it is not a bounded docs patch."
+    },
+    {
+      "path": "engineering/commands/fix-ci.md",
+      "capability": "engineering.continuous-integration-repair",
+      "owner": "engineering/cicd",
+      "boundary": "Diagnoses and fixes failing CI; it does not perform general repository readiness or code review."
+    },
+    {
+      "path": "engineering/commands/grill-with-docs.md",
+      "capability": "engineering.documented-decision-interview",
+      "owner": "engineering/architecture",
+      "boundary": "Interviews a technical decision and aligns its documents; it is not an architecture audit."
+    },
+    {
+      "path": "engineering/commands/harness-loop.md",
+      "capability": "engineering.harness-hardening-loop",
+      "owner": "engineering/agent-harness",
+      "boundary": "Repeats repository harness improvements; it is not a general task or experiment loop."
+    },
+    {
+      "path": "engineering/commands/orchestrate.md",
+      "capability": "engineering.multi-workstream-orchestration",
+      "owner": "engineering/multi-agent",
+      "boundary": "Coordinates independent or dependency-shaped workstreams; it is not a single-agent loop."
+    },
+    {
+      "path": "engineering/commands/pr-merge.md",
+      "capability": "engineering.local-change-landing",
+      "owner": "engineering/release-landing",
+      "boundary": "Lands an approved change locally; it does not review, triage, or push by default."
+    },
+    {
+      "path": "engineering/commands/repo-review.md",
+      "capability": "engineering.repository-health-review",
+      "owner": "engineering/quality-assurance",
+      "boundary": "Audits current repository or subsystem state; it excludes change-set and architecture-only reviews."
+    },
+    {
+      "path": "engineering/commands/retro.md",
+      "capability": "engineering.delivery-retrospective",
+      "owner": "engineering/agentic-development",
+      "boundary": "Analyzes a completed engineering window; it does not inspect only current state or capture one lesson."
+    },
+    {
+      "path": "engineering/commands/review-architecture.md",
+      "capability": "engineering.architecture-review",
+      "owner": "engineering/architecture",
+      "boundary": "Produces evidence-led architecture findings; it is not an interactive decision interview."
+    },
+    {
+      "path": "engineering/commands/review-pr.md",
+      "capability": "engineering.pull-request-review",
+      "owner": "engineering/prs",
+      "boundary": "Reviews one change set; it does not audit current repository state or triage a queue."
+    },
+    {
+      "path": "engineering/commands/triage-prs.md",
+      "capability": "engineering.pull-request-queue-triage",
+      "owner": "engineering/prs",
+      "boundary": "Classifies and routes a change queue; it does not perform full review or landing by default."
+    },
+    {
+      "path": "finances/commands/investor-messaging.md",
+      "capability": "finances.investor-narrative-draft",
+      "owner": "finances/fundraising",
+      "boundary": "Drafts investor narrative; it does not audit materials or diagnose pipeline speed."
+    },
+    {
+      "path": "finances/commands/materials-audit.md",
+      "capability": "finances.fundraising-materials-audit",
+      "owner": "finances/fundraising",
+      "boundary": "Audits fundraising materials; it does not draft messaging or analyze the raise process."
+    },
+    {
+      "path": "finances/commands/model-scenarios.md",
+      "capability": "finances.forward-scenario-modeling",
+      "owner": "finances/planning",
+      "boundary": "Builds forward-looking scenarios; it does not reconcile or mutate books of record."
+    },
+    {
+      "path": "finances/commands/pipeline-diagnostics.md",
+      "capability": "finances.fundraising-pipeline-diagnostics",
+      "owner": "finances/fundraising",
+      "boundary": "Analyzes fundraising funnel process; it does not audit materials or draft investor copy."
+    },
+    {
+      "path": "finances/commands/reconcile-books.md",
+      "capability": "finances.books-reconciliation",
+      "owner": "finances/reconciliation",
+      "boundary": "Matches historical financial records; it does not build forecasts or commit ledger changes implicitly."
+    },
+    {
+      "path": "marketing/commands/blog-draft.md",
+      "capability": "marketing.article-draft",
+      "owner": "marketing/content",
+      "boundary": "Creates a net-new article; it does not stop at a brief or produce a distribution pack."
+    },
+    {
+      "path": "marketing/commands/content-brief.md",
+      "capability": "marketing.content-brief",
+      "owner": "marketing/context-to-content",
+      "boundary": "Creates a reusable content brief; it does not draft the finished asset."
+    },
+    {
+      "path": "marketing/commands/linkedin-engage.md",
+      "capability": "marketing.linkedin-public-engagement",
+      "owner": "marketing/linkedin-posts",
+      "boundary": "Drafts public LinkedIn engagement; one-to-one sales messages belong to Sales outreach."
+    },
+    {
+      "path": "marketing/commands/social-pack.md",
+      "capability": "marketing.cross-channel-content-pack",
+      "owner": "marketing/syndication",
+      "boundary": "Adapts an existing canonical asset; it does not create the source asset from scratch."
+    },
+    {
+      "path": "marketing/commands/x-engage.md",
+      "capability": "marketing.x-public-engagement",
+      "owner": "marketing/x-posts",
+      "boundary": "Drafts public X interactions; direct messages belong to Sales outreach and standalone posts use x-post."
+    },
+    {
+      "path": "marketing/commands/x-post.md",
+      "capability": "marketing.x-organic-post",
+      "owner": "marketing/x-posts",
+      "boundary": "Creates one organic X post or thread; it does not coordinate a launch campaign."
+    },
+    {
+      "path": "product/commands/product-review.md",
+      "capability": "product.existing-surface-review",
+      "owner": "product/critique",
+      "boundary": "Reviews an existing product artifact or experience; it does not create commitments, a new PRD, or implementation."
+    },
+    {
+      "path": "productivity/commands/grill-me.md",
+      "capability": "productivity.general-decision-interview",
+      "owner": "productivity/grill",
+      "boundary": "Stress-tests a general plan or decision; startup demand and wedge interviews use office-hours."
+    },
+    {
+      "path": "productivity/commands/inbox-triage.md",
+      "capability": "productivity.inbound-message-triage",
+      "owner": "productivity/review",
+      "boundary": "Triages explicitly supplied or authorized inbound messages; it drafts and does not send or mutate an inbox by default."
+    },
+    {
+      "path": "productivity/commands/office-hours.md",
+      "capability": "productivity.early-product-decision-interview",
+      "owner": "productivity/grill",
+      "boundary": "Pressure-tests demand, wedge, and market decisions; it is not general plan review or performance evaluation."
+    },
+    {
+      "path": "sales/commands/account-brief.md",
+      "capability": "sales.account-research-brief",
+      "owner": "productivity/prospect",
+      "boundary": "Produces one sales-ready account brief; it does not draft outreach or run broad research."
+    },
+    {
+      "path": "sales/commands/competitor-scan.md",
+      "capability": "sales.recent-market-moves-scan",
+      "owner": "productivity/market-competitor-research",
+      "boundary": "Scans recent market moves for a sales decision; it is not a broad landscape or diligence artifact."
+    },
+    {
+      "path": "sales/commands/growth-experiment.md",
+      "capability": "sales.customer-growth-experiment",
+      "owner": "sales/growth",
+      "boundary": "Designs one customer or revenue growth experiment; marketing-content experiments belong to Marketing."
+    },
+    {
+      "path": "sales/commands/launch-virality.md",
+      "capability": "sales.x-launch-campaign",
+      "owner": "sales/virality",
+      "boundary": "Coordinates an X launch campaign; standalone channel posts and public replies belong to Marketing."
+    },
+    {
+      "path": "sales/commands/meet-with-clients.md",
+      "capability": "sales.customer-meeting-lifecycle",
+      "owner": "sales/technical-sales",
+      "boundary": "Prepares and follows through on a sales or customer meeting; general internal meetings belong to Productivity."
+    },
+    {
+      "path": "system/commands/ar-loop.md",
+      "capability": "system.experiment-continuous-run",
+      "owner": "system/loops",
+      "boundary": "Repeats a configured measured experiment; it does not create the experiment or run a general task loop."
+    },
+    {
+      "path": "system/commands/ar-run.md",
+      "capability": "system.experiment-single-run",
+      "owner": "system/loops",
+      "boundary": "Runs exactly one configured experiment iteration; it does not create or continuously repeat the experiment."
+    },
+    {
+      "path": "system/commands/ar-setup.md",
+      "capability": "system.experiment-setup",
+      "owner": "system/loops",
+      "boundary": "Creates and validates experiment state; it does not execute an optimization iteration."
+    },
+    {
+      "path": "system/commands/ar-status.md",
+      "capability": "system.experiment-status",
+      "owner": "system/loops",
+      "boundary": "Reports experiment state without mutation; it does not run, resume, or clean up the experiment."
+    },
+    {
+      "path": "system/commands/compile-raw.md",
+      "capability": "system.raw-knowledge-queue-compile",
+      "owner": "system/brain",
+      "boundary": "Compiles a queued raw corpus; it does not capture a new source."
+    },
+    {
+      "path": "system/commands/ingest.md",
+      "capability": "system.single-source-ingestion",
+      "owner": "system/brain",
+      "boundary": "Captures one new source and may compile only that source; queued corpus compilation is separate."
+    },
+    {
+      "path": "system/commands/learning-sync.md",
+      "capability": "system.repository-lesson-capture",
+      "owner": "system/learning",
+      "boundary": "Captures reusable repository lessons; it is not broad memory review or one exact memory write."
+    },
+    {
+      "path": "system/commands/si-extract.md",
+      "capability": "system.pattern-to-portable-skill",
+      "owner": "system/plugins-management",
+      "boundary": "Packages a proven reusable pattern as a skill; it does not store memory or package project-only conventions as portable."
+    },
+    {
+      "path": "system/commands/si-promote.md",
+      "capability": "system.memory-policy-promotion",
+      "owner": "system/memory",
+      "boundary": "Promotes one reviewed memory candidate into policy; it does not capture or broadly review memory."
+    },
+    {
+      "path": "system/commands/si-remember.md",
+      "capability": "system.memory-record-write",
+      "owner": "system/memory",
+      "boundary": "Stages and writes one exact approved memory record; it does not review a store or promote policy."
+    },
+    {
+      "path": "system/commands/si-review.md",
+      "capability": "system.memory-detailed-review",
+      "owner": "system/memory",
+      "boundary": "Performs candidate-level read-only review; it is not a compact health snapshot or write operation."
+    },
+    {
+      "path": "system/commands/si-status.md",
+      "capability": "system.memory-health-snapshot",
+      "owner": "system/memory",
+      "boundary": "Summarizes memory-store health; it does not perform candidate-level analysis or mutate records."
+    }
+  ],
+  "retired": [
+    {
+      "path": "marketing/commands/slides.md",
+      "replacement": "marketing/slides",
+      "reason": "The same-name local skill owns the public invocation and shadowed this command."
+    },
+    {
+      "path": "marketing/commands/video.md",
+      "replacement": "marketing/video",
+      "reason": "The same-name local skill owns the public invocation and shadowed this command."
+    },
+    {
+      "path": "productivity/commands/content-audit.md",
+      "replacement": "productivity/content-audit",
+      "reason": "The same-name local skill owns the public invocation and shadowed this command."
+    },
+    {
+      "path": "productivity/commands/documentation-drift.md",
+      "replacement": "productivity/documentation-drift",
+      "reason": "The same-name local skill owns the public invocation and shadowed this command."
+    },
+    {
+      "path": "productivity/commands/research.md",
+      "replacement": "productivity/research",
+      "reason": "The same-name local skill owns the public invocation and shadowed this command."
+    },
+    {
+      "path": "sales/commands/outreach.md",
+      "replacement": "sales/outreach",
+      "reason": "The same-name local router skill already owns outreach and its child workflow selection."
+    },
+    {
+      "path": "system/commands/update-memories.md",
+      "replacement": "system/si-review, system/si-promote, system/si-remember, or system/learning-sync",
+      "reason": "The convenience alias duplicated four narrower workflows and obscured their separate read and write authorization boundaries."
+    }
+  ]
+}

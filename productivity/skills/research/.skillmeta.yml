@@ -5,7 +5,7 @@ origin:
   branch: main
   path: productivity/skills/research
 install:
-  mode: symlink-preferred
+  mode: project-managed-copy
   agents:
     - codex
     - cursor

@@ -1,6 +1,12 @@
 # Non-installable external sources that internal skills may cite as live
 # methodology references. These are not copied by install-external-skills.py.
 sources:
+  open-evals:
+    owner: alvarovillalbaa
+    repo: https://github.com/alvarovillalbaa/open-evals.git
+    ref: main
+    homepage: https://github.com/alvarovillalbaa/open-evals
+    domain: agent-evals-reference
   how-to-ralph-wiggum:
     owner: ghuntley
     repo: https://github.com/ghuntley/how-to-ralph-wiggum

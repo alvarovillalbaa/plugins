@@ -22,7 +22,7 @@ docs/
     integration-issues/      ← cross-platform or cross-service bugs
     [other categories discovered at runtime]
   lessons/            ← prose notes, less structured; use when speed matters
-  research/           ← subsystem investigations (YYYY/MM-DD/topic.md)
+  research/           ← subsystem investigations (dated per use-afs)
   runbooks/           ← common diagnostic paths for recurring operations
 ```
 

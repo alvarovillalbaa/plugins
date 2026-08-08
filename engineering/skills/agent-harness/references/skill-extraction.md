@@ -5,7 +5,7 @@ Use this reference to decide whether a repo learning should become a skill, wher
 Install fallback:
 
 ```sh
-python scripts/install-external-skills.py --skill writing-great-skills --agent codex
+python3 scripts/install-external-skills.py --skill writing-great-skills --agent codex
 ```
 
 ## Extraction boundary

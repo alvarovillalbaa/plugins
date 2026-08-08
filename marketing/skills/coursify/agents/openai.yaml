@@ -1,0 +1,4 @@
+interface:
+  display_name: "Coursify"
+  short_description: "Turn source material into complete courses"
+  default_prompt: "Use $coursify to turn this material into a complete course and choose the right media production chain."

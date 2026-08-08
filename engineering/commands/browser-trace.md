@@ -1,11 +1,13 @@
 ---
 name: browser-trace
-description: Capture full browser observability for a URL — network requests, DOM snapshots, screenshots, and console logs dumped to a searchable filesystem. Use for reverse engineering, autoresearch loops, flaky test diagnosis, and pre-QA reconnaissance.
+description: Capture browser observability for one URL and return searchable network, DOM, screenshot, and console evidence.
 argument-hint: "<URL> [output dir]"
-allowed-tools: [Bash, Read, Write, AskUserQuestion]
+allowed-tools: [Bash, Read, Write, AskUserQuestion, Skill]
 ---
 
-Capture complete browser observability for a URL using `scripts/browser_trace.py` from the quality-assurance skill. Dump network requests, DOM snapshots, screenshots, and console logs into a searchable filesystem, then interpret the findings.
+Use skill: **frontend-e2e** — `skills/frontend-e2e/SKILL.md`.
+
+Capture browser observability with `skills/frontend-e2e/scripts/browser_trace.py`, then interpret the artifacts. This command owns trace collection; use `repo-review` for a repository-wide review and `review-pr` for a change review.
 
 ## Steps
 
@@ -13,7 +15,7 @@ Capture complete browser observability for a URL using `scripts/browser_trace.py
 
 2. **Run the trace:**
    ```bash
-   python <skill-dir>/scripts/browser_trace.py \
+   python "${CLAUDE_PLUGIN_ROOT}/skills/frontend-e2e/scripts/browser_trace.py" \
      --url <URL> \
      --output <output-dir> \
      [--wait "<selector>"] \

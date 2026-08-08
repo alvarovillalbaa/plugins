@@ -1,6 +1,6 @@
 # CORE-EEAT Item Reference
 
-Quick reference for all 80 CORE-EEAT audit items. Full scoring criteria in [core-eeat-benchmark.md](../../on-page-seo/references/core-eeat-benchmark.md).
+Quick reference for all 80 CORE-EEAT audit items. Full scoring criteria in [core-eeat-benchmark.md](../../seo/references/core-eeat-benchmark.md).
 
 ## Complete Item Reference
 

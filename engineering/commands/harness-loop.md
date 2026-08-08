@@ -2,11 +2,13 @@
 name: harness-loop
 description: "Run a harness engineering improvement loop — audits the repo each iteration, picks the highest-priority finding, enforces it as a CI gate or structural test, and stops when no P0 or P1 findings remain."
 argument-hint: "[REPO ROOT or scope] [--max-iterations N]"
-allowed-tools: ["Bash(${CLAUDE_PLUGIN_ROOT}/skills/agent-harness/scripts/setup-dev-loop.sh:*)", "Bash", "Read"]
+allowed-tools: ["Bash(${CLAUDE_PLUGIN_ROOT}/skills/agent-harness/scripts/setup-dev-loop.sh:*)", "Bash", "Read", "Skill"]
 hide-from-slash-command-tool: "true"
 ---
 
 # Harness Loop
+
+Use skill: **agent-harness** — `skills/agent-harness/SKILL.md`.
 
 Initialize a structured harness engineering loop. Determine the repo root from `$ARGUMENTS` or default to `.`, then run:
 
@@ -34,3 +36,5 @@ Output `<promise>NO_P0_P1_FINDINGS</promise>` only when a fresh harness audit re
 ## Reference
 
 Read `skills/agent-harness/references/harness-engineering.md` for the full audit dimensions, improvement patterns, and prioritization framework.
+
+This loop owns repository harness hardening. Use `dev-loop` for a general bounded implementation task and `ar:loop` for metric-driven experiments.
