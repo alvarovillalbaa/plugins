@@ -1,6 +1,6 @@
 # One-Off Documentation Reference
 
-Last updated: 2026-04-25
+Last updated: 2026-10-10
 
 One-off docs capture a specific decision, investigation, or event. Their value is historical context, not live policy ownership.
 
@@ -43,8 +43,8 @@ Write an ADR when:
 
 Choose the repo's existing convention:
 
-- inline in the folder's `ARC.md` when the decision is local
-- the AFS audit surface, named `adr-[slug].md`, when the decision is cross-cutting or report-like
+- the living `decisions/` owner, linked from the closest `ARCHITECTURE.md`
+- the dated AFS audit surface for historical investigation evidence
 
 If the lasting rule becomes operational, also promote it into the relevant living doc.
 

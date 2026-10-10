@@ -1,6 +1,7 @@
 # Runbook Template
 
-Copy this into `runbooks/<workflow>.md` for repo-wide processes, or `RUNBOOK.md` inside a folder when the procedure is local to that subsystem.
+Copy this into the living `runbooks/<workflow>.md` owner and link it from the
+closest subsystem README. Do not create a folder-level `RUNBOOK.md`.
 
 Replace all placeholder text. Keep commands executable and verification steps explicit. Mark dangerous steps before the operator reaches them, and record who owns the workflow plus when it was last verified.
 

@@ -8,12 +8,14 @@ description: >-
 
 # Raw Ingestion
 
-This child skill owns raw source ingestion, transcript or artifact parsing, canonical page promotion, unreadable-source preservation, and BRAIN.md-bound cleanup. It carries the detailed assets for this lane after the corrected fragmentation split.
+Last updated: 2026-10-10
+
+This child skill owns Drive source ingestion, transcript or artifact parsing, canonical page promotion, unreadable-source preservation, and AGENTS.md-guided cleanup. It carries the detailed assets for this lane after the corrected fragmentation split.
 
 ## Use When
 
-- The request is primarily about raw source ingestion, transcript or artifact parsing, canonical page promotion, unreadable-source preservation, and BRAIN.md-bound cleanup.
-- The request asks to process `raw/`, source URLs, local files, transcripts, PDFs, screenshots, structured exports, or repo-local Memory folders into `knowledge/`.
+- The request is primarily about source ingestion, transcript or artifact parsing, canonical page promotion, unreadable-source preservation, and AGENTS.md-guided cleanup.
+- The request asks to process Drive RAW entries, source URLs, local files, transcripts, PDFs, screenshots, structured exports, or repo-local Memory into the appropriate maintained owner pages.
 - The parent router [`../brain/SKILL.md`](../brain/SKILL.md) selects this child.
 - The work needs this lane's references, scripts, examples, or templates.
 

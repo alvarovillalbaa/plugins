@@ -2451,7 +2451,7 @@
           "name": "brain",
           "install_name": "brain",
           "qualified_name": "system/brain",
-          "description": "Route and maintain BRAIN.md-bounded second-brain workflows — raw ingestion, folder adaptation, memory-to-knowledge compilation, and canonical knowledge updates.",
+          "description": "Route and maintain AGENTS.md-guided second-brain workflows — Drive source ingestion, folder adaptation, memory-to-knowledge compilation, and canonical knowledge updates.",
           "path": "system/skills/brain/SKILL.md",
           "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/skills/brain/SKILL.md",
           "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/skills/brain/SKILL.md"
@@ -2603,7 +2603,7 @@
           "name": "ingest",
           "install_name": "ingest",
           "qualified_name": "system/ingest",
-          "description": "Capture one source into a brain's raw layer and optionally compile only that source into canonical knowledge.",
+          "description": "Preserve one source in private Drive, catalog its provenance, and optionally compile readable evidence into maintained owner pages.",
           "path": "system/commands/ingest.md",
           "url": "https://github.com/alvarovillalbaa/plugins/blob/main/system/commands/ingest.md",
           "raw_url": "https://raw.githubusercontent.com/alvarovillalbaa/plugins/main/system/commands/ingest.md"

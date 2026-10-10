@@ -1,6 +1,6 @@
 # AFS Profile
 
-Last updated: 2026-08-07
+Last updated: 2026-10-10
 
 AFS (the Agentic File System) is defined **externally** and is deliberately not restated here or in
 any skill in this repo. Duplicating it caused drift; this file exists so there is exactly one place
@@ -54,12 +54,12 @@ code folder can carry its own documentation.
 **Core** — consider first:
 
 - `README.md` — entry point, purpose, usage, links to neighboring docs
-- `ARC.md` — internals, boundaries, flows, and design decisions
+- `ARCHITECTURE.md` — internals, boundaries, flows, and design decisions
+- `TESTS.md` — focused verification and the limits of its evidence
 
 **Conditional** — add only when the folder actually needs them:
 
 - `SETUP.md` — non-obvious environment and initialization steps
-- `RUNBOOK.md` — local operational workflow for this folder
 - `CHANGELOG.md` — user-facing or package-facing release history
 - `SECURITY.md` — security boundaries, secrets handling, abuse cases, review expectations
 
@@ -67,10 +67,15 @@ code folder can carry its own documentation.
 
 - `OVERVIEW.md` — concept-first orientation when README would become too dense
 - `FAQ.md` — repeated questions and troubleshooting
-- `DECISIONS.md` — folder-local decisions that do not justify standalone ADRs
 - `DEPENDENCIES.md` — dependency map, contracts, and upgrade notes
 
 Use the smallest set that makes the folder legible.
+
+Folder workflows belong in living `runbooks/` and decisions in `decisions/`,
+linked from the closest owner README. Use one `REFERENCES.md` catalog for links;
+existing authored technical guides and machine-readable registries retain
+their owner paths. Preserve raw sources in private Drive and catalog them in
+`SOURCES.md`. Templates stay beside the skill or content they serve.
 
 ### Living-doc freshness
 
@@ -87,10 +92,10 @@ touched. Which folders are living versus timestamped is an AFS question — ask 
 
 These apply to this plugins repo only:
 
-- Skill audits stay directly under `docs/audits/skills/` with date-prefixed filenames. Do not create
+- Skill audits stay under `docs/audits/YYYY/MM-DD/skills/`. Do not create
   a parallel root `audits/` tree here.
 - Skill changelogs stay under `docs/changelog/skills/`.
 - Generated improvement bundles live in `.skill-improvements/` and are evidence, not durable memory.
 
-See [`../../BRAIN.md`](../../BRAIN.md) for this repo's brain boundary and canonical paths, and
+See [`../../AGENTS.md`](../../AGENTS.md) for this repo's workspace boundary and canonical paths, and
 [`promotion-matrix.md`](promotion-matrix.md) for choosing an owner when a signal becomes durable.

@@ -17,8 +17,14 @@ __pycache__/
 docs/*
 !docs/audits/
 docs/audits/*
-!docs/audits/skills/
-!docs/audits/skills/*.md
+!docs/audits/20[0-9][0-9]/
+!docs/audits/20[0-9][0-9]/**
+!docs/logs/
+!docs/logs/20[0-9][0-9]/
+!docs/logs/20[0-9][0-9]/**
+!docs/results/
+!docs/results/20[0-9][0-9]/
+!docs/results/20[0-9][0-9]/**
 !docs/changelog/
 docs/changelog/*
 !docs/changelog/skills/

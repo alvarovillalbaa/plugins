@@ -1,9 +1,11 @@
 ---
 name: ingest
-description: Capture one source into a brain's raw layer and optionally compile only that source into canonical knowledge.
+description: Preserve one source in private Drive, catalog its provenance, and optionally compile readable evidence into maintained owner pages.
 argument-hint: "[URL, tweet ID, file path, or paste raw text]"
 allowed-tools: [Read, Write, Bash, WebFetch, AskUserQuestion, Skill]
 ---
+
+Last updated: 2026-10-10
 
 Use skill: **brain** — `skills/brain/SKILL.md`. Route source-specific extraction through `skills/ingestion/SKILL.md`.
 Also read:
@@ -14,12 +16,11 @@ Also read:
 
 1. **Confirm the brain boundary**
 
-   Count `BRAIN.md` files under the target root before writing:
-   - 0: do not write canonical knowledge unless the user asked to bootstrap a brain.
-   - 1: use that directory as the active brain root.
-   - More than 1: stop and ask which brain to target.
-
-   Use the active `BRAIN.md` to identify raw, knowledge, Memory, log, and index paths. Default to `knowledge/` only when no local mapping exists.
+   Select the requested workspace; read root and applicable scoped `AGENTS.md`,
+   indexes, and owner pages. Nested instructions do not create competing roots.
+   Resolve the source's ownership and verify the connected private Drive account
+   and destination. If that access is missing, report the exact blocker and keep
+   the source untouched.
 
 2. **Classify the source**
 
@@ -29,7 +30,7 @@ Also read:
    - LinkedIn URL → use `defuddle` or `agent-browser`
    - Any other web URL → use `defuddle parse <URL> --md`
    - Local file path (`.pdf`, `.md`, `.txt`, `.srt`, `.vtt`, `.json`, `.csv`, image, archive, office file) → use the matching source rule
-   - Pasted raw text → save directly to `raw/`
+   - Pasted raw text → capture in temporary staging, then preserve in Drive
 
 3. **Fetch or extract the content**
 
@@ -37,9 +38,14 @@ Also read:
 
    If the source yields only metadata, a preview, a login wall, deleted media, unsupported binary data, or unreadable text, save or update the raw entry with `status: blocked` and `blocked_reason`. Do not promote it to canonical knowledge.
 
-4. **Save to raw/**
+4. **Preserve in private Drive and catalog**
 
-   Write the result to the brain's raw intake folder using the naming convention `use-afs` defines (or the local equivalent from `BRAIN.md`), with the standard frontmatter:
+   Preserve the original and extracted content with the authorized Drive
+   connector. Verify the uploaded bytes by remote download and SHA256 before
+   removing an explicitly migrated original. Record stable artifact URL, member
+   path, size, checksum, and reading status in `SOURCES.md`. Never create a
+   repository raw folder or commit a temporary path or signed URL. Extraction
+   metadata uses:
    ```
    source: <type>
    url: <original URL or ID>
@@ -50,17 +56,20 @@ Also read:
 5. **Immediate compile (optional)**
 
    If the user wants the content compiled now rather than queued:
-   - Read `BRAIN.md` to learn the brain's structure.
+   - Read `AGENTS.md` to learn the workspace's structure.
    - Run the ingest mode from `references/operational_modes.md`.
-   - Update relevant canonical pages under `knowledge/` or the mapped canonical knowledge path.
+   - Update the existing owner: unique generalized synthesis belongs in
+     `knowledge/`; facts, decisions, repo procedures, and research use their
+     appropriate maintained surfaces. Copied source summaries stay source material.
    - Refresh `INDEX.md` and the current dated log or local equivalent.
-   - Mark the raw file as `status: processed`.
+   - Mark the source catalog entry `status: processed` after successful writes;
+     retain the preserved Drive artifact.
 
 6. **Report**
 
    Tell the user:
    - What was fetched and from where.
-   - Where the raw file was saved.
+   - The stable Drive artifact and source catalog location.
    - If compiled: which canonical pages were created or updated and what contradictions or open threads were found.
    - If blocked: which source could not be extracted and the exact reason.
    - If queued: confirm the file is ready for the next `compile-raw` pass.

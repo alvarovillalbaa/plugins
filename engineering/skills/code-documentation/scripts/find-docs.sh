@@ -25,7 +25,7 @@ AFS_HINT="Resolve the path with the 'use-afs' skill. If it is not installed:
 find_repo_root() {
     local dir="$PWD"
     while [[ "$dir" != "/" ]]; do
-        if [[ -d "$dir/.git" || -f "$dir/AGENTS.md" || -f "$dir/BRAIN.md" || -d "$dir/docs" ]]; then
+        if [[ -e "$dir/.git" || -f "$dir/AGENTS.md" || -d "$dir/docs" ]]; then
             echo "$dir"
             return
         fi
@@ -182,17 +182,17 @@ case "$cmd" in
         echo "Contract: references/docs/afs-profile.md"
         echo ""
         echo "Core:"
-        for f in README.md ARC.md; do
+        for f in README.md ARCHITECTURE.md TESTS.md; do
             [[ -f "$CURRENT/$f" ]] && echo "  ✓ $f" || echo "  ✗ $f (missing)"
         done
         echo ""
         echo "Conditional:"
-        for f in SETUP.md RUNBOOK.md CHANGELOG.md SECURITY.md; do
+        for f in SETUP.md CHANGELOG.md SECURITY.md; do
             [[ -f "$CURRENT/$f" ]] && echo "  ✓ $f" || echo "  ✗ $f (missing)"
         done
         echo ""
         echo "Rare:"
-        for f in OVERVIEW.md FAQ.md DECISIONS.md DEPENDENCIES.md; do
+        for f in OVERVIEW.md FAQ.md DEPENDENCIES.md; do
             [[ -f "$CURRENT/$f" ]] && echo "  ✓ $f" || echo "  ✗ $f (missing)"
         done
         ;;
@@ -239,9 +239,9 @@ case "$cmd" in
         echo ""
 
         echo "📁 IN-FOLDER DOC CONTRACT (references/docs/afs-profile.md)"
-        echo "   Core: README.md, ARC.md"
-        echo "   Conditional: SETUP.md, RUNBOOK.md, CHANGELOG.md, SECURITY.md"
-        echo "   Rare: OVERVIEW.md, FAQ.md, DECISIONS.md, DEPENDENCIES.md"
+        echo "   Core: README.md, ARCHITECTURE.md, TESTS.md"
+        echo "   Conditional: SETUP.md, CHANGELOG.md, SECURITY.md"
+        echo "   Rare: OVERVIEW.md, FAQ.md, DEPENDENCIES.md"
         echo ""
 
         print_legacy_conflicts

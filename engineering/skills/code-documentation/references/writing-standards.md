@@ -1,6 +1,6 @@
 # Writing Standards Reference
 
-Last updated: 2026-04-25
+Last updated: 2026-10-10
 
 Standards for tone, voice, structure, and quality across all code documentation.
 
@@ -149,13 +149,13 @@ Tables are underused in technical documentation. Use them for:
 
 | Doc type | Target length | Maximum |
 |---|---|---|
-| Daily log entry | 1–2 bullets, 1 line each | 3 bullets |
+| Daily log entry | 1–2 lines per change | 2 lines per change |
 | Docstring (simple function) | 2–5 lines | 15 lines |
 | Docstring (complex function) | 5–15 lines | 30 lines |
-| README | 100–300 words | 500 words (then split into `ARC.md`) |
-| `ARC.md` | 300–800 words | 1500 words |
+| README | 100–300 words | 500 words (then split into `ARCHITECTURE.md`) |
+| `ARCHITECTURE.md` | 300–800 words | 1500 words |
 | Root instruction docs (the UPPERCASE set `use-afs` defines) | 200–600 words | 1200 words |
-| Runbook (`RUNBOOK.md` or the AFS runbook surface) | 300–900 words | 1600 words |
+| Living runbook | 300–900 words | 1600 words |
 | Technical report | 500–1500 words | 3000 words |
 | ADR | 200–500 words | 800 words |
 | Post-mortem | 400–1000 words | 2000 words |

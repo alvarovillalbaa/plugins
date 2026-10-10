@@ -1,10 +1,12 @@
 # Wiki Compiler Playbook
 
+Last updated: 2026-10-10
+
 Use this reference when the user wants the second brain to behave like an actively maintained wiki compiler rather than a passive note store.
 
 This playbook is storage-agnostic. It assumes a raw/source-intake layer and a canonical knowledge layer, but it does not require Obsidian, plugin metadata, or any specific frontend. Adapt filenames, link styles, and helper files to the user's existing system.
 
-Load the parent brain contract before writes: `../brain/references/brain_contract.md`. That contract decides the `BRAIN.md` boundary, AFS/native adaptation mode, raw retention rule, and canonical knowledge path.
+Load the parent brain contract before writes: `../../brain/references/brain_contract.md`. That contract decides the `AGENTS.md` boundary, AFS/native adaptation mode, raw retention rule, and canonical knowledge path.
 
 ## Stance
 
@@ -17,7 +19,7 @@ The job is not to ask, "Where should this fact go?" The job is to ask:
 - which existing pages should become richer
 - which new pages are justified by repeated evidence
 
-Every meaningful source should be absorbed somewhere in canonical knowledge. "Absorbed" does not mean appended to the nearest page. It means interpreted, connected, and woven into the maintained wiki.
+Readable sources may change maintained owner pages. Unique generalized synthesis belongs in knowledge; people and project context, facts, decisions, operations, source summaries, and research keep their appropriate owners. Preserve copied material in Drive, with `SOURCES.md` provenance. "Absorbed" does not mean appended to the nearest page. It means interpreted, connected, and woven into the maintained wiki.
 
 ## When to load this reference
 
@@ -40,7 +42,7 @@ Goal: convert or preserve source material so it can be compiled predictably.
 
 Rules:
 
-- preserve originals in the raw layer when durable ingestion is wanted
+- preserve original bytes in the ownership-appropriate private Drive account; verify remote size and SHA256 before removing explicitly migrated local originals
 - normalize dates, names, and source labels early
 - split compound exports into logical entries when that improves retrieval
 - keep the ingest step mechanical where possible
@@ -200,11 +202,13 @@ During a large absorb pass, pause every 10-20 meaningful entries or at another s
 - split pages that are becoming dumping grounds
 - confirm the directory or taxonomy still reflects the material
 
-## Optional taxonomy
+## Owner taxonomy
 
 Taxonomy should emerge from the corpus. Do not pre-create a huge directory tree unless the user wants it.
 
-Common page families:
+The following describe topic families, not a mandate to put them under knowledge. Route entities to objects or facts, operations to runbooks/cookbooks, decisions to decisions, and source summaries to Drive or generated library artifacts. Research uses unit folders with ordered questions, hypotheses, reasoning, method, evidence, status, and next action. Unique generalized concepts and perspectives belong in knowledge.
+
+Common topic families:
 
 - `people/`
 - `projects/`

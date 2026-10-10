@@ -1,6 +1,6 @@
 # Promotion Matrix
 
-Last updated: 2026-08-07
+Last updated: 2026-10-10
 
 Use this matrix when a memory entry, lesson, raw source, generated improvement, or documentation finding might become durable project knowledge.
 
@@ -9,11 +9,11 @@ This matrix decides **which surface owns a signal and which skill owns the write
 | Signal | Canonical target | Owner skill | Notes |
 | --- | --- | --- | --- |
 | Runtime instruction that should affect future agent behavior | `CLAUDE.md` or `.claude/rules/` | `memory` | Promote only recurring, actionable rules. Remove duplicate auto-memory after promotion. |
-| User, company, customer, environment, or project fact | The AFS fact surface for the fact's type, unless `BRAIN.md` maps facts elsewhere | `brain` + `code-documentation` | Fact surfaces are living, not timestamped. Facts are evidence; compile into the knowledge surface only when they become maintained understanding. |
+| User, company, customer, environment, or project fact | The AFS fact surface for the fact's type, unless `AGENTS.md` maps facts elsewhere | `brain` + `code-documentation` | Fact surfaces are living, not timestamped. Facts are evidence; compile into the knowledge surface only when they become maintained understanding. |
 | Reusable debugging or operational fix | The AFS fix surface | `code-documentation` | Include symptom, root cause, fix, verification, and affected owners. |
 | Reusable lesson from repeated work | The AFS lesson surface for the domain | `learning` | Keep lessons short and evidence-backed. Promote broader rules to memory only when they should guide future sessions. |
-| Raw source, transcript, export, or unreadable pointer | The AFS raw intake surface, with status metadata | `ingestion` | Mark `unprocessed`, `processed`, or `blocked`; use `blocked_reason` for unreadable sources. |
-| Maintained synthesis or wiki page | The AFS source-of-truth surfaces — knowledge, cookbooks, runbooks, research, or references | `brain` + `ingestion` | Rewrite owner pages into current truth and preserve source provenance. |
+| Raw source, transcript, export, or unreadable pointer | Verified private Drive artifact plus `SOURCES.md` provenance and status | `ingestion` | Mark `unprocessed`, `processed`, or `blocked`; use `blocked_reason` for unreadable sources. |
+| Maintained synthesis or wiki page | The appropriate maintained owner, cataloged through `REFERENCES.md` | `brain` + `ingestion` | Unique generalized synthesis belongs in knowledge; operations use technical guides, continuous research uses unit folders, and copied summaries remain source/library artifacts. Preserve source provenance. |
 | Installed skill prompt, reference, script, eval, template, or example improvement | Installed `.agents/skills/<name>/` plus local `.skill-improvements/` review bundle | `auto-improve` + `skill-eval-loop` | Keep the canonical plugin source read-only; retain the change locally through the installed-component merge flow. |
 | Explicit canonical skill-source maintenance | Source skill path plus an optional reviewed patch bundle | `plugins-management` + `skill-eval-loop` | This is a separate user-requested workflow and is never inferred from `auto-improve`. |
 | Agent-harness or autoresearch round logs/results | `.skill-improvements/` | `agent-harness` | Generated review artifacts are not durable memory. Promote only adopted lessons through `lessons/` or source docs. |
