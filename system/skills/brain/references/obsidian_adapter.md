@@ -1,5 +1,7 @@
 # Obsidian Adapter
 
+Last updated: 2026-10-10
+
 Use this reference when the user already keeps their second brain in an Obsidian vault, wants to import from one, or wants Obsidian-compatible outputs without making the system depend on Obsidian.
 
 This reference incorporates the useful ideas from `kepano/obsidian-skills` while keeping the brain contract storage-agnostic.
@@ -12,7 +14,7 @@ Keep the durable contract the same:
 
 - raw sources stay preserved
 - canonical knowledge pages stay source-backed and assistant-maintained
-- reports, plans, audits, and other deliverables stay separate from canonical knowledge unless the brain explicitly stores them under `knowledge/`
+- reports, plans, audits, and other deliverables use their operational owners; knowledge holds unique generalized synthesis
 - metadata, links, and exports should remain legible outside Obsidian
 
 Do not redesign the knowledge base around vault-specific affordances unless the user explicitly wants that tradeoff.
@@ -21,7 +23,7 @@ Do not redesign the knowledge base around vault-specific affordances unless the 
 
 Reasonable folder mappings inside an Obsidian vault:
 
-- a `Sources/` folder or the AFS intake surface for raw material
+- private Drive originals cataloged in `SOURCES.md`
 - `knowledge/` or domain folders for canonical topic pages
 - the AFS source-of-truth surfaces for references, recipes, procedures, and research — ask `use-afs` for the set
 - the AFS operational surfaces for audits, plans, and specs
@@ -147,14 +149,15 @@ For standard public web pages, prefer clean markdown extraction over full browse
 This is a good pattern when `defuddle` or an equivalent extractor is available:
 
 ```sh
-defuddle parse https://example.com/article --md -o raw/2026-04-12_example-article.md
+capture_dir=$(mktemp -d "${TMPDIR:-/tmp}/afs-ingest.XXXXXX")
+defuddle parse https://example.com/article --md -o "$capture_dir/example-article.md"
 ```
 
 Use this workflow:
 
-1. preserve the cleaned markdown in the raw layer
+1. preserve original and cleaned markdown in verified private Drive; catalog provenance in `SOURCES.md`
 2. store the source URL and capture date in the file or nearby metadata
-3. absorb the source into canonical pages under `knowledge/` or another mapped canonical area
+3. absorb readable evidence into its maintained owner; knowledge requires unique generalized synthesis
 4. keep any figures or attachments that materially affect the synthesis
 
 If the source is already markdown, fetch it directly.
@@ -166,7 +169,7 @@ If the page is dynamic or requires login, fall back to browser automation or ano
 In Obsidian-heavy workflows, users often already have daily notes and templates. Support them, but classify them correctly:
 
 - daily notes are usually raw or first-brain material until compiled
-- templates are helpers for repeated structures, not the knowledge model itself
+- templates are helpers kept beside the content owner, rather than in a global template folder
 - meeting notes and journals should usually feed canonical pages rather than remain the final destination
 
 If a user has a strong daily-note habit, the assistant should compile those notes into durable topic pages, decision logs, and current-state files instead of leaving the vault as a chronological pile.

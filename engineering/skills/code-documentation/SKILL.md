@@ -6,7 +6,7 @@ version: 2.0.0
 
 # Code Documentation
 
-Last updated: 2026-08-07
+Last updated: 2026-10-10
 
 Write documentation that stays close to the code, stays coherent over time, and gives humans and agents one clear place to look.
 
@@ -63,7 +63,7 @@ files already in known locations proceed normally.
 Documentation falls into five surfaces:
 
 1. **Inline docs** — docstrings, JSDoc/TSDoc, comments, types
-2. **In-folder docs** — `README.md`, `ARC.md`, and related files that explain one folder; see the
+2. **In-folder docs** — `README.md`, `ARCHITECTURE.md`, and related files that explain one folder; see the
    contract in the AFS profile
 3. **Root instruction docs** — the UPPERCASE Markdown files at the repo root; `use-afs` owns the
    canonical set
@@ -84,9 +84,9 @@ surfaces it owns:
 |---|---|
 | Explain a public function, component, hook, API surface, or class | Inline docs |
 | Explain what one folder is for and how to navigate it | `README.md` in that folder |
-| Explain internal design or data flow for one folder | `ARC.md` in that folder |
+| Explain internal design or data flow for one folder | `ARCHITECTURE.md` in that folder |
 | Explain setup for one area | `SETUP.md` in that folder |
-| Explain a folder-local workflow | `RUNBOOK.md` in that folder |
+| Explain a folder-local workflow | A living runbook linked from the folder README |
 | Record repo-wide operating rules, planning protocol, specs protocol, agent stance, invariants, or the design language | The matching root instruction doc — see `use-afs` for which one owns each |
 | Log a change, lesson, fact, fix, steer, decision, reflection, audit, plan, result, or raw source | An AFS memory/operational surface — ask `use-afs` for the path |
 | Keep a living spec, reference, cookbook, knowledge page, runbook, research page, or source registry | An AFS source-of-truth surface — ask `use-afs` for the path |
@@ -149,11 +149,11 @@ Examples:
 - `memory` can shape how memory systems persist and retrieve information, but durable human-readable documentation should still route through this skill's contract.
 - `auto-improve` should continuously improve the root instruction docs as first-class targets in its self-improvement loops, the same way it improves skills and knowledge.
 - `use-afs` is the authoritative and only source for AFS layout and naming conventions. Never expand AFS guidance inline here.
-- Use the shared [promotion matrix](../../../references/docs/promotion-matrix.md) when deciding whether a signal belongs in memory rules, `facts/`, `lessons/`, `fixes/`, `raw/`, `knowledge/`, generated improvement bundles, or living docs.
+- Use the shared [promotion matrix](../../../references/docs/promotion-matrix.md) when deciding whether a signal belongs in memory rules, `facts/`, `lessons/`, `fixes/`, Drive source provenance, `knowledge/`, generated improvement bundles, or living docs.
 
 ## Workflow
 
-1. Check repo-local rules first: `AGENTS.md`, `CLAUDE.md`, project READMEs, `BRAIN.md`, or existing doc conventions.
+1. Check repo-local rules first: `AGENTS.md`, `CLAUDE.md`, project READMEs, `AGENTS.md`, or existing doc conventions.
 2. Detect the AFS installation profile (shell at root vs in `docs/`) and whether legacy paths conflict with it. If the destination is AFS-pathed and `use-afs` is not installed, stop and report the install command.
 3. Decide the surface: inline doc, folder doc, root instruction doc, or an AFS surface.
 4. Update the closest existing document before creating a new one.

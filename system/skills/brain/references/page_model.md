@@ -1,8 +1,10 @@
 # Canonical Page Model
 
+Last updated: 2026-10-10
+
 Use this reference when the user wants the second brain to preserve the strongest parts of a compiled-knowledge system without binding it to Obsidian, SQLite, or any other single implementation.
 
-This reference defines the knowledge contract. Storage can vary. The contract should not.
+This reference defines a page model for maintained owner surfaces. Unique generalized synthesis belongs in knowledge; entities, facts, decisions, operations, research, and source extracts retain their appropriate owners. Preserve raw originals in private Drive with `SOURCES.md` provenance. Storage can vary; responsibility and provenance must remain explicit.
 
 ## Core idea
 
@@ -89,7 +91,7 @@ Good entry shape:
 - 2026-04-05 | Meeting
   - Pedro said the rollout would slip by two weeks because vendor approval was blocked.
   - This weakens the previous assumption that launch could happen in April.
-  - Source: [[sources/2026-04-05_vendor_sync]]
+  - Source: SOURCES.md entry vendor-sync-2026-04-05, linking the preserved Drive artifact
 ```
 
 The interpretation can be brief. The goal is to retain the evidence trail and the directional effect on the page.
@@ -110,7 +112,7 @@ Use whatever fits the user's system. Do not make provenance disappear.
 
 ## Searchable frontmatter schema
 
-For knowledge files in `knowledge/` and `lessons/`, use this YAML frontmatter to make pages greppable and filterable without depending on a specific app:
+For generalized insights in `knowledge/` and experience notes in `lessons/`, use this YAML frontmatter to make pages greppable and filterable without depending on a specific app:
 
 ```yaml
 ---
@@ -141,7 +143,7 @@ This schema makes knowledge files queryable by shell tools, `grep`, `ripgrep`, o
 
 When a new source changes a topic:
 
-1. Preserve the source in the raw layer or source store.
+1. Preserve the source in verified private Drive and record provenance in `SOURCES.md`.
 2. Re-read the relevant canonical page.
 3. Rewrite the compiled-truth section so it reflects the best current understanding.
 4. Add or resolve open threads.

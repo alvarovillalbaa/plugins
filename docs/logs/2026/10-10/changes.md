@@ -1,0 +1,1 @@
+- Updated AFS workspace, Drive intake, research/knowledge and folder-document contracts; [evidence](../../../audits/2026/10-10/afs-contract.md).

@@ -1,5 +1,7 @@
 # Operational Modes
 
+Last updated: 2026-10-10
+
 Use this reference when the user asks for a concrete brain action rather than a broad architecture discussion.
 
 These modes are storage-agnostic. They describe the workflow contract, not a required UI, slash command, or Obsidian feature.
@@ -8,11 +10,11 @@ These modes are storage-agnostic. They describe the workflow contract, not a req
 
 Apply these rules across all modes:
 
-- count `BRAIN.md` files first when the scope might contain more than one second brain
-- if no `BRAIN.md` exists, stay read-only unless the user explicitly asks to bootstrap
-- if multiple `BRAIN.md` files exist in the target root, fail closed and ask which brain to target
-- work inside the nearest relevant `BRAIN.md` boundary
-- use the adaptation mode and folder mappings from `BRAIN.md`; default to strict AFS only when no local standard exists
+- select the explicitly requested workspace before writes
+- read root and applicable scoped `AGENTS.md`; nested instructions refine scope
+- clarify only when the requested workspace is genuinely ambiguous
+- preserve raw originals in verified private Drive and catalog them in `SOURCES.md`
+- use the adaptation mode and folder mappings from `AGENTS.md`; default to strict AFS only when no local standard exists
 - read the operating manual first when it exists
 - use `INDEX.md`, hub pages, or the user's equivalent before broad searching
 - search before creating so the system does not grow duplicate pages
@@ -26,11 +28,11 @@ Use when the user wants to initialize, bootstrap, or align an existing corpus.
 
 Default flow:
 
-1. Count `BRAIN.md` files and identify the target brain root.
+1. Select the explicit workspace and read its root and scoped `AGENTS.md`.
 2. Map the current structure.
 3. Inspect representative notes, templates, dashboards, boards, or instruction files.
 4. Choose the adaptation mode: strict AFS, partial AFS, or native company standard.
-5. Create or refresh `BRAIN.md`, the knowledge index, and the change log for the current date (resolve the log path via `use-afs`, or use the brain's equivalent).
+5. Create or refresh `AGENTS.md`, the knowledge index, and the change log for the current date (resolve the log path via `use-afs`, or use the brain's equivalent).
 6. Preserve existing naming, metadata, and folder conventions when they already work.
 7. If an operating manual already exists, diff mentally and avoid overwriting it without approval.
 
@@ -63,10 +65,10 @@ Use when the user provides a URL, file, pasted text, screenshot, transcript, PDF
 Default flow:
 
 1. Classify the source type before processing it deeply.
-2. Preserve the source in the raw layer when durable ingestion is wanted.
+2. Preserve the source in verified private Drive and record provenance in `SOURCES.md`.
 3. If the source is not readable enough to support durable claims, mark it blocked and stop before synthesis.
 4. Extract entities, concepts, claims, decisions, procedures, tasks, dates, and quotes.
-5. Update the relevant canonical pages by rewriting current-state sections, not just appending.
+5. Update the relevant maintained owners: unique generalized synthesis in knowledge, facts and decisions in their own surfaces, procedures in runbooks or cookbooks, and continuous research in unit folders. Rewrite current-state sections, not just appending.
 6. Create or refresh source-summary pages only when they add retrieval value.
 7. Record contradictions, supersessions, and strengthened consensus explicitly.
 8. Refresh `INDEX.md`, `LOG.md`, and any synthesis pages touched by the source.
@@ -82,7 +84,7 @@ Default inputs: every AFS Memory surface. Ask `use-afs` for the current set rath
 
 Default flow:
 
-1. Read `BRAIN.md` and identify whether the brain is strict AFS, partial AFS, or native.
+1. Read `AGENTS.md` and identify whether the brain is strict AFS, partial AFS, or native.
 2. Inventory Memory entries that are not already represented in canonical knowledge.
 3. Search for existing owner pages before creating anything new.
 4. Promote only durable learnings, procedures, facts, decisions, or recurring patterns.

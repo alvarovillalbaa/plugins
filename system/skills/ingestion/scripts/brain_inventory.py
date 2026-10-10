@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Read-only inventory for a BRAIN.md-bounded second brain."""
+"""Read-only local inventory for an explicitly selected AGENTS.md workspace.
+
+This tool cannot inspect the connected Drive queue. Use the authorized connector
+and SOURCES.md to establish remote artifact status.
+"""
 
 from __future__ import annotations
 
@@ -80,37 +84,30 @@ def parse_frontmatter(path: Path) -> dict[str, str]:
     return fields
 
 
-def detect_brains(root: Path) -> list[Path]:
-    return sorted(iter_files(root, {"BRAIN.md"}))
+def instruction_files(root: Path) -> list[Path]:
+    return sorted(iter_files(root, {"AGENTS.md"}))
 
 
-def infer_mode(root: Path, brain_files: list[Path]) -> str:
-    """Read the adaptation mode BRAIN.md declares.
+def infer_mode(root: Path) -> str:
+    """Read the explicit workspace's root guidance without guessing a taxonomy.
 
-    Modes are brain vocabulary, not AFS vocabulary. When BRAIN.md does not
+    Modes are brain vocabulary, not AFS vocabulary. When AGENTS.md does not
     declare one, report `undeclared` rather than guessing: deciding between
     strict and partial requires knowing the AFS taxonomy, which only `use-afs`
     is allowed to define.
     """
-    if not brain_files:
+    guidance = root / "AGENTS.md"
+    if not guidance.is_file():
         return "missing"
-    if len(brain_files) > 1:
-        return "ambiguous"
 
-    text = read_prefix(brain_files[0]).lower()
-    if "native" in text:
-        return "native"
+    text = read_prefix(guidance).lower()
     if "partial-afs" in text or "partial afs" in text:
         return "partial-afs"
     if "strict-afs" in text or "strict afs" in text:
         return "strict-afs"
+    if re.search(r"\bnative(?: company)? (?:mode|standard)\b", text):
+        return "native"
     return "undeclared"
-
-
-def active_root(root: Path, brain_files: list[Path]) -> Path:
-    if len(brain_files) == 1:
-        return brain_files[0].parent
-    return root
 
 
 def detect_shell(root: Path) -> tuple[Path, str]:
@@ -175,12 +172,11 @@ def classify_source(path: Path, fields: dict[str, str]) -> str:
 
 
 def intake_inventory(root: Path) -> dict[str, object]:
-    """Inventory intake material by the raw status contract, not by folder name.
+    """Inventory local legacy status metadata; this is not a Drive queue scan.
 
-    Every raw entry carries `status: unprocessed|processed|blocked` frontmatter
-    (see brain_contract.md). Selecting on that contract finds the queue wherever
-    the active brain keeps it, including native layouts that never use the AFS
-    folder name.
+    Local captures may retain `status: unprocessed|processed|blocked` metadata.
+    Reporting them supports a preservation audit without treating local files
+    as the canonical raw store or inferring that the remote queue is empty.
     """
     by_status: Counter[str] = Counter()
     by_source: Counter[str] = Counter()
@@ -226,19 +222,22 @@ def tool_inventory() -> dict[str, str | None]:
 
 def build_inventory(root: Path, include_memory: bool) -> dict[str, object]:
     root = root.resolve()
-    brain_files = detect_brains(root)
-    boundary = active_root(root, brain_files)
-    shell_root, profile = detect_shell(boundary)
+    guidance = instruction_files(root)
+    shell_root, profile = detect_shell(root)
     data: dict[str, object] = {
         "target_root": str(root),
-        "brain_count": len(brain_files),
-        "brain_files": [str(path) for path in brain_files],
-        "active_root": str(boundary),
-        "mode": infer_mode(boundary, brain_files),
+        "instruction_files": [str(path) for path in guidance],
+        "workspace_root": str(root),
+        "mode": infer_mode(root),
         "shell_root": str(shell_root),
         "install_profile": profile,
         "surfaces": discover_surfaces(shell_root),
-        "intake": intake_inventory(shell_root),
+        "local_legacy_intake": intake_inventory(shell_root),
+        "drive_intake": {
+            "status": "not_inspected",
+            "source_catalog": str(root / "SOURCES.md"),
+            "reason": "Local inventory has no connected Drive access.",
+        },
         "tools": tool_inventory(),
     }
     if include_memory:
@@ -250,10 +249,10 @@ def build_inventory(root: Path, include_memory: bool) -> dict[str, object]:
 
 def print_text(data: dict[str, object]) -> None:
     print(f"Target root: {data['target_root']}")
-    print(f"Brain count: {data['brain_count']}")
-    for path in data["brain_files"]:  # type: ignore[index]
+    print("Applicable scope guidance (nested files do not select a new workspace):")
+    for path in data["instruction_files"]:  # type: ignore[index]
         print(f"  - {path}")
-    print(f"Active root: {data['active_root']}")
+    print(f"Workspace root: {data['workspace_root']}")
     print(f"Mode: {data['mode']}")
     print(f"Install profile: {data['install_profile']} (shell: {data['shell_root']})")
 
@@ -263,8 +262,9 @@ def print_text(data: dict[str, object]) -> None:
         print(f"  {name}: {info['files']} files")
     print("  (taxonomy validation belongs to use-afs, not this script)")
 
-    intake = data["intake"]  # type: ignore[assignment]
-    print("\nIntake queue (files carrying a raw status contract):")
+    print("\nDrive intake: not inspected; inspect SOURCES.md with the authorized connector.")
+    intake = data["local_legacy_intake"]  # type: ignore[assignment]
+    print("\nLocal legacy status metadata (not the remote source queue):")
     print(f"  Total files: {intake['total_files']}")
     print(f"  By status: {intake['by_status']}")
     print(f"  By source: {intake['by_source']}")

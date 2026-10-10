@@ -1,0 +1,32 @@
+[
+  {
+    "from": "docs/audits/skills/2026-06-22-skill-plugin-maintenance.md",
+    "to": "docs/audits/2026/06-22/skills/skill-plugin-maintenance.md",
+    "sha256": "51300f78bd4f4799d44d1fec8580f179d92830a3ee3cab836aa4d67b92834801"
+  },
+  {
+    "from": "docs/audits/skills/2026-06-26-commands-agents-audit.md",
+    "to": "docs/audits/2026/06-26/skills/commands-agents-audit.md",
+    "sha256": "622deb9d8cf460be3baa6b841e140ab3f3e52ae9051a4b1f6a296c3b88339c05"
+  },
+  {
+    "from": "docs/audits/skills/2026-06-26-memory-brain-auto-improve-code-documentation-conflicts.md",
+    "to": "docs/audits/2026/06-26/skills/memory-brain-auto-improve-code-documentation-conflicts.md",
+    "sha256": "786703b4f8e61dde017a3f183c794edc05b375f363a906a81a8f77972f92a09b"
+  },
+  {
+    "from": "docs/audits/skills/2026-06-26-second-brain-ingestion-hardening.md",
+    "to": "docs/audits/2026/06-26/skills/second-brain-ingestion-hardening.md",
+    "sha256": "ddaa70426b75791666276d1918490b1797ff95b8a4f81a3609bbf16382a69bc8"
+  },
+  {
+    "from": "docs/audits/skills/2026-06-26-skill-preference-sweep.md",
+    "to": "docs/audits/2026/06-26/skills/skill-preference-sweep.md",
+    "sha256": "76f5637fdc138af0d51ae7a6d3e8b2633f19e39e8974fc6d20fc968296012506"
+  },
+  {
+    "from": "docs/audits/skills/2026-06-29-skill-plugin-maintenance.md",
+    "to": "docs/audits/2026/06-29/skills/skill-plugin-maintenance.md",
+    "sha256": "f00c0e6203deffb99be5233237e777842e71f7ff2a891a7c1f0b9d3ec1eda2f7"
+  }
+]

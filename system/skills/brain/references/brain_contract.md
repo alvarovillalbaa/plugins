@@ -1,22 +1,29 @@
 # Brain Contract
 
+Last updated: 2026-10-10
+
 Use this reference before any second-brain run that may write, reorganize, or compile knowledge. It defines the storage contract that the `brain` and `ingestion` skills must preserve.
 
 Use the repo's shared promotion matrix for target selection across memory, facts, fixes, lessons, raw sources, generated artifacts, and living docs: `../../../../references/docs/promotion-matrix.md`.
 
 ## Boundary Rule
 
-A target repo, codebase, workspace, or database has one active brain. The active brain is the directory governed by `BRAIN.md`.
+A run has one explicitly selected workspace. `AGENTS.md` supplies operating
+rules; it is not a marker whose recursive count determines ownership.
 
 Before canonical writes:
 
-1. Count `BRAIN.md` files inside the requested target root.
-2. If none exist, stay read-only unless the user explicitly asks to bootstrap a brain.
-3. If exactly one exists, use that file's directory as the brain root.
-4. If more than one exists, fail closed and ask which brain to target. Do not merge, dedupe, or infer across multiple brains.
-5. Work inside the selected boundary only. Paired or sibling brains may be inspected read-only only when the request requires it.
+1. Resolve the repository or workspace explicitly targeted by the request.
+2. Read its root `AGENTS.md` and the nearest applicable scoped instructions.
+3. Nested `AGENTS.md` files refine scope; they do not make the workspace ambiguous.
+4. Inspect navigation and existing owner pages before writes. If the request
+   leaves several independent workspaces equally plausible, clarify that scope.
+5. Keep writes inside the selected workspace unless cross-repo work is authorized.
 
-If the user targets a subdirectory inside a larger workspace, count from the requested target root first. If the task would cross a higher-level `BRAIN.md`, stop and clarify the intended boundary.
+For an explicit subdirectory, inherit applicable parent guidance and read its
+scoped guidance. Missing instructions alone do not revoke a user's implementation
+or bootstrap authorization; report the missing guidance and use the installed
+AFS contract plus the current request.
 
 ## AFS Authority
 
@@ -34,13 +41,14 @@ The adaptation modes below describe *how much* of AFS applies to a given workspa
 
 ## Adaptation Modes
 
-`BRAIN.md` may define the mode in plain English, tables, YAML, or another local format. Follow the local contract over these defaults.
+`AGENTS.md` may define the mode in plain English, tables, YAML, or another local format. Follow the current request and local contract over these defaults.
 
 ### strict-afs
 
 Use when no meaningful local standard exists. Create or follow the full AFS shell exactly as `use-afs` defines it, including its installation profile for the repo's shape — application repositories place the shell in `docs/`.
 
-If `BRAIN.md` specifies a local date convention, it wins for timestamped content; otherwise use the AFS convention.
+Use the current requested timestamp convention; otherwise follow the local
+`AGENTS.md` or installed AFS convention.
 
 ### partial-afs
 
@@ -49,8 +57,11 @@ Use when the workspace already has some AFS roles but not the full tree. Map the
 Examples:
 
 - `knowledge/` exists but `facts/` does not: compile canonical knowledge into `knowledge/` and leave facts in the closest Memory equivalent.
-- A repo has one continuous `research/continuous-research.md`: update that owner instead of creating a parallel research tree.
-- A repo has a source-material page: archive provenance there instead of scattering duplicate source pages.
+- A repo has continuous research: use living unit folders with ordered questions,
+  hypotheses, reasoning, method, evidence, status, and next action. Existing
+  notes become evidence without inventing a completed experiment.
+- A repo has a source-material catalog: maintain `SOURCES.md` with Drive
+  provenance rather than scattering duplicate source pages.
 
 ### native
 
@@ -62,7 +73,15 @@ Native mode is not permission to skip provenance or boundary checks. It only cha
 
 `use-afs` owns the knowledge surface and its internal path shape. What this contract adds:
 
-Omit empty levels. Use the smallest path that stays navigable. Do not create deep empty trees. If a topic is a single page in a folder, use the local naming convention (`README.md`, `index.md`, or `<topic>.md`) from nearby files or `BRAIN.md`.
+Omit empty levels. Use the smallest path that stays navigable. Do not create deep empty trees. If a topic is a single page in a folder, use the local naming convention (`README.md`, `index.md`, or `<topic>.md`) from nearby files or `AGENTS.md`.
+
+`knowledge/` holds unique generalized knowledge, perspectives, and synthesis.
+Copied articles, book summaries, provider documentation, and source extracts
+remain Drive material or generated library artifacts. Repo operating procedures
+belong to technical owner guides, cookbooks, and runbooks. Facts and decisions
+keep their own maintained owners; compilation is not permission to put all
+information in knowledge. `REFERENCES.md` catalogs references; `SOURCES.md`
+records source provenance; `GAPS.md` names unread evidence and unresolved scope.
 
 Source-of-truth surfaces are living: rewrite them into current truth. Timestamped Memory surfaces preserve history and evidence. `use-afs` decides which is which.
 
@@ -72,11 +91,19 @@ Compilation is not limited to raw source material. Every AFS Memory surface — 
 
 Treat Memory surfaces as evidence and experience, not as automatically canonical truth. Search the knowledge surface first, then rewrite existing owner pages and append evidence according to the page model.
 
-Do not read global agent memory outside the repo unless the user explicitly asks or `BRAIN.md` opts in.
+Do not read global agent memory outside the repo unless the user explicitly asks or `AGENTS.md` opts in.
 
 ## Raw Status Contract
 
-Every raw entry should resolve to one of:
+Preserve raw entries in the ownership-appropriate private Drive account. Select
+and verify the connected account and destination before upload. Use temporary
+staging for extraction; do not create a durable repository `raw/` folder. Keep
+original bytes, record size and SHA256, and verify the remote download before
+removing an explicitly migrated local original. `SOURCES.md` records the stable
+artifact URL, archive member path when applicable, checksum, and reading status.
+Do not commit local absolute paths, signed download URLs, or authentication data.
+
+Every source catalog entry should resolve to one of:
 
 - `status: unprocessed` - ready for classification or extraction.
 - `status: processed` - successfully absorbed into canonical owner pages.
@@ -88,8 +115,10 @@ Promote only readable primary content. Do not infer durable claims from URL meta
 
 Cleanup rule:
 
-- Mark raw files as processed by default.
-- If `BRAIN.md` says to remove processed queue pointers, remove only the exact processed pointer.
+- Mark an entry processed only after readable evidence was absorbed successfully.
+- Update the catalog status; retain the original Drive artifact unless explicitly
+  authorized to remove it. If `AGENTS.md` permits removing processed queue
+  pointers, remove only the exact pointer while preserving its provenance.
 - Never bulk-delete unresolved raw material while processing a neighboring readable source.
 
 ## Evidence Labels
@@ -112,7 +141,7 @@ Weaker sources can still be useful, but they must not be flattened into benchmar
 
 For each compile pass:
 
-1. Read `BRAIN.md`, index pages, and likely owner pages before writing.
+1. Read `AGENTS.md`, index pages, and likely owner pages before writing.
 2. Search for an existing canonical owner before creating a page.
 3. Rewrite the compiled/current-truth section for changed knowledge.
 4. Append dated evidence or timeline notes for provenance.

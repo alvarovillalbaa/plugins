@@ -1,9 +1,11 @@
 ---
 name: brain
-description: Route and maintain BRAIN.md-bounded second-brain workflows — raw ingestion, folder adaptation, memory-to-knowledge compilation, and canonical knowledge updates.
+description: Route and maintain AGENTS.md-guided second-brain workflows — Drive source ingestion, folder adaptation, memory-to-knowledge compilation, and canonical knowledge updates.
 ---
 
 # Brain Router
+
+Last updated: 2026-10-10
 
 ## Children
 
@@ -28,8 +30,8 @@ Chain to these skills when the task crosses this skill's boundary:
 
 - Keep this parent compact; use children for lane-specific execution depth.
 - Read [`references/brain_contract.md`](references/brain_contract.md) before any write-bearing brain run.
-- Count `BRAIN.md` files before creating or updating canonical knowledge. Work inside exactly one brain boundary.
-- Preserve the user's existing company or workspace standard when `BRAIN.md` defines one; otherwise use the strict AFS defaults.
+- Select the requested workspace and read its root and applicable scoped `AGENTS.md` before canonical writes. Nested instruction files are scope guidance, not competing workspace roots.
+- Preserve the user's existing company or workspace standard when `AGENTS.md` defines one; explicit user instructions override older installed AFS defaults.
 - Prefer the child skill's bundled resources when a child owns the request.
 - Preserve local skill rules, repo facts, safety gates, product/channel constraints, and explicit local exceptions over external guidance when they conflict.
 
